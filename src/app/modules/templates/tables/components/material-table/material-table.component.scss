@@ -1,0 +1,70 @@
+@import '../../../../../styles/colors';
+@import '../../../../../styles/font';
+@import '../../../../../styles/variables';
+
+.material-table {
+  margin-top: 24px;
+  padding: 0;
+  overflow: hidden;
+  box-shadow: 0 3px 11px 0 $shadow-white, 0 3px 3px -2px $shadow-grey, 0 1px 8px 0 $shadow-dark-grey;
+
+  &__header {
+    color: $grey;
+    display: flex;
+    justify-content: space-between;
+    padding: 24px 24px 8px;
+    margin-bottom: 0;
+  }
+
+  &__title {
+    font-size: $fs-medium;
+    font-weight: $fw-lighter;
+    margin: 0;
+    line-height: 40px;
+  }
+
+  &__content {
+    overflow-y: hidden;
+    overflow-x: scroll;
+
+    @media (max-width: $small) {
+      height: auto;
+    }
+  }
+
+  &__table {
+    width: 100%;
+  }
+
+  &__table-row {
+    height: 64px;
+  }
+
+  &__table-row-title {
+    color: $dark-grey;
+    font-size: $fs-normal;
+    line-height: 24px;
+    text-transform: uppercase;
+    padding: 16px;
+  }
+
+  &__table-content {
+    color: $dark-grey;
+    font-size: $fs-small;
+    padding: 16px;
+  }
+
+  &__content-badge {
+    color: $white;
+    font-size: 13px;
+    font-weight: $fw-lighter;
+    letter-spacing: 0.457px;
+    text-transform: uppercase;
+  }
+}
+
+.user-button {
+  font-size: 20px;
+  line-height: 36px;
+  box-shadow: none;
+}

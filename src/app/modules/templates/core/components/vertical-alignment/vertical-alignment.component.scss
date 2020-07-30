@@ -1,0 +1,109 @@
+@import "../../../../../styles/colors";
+@import "../../../../../styles/font";
+@import "../../../../../styles/variables";
+
+.wrapper {
+  display: flex;
+  width: 100%;
+  margin-top: 36px;
+
+  @media (max-width: $normal) {
+    flex-wrap: wrap;
+  }
+}
+
+.card {
+  box-sizing: border-box;
+  width: 100%;
+  height: fit-content;
+}
+
+.card + .card {
+  margin-left: 36px;
+
+  @media (max-width: $normal) {
+    margin-left: 0;
+    margin-top: 38px;
+  }
+}
+
+
+@mixin grid-item {
+  width: 100%;
+  height: 52px;
+  border-radius: 4px;
+  color: $white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.first-grid-item {
+  @include grid-item;
+  background-color: $blue;
+  align-self: flex-start;
+}
+
+.second-grid-item {
+  @include grid-item;
+  background-color: $yellow;
+  align-self: center;
+}
+
+.third-grid-item {
+  @include grid-item;
+  background-color: $pink;
+  align-self: flex-end;
+}
+
+
+@mixin grid-item-2 {
+  width: 93px;
+  height: 100%;
+  border-radius: 4px;
+  color: $white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.first-grid-item-2 {
+  @include grid-item-2;
+  background-color: $blue;
+  justify-self: flex-end;
+}
+
+.second-grid-item-2 {
+  @include grid-item-2;
+  background-color: $yellow;
+
+}
+
+.third-grid-item-2 {
+  @include grid-item-2;
+  background-color: $pink;
+}
+
+.code-wrapper {
+  background-color: $blue-white;
+  height: auto;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  padding: 16px 16px 0 16px;
+}
+
+.code {
+  font-size: $fs-xs;
+}
+
+.blue {
+  color: $blue;
+}
+
+.pink {
+  color: $pink;
+}
+
+.grey {
+  color: $grey;
+}

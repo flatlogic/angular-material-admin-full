@@ -1,0 +1,20 @@
+@mixin mat-paginator() {
+  .mat-paginator {
+    background: transparent;
+
+    & .mat-select {
+      border: none;
+    }
+
+    & .mat-form-field-underline {
+      display: none;
+    }
+  }
+}
+
+@mixin mat-paginator-dark() {
+  .mat-paginator {
+    background: transparent;
+    color: $white;
+  }
+}

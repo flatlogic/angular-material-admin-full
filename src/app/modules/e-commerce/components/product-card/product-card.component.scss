@@ -1,0 +1,95 @@
+@import "src/app/styles/font";
+@import "src/app/styles/colors";
+
+.product-card {
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+  cursor: pointer;
+}
+
+.product-img {
+  width: 100%;
+}
+
+.product-status {
+  outline: none;
+  border-radius: 32px;
+  padding: 6px 10px;
+  position: absolute;
+  z-index: 1;
+  top: 12px;
+  left: 12px;
+  font-size: $fs-small;
+  font-weight: $fw-lighter;
+  color: $white;
+  margin: 0;
+}
+
+.Sale {
+  background-color: $pink;
+}
+
+.New {
+  background-color: $green;
+}
+
+.product-title-wrapper {
+  padding: 16px;
+}
+
+.product-title {
+  font-size: $fs-medium;
+  font-weight: $fw-lighter;
+  color: $dark-grey;
+  margin-bottom: 8px;
+}
+
+.product-title {
+  font-size: $fs-medium;
+  font-weight: $fw-lighter;
+  color: $dark-grey;
+  margin-bottom: 8px;
+}
+
+.product-subtitle {
+  font-size: $fs-small;
+  font-weight: $fw-lighter;
+  color: $grey;
+  margin: 0;
+}
+
+.product-price-wrapper {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-price {
+  font-size: $fs-normal;
+  font-weight: $fw-bold;
+  color: $dark-grey;
+  margin: 0;
+}
+
+.product-pop-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-pop {
+  font-size: $fs-normal;
+  font-weight: $fw-lighter;
+  color: $yellow;
+  margin: 0;
+}
+
+.pop-icon {
+  padding: 0;
+  font-size: 16px;
+  width: 19px;
+  height: 19px;
+  margin-left: 4px;
+}

@@ -1,0 +1,33 @@
+<app-breadcrumb [path]="routes.BAR_CHARTS"></app-breadcrumb>
+
+<div class="cards-wrapper">
+  <mat-card class="card">
+    <mat-card-title>
+      <p>Apex Basic Bar Chart</p>
+    </mat-card-title>
+    <app-bar-chart [barChartData]="barChartData$ | async" [currentTheme]="currentTheme"></app-bar-chart>
+  </mat-card>
+
+  <mat-card class="card">
+    <mat-card-title>
+      <p>Apex Grouped Bar Chart</p>
+    </mat-card-title>
+    <app-grouped-bar-chart [groupedBarChartData]="groupedBarChartData$ | async"></app-grouped-bar-chart>
+  </mat-card>
+</div>
+
+<div class="cards-wrapper">
+  <mat-card class="card">
+    <mat-card-title>
+      <p>Apex Staked Bar Chart</p>
+    </mat-card-title>
+    <app-stacked-bar-chart></app-stacked-bar-chart>
+  </mat-card>
+
+  <mat-card class="card">
+    <mat-card-title>
+      <p>Apex Bar Chart with Image</p>
+    </mat-card-title>
+    <app-image-bar-chart></app-image-bar-chart>
+  </mat-card>
+</div>

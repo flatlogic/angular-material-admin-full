@@ -1,0 +1,33 @@
+<app-breadcrumb [path]="routes.LINE_CHARTS"></app-breadcrumb>
+
+<div class="cards-wrapper">
+  <mat-card class="card">
+    <mat-card-title>
+      <p>Apex Basic Line Chart</p>
+    </mat-card-title>
+    <app-basic-line-chart [basicLineChartData]="basicLineChartData$ | async" [currentTheme]="currentTheme"></app-basic-line-chart>
+  </mat-card>
+
+  <mat-card class="card">
+    <mat-card-title>
+      <p>Apex Line Chart with Data Labels</p>
+    </mat-card-title>
+    <app-line-data-labels-chart [lineDataLabelsChartData]="lineDataLabelsChartData$ | async" [currentTheme]="currentTheme"></app-line-data-labels-chart>
+  </mat-card>
+</div>
+
+<div class="cards-wrapper">
+  <mat-card class="card">
+    <mat-card-title>
+      <p>Apex Zoomable Timeseries Chart</p>
+    </mat-card-title>
+    <app-zoomable-timeseries-chart></app-zoomable-timeseries-chart>
+  </mat-card>
+
+  <mat-card class="card">
+    <mat-card-title>
+      <p>Dynamic Updating Chart</p>
+    </mat-card-title>
+    <app-dynamic-updating-chart [dynamicUpdatingChartData]="dynamicUpdatingChartData$ | async" [currentTheme]="currentTheme"></app-dynamic-updating-chart>
+  </mat-card>
+</div>

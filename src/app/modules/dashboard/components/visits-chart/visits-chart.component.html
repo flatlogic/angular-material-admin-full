@@ -1,0 +1,44 @@
+<mat-card class="visits-chart">
+  <mat-card-title class="visits-chart__header">
+    <p class="visits-chart__title">Support Tracker</p>
+
+    <app-settings-menu></app-settings-menu>
+  </mat-card-title>
+
+  <mat-card-content class="visits-chart__content">
+    <div class="visits-chart__content-info">
+      <div>
+        <h6 class="visits-chart__content-info-title">{{visitsChartData.all}}</h6>
+        <p>Tickets</p>
+      </div>
+
+      <div #chart></div>
+    </div>
+
+    <div class="visits-chart__content-stats">
+      <div>
+        <p class="visits-chart__content-stats-title">New Tickets</p>
+        <div class="visits-chart__content-stats-wrapper">
+          <p class="visits-chart__content-stats-data">{{visitsChartData.registration}}</p>
+          <div class="visits-chart__content-stats-icon green"></div>
+        </div>
+      </div>
+
+      <div>
+        <p class="visits-chart__content-stats-title">Open</p>
+        <div class="visits-chart__content-stats-wrapper">
+          <p class="visits-chart__content-stats-data">{{visitsChartData.signOut}}</p>
+          <div class="visits-chart__content-stats-icon yellow"></div>
+        </div>
+      </div>
+
+      <div>
+        <p class="visits-chart__content-stats-title">Completed</p>
+        <div class="visits-chart__content-stats-wrapper">
+          <p class="visits-chart__content-stats-data">{{visitsChartData.rate}}</p>
+          <div class="visits-chart__content-stats-icon blue"></div>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

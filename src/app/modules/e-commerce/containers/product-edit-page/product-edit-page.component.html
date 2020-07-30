@@ -1,0 +1,4 @@
+<app-breadcrumb [path]="routes.PRODUCT_EDIT"></app-breadcrumb>
+
+<app-product-edit-form [product]="product$ | async" (editProduct)="saveEditProduct($event)"></app-product-edit-form>
+

@@ -1,0 +1,118 @@
+<app-breadcrumb [path]="routes.CARDS"></app-breadcrumb>
+
+<mat-card class="first-card">
+  <mat-card-content class="first-card-content">
+    <h3 class="title">13 Mar</h3>
+
+    <p class="subtitle">Lifestyle brand</p>
+    <p class="text">
+      A lifestyle brand is a company that markets its products or services to embody the interests,
+      attitudes, and opinions of a group or a culture. Lifestyle brands seek to inspire, guide, and
+      motivate people, with the goal of their products contributing to the definition of the consumer's
+      way of life.
+    </p>
+
+    <button mat-flat-button color="primary">learn more</button>
+  </mat-card-content>
+</mat-card>
+
+<div class="cards-wrapper">
+  <mat-card class="card">
+    <mat-card-title class="image-wrapper">
+      <img class="img" src="./assets/ui-elements/cards/candy.png" alt="isometric">
+    </mat-card-title>
+    <mat-card-content class="content">
+      <h3 class="title">Lizard</h3>
+      <p class="text">
+        Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across
+        all continents except Antarctica
+      </p>
+
+      <button mat-raised-button color="primary">Share</button>
+      <button mat-raised-button color="warn">Learn more</button>
+    </mat-card-content>
+  </mat-card>
+
+  <div style="width: 100%;">
+    <mat-card style="margin-bottom: 48px">
+      <mat-card-title>
+        <div class="text-title"><p>Avr Rating</p><p>All Time</p></div>
+      </mat-card-title>
+      <mat-card-content class="stars-content">
+        <div class="content-stars-wrapper">
+          <div class="stars-wrapper">
+            <mat-icon class="star">star</mat-icon>
+            <mat-icon class="star">star</mat-icon>
+            <mat-icon class="star">star</mat-icon>
+            <mat-icon class="star">star</mat-icon>
+            <mat-icon class="star">star</mat-icon>
+          </div>
+          <p class="stars-title">342 REVIEWS</p>
+        </div>
+
+        <p class="percent">69%</p>
+        <p class="title-percent">of customers recommend this product</p>
+
+        <button mat-raised-button color="success">write a review</button>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="fourth-card">
+      <mat-card-title>
+        <div class="title-wrapper">
+          <div class="title-content">
+            <button mat-mini-fab class="avatar" color="primary">R</button>
+            <div>
+              <p class="title">Weekly Inspiration</p>
+              <p class="subtitle">September 14, 2016</p>
+            </div>
+          </div>
+
+          <button mat-mini-fab class="settings">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+        </div>
+      </mat-card-title>
+      <mat-card-content>
+        <div class="img-wrapper">
+          <img class="img" src="./assets/ui-elements/cards/city.png" alt="mountains">
+        </div>
+
+        <div class="content-wrapper">
+          <p>There are at least 109 mountains on Earts with elevations greeter than 7,200 meters</p>
+
+
+          <button mat-mini-fab class="settings">
+            <mat-icon>favorite</mat-icon>
+          </button>
+          <button mat-mini-fab class="settings">
+            <mat-icon>share</mat-icon>
+          </button>
+        </div>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <mat-card class="fifth-card">
+    <mat-card-title>
+      <div class="image-wrapper">
+        <img class="img" src="./assets/ui-elements/cards/rns.png" alt="rns">
+      </div>
+    </mat-card-title>
+    <mat-card-content>
+      <div class="content-wrapper">
+        <h3 class="content-title">Technology</h3>
+        <p class="content-subtitle">React Native Starter</p>
+      </div>
+    </mat-card-content>
+
+    <mat-card-footer class="footer">
+      <div class="footer-wrapper">
+        <p class="footer-title">from $49.95</p>
+        <button mat-raised-button color="success">Read more</button>
+      </div>
+    </mat-card-footer>
+  </mat-card>
+</div>
+

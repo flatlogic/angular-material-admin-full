@@ -1,0 +1,228 @@
+<mat-list class="sidebar">
+  <mat-list-item routerLink="{{routes.PROFILE}}" routerLinkActive="active">
+    <mat-icon>account_circle</mat-icon> Profile
+  </mat-list-item>
+
+  <mat-list-item routerLink="{{routes.DASHBOARD}}" routerLinkActive="active">
+    <mat-icon>home</mat-icon> Dashboard
+  </mat-list-item>
+
+  <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+
+    <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding routerLink="{{node.route}}" routerLinkActive="{{node.active}}">
+      <div class="mat-tree-second-item">
+        <div class="circle"></div>
+        <p>{{node.name}}</p>
+      </div>
+    </mat-tree-node>
+
+    <mat-tree-node *matTreeNodeDef="let node; when: hasChild" class="mat-node">
+      <div *ngIf="node.name === 'E-commerce'" class="mat-tree-item" matTreeNodeToggle>
+        <div>
+          <mat-icon>shopping_cart</mat-icon>
+          <p matBadge="NodeJS" matBadgeColor="success">{{node.name}}</p>
+        </div>
+        <mat-icon
+          [ngClass]="{rotateUp: treeControl.isExpanded(node), rotateDown: !treeControl.isExpanded(node)}"
+        >keyboard_arrow_down
+        </mat-icon>
+      </div>
+
+      <div *ngIf="node.name === 'User'" class="mat-tree-item" matTreeNodeToggle>
+        <div>
+          <mat-icon>person</mat-icon>
+          <p matBadge="New" matBadgeColor="warn">{{node.name}}</p>
+        </div>
+        <mat-icon
+          [ngClass]="{rotateUp: treeControl.isExpanded(node), rotateDown: !treeControl.isExpanded(node)}"
+        >keyboard_arrow_down
+        </mat-icon>
+      </div>
+    </mat-tree-node>
+
+  </mat-tree>
+
+  <mat-list-item routerLink="{{routes.OVERVIEW}}">
+    <mat-icon>description</mat-icon> Documentation
+  </mat-list-item>
+</mat-list>
+
+<mat-list>
+  <p class="sidebar-title">Templates</p>
+
+  <mat-tree [dataSource]="templateDataSource" [treeControl]="treeControl">
+
+    <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding routerLink="{{node.route}}" routerLinkActive="{{node.active}}">
+      <div class="mat-tree-second-item">
+        <div class="circle"></div>
+        <p>{{node.name}}</p>
+      </div>
+    </mat-tree-node>
+
+    <mat-tree-node *matTreeNodeDef="let node; when: hasChild" class="mat-node">
+      <div *ngIf="node.name === 'Core'" class="mat-tree-item" matTreeNodeToggle>
+        <div>
+          <mat-icon>apps</mat-icon>
+          <p>{{node.name}}</p>
+        </div>
+        <mat-icon
+          [ngClass]="{rotateUp: treeControl.isExpanded(node), rotateDown: !treeControl.isExpanded(node)}"
+        >keyboard_arrow_down
+        </mat-icon>
+      </div>
+
+      <div *ngIf="node.name === 'Tables'" class="mat-tree-item" matTreeNodeToggle>
+        <div>
+          <mat-icon>border_all</mat-icon>
+          <p>{{node.name}}</p>
+        </div>
+        <mat-icon
+          [ngClass]="{rotateUp: treeControl.isExpanded(node), rotateDown: !treeControl.isExpanded(node)}"
+        >keyboard_arrow_down
+        </mat-icon>
+      </div>
+
+      <div *ngIf="node.name === 'UI Elements'" class="mat-tree-item" matTreeNodeToggle>
+        <div>
+          <mat-icon>filter_none</mat-icon>
+          <p>{{node.name}}</p>
+        </div>
+        <mat-icon
+          [ngClass]="{rotateUp: treeControl.isExpanded(node), rotateDown: !treeControl.isExpanded(node)}"
+        >keyboard_arrow_down
+        </mat-icon>
+      </div>
+
+      <div *ngIf="node.name === 'Forms'" class="mat-tree-item" matTreeNodeToggle>
+        <div>
+          <mat-icon>description</mat-icon>
+          <p>{{node.name}}</p>
+        </div>
+        <mat-icon
+          [ngClass]="{rotateUp: treeControl.isExpanded(node), rotateDown: !treeControl.isExpanded(node)}"
+        >keyboard_arrow_down
+        </mat-icon>
+      </div>
+
+      <div *ngIf="node.name === 'Charts'" class="mat-tree-item" matTreeNodeToggle>
+        <div>
+          <mat-icon>equalizer</mat-icon>
+          <p>{{node.name}}</p>
+        </div>
+        <mat-icon
+          [ngClass]="{rotateUp: treeControl.isExpanded(node), rotateDown: !treeControl.isExpanded(node)}"
+        >keyboard_arrow_down
+        </mat-icon>
+      </div>
+
+      <div *ngIf="node.name === 'Maps'" class="mat-tree-item" matTreeNodeToggle>
+        <div>
+          <mat-icon>map</mat-icon>
+          <p>{{node.name}}</p>
+        </div>
+        <mat-icon
+          [ngClass]="{rotateUp: treeControl.isExpanded(node), rotateDown: !treeControl.isExpanded(node)}"
+        >keyboard_arrow_down
+        </mat-icon>
+      </div>
+
+      <div *ngIf="node.name === 'Extra'" class="mat-tree-item" matTreeNodeToggle>
+        <div>
+          <mat-icon>star_border</mat-icon>
+          <p>{{node.name}}</p>
+        </div>
+        <mat-icon
+          [ngClass]="{rotateUp: treeControl.isExpanded(node), rotateDown: !treeControl.isExpanded(node)}"
+        >keyboard_arrow_down
+        </mat-icon>
+      </div>
+
+
+      <div *ngIf="node.name === 'Menu Levels'" class="mat-tree-item" matTreeNodeToggle>
+        <div>
+          <mat-icon>folder_open</mat-icon>
+          <p>{{node.name}}</p>
+        </div>
+        <mat-icon
+          [ngClass]="{rotateUp: treeControl.isExpanded(node), rotateDown: !treeControl.isExpanded(node)}"
+        >keyboard_arrow_down
+        </mat-icon>
+      </div>
+
+      <div *ngIf="node.name === 'Level 1.2' || node.name === 'Level 2.2'" class="mat-tree-item" matTreeNodeToggle>
+        <div>
+          <mat-icon>inbox</mat-icon>
+          <p>{{node.name}}</p>
+        </div>
+        <mat-icon
+          [ngClass]="{rotateUp: treeControl.isExpanded(node), rotateDown: !treeControl.isExpanded(node)}"
+        >keyboard_arrow_down
+        </mat-icon>
+      </div>
+
+    </mat-tree-node>
+
+  </mat-tree>
+</mat-list>
+
+
+<mat-list class="sidebar">
+  <p class="sidebar-title">Help</p>
+
+  <mat-list-item>
+    <mat-icon>library_books</mat-icon> Library
+  </mat-list-item>
+  <mat-list-item>
+    <mat-icon>question_answer</mat-icon> Support
+  </mat-list-item>
+  <mat-list-item>
+    <mat-icon>help_outline</mat-icon> FAQ
+  </mat-list-item>
+</mat-list>
+
+<mat-list class="sidebar">
+  <p class="sidebar-title">Projects</p>
+
+  <mat-list-item> <div class="project-circle project-circle_yellow"></div> My resend </mat-list-item>
+  <mat-list-item> <div class="project-circle project-circle_blue"></div> Starred</mat-list-item>
+  <mat-list-item> <div class="project-circle project-circle_pink"></div> Background </mat-list-item>
+</mat-list>
+
+<mat-list class="sidebar">
+  <div class="add-section-wrapper" [matMenuTriggerFor]="newSection">
+    <div class="add-icon-wrapper">
+      <mat-icon class="add-icon">add</mat-icon>
+    </div>
+
+    <p class="add-section-title">Add section</p>
+  </div>
+
+  <mat-menu #newSection="matMenu" [hasBackdrop]="false">
+    <div class="add-section-menu">
+      <h3 class="menu-title">Add section</h3>
+
+      <mat-form-field (click)="stopPropagation($event)" class="form-field">
+        <input matInput placeholder="Section name">
+      </mat-form-field>
+
+      <div class="menu-buttons-wrapper">
+        <button mat-flat-button color="warn" class="menu-button">Add</button>
+        <button mat-flat-button color="primary" class="menu-cancel-button">Cancel</button>
+      </div>
+    </div>
+  </mat-menu>
+</mat-list>
+
+<div class="space"></div>
+
+<mat-list class="sidebar">
+  <mat-list-item>
+    <div class="chat-section-wrapper" (click)="openChat()">
+      <div class="chat-icon-wrapper">
+        <mat-icon class="chat-icon">chat</mat-icon>
+      </div>
+
+      <p class="chat-section-title">Chat</p>
+    </div>
+  </mat-list-item>
+</mat-list>

@@ -1,0 +1,46 @@
+@import "src/app/styles/font";
+@import "src/app/styles/colors";
+
+.card {
+  margin-top: 36px;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.table-header {
+  display: block;
+  padding: 14px 40px 14px 24px;
+  word-wrap: unset;
+  overflow: unset;
+}
+
+.table-header-title {
+  color: $dark-grey;
+  font-size: $fs-normal;
+  margin: 0;
+}
+
+.table-header-subtitle {
+  color: $dark-grey;
+  font-size: $fs-xs;
+  margin: 0;
+}
+
+.table-body {
+  color: $dark-grey;
+  font-size: $fs-small;
+  margin: 0;
+  padding: 14px 40px 14px 24px;
+  word-wrap: unset;
+  overflow: unset;
+}
+
+.table-body-row {
+  color: $dark-grey;
+  margin: 0;
+  padding: 14px 40px 14px 24px;
+  font-size: $fs-normal;
+  font-weight: $fw-normal;
+}

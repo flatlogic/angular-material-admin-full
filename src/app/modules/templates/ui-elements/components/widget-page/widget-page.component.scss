@@ -1,0 +1,37 @@
+@import "src/app/styles/colors";
+
+.content-wrapper {
+  margin-top: 36px;
+  display: flex;
+}
+
+.card {
+  box-shadow: 0 3px 11px 0 $shadow-white, 0 3px 3px -2px $shadow-grey, 0 1px 8px 0 $shadow-dark-grey;
+  width: 100%;
+  height: fit-content;
+  box-sizing: border-box;
+
+  + .card {
+    margin-left: 48px;
+  }
+}
+
+.inner-card {
+  box-shadow: 0 3px 11px 0 $shadow-white, 0 3px 3px -2px $shadow-grey, 0 1px 8px 0 $shadow-dark-grey;
+}
+
+.code-wrapper {
+  overflow-x: auto;
+}
+
+.text-primary {
+  color: $blue;
+}
+
+.text-info {
+  color: $violet;
+}
+
+.text-warn {
+  color: $pink;
+}

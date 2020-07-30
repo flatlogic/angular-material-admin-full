@@ -1,0 +1,7 @@
+<app-breadcrumb [path]="routes.TABLES_BASIC"></app-breadcrumb>
+
+<div class="tables-wrapper">
+  <app-employee-table [employeeTableData]="employeeTableData$ | async"></app-employee-table>
+  <app-material-table [materialTableDate]="materialTableData$ | async"></app-material-table>
+</div>
+

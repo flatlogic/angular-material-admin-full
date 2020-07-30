@@ -1,0 +1,174 @@
+@import "../../../../styles/colors";
+@import "../../../../styles/font";
+@import "../../../../styles/variables";
+
+.user-card {
+  padding: 27px 24px;
+
+  @media (max-width: $small) {
+    padding: 22px 20px;
+  }
+}
+
+.user-card-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-avatar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  margin-right: 18px;
+
+  @media (max-width: $small) {
+    width: auto;
+  }
+}
+
+.avatar-wrapper {
+  width: 185px;
+  height: 185px;
+  border: 3px dotted $pink;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: $small) {
+    width: 95px;
+    height: 95px;
+  }
+
+  @media (min-width: $medium) and (max-width: $normal){
+    width: 95px;
+    height: 95px;
+  }
+}
+
+.avatar-img {
+  width: 164px;
+  height: 164px;
+  border-radius: 50%;
+
+  @media (max-width: $small) {
+    width: 85px;
+    height: 85px;
+  }
+
+  @media (min-width: $medium) and (max-width: $normal){
+    width: 85px;
+    height: 85px;
+  }
+}
+
+.avatar-badge-wrapper {
+  margin-top: 22px;
+}
+
+.avatar-badge {
+  width: 44px;
+  height: 21px;
+  font-weight: $fw-bold;
+  font-size: 12px;
+  line-height: 16px;
+  min-height: 21px;
+}
+
+.user-info-wrapper {
+  width: 50%;
+
+  @media (max-width: $small) {
+    width: auto;
+  }
+}
+
+.user-name {
+  font-weight: $fw-bold;
+  font-size: $fs-xl;
+  line-height: 38px;
+  margin-bottom: 14px;
+}
+
+.user-position {
+  font-weight: $fw-normal;
+  font-size: 12px;
+  line-height: 14px;
+  color: #27282C;
+  opacity: 0.5;
+  margin-bottom: 4px;
+}
+
+.user-site {
+  font-weight: $fw-lighter;
+  font-size: $fs-normal;
+  line-height: 19px;
+  color: $blue;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.user-skills-wrapper {
+  margin-top: 27px;
+  width: 183px;
+
+  @media (min-width: 1280px) and (max-width: $xxl) {
+    margin-top: 20px;
+    width: auto;
+  }
+}
+
+.user-skill {
+  width: auto;
+  height: 19px;
+  border-radius: 2px;
+  min-height: 19px;
+  font-weight: $fw-bold;
+  font-size: $fs-xs;
+  line-height: 14px;
+  padding: 12px;
+  letter-spacing: 0.6px;
+}
+
+.mat-chip.mat-standard-chip.mat-chip-selected.mat-primary.blue {
+  background-color: $blue-20;
+  color: $blue;
+}
+
+.mat-chip.mat-standard-chip.mat-chip-selected.mat-primary.pink {
+  background-color: $pink-20;
+  color: $pink;
+}
+
+.mat-chip.mat-standard-chip.mat-chip-selected.mat-primary.yellow {
+  background-color: $yellow-20;
+  color: $yellow;
+}
+
+.mat-chip.mat-standard-chip.mat-chip-selected.mat-primary.green {
+  background-color: $green-20;
+  color: $green;
+}
+
+.icons-wrapper {
+  display: flex;
+  margin-top: 42px;
+
+  @media (min-width: 1280px) and (max-width: $xxl) {
+    margin-top: 18px;
+  }
+}
+
+.icon {
+  font-size: 16px;
+  color: #9B9B9B;
+  padding: 0;
+
+  & + .icon {
+    margin-left: 16px;
+  }
+}

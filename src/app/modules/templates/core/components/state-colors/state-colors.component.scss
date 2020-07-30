@@ -1,0 +1,88 @@
+@import '../../../../../styles/colors';
+@import '../../../../../styles/font';
+@import '../../../../../styles/variables';
+
+.color-card {
+  margin-top: 24px;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+}
+
+.header, .body {
+  color: $dark-grey;
+  font-size: $fs-normal;
+  border-bottom-color: $white-gray;
+  white-space: nowrap;
+}
+
+.circle {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+}
+
+.usage-column {
+  color: $dark-grey;
+  font-size: $fs-normal;
+  border-bottom-color: $white-gray;
+  width: 315px;
+}
+
+.usage-text {
+  color: $blue;
+}
+
+@mixin pre {
+  display: flex;
+  justify-content: center;
+  padding: 7px;
+  color: $dark-grey;
+  background: $blue-white;
+
+}
+
+.pre-usage {
+  @include pre;
+  width: 260px;
+}
+
+.pre-hex {
+  @include pre;
+  width: 55px;
+}
+
+.code {
+  font-size: 12px;
+}
+
+
+.blue {
+  background-color: $blue;
+}
+
+.yellow {
+  background-color: $yellow;
+}
+
+.pink {
+  background-color: $pink;
+}
+
+.green {
+  background-color: $green;
+}
+
+.violet {
+  background-color: $violet;
+}
+
+.grey {
+  background-color: $default;
+}
+

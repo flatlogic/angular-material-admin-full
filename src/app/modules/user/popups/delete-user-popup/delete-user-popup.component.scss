@@ -1,0 +1,28 @@
+@import "src/app/styles/colors";
+@import "src/app/styles/font";
+
+.title {
+  font-size: $fs-regular;
+  font-weight: $fw-normal;
+  color: $dark-grey;
+}
+
+.subtitle {
+  font-size: $fs-normal;
+  font-weight: $fw-lighter;
+  color: $grey;
+}
+
+.buttons-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.button {
+  text-transform: uppercase;
+}
+
+.button + .button {
+  margin-left: 8px;
+}

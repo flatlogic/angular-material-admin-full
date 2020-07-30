@@ -1,0 +1,74 @@
+<mat-card class="card">
+  <mat-card-title>
+    <p>Grid options</p>
+  </mat-card-title>
+
+  <mat-card-subtitle>
+    <p>
+      While Material UI grid uses ems or rems for defining most sizes, pxs are used for grid breakpoints
+      and container widths. This is because the viewport width is in pixels and does not change with the
+      font size. See how aspects of the Material UI grid system work across multiple devices with a handy
+      table.
+    </p>
+  </mat-card-subtitle>
+
+  <mat-card-content class="table-wrapper">
+    <mat-table [dataSource]="dataSource">
+
+      <!-- Value Column -->
+      <ng-container matColumnDef="value">
+        <mat-header-cell *matHeaderCellDef class="table-header"></mat-header-cell>
+        <mat-cell *matCellDef="let element" class="table-body-row"> {{element.value}} </mat-cell>
+      </ng-container>
+
+      <!-- XS Column -->
+      <ng-container matColumnDef="xs">
+        <mat-header-cell *matHeaderCellDef class="table-header">
+          <p class="table-header-title">Extra small</p>
+          <p class="table-header-subtitle"><576px</p>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element" class="table-body"> {{element.xs}} </mat-cell>
+      </ng-container>
+
+      <!-- S Column -->
+      <ng-container matColumnDef="s">
+        <mat-header-cell *matHeaderCellDef class="table-header">
+          <p class="table-header-title">Small</p>
+          <p class="table-header-subtitle">≥576px</p>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element" class="table-body"> {{element.s}} </mat-cell>
+      </ng-container>
+
+      <!-- M Column -->
+      <ng-container matColumnDef="m">
+        <mat-header-cell *matHeaderCellDef class="table-header">
+          <p class="table-header-title">Medium</p>
+          <p class="table-header-subtitle">≥768px</p>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element" class="table-body"> {{element.m}} </mat-cell>
+      </ng-container>
+
+      <!-- L Column -->
+      <ng-container matColumnDef="l">
+        <mat-header-cell *matHeaderCellDef class="table-header">
+          <p class="table-header-title">Large</p>
+          <p class="table-header-subtitle">≥992px</p>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element" class="table-body"> {{element.l}} </mat-cell>
+      </ng-container>
+
+      <!-- XL Column -->
+      <ng-container matColumnDef="xl">
+        <mat-header-cell *matHeaderCellDef class="table-header">
+          <p class="table-header-title">Extra large</p>
+          <p class="table-header-subtitle">≥1200px</p>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element" class="table-body"> {{element.xl}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </mat-card-content>
+
+</mat-card>

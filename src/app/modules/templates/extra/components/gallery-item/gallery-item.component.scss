@@ -1,0 +1,56 @@
+@import "src/app/styles/colors";
+@import "src/app/styles/variables";
+
+.card {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  padding: 0;
+  margin-top: 36px;
+}
+
+.img-wrapper {
+  margin: 0;
+  height: auto;
+}
+
+.img {
+  width: 100%;
+  height: auto;
+}
+
+.icons-block {
+  width: 100%;
+  margin: 0;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.icon-wrapper {
+  width: 48px;
+  height: 48px;
+  background-color: transparent;
+  box-shadow: none;
+
+  &:hover {
+    background-color: $header-button-background-color-hover;
+  }
+}
+
+.icon-wrapper + .icon-wrapper {
+  margin-left: 8px;
+}
+
+.icon {
+  color: rgba(110, 110, 110, 0.6);
+}
+
+.icon-liked {
+  color: $pink;
+}
+
+.icon-commented {
+  color: $blue;
+}

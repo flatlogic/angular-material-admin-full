@@ -1,0 +1,50 @@
+<mat-card>
+  <mat-card-title>
+    <p>Input variants</p>
+  </mat-card-title>
+
+  <mat-card-subtitle>
+    <p>Custom checkboxes & radios</p>
+  </mat-card-subtitle>
+
+  <mat-card-content>
+    <div class="checkbox-wrapper">
+      <div class="checkbox-item">
+        <mat-checkbox [disabled]="true"></mat-checkbox>
+        <p class="checkbox-item-title">Disabled</p>
+      </div>
+
+      <div class="checkbox-item">
+        <mat-checkbox color="accent"></mat-checkbox>
+        <p class="checkbox-item-title">Custom color</p>
+      </div>
+
+      <div class="checkbox-item">
+        <mat-checkbox color="primary"></mat-checkbox>
+        <p class="checkbox-item-title">Basic</p>
+      </div>
+
+      <div class="checkbox-item">
+        <mat-checkbox color="warn" [checked]="true"></mat-checkbox>
+        <p class="checkbox-item-title">Checked</p>
+      </div>
+    </div>
+
+    <mat-radio-button [disabled]="true" [value]="false">Disabled</mat-radio-button>
+    <mat-radio-button color="accent" [value]="false">Custom color</mat-radio-button>
+    <mat-radio-button color="primary" [value]="false">Basic</mat-radio-button>
+  </mat-card-content>
+
+
+  <div class="inputs-wrapper">
+    <mat-form-field appearance="outline" color="warn" class="mat-form-field-should-float mat-focused">
+      <mat-label>Error input</mat-label>
+      <input matInput placeholder="Input with an error">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" color="success" class="mat-form-field-should-float mat-focused">
+      <mat-label>Success input</mat-label>
+      <input matInput placeholder="Input with success">
+    </mat-form-field>
+  </div>
+</mat-card>

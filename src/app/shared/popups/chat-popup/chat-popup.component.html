@@ -1,0 +1,42 @@
+<div>
+  <div class="chat-title-wrapper">
+    <h3 class="chat-title">Chat</h3>
+
+    <mat-icon class="close-icon" (click)="close()">clear</mat-icon>
+  </div>
+
+  <div class="message-wrapper">
+    <img src="./assets/sidebar/2.png" class="user-icon">
+
+    <div>
+      <p class="user-name">Jane Hew</p>
+      <p class="user-message">Hey! How it's going?</p>
+    </div>
+  </div>
+
+  <div class="message-wrapper">
+    <img src="./assets/sidebar/3.png" class="user-icon">
+
+    <div>
+      <p class="user-name">Axel Pittman</p>
+      <p class="user-message">I'll definitely buy this template</p>
+    </div>
+  </div>
+
+  <div class="message-wrapper">
+    <img src="./assets/sidebar/5.png" class="user-icon">
+
+    <div>
+      <p class="user-name">Sophia Fernandez</p>
+      <p class="user-message">What's the font-family?</p>
+    </div>
+  </div>
+
+  <div class="comment-wrapper">
+    <mat-form-field class="comment-input">
+      <input matInput placeholder="Type a message">
+    </mat-form-field>
+
+    <button mat-flat-button color="primary" class="send-button" (click)="close()">Send</button>
+  </div>
+</div>

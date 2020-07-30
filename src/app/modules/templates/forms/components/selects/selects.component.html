@@ -1,0 +1,31 @@
+<mat-card class="card">
+  <mat-card-title>
+    <p>Selects</p>
+  </mat-card-title>
+
+  <mat-card-content>
+    <div style="display: flex; align-items: center; justify-content: space-between">
+      <p>Default select</p>
+      <mat-form-field>
+        <mat-select style="outline: none" [value]="'Action'">
+          <mat-option [value]="'Action'">Action</mat-option>
+          <mat-option [value]="'Another action'">Another action</mat-option>
+          <mat-option [value]="'Something else here'">Something else here</mat-option>
+          <mat-option [value]="'Separated link'">Separated link</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+      <div style="display: flex; align-items: center; justify-content: space-between">
+        <p>Grouped select</p>
+        <mat-form-field>
+          <mat-select style="outline: none" [value]="'Action'">
+            <mat-option [value]="'Action'">Action</mat-option>
+            <mat-option [value]="'Another action'">Another action</mat-option>
+            <mat-option [value]="'Something else here'">Something else here</mat-option>
+            <mat-option [value]="'Separated link'">Separated link</mat-option>
+          </mat-select>
+        </mat-form-field>
+    </div>
+  </mat-card-content>
+</mat-card>

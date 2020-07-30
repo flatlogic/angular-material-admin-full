@@ -1,0 +1,143 @@
+<div class="wrapper">
+  <mat-card class="card">
+    <mat-card-title>
+      <p>Vertical Alignment</p>
+    </mat-card-title>
+    <mat-card-subtitle>
+      <p>Use flexbox alignment utilities to vertically and horizontally align columns.</p>
+    </mat-card-subtitle>
+
+    <mat-card-content>
+      <mat-grid-list cols="3" rowHeight="130" gutterSize="24">
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <div class="first-grid-item">
+            <span>Start</span>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <div class="second-grid-item">
+            <span>Center</span>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <div class="third-grid-item">
+            <span>End</span>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+
+      <pre class="code-wrapper">
+<code class="code blue">{{'<'}}mat-grid-list cols="3" rowHeight="130" gutterSize="24"{{'>'}}</code>
+  <code class="code pink">{{'<'}}mat-grid-tile [colspan]="1" [rowspan]="1"{{'>'}}</code>
+    <code class="code grey">{{'<'}}div style="align-self: flex-start"{{'>'}}Start{{'<'}}/div{{'>'}}</code>
+  <code class="code pink">{{'<'}}/mat-grid-tile{{'>'}}</code>
+  <code class="code pink">{{'<'}}mat-grid-tile [colspan]="1" [rowspan]="1"{{'>'}}</code>
+    <code class="code grey">{{'<'}}div style="align-self: center"{{'>'}}Center{{'<'}}/div{{'>'}}</code>
+  <code class="code pink">{{'<'}}/mat-grid-tile{{'>'}}</code>
+  <code class="code pink">{{'<'}}mat-grid-tile [colspan]="1" [rowspan]="1"{{'>'}}</code>
+    <code class="code grey">{{'<'}}div style="align-self: flex-end"{{'>'}}End{{'<'}}/div{{'>'}}</code>
+  <code class="code pink">{{'<'}}/mat-grid-tile{{'>'}}</code>
+<code class="code blue">{{'<'}}/mat-grid-list{{'>'}}</code>
+    </pre>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="card">
+    <mat-card-title>
+      <p>Vertical Alignment</p>
+    </mat-card-title>
+    <mat-card-subtitle>
+      <p>Use flexbox alignment utilities to vertically and horizontally align columns.</p>
+    </mat-card-subtitle>
+
+    <mat-card-content>
+      <div style="margin-top: 24px; display: flex; justify-content: flex-end">
+        <mat-grid-list cols="2" rowHeight="52" gutterSize="24" style="width: 200px">
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <div class="first-grid-item-2">
+              <span>1</span>
+            </div>
+          </mat-grid-tile>
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <div class="second-grid-item-2">
+              <span>2</span>
+            </div>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </div>
+
+      <div style="margin-top: 24px">
+        <mat-grid-list cols="2" rowHeight="52" gutterSize="24">
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <div class="first-grid-item-2">
+              <span>1</span>
+            </div>
+          </mat-grid-tile>
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <div class="second-grid-item-2">
+              <span>2</span>
+            </div>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </div>
+
+      <div style="margin-top: 24px">
+        <mat-grid-list cols="3" rowHeight="52" gutterSize="24">
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <div class="first-grid-item-2">
+              <span>1</span>
+            </div>
+          </mat-grid-tile>
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <div class="second-grid-item-2">
+              <span>2</span>
+            </div>
+          </mat-grid-tile>
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <div class="third-grid-item-2">
+              <span>3</span>
+            </div>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </div>
+
+      <pre class="code-wrapper">
+<code class="code grey">{{'<'}}div style="display: flex; justify-content: flex-end"{{'>'}}</code>
+  <code class="code blue">{{'<'}}mat-grid-list cols="2" rowHeight="52" gutterSize="24"{{'>'}}</code>
+    <code class="code pink">{{'<'}}mat-grid-tile [colspan]="1" [rowspan]="1"{{'>'}}</code>
+      <code class="code grey">{{'<'}}div{{'>'}}{{'<'}}span{{'>'}}1{{'<'}}/span{{'>'}}{{'<'}}/div{{'>'}}</code>
+    <code class="code pink">{{'<'}}/mat-grid-tile{{'>'}}</code>
+    <code class="code pink">{{'<'}}mat-grid-tile [colspan]="1" [rowspan]="1"{{'>'}}</code>
+      <code class="code grey">{{'<'}}div{{'>'}}{{'<'}}span{{'>'}}2{{'<'}}/span{{'>'}}{{'<'}}/div{{'>'}}</code>
+    <code class="code pink">{{'<'}}/mat-grid-tile{{'>'}}</code>
+  <code class="code blue">{{'<'}}/mat-grid-list{{'>'}}</code>
+<code class="code grey">{{'<'}}/div{{'>'}}</code>
+
+<code class="code grey">{{'<'}}div{{'>'}}</code>
+  <code class="code blue">{{'<'}}mat-grid-list cols="2" rowHeight="52" gutterSize="24"{{'>'}}</code>
+    <code class="code pink">{{'<'}}mat-grid-tile [colspan]="1" [rowspan]="1"{{'>'}}</code>
+      <code class="code grey">{{'<'}}div{{'>'}}{{'<'}}span{{'>'}}1{{'<'}}/span{{'>'}}{{'<'}}/div{{'>'}}</code>
+    <code class="code pink">{{'<'}}/mat-grid-tile{{'>'}}</code>
+    <code class="code pink">{{'<'}}mat-grid-tile [colspan]="1" [rowspan]="1"{{'>'}}</code>
+      <code class="code grey">{{'<'}}div{{'>'}}{{'<'}}span{{'>'}}2{{'<'}}/span{{'>'}}{{'<'}}/div{{'>'}}</code>
+    <code class="code pink">{{'<'}}/mat-grid-tile{{'>'}}</code>
+  <code class="code blue">{{'<'}}/mat-grid-list{{'>'}}</code>
+<code class="code grey">{{'<'}}/div{{'>'}}</code>
+
+<code class="code grey">{{'<'}}div{{'>'}}</code>
+  <code class="code blue">{{'<'}}mat-grid-list cols="3" rowHeight="52" gutterSize="24"{{'>'}}</code>
+    <code class="code pink">{{'<'}}mat-grid-tile [colspan]="1" [rowspan]="1"{{'>'}}</code>
+      <code class="code grey">{{'<'}}div>{{'<'}}span>1{{'<'}}/span>{{'<'}}/div{{'>'}}</code>
+    <code class="code pink">{{'<'}}/mat-grid-tile{{'>'}}</code>
+    <code class="code pink">{{'<'}}mat-grid-tile [colspan]="1" [rowspan]="1"{{'>'}}</code>
+      <code class="code grey">{{'<'}}div{{'>'}}{{'<'}}span{{'>'}}2{{'<'}}/span{{'>'}}{{'<'}}/div{{'>'}}</code>
+    <code class="code pink">{{'<'}}/mat-grid-tile{{'>'}}</code>
+    <code class="code pink">{{'<'}}mat-grid-tile [colspan]="1" [rowspan]="1"{{'>'}}</code>
+      <code class="code grey">{{'<'}}div{{'>'}}{{'<'}}span{{'>'}}3{{'<'}}/span>{{'<'}}/div{{'>'}}</code>
+    <code class="code pink">{{'<'}}/mat-grid-tile{{'>'}}</code>
+  <code class="code blue">{{'<'}}/mat-grid-list{{'>'}}</code>
+<code class="code grey">{{'<'}}/div{{'>'}}</code>
+    </pre>
+    </mat-card-content>
+  </mat-card>
+</div>

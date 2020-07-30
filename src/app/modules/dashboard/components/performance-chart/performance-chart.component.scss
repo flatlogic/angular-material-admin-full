@@ -1,0 +1,90 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/variables';
+@import '../../../../styles/font';
+
+.performance-chart {
+  display: flex;
+  flex-direction: column;
+  height: 192px;
+  justify-content: space-between;
+
+  @media (min-width: 1280px) and (max-width: $xxl) {
+    height: 220px;
+  }
+
+  &__header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    &-title {
+      font-size: $fs-regular;
+      font-weight: 400;
+      margin: 0;
+      line-height: 40px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+
+  &__content {
+    display: flex;
+    height: 70%;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &-header {
+      display: flex;
+
+      &-item {
+        align-items: center;
+        display: flex;
+        margin-right: 16px;
+
+        &-icon {
+          border-radius: 50%;
+          width: 5px;
+          height: 5px;
+        }
+
+        &-text {
+          margin-left: 8px;
+          color: $grey;
+        }
+      }
+    }
+  }
+
+  &__progress-title {
+    margin: 20px 0 5px 0;
+    font-weight: 400;
+    font-size: $fs-medium;
+    color: $grey;
+  }
+
+  &__progress-bar {
+    margin-bottom: 8px;
+
+    @media ($small) {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.blue {
+  background-color: $blue;
+}
+
+.pink {
+  background-color: $pink;
+}
+
+.green {
+  background-color: $green;
+}
+
+.yellow {
+  background-color: $yellow;
+}

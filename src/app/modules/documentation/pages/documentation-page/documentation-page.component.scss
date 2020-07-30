@@ -1,0 +1,78 @@
+@import "src/app/styles/colors";
+@import "src/app/styles/font";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-title-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.header-button {
+  box-shadow: none;
+  text-transform: uppercase;
+}
+
+.header-title {
+  margin-left: 24px;
+}
+
+.header-toolbar-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+.header-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background-color: $black-04;
+  }
+}
+
+.sidebar-wrapper {
+  height: 100vh;
+}
+
+.sidebar-item-wrapper {
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  outline: none;
+}
+
+.sidebar-item-title {
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-icon {
+  color: $light-grey;
+  margin-right: 24px;
+}
+
+.sidebar-text {
+  color: $light-grey;
+  font-size: $fs-small;
+  font-weight: $fw-lighter;
+  margin: 0;
+}
+
+.mat-tree-node {
+  outline: none;
+}

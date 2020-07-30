@@ -1,0 +1,50 @@
+@import 'src/app/styles/colors';
+@import 'src/app/styles/font';
+
+
+.title {
+  font-weight: $fw-lighter;
+  font-size: $fs-medium;
+  color: $dark-grey;
+  margin: 0;
+}
+
+.title-bold {
+  font-weight: $fw-normal;
+}
+
+.subtitle {
+  color: $dark-grey;
+}
+
+.list-wrapper {
+  cursor: pointer;
+
+  &:hover {
+    background-color: $white-blue;
+  }
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.list-title {
+  color: $dark-grey;
+  margin: 0;
+}
+
+.list-badge {
+  width: 22px;
+  min-height: 22px;
+  min-width: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  padding: 0;
+  margin: 0;
+}

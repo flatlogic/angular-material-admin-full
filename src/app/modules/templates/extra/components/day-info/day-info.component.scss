@@ -1,0 +1,25 @@
+@import "src/app/styles/font";
+@import "src/app/styles/colors";
+
+.title {
+  font-size: $fs-regular;
+  color: $dark-grey;
+}
+
+.date-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.icon {
+  margin-right: 8px;
+}
+
+.date {
+  margin: 0;
+}
+
+.description {
+  margin-bottom: 16px;
+}

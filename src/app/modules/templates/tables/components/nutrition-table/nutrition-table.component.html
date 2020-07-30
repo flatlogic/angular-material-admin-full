@@ -1,0 +1,84 @@
+<mat-card>
+  <mat-card-title class="card-title">
+    <p>Sorting & Selecting</p>
+  </mat-card-title>
+  <mat-card-subtitle class="card-subtitle">
+    <p>This example demonstrates the use of Checkbox and clickable rows for selection, with a custom Toolbar.</p>
+  </mat-card-subtitle>
+
+  <mat-card-content>
+    <div class="table-header">
+      <p class="table-header-title">Nutrition</p>
+      <button mat-mini-fab class="table-header-button" color="default">
+        <mat-icon>filter_list</mat-icon>
+      </button>
+    </div>
+
+    <div class="table-wrapper">
+      <table mat-table [dataSource]="dataSource" class="table">
+
+        <!-- Checkbox Column -->
+        <ng-container matColumnDef="select">
+          <th class="col-header" mat-header-cell *matHeaderCellDef>
+            <mat-checkbox
+              color="warn"
+              (change)="$event ? masterToggle() : null"
+              [checked]="selection.hasValue() && isAllSelected()"
+              [indeterminate]="selection.hasValue() && !isAllSelected()"
+              [aria-label]="checkboxLabel()">
+            </mat-checkbox>
+          </th>
+
+          <td class="col-body" mat-cell *matCellDef="let row">
+            <mat-checkbox
+              color="warn"
+              (click)="$event.stopPropagation()"
+              (change)="$event ? selection.toggle(row) : null"
+              [checked]="selection.isSelected(row)"
+              [aria-label]="checkboxLabel(row)">
+            </mat-checkbox>
+          </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name" >
+          <th class="col-header" mat-header-cell *matHeaderCellDef >Dessert (100g serving)</th>
+          <td class="col-body" mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <!-- Calories Column -->
+        <ng-container matColumnDef="calories">
+          <th class="col-header" mat-header-cell *matHeaderCellDef>Calories</th>
+          <td class="col-body" mat-cell *matCellDef="let element"> {{element.calories}} </td>
+        </ng-container>
+
+        <!-- Fat Column -->
+        <ng-container matColumnDef="fat">
+          <th class="col-header" mat-header-cell *matHeaderCellDef>Fat (g)</th>
+          <td class="col-body" mat-cell *matCellDef="let element"> {{element.fat}} </td>
+        </ng-container>
+
+        <!-- Cards Column -->
+        <ng-container matColumnDef="cards">
+          <th class="col-header" mat-header-cell *matHeaderCellDef>Carbs (g)</th>
+          <td class="col-body" mat-cell *matCellDef="let element"> {{element.cards}} </td>
+        </ng-container>
+
+        <!-- State Protein -->
+        <ng-container matColumnDef="protein">
+          <th class="col-header" mat-header-cell *matHeaderCellDef>Protein (g)</th>
+          <td class="col-body" mat-cell *matCellDef="let element"> {{element.protein}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+            (click)="selection.toggle(row)">
+        </tr>
+      </table>
+    </div>
+
+    <div>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons></mat-paginator>
+    </div>
+  </mat-card-content>
+</mat-card>

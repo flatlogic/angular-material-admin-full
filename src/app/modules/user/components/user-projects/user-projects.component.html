@@ -1,0 +1,49 @@
+<mat-card class="card">
+  <mat-card-title class="user-projects-title-wrapper">
+    <p class="user-projects-title">Projects</p>
+    <app-date-menu></app-date-menu>
+  </mat-card-title>
+
+  <mat-card-content>
+    <div class="chart-wrapper">
+      <apx-chart
+        [series]="apexPieChartOptions.series"
+        [chart]="apexPieChartOptions.chart"
+        [dataLabels]="apexPieChartOptions.dataLabels"
+        [labels]="apexPieChartOptions.labels"
+        [responsive]="apexPieChartOptions.responsive"
+        [xaxis]="apexPieChartOptions.xaxis"
+        [legend]="apexPieChartOptions.legend"
+        [colors]="apexPieChartOptions.colors"
+      ></apx-chart>
+      <p class="chart-title">121</p>
+    </div>
+
+    <div class="chart-legend-wrapper">
+      <div class="chart-legend-row">
+        <div class="chart-legend-title-wrapper">
+          <div class="chart-legend-icon blue"></div>
+          <p class="chart-legend-title">New</p>
+        </div>
+        <div class="chart-legend-title-wrapper">
+          <div class="chart-legend-icon yellow"></div>
+          <p class="chart-legend-title">Progress</p>
+        </div>
+      </div>
+      <div class="chart-legend-row">
+        <div class="chart-legend-title-wrapper">
+          <div  class="chart-legend-icon green"></div>
+          <p class="chart-legend-title">Completed</p>
+        </div>
+        <div class="chart-legend-title-wrapper">
+          <div class="chart-legend-icon pink"></div>
+          <p class="chart-legend-title">Canceled</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="button-wrapper">
+      <button mat-stroked-button color="primary" class="button">Details</button>
+    </div>
+  </mat-card-content>
+</mat-card>

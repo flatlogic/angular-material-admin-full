@@ -1,0 +1,29 @@
+<app-breadcrumb [path]="routes.SEARCH_RESULT"></app-breadcrumb>
+
+<div class="tool-box" style="margin-top: 24px; display: flex; justify-content: space-between; align-items: center;">
+  <div class="time-selects-wrapper">
+    <app-type-item-select></app-type-item-select>
+    <app-time-period-select></app-time-period-select>
+  </div>
+
+  <mat-button-toggle-group>
+    <mat-button-toggle value="left" [checked]="true">
+      <mat-icon>format_align_justify</mat-icon>
+    </mat-button-toggle>
+    <mat-button-toggle value="right">
+      <mat-icon>border_all</mat-icon>
+    </mat-button-toggle>
+  </mat-button-toggle-group>
+</div>
+
+<p class="result-title">About 94 700 000 (0.39 sec.) results</p>
+
+<div class="result-wrapper">
+  <div class="result-items-wrapper">
+    <app-search-result-item *ngFor="let result of (searchResults$ | async)" [result]="result"></app-search-result-item>
+  </div>
+  <div class="result-filtering-wrapper">
+    <app-result-filtering></app-result-filtering>
+  </div>
+</div>
+

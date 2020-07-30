@@ -1,0 +1,119 @@
+@import "../../../../styles/colors";
+@import "../../../../styles/font";
+@import "../../../../styles/variables";
+
+.chart {
+  margin: 24px 0;
+
+  @media (max-width: $normal) {
+    margin: 0 0 24px 0;
+  }
+
+   &__header {
+     display: flex;
+     justify-content: space-between;
+     padding: 8px;
+
+     @media (max-width: $small) {
+       flex-wrap: wrap;
+     }
+   }
+
+   &__title {
+     margin: 0;
+     display: flex;
+     align-items: center;
+     color: $grey;
+     font-weight: $fw-normal;
+     font-size: $fs-regular;
+     text-transform: none;
+     line-height: 1.6;
+     letter-spacing: 0.12px;
+     order: 1;
+   }
+
+  &__content {
+    height: 380px;
+    width: 100%;
+    @media (max-width: $small) {
+      overflow-x: scroll;
+    }
+  }
+
+  &__content-item {
+    @media (max-width: $small) {
+      width: 600px;
+    }
+  }
+}
+
+.chart-legend {
+  display: flex;
+  order: 2;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    margin-top: 2.24px;
+    margin-right: 24px;
+  }
+
+  &__icon {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+  }
+
+  &__title {
+    font-weight: $fw-lighter;
+    text-transform: none;
+    font-size: $fs-regular;
+    margin-left: 8px;
+  }
+
+  @media (max-width: $small) {
+    margin-top: 20px;
+    order: 3;
+  }
+}
+
+.select-wrapper {
+  width: 50px;
+}
+
+.chart-select {
+  order: 3;
+  border: 0;
+  width: auto;
+
+  @media (max-width: $small) {
+    order: 2;
+  }
+}
+
+.select-option {
+  font-size: $fs-normal;
+  font-weight: $fw-lighter;
+  color: $dark-grey;
+}
+
+.yellow {
+  background-color: $yellow;
+}
+
+.blue {
+  background-color: $blue;
+}
+
+.pink {
+  background-color: $pink;
+}
+
+.green {
+  background-color: $green;
+}
+
+.light-blue {
+  background-color: $white-blue;
+}
+

@@ -1,0 +1,34 @@
+<mat-card>
+  <mat-card-title>
+    <p>Equal width</p>
+  </mat-card-title>
+  <mat-card-subtitle>
+    <p>
+      For example, here are two grid layouts that apply to every device and viewport, from xs to xl.
+      Add any number of unit-less classes for each breakpoint you need and every column will be the
+      same width.
+    </p>
+  </mat-card-subtitle>
+
+  <mat-card-content>
+    <mat-grid-list cols="2" rowHeight="52" gutterSize="24">
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <div class="first-grid-item">
+          <span>1 of 2</span>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <div class="second-grid-item">
+          <span>2 of 2</span>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    <pre class="code-wrapper">
+<code class="code blue">{{'<'}}mat-grid-list cols="3" rowHeight="52" gutterSize="24"{{'>'}}</code>
+  <code class="code pink">{{'<'}}mat-grid-tile [colspan]="1" [rowspan]="1"{{'>'}}1 of 2{{'<'}}/mat-grid-tile{{'>'}}</code>
+  <code class="code pink">{{'<'}}mat-grid-tile [colspan]="1" [rowspan]="1"{{'>'}}2 of 2{{'<'}}/mat-grid-tile{{'>'}}</code>
+<code class="code blue">{{'<'}}/mat-grid-list{{'>'}}</code>
+    </pre>
+  </mat-card-content>
+</mat-card>

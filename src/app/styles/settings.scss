@@ -1,0 +1,13 @@
+@import 'src/app/styles/colors';
+
+$background-color: $blue;
+
+@function changeColor($color) {
+  @return $color;
+}
+
+@mixin settings($color) {
+  div.settings-wrapper {
+    background-color: $color;
+  }
+}

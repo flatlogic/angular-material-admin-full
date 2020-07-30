@@ -1,0 +1,14 @@
+<mat-card class="card">
+  <mat-card-content class="img-wrapper">
+    <img src="{{img}}" alt="{{img}}" class="img">
+  </mat-card-content>
+
+  <mat-card-footer class="icons-block">
+    <button color="default" mat-mini-fab class="icon-wrapper" (click)="like()">
+      <mat-icon class="icon" [ngClass]="{'icon-liked' : liked}">favorite</mat-icon>
+    </button>
+    <button color="default" mat-mini-fab class="icon-wrapper" (click)="comment()">
+      <mat-icon class="icon" [ngClass]="{'icon-commented' : commented}">message</mat-icon>
+    </button>
+  </mat-card-footer>
+</mat-card>

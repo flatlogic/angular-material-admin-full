@@ -1,0 +1,213 @@
+<app-breadcrumb [path]="routes.TABS"></app-breadcrumb>
+
+<div class="tabs-content-wrapper">
+  <div class="cards-wrapper">
+    <mat-card class="card">
+      <mat-card-title>
+        <p>Tabs Example</p>
+      </mat-card-title>
+
+      <mat-card-content>
+        <mat-tab-group mat-stretch-tabs>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <p class="tab-label">item one</p>
+            </ng-template>
+
+            <p class="tab-text">
+              Tabs-enabled widget You will never know exactly how something will go until you try it. You can
+              think three hundred times and still have no precise result. If you see attractive girl all you
+              need to do is to go and ask her to give you her phone. You don’t need to think about HOW it can
+              turn out. All you have to do is to GO and DO IT. It should be super-fast and easy. No hesitation.
+              You ask me: “What to do with these fearful thoughts preventing me from doing that?” The answer is
+              to ignore them, because they can’t disappear immediately. The same thing is for startups and ideas.
+              If you have an idea right away after it appears in your mind you should go and make a first step
+              to implement it.
+            </p>
+
+            <div class="button-wrapper">
+              <button mat-flat-button color="primary">cancel</button>
+              <button mat-flat-button color="warn">some button</button>
+            </div>
+          </mat-tab>
+
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <p class="tab-label">item two</p>
+            </ng-template>
+
+            <p class="tab-text">
+              Why don't use Lore Ipsum? I think if some one says don't use lore ipsum it's very controversial
+              point. I think the opposite actually. Everyone knows what is lore ipsum - it is easy to understand
+              if text is lore ipsum.
+            </p>
+          </mat-tab>
+
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <p class="tab-label">item three</p>
+            </ng-template>
+
+            <p class="tab-text">
+              If you will think too much it will sink in the swamp of never implemented plans and ideas or will
+              just go away or will be implemented by someone else. 5 months of doing everything to achieve
+              nothing. You'll automatically skip - because you know - it's just non-informative stub. But what
+              if there some text like this one?
+            </p>
+          </mat-tab>
+        </mat-tab-group>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="card">
+      <mat-card-title>
+        <p>Icon Tabs Example</p>
+      </mat-card-title>
+
+      <mat-card-content>
+        <mat-tab-group mat-stretch-tabs>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <mat-icon class="tab-icon">call</mat-icon>
+              <p class="tab-label">item one</p>
+            </ng-template>
+
+            <p class="tab-text">
+              Tabs-enabled widget You will never know exactly how something will go until you try it. You can
+              think three hundred times and still have no precise result. If you see attractive girl all you
+              need to do is to go and ask her to give you her phone. You don’t need to think about HOW it can
+              turn out. All you have to do is to GO and DO IT. It should be super-fast and easy. No hesitation.
+              You ask me: “What to do with these fearful thoughts preventing me from doing that?” The answer is
+              to ignore them, because they can’t disappear immediately. The same thing is for startups and ideas.
+              If you have an idea right away after it appears in your mind you should go and make a first step
+              to implement it.
+            </p>
+
+            <div class="button-wrapper">
+              <button mat-flat-button color="primary">cancel</button>
+              <button mat-flat-button color="warn">some button</button>
+            </div>
+          </mat-tab>
+
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <mat-icon class="tab-icon">call</mat-icon>
+              <p class="tab-label">item two</p>
+            </ng-template>
+
+            <p class="tab-text">
+              Why don't use Lore Ipsum? I think if some one says don't use lore ipsum it's very controversial
+              point. I think the opposite actually. Everyone knows what is lore ipsum - it is easy to understand
+              if text is lore ipsum.
+            </p>
+          </mat-tab>
+
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <mat-icon class="tab-icon">call</mat-icon>
+              <p class="tab-label">item three</p>
+            </ng-template>
+
+            <p class="tab-text">
+              If you will think too much it will sink in the swamp of never implemented plans and ideas or will
+              just go away or will be implemented by someone else. 5 months of doing everything to achieve
+              nothing. You'll automatically skip - because you know - it's just non-informative stub. But what
+              if there some text like this one?
+            </p>
+          </mat-tab>
+        </mat-tab-group>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="cards-wrapper">
+    <mat-card class="card">
+      <mat-card-title>
+        <p>Expansion Panel Example</p>
+      </mat-card-title>
+
+      <mat-card-content>
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Expansion Panel 1
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit
+              amet blandit leo lobortis eget.
+            </p>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Expansion Panel 2
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit
+              amet blandit leo lobortis eget.
+            </p>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel [disabled]="true">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Disabled Expansion Panel
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="card">
+      <mat-card-title>
+        <p>Customize Expansion Panel Example</p>
+      </mat-card-title>
+
+      <mat-card-content>
+        <mat-accordion>
+          <mat-expansion-panel class="expansion-panel">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <p class="panel-title">Expansion Panel 1</p>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <p class="panel-text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit
+              amet blandit leo lobortis eget.
+            </p>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel class="expansion-panel">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <p class="panel-title">Expansion Panel 2</p>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <p class="panel-text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit
+              amet blandit leo lobortis eget.
+            </p>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel [disabled]="true">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Disabled Expansion Panel
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+

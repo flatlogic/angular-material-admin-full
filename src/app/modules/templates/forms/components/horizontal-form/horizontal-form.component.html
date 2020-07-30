@@ -1,0 +1,80 @@
+<mat-card>
+  <mat-card-title>
+    <p>Horizontal form</p>
+  </mat-card-title>
+
+  <div class="example-input-wrapper">
+    <p class="example-input-title">Normal field</p>
+
+    <mat-form-field class="example-form-field">
+      <input matInput placeholder="May have placeholder">
+    </mat-form-field>
+  </div>
+
+  <div class="example-input-wrapper">
+    <p class="example-input-title">Label hint</p>
+
+    <mat-form-field class="example-form-field">
+      <input matInput>
+      <mat-hint>Some important helper text</mat-hint>
+    </mat-form-field>
+  </div>
+
+  <div class="example-input-wrapper">
+    <p class="example-input-title">Disabled input</p>
+
+    <mat-form-field class="example-form-field">
+      <input matInput placeholder="Default value" [disabled]="true">
+    </mat-form-field>
+  </div>
+
+  <div class="example-input-wrapper">
+    <p class="example-input-title">Max length</p>
+
+    <mat-form-field class="example-form-field">
+      <input matInput placeholder="Max length is 3" [maxLength]="3">
+    </mat-form-field>
+  </div>
+
+  <div class="example-input-wrapper">
+    <p class="example-input-title">Prepended input</p>
+
+    <mat-form-field class="example-form-field">
+      <mat-icon matPrefix>account_circle</mat-icon>
+      <input matInput>
+    </mat-form-field>
+  </div>
+
+  <div class="example-input-wrapper">
+    <p class="example-input-title">Password</p>
+
+    <mat-form-field class="example-form-field">
+      <mat-icon matPrefix>vpn_key</mat-icon>
+      <input matInput>
+    </mat-form-field>
+  </div>
+
+  <div class="example-input-wrapper">
+    <p class="example-input-title">Appended input</p>
+
+    <mat-form-field class="example-form-field">
+      <input matInput type="number" class="example-right-align">
+      <span matSuffix>.00</span>
+    </mat-form-field>
+  </div>
+
+  <div class="example-input-wrapper">
+    <p class="example-input-title">Combined input</p>
+
+    <mat-form-field class="example-form-field">
+      <mat-icon matPrefix>account_balance_wallet</mat-icon>
+      <input matInput type="number" class="example-right-align">
+      <span matSuffix>.00</span>
+    </mat-form-field>
+  </div>
+
+  <div class="example-input-wrapper">
+    <button mat-raised-button color="primary">save changes</button>
+    <button mat-raised-button color="warn">cancel</button>
+  </div>
+</mat-card>

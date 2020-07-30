@@ -1,0 +1,10 @@
+<div class="event-wrapper">
+
+  <h3 class="title">{{data.title}}</h3>
+  <div class="date-wrapper">
+    <mat-icon class="icon">calendar_today</mat-icon><p class="date">{{data.start | date:'yyyy-MM-dd'}}</p>
+  </div>
+  <p class="description">{{data.description}}</p>
+
+  <button mat-raised-button color="primary" (click)="close()">ok</button>
+</div>

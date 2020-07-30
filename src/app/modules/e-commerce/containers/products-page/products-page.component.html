@@ -1,0 +1,67 @@
+
+<app-breadcrumb [path]="routes.PRODUCTS"></app-breadcrumb>
+
+<div class="selects-wrapper">
+  <mat-form-field appearance="outline" class="select-wrapper">
+    <mat-label>Type</mat-label>
+    <mat-select class="select" [formControl]="type">
+      <mat-option value="shoes">Shoes</mat-option>
+      <mat-option value="boots">Boots</mat-option>
+      <mat-option value="trainers">Trainers</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="select-wrapper">
+    <mat-label>Brands</mat-label>
+    <mat-select class="select" [formControl]="brands">
+      <mat-option value="all">All</mat-option>
+      <mat-option value="nike">Nike</mat-option>
+      <mat-option value="adidas">Adidas</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="select-wrapper">
+    <mat-label>Size</mat-label>
+    <mat-select class="select" [formControl]="size">
+      <mat-option value="7">7</mat-option>
+      <mat-option value="8">8</mat-option>
+      <mat-option value="9">9</mat-option>
+      <mat-option value="10">10</mat-option>
+      <mat-option value="11">11</mat-option>
+      <mat-option value="12">12</mat-option>
+      <mat-option value="12.5">12.5</mat-option>
+      <mat-option value="13">13</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="select-wrapper">
+    <mat-label>Color</mat-label>
+    <mat-select class="select" [formControl]="color">
+      <mat-option value="all">All</mat-option>
+      <mat-option value="white">White</mat-option>
+      <mat-option value="black">Black</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="select-wrapper">
+    <mat-label>Range</mat-label>
+    <mat-select class="select" [formControl]="range">
+      <mat-option value="all">All</mat-option>
+      <mat-option value="-">-</mat-option>
+      <mat-option value="none">None</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="select-wrapper">
+    <mat-label>Sort</mat-label>
+    <mat-select class="select" [formControl]="sort">
+      <mat-option value="favorite">Favorite</mat-option>
+      <mat-option value="price">Price</mat-option>
+      <mat-option value="popural">Popular</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div class="products-wrapper">
+  <app-product-card class="product" *ngFor="let product of (products$ | async)" [product]="product"></app-product-card>
+</div>

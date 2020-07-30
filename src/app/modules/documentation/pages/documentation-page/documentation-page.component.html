@@ -1,0 +1,77 @@
+<mat-toolbar class="header" color="primary">
+
+  <div class="header-title-wrapper">
+    <button mat-mini-fab color="primary" class="header-button">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h6 class="header-title">Angular Material Admin Full Documentation</h6>
+  </div>
+
+  <div class="header-toolbar-wrapper">
+    <a href="https://twitter.com/flatlogic">
+      <mat-icon class="header-icon" fontSet="fa fa-fs" fontIcon="fa-twitter"></mat-icon>
+    </a>
+    <a href="https://dribbble.com/flatlogic">
+      <mat-icon class="header-icon" fontSet="fa fa-fs" fontIcon="fa-dribbble"></mat-icon>
+    </a>
+    <a href="https://www.facebook.com/flatlogic">
+      <mat-icon class="header-icon" fontSet="fa fa-fs" fontIcon="fa-facebook"></mat-icon>
+    </a>
+    <a href="https://instagram.com/flatlogiccom/">
+      <mat-icon class="header-icon" fontSet="fa fa-fs" fontIcon="fa-instagram"></mat-icon>
+    </a>
+    <a href="https://www.linkedin.com/company/flatlogic/">
+      <mat-icon class="header-icon" fontSet="fa fa-fs" fontIcon="fa-linkedin"></mat-icon>
+    </a>
+    <a href="https://github.com/flatlogic">
+      <mat-icon class="header-icon" fontSet="fa fa-fs" fontIcon="fa-github"></mat-icon>
+    </a>
+
+    <button class="header-button" mat-flat-button color="primary">live preview</button>
+    <button class="header-button" mat-stroked-button color="warn">buy</button>
+  </div>
+</mat-toolbar>
+
+<mat-sidenav-container class="sidebar-wrapper">
+  <mat-sidenav
+    #sidenav
+    mode="side"
+    [(opened)]="isShowSidebar"
+    class="layout-sidebar"
+    [mode]="mobileQuery.matches ? 'over' : 'side'"
+    [fixedInViewport]="mobileQuery.matches"
+  >
+    <mat-list>
+      <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+        <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding routerLink="{{node.route}}" routerLinkActive="{{node.active}}">
+          <div class="sidebar-item-wrapper">
+            <p class="sidebar-text">{{node.name}}</p>
+          </div>
+        </mat-tree-node>
+
+        <mat-tree-node *matTreeNodeDef="let node; when: hasChild" class="mat-node">
+          <div *ngIf="node.name === 'Getting Started'" class="sidebar-item-wrapper" matTreeNodeToggle>
+            <div class="sidebar-item-title">
+              <mat-icon class="sidebar-icon">inbox</mat-icon>
+              <p class="sidebar-text">{{node.name}}</p>
+            </div>
+
+            <mat-icon
+              class="sidebar-icon"
+              [ngClass]="{rotateUp: treeControl.isExpanded(node), rotateDown: !treeControl.isExpanded(node)}"
+            >keyboard_arrow_down
+            </mat-icon>
+          </div>
+        </mat-tree-node>
+      </mat-tree>
+
+      <mat-list-item class="sidebar-item-wrapper" routerLink="{{routes.LIBS}}" routerLinkActive="active">
+        <mat-icon class="sidebar-icon">local_library</mat-icon> <p class="sidebar-text">Libs</p>
+      </mat-list-item>
+    </mat-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="layout-content">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

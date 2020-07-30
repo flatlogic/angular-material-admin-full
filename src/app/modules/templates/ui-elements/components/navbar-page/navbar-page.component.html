@@ -1,0 +1,78 @@
+<app-breadcrumb [path]="routes.NAVBAR"></app-breadcrumb>
+
+<div class="content-wrapper">
+  <mat-card class="card">
+    <mat-card-title>
+      <p>Navbar Example</p>
+    </mat-card-title>
+
+    <mat-card-subtitle>
+      <p>
+        App bar displays yours app links by importing and inserting AppBar component. To swap links style add
+        attribute within Button component.
+      </p>
+    </mat-card-subtitle>
+
+    <mat-card-content>
+      <mat-toolbar color="primary" class="toolbar">
+        <div class="navbar-title-wrapper">
+          <mat-icon class="menu-icon">dehaze</mat-icon>
+          <span class="menu-title">Navbar menu</span>
+        </div>
+
+        <div class="navbar-title-button-wrapper">
+          <button mat-flat-button color="primary" class="button">link</button>
+
+          <button mat-flat-button color="primary" class="button">link 2</button>
+
+          <button mat-flat-button color="primary" class="button">another link</button>
+
+          <button mat-flat-button color="primary" [disabled]="true" class="button">disable link</button>
+        </div>
+      </mat-toolbar>
+
+      <p class="content-text">With menu</p>
+
+      <mat-toolbar color="warn" class="toolbar">
+        <div class="navbar-title-wrapper">
+          <mat-icon class="menu-icon">dehaze</mat-icon>
+          <span class="menu-title">Navbar menu</span>
+        </div>
+
+        <div class="user-row">
+          <mat-icon [matMenuTriggerFor]="menu">account_circle</mat-icon>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>Profile</button>
+            <button mat-menu-item>My account</button>
+          </mat-menu>
+        </div>
+      </mat-toolbar>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="card">
+    <mat-card-title>
+      <p>Navbar Search</p>
+    </mat-card-title>
+
+    <mat-card-subtitle>
+      <p>
+        Search icon makes UX more flexible. To start using search icon, make sure you got all relative functions.
+      </p>
+    </mat-card-subtitle>
+
+    <mat-card-content>
+      <mat-toolbar color="accent" class="toolbar">
+        <div class="navbar-title-wrapper">
+          <mat-icon class="menu-icon">dehaze</mat-icon>
+          <span class="menu-title">Navbar menu</span>
+        </div>
+
+        <div class="user-row">
+          <app-search></app-search>
+        </div>
+      </mat-toolbar>
+    </mat-card-content>
+  </mat-card>
+</div>
+

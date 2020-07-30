@@ -1,0 +1,109 @@
+<app-breadcrumb [path]="routes.MODAL"></app-breadcrumb>
+
+<div class="content-wrapper">
+  <div class="content-block">
+    <mat-card>
+      <mat-card-title>
+        <p>Live Demo</p>
+      </mat-card-title>
+
+      <mat-card-content>
+        <p>
+          Toggle a working modal demo by clicking the button below. It will slide down and fade
+          in from the top of the page.
+        </p>
+
+        <button mat-flat-button color="primary" (click)="openDialog()">demo</button>
+        <button mat-flat-button color="warn" (click)="openScrollingDialog()">scrolling long content</button>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+      <mat-card-title>
+        <p>Optional Sizes</p>
+      </mat-card-title>
+
+      <mat-card-content>
+        <p>
+          To appoint modal's width size, equal maxWidth attribute to one of values:
+          xs, sm, md, lg, xl
+        </p>
+
+        <button mat-flat-button color="primary" (click)="openLargeDialog()">large modal</button>
+        <button mat-flat-button color="warn" (click)="openSmallDialog()">small modal</button>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+      <mat-card-title>
+        <p>Form dialogs</p>
+      </mat-card-title>
+
+      <mat-card-content>
+        <p>
+          Form dialogs allow users to fill out form fields within a dialog. For example, if your site
+          prompts for potential subscribers to fill in their email address, they can fill out the email
+          field and touch Submit
+        </p>
+
+        <button mat-stroked-button class="button" color="primary" (click)="openFormDialog()">open form dialog</button>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="content-block">
+    <mat-card>
+      <mat-card-title>
+        <p>Using Grid</p>
+      </mat-card-title>
+
+      <mat-card-content>
+        <p>
+          Utilize the Material UI grid system within a modal by nesting Grid container within the Dialog.
+          Then, use the normal grid system classes as you would anywhere else.
+        </p>
+
+        <button mat-flat-button color="primary" (click)="openGridDialog()">grid</button>
+
+        <pre class="code-wrapper">
+<code class="code grey">{{'<'}}div style="display: flex; justify-content: flex-end"{{'>'}}</code>
+  <code class="code blue">{{'<'}}mat-grid-list cols="2" rowHeight="52" gutterSize="24"{{'>'}}</code>
+    <code class="code pink">{{'<'}}mat-grid-tile [colspan]="1" [rowspan]="1"{{'>'}}</code>
+      <code class="code grey">{{'<'}}div{{'>'}}{{'<'}}span{{'>'}}1{{'<'}}/span{{'>'}}{{'<'}}/div{{'>'}}</code>
+    <code class="code pink">{{'<'}}/mat-grid-tile{{'>'}}</code>
+    <code class="code pink">{{'<'}}mat-grid-tile [colspan]="1" [rowspan]="1"{{'>'}}</code>
+      <code class="code grey">{{'<'}}div{{'>'}}{{'<'}}span{{'>'}}2{{'<'}}/span{{'>'}}{{'<'}}/div{{'>'}}</code>
+    <code class="code pink">{{'<'}}/mat-grid-tile{{'>'}}</code>
+  <code class="code blue">{{'<'}}/mat-grid-list{{'>'}}</code>
+<code class="code grey">{{'<'}}/div{{'>'}}</code>
+
+<code class="code grey">{{'<'}}div{{'>'}}</code>
+  <code class="code blue">{{'<'}}mat-grid-list cols="2" rowHeight="52" gutterSize="24"{{'>'}}</code>
+    <code class="code pink">{{'<'}}mat-grid-tile [colspan]="1" [rowspan]="1"{{'>'}}</code>
+      <code class="code grey">{{'<'}}div{{'>'}}{{'<'}}span{{'>'}}1{{'<'}}/span{{'>'}}{{'<'}}/div{{'>'}}</code>
+    <code class="code pink">{{'<'}}/mat-grid-tile{{'>'}}</code>
+    <code class="code pink">{{'<'}}mat-grid-tile [colspan]="1" [rowspan]="1"{{'>'}}</code>
+      <code class="code grey">{{'<'}}div{{'>'}}{{'<'}}span{{'>'}}2{{'<'}}/span{{'>'}}{{'<'}}/div{{'>'}}</code>
+    <code class="code pink">{{'<'}}/mat-grid-tile{{'>'}}</code>
+  <code class="code blue">{{'<'}}/mat-grid-list{{'>'}}</code>
+<code class="code grey">{{'<'}}/div{{'>'}}</code>
+
+<code class="code grey">{{'<'}}div{{'>'}}</code>
+  <code class="code blue">{{'<'}}mat-grid-list cols="3" rowHeight="52" gutterSize="24"{{'>'}}</code>
+    <code class="code pink">{{'<'}}mat-grid-tile [colspan]="1" [rowspan]="1"{{'>'}}</code>
+      <code class="code grey">{{'<'}}div>{{'<'}}span>1{{'<'}}/span>{{'<'}}/div{{'>'}}</code>
+    <code class="code pink">{{'<'}}/mat-grid-tile{{'>'}}</code>
+    <code class="code pink">{{'<'}}mat-grid-tile [colspan]="1" [rowspan]="1"{{'>'}}</code>
+      <code class="code grey">{{'<'}}div{{'>'}}{{'<'}}span{{'>'}}2{{'<'}}/span{{'>'}}{{'<'}}/div{{'>'}}</code>
+    <code class="code pink">{{'<'}}/mat-grid-tile{{'>'}}</code>
+    <code class="code pink">{{'<'}}mat-grid-tile [colspan]="1" [rowspan]="1"{{'>'}}</code>
+      <code class="code grey">{{'<'}}div{{'>'}}{{'<'}}span{{'>'}}3{{'<'}}/span>{{'<'}}/div{{'>'}}</code>
+    <code class="code pink">{{'<'}}/mat-grid-tile{{'>'}}</code>
+  <code class="code blue">{{'<'}}/mat-grid-list{{'>'}}</code>
+<code class="code grey">{{'<'}}/div{{'>'}}</code>
+    </pre>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+

@@ -1,0 +1,12 @@
+<div class="event-wrapper">
+  <h3 class="title">Create New Event</h3>
+  <p class="subtitle">Just enter event name to create a new one</p>
+
+  <mat-form-field class="form">
+    <input matInput placeholder="Title" [(ngModel)]="data.event">
+  </mat-form-field>
+
+  <button mat-raised-button class="button" (click)="close()">Close</button>
+  <button mat-raised-button color="success" [mat-dialog-close]="data.event">Create</button>
+</div>
+

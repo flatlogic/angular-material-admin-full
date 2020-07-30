@@ -1,0 +1,17 @@
+<form class="form" [formGroup]="form" (ngSubmit)="sign()">
+  <mat-form-field class="form__input">
+    <input matInput placeholder="Full name" formControlName="name">
+  </mat-form-field>
+
+  <mat-form-field class="form__input">
+    <input matInput placeholder="Email Address" type="email" formControlName="email">
+  </mat-form-field>
+
+  <mat-form-field class="form__input">
+    <input matInput placeholder="Password" type="password" formControlName="password">
+  </mat-form-field>
+
+  <div class="form-actions">
+    <button class="form-actions__create" mat-raised-button color="primary" type="submit">Create your account</button>
+  </div>
+</form>

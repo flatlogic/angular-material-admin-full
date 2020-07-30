@@ -1,0 +1,53 @@
+<mat-card class="card">
+  <mat-toolbar class="page-header" role="heading">
+    <div class="title-inner-wrapper">
+      <p class="title-text">Dashboard</p>
+
+      <mat-tab-group color="warn" class="dashboard-mat-tab">
+        <mat-tab label="Today">
+          <div class="empty-block"></div>
+        </mat-tab>
+        <mat-tab label="This Week">
+          <div class="empty-block"></div>
+        </mat-tab>
+        <mat-tab label="This Month">
+          <div class="empty-block"></div>
+        </mat-tab>
+        <mat-tab label="This Year">
+          <div class="empty-block"></div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+
+    <div class="title-inner-wrapper">
+      <div class="title-date">
+        <mat-icon class="title-icon-data" color="primary">calendar_today</mat-icon>
+
+        <p class="title-data-text"> {{todayDate | date: 'dd MMM yyyy, EEEE'}}</p>
+      </div>
+
+      <button mat-flat-button color="warn" class="title-button">Latest Reports</button>
+    </div>
+  </mat-toolbar>
+</mat-card>
+
+<div class="charts-wrapper">
+  <app-visits-chart class="chart" [visitsChartData]="visitsChartData$ | async" [currentTheme]="currentTheme"></app-visits-chart>
+
+  <app-performance-chart class="chart" [performanceChartData]="performanceChartData$ | async" [currentTheme]="currentTheme"></app-performance-chart>
+
+  <app-server-chart class="chart" [serverChartData]="serverChartData$ | async"></app-server-chart>
+
+  <app-revenue-chart class="chart" [revenueCharData]="revenueChartData$ | async"></app-revenue-chart>
+</div>
+
+<app-daily-line-chart
+  [dailyLineChartData]="dailyLineChartData$ | async"
+  [currentTheme]="currentTheme"
+  [currentMode]="currentMode"
+></app-daily-line-chart>
+
+<app-project-stat-chart [projectsStatsData]="projectsStatsData$ | async"></app-project-stat-chart>
+
+<app-support-requests [supportRequestData]="supportRequestData$ | async"></app-support-requests>
+

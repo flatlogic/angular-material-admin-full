@@ -1,0 +1,81 @@
+@import "src/app/styles/font";
+@import "src/app/styles/colors";
+@import "src/app/styles/variables";
+
+.card {
+  margin-top: 24px;
+  box-shadow: 0 3px 11px 0 $shadow-white, 0 3px 3px -2px $shadow-grey, 0 1px 8px 0 $shadow-dark-grey;
+}
+
+.input-wrapper {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 16px 0 8px 0;
+
+  @media (max-width: $small) {
+    width: 100%;
+  }
+}
+
+.input-title {
+  font-size: $fs-regular;
+  color: $dark-grey;
+  margin: 0 16px 0 0;
+}
+
+.input-field {
+  width: 500px;
+  font-size: $fs-xs;
+
+  @media (max-width: $small) {
+    width: 140px;
+  }
+}
+
+.input-text {
+  font-size: $fs-regular;
+}
+
+.mat-form-field-wrapper {
+  margin: 0;
+  padding: 0;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 20px 0 16px 0;
+  border: none;
+}
+
+.input-select {
+  border: none;
+  width: 500px;
+}
+
+.input-panel {
+  width: auto;
+  height: auto;
+}
+
+.input-img {
+  width: 200px;
+  height: auto;
+}
+
+button.mat-flat-button + button.mat-flat-button {
+  margin-left: 8px;
+}
+
+//.option1{
+//  background:  url("https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg")  center / contain no-repeat;
+//  white-space: nowrap;
+//  display:inline
+//}
+//
+//
+//.option2{
+//  background:  url("src/assets/e-commerce/products/1.jpg")  center / contain no-repeat;
+//  white-space: nowrap;
+//  display:inline;
+//}

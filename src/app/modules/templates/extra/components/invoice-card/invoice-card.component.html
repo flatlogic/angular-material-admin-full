@@ -1,0 +1,101 @@
+<mat-card class="card">
+  <mat-card-title class="card-title">
+    <img src="{{order.img}}" alt="{{order.img}}" class="img">
+
+    <div>
+      <p><span>{{order.id}}</span> / {{order.date}}</p>
+      <p>Some Invoice number description or whatever</p>
+    </div>
+  </mat-card-title>
+
+  <mat-card-subtitle class="card-subtitle">
+    <div>
+      <p class="info-title">Company Information</p>
+      <p class="info-name">{{order.company.name}}</p>
+      <p class="company-status">{{order.company.status}}</p>
+      <p>{{order.company.address}}</p>
+      <p>{{order.company.location}}</p>
+      <p><span class="contacts">e-mail: </span><a class="link">{{order.company.email}}</a></p>
+      <p><span class="contacts">phone: </span>{{order.company.phone}}</p>
+      <p><span class="contacts">fax: </span>{{order.company.fax}}</p>
+    </div>
+
+    <div class="client-block">
+      <p class="info-title">Client Information</p>
+      <p class="info-name">{{order.client.name}}</p>
+      <p class="client-company"><span>Consultant at </span> <a class="link">{{order.client.company}}</a></p>
+      <p><span class="contacts">e-mail: </span><a class="link">{{order.client.email}}</a></p>
+      <p><span class="contacts">phone: </span>{{order.client.phone}}</p>
+      <p><span class="contacts">fax: </span>{{order.client.fax}}</p>
+      <span>Note: </span>
+      <p>{{order.client.note}}</p>
+    </div>
+  </mat-card-subtitle>
+
+  <mat-card-content class="table-wrapper">
+    <table mat-table [dataSource]="dataSource" class="table">
+
+      <!-- Id Column -->
+      <ng-container matColumnDef="id" >
+        <th class="table-header" mat-header-cell *matHeaderCellDef > # </th>
+        <td class="table-body" mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th class="table-header" mat-header-cell *matHeaderCellDef> Item </th>
+        <td class="table-body" mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <!-- Description Column -->
+      <ng-container matColumnDef="description">
+        <th class="table-header" mat-header-cell *matHeaderCellDef> Description </th>
+        <td class="table-body" mat-cell *matCellDef="let element"> {{element.description}} </td>
+      </ng-container>
+
+      <!-- Quantity Column -->
+      <ng-container matColumnDef="quantity">
+        <th class="table-header" mat-header-cell *matHeaderCellDef> Quantity </th>
+        <td class="table-body" mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+      </ng-container>
+
+      <!-- Price Column -->
+      <ng-container matColumnDef="price">
+        <th class="table-header" mat-header-cell *matHeaderCellDef> Price per unit </th>
+        <td class="table-body" mat-cell *matCellDef="let element"> {{element.price}} </td>
+      </ng-container>
+
+      <!-- Total Column -->
+      <ng-container matColumnDef="total">
+        <th class="table-header" mat-header-cell *matHeaderCellDef> Total </th>
+        <td class="table-body" mat-cell *matCellDef="let element"> {{element.total}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mat-card-content>
+
+  <mat-card-footer class="card-footer">
+    <div class="total-block">
+      <p><span>Note: </span>{{order.note}}</p>
+      <div class="total-title-wrapper">
+        <p class="total-line"><span class="total-title">Subtotal: </span>{{order.subtotal}}</p>
+        <p class="total-line"><span class="total-title">Tax(10%): </span>{{order.tax}}</p>
+        <p class="total total-line"><span class="total-title">Total: </span>{{order.total}}</p>
+
+        <p>Marketing Consultant</p>
+        <span>{{order.consultantName}}</span>
+      </div>
+    </div>
+    <div class="action-block">
+      <button mat-raised-button class="button-wrapper">
+        <p class="button-text"><mat-icon class="icon">print</mat-icon> Print</p>
+      </button>
+
+      <button mat-raised-button color="success" class="button-wrapper">
+        <p class="button-text white-text"><mat-icon class="icon">arrow_forward</mat-icon> Proceed with payment</p>
+      </button>
+    </div>
+  </mat-card-footer>
+</mat-card>

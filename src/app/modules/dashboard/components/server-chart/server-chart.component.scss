@@ -1,0 +1,68 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/font';
+@import '../../../../styles/variables';
+
+.server-chart {
+  display: flex;
+  flex-direction: column;
+  height: 192px;
+
+  @media (min-width: 1280px) and (max-width: $xxl) {
+    height: 220px;
+  }
+
+  &__header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    &-title {
+      font-size: $fs-regular;
+      font-weight: $fw-lighter;
+      margin: 0;
+      line-height: 40px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+
+    &-item {
+      align-items: center;
+      display: flex;
+      height: 50px;
+      justify-content: space-between;
+
+      &-text-wrapper {
+        @media (min-width: 1280px) and (max-width: $xxl) {
+          width: 50%;
+        }
+      }
+
+      &-text {
+        width: 100%;
+        color: $grey;
+        font-weight: $fw-lighter;
+        font-size: $fs-small;
+        padding-right: 16px;
+        margin: 0;
+
+        @media (min-width: 1280px) and (max-width: $xxl) {
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+}
+
+
+

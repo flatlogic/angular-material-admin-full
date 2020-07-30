@@ -1,0 +1,5 @@
+<app-breadcrumb [path]="routes.GALLERY"></app-breadcrumb>
+
+<div class="gallery">
+  <app-gallery-item class="gallery-item" *ngFor="let item of (galleryInfo$ | async)" [img]="item.img"></app-gallery-item>
+</div>

@@ -1,0 +1,28 @@
+@import 'src/app/styles/variables';
+
+.example {
+  display: flex;
+  margin-top: 38px;
+  width: 100%;
+
+  @media (max-width: $small) {
+    flex-wrap: wrap;
+  }
+}
+
+.typography-block, .button-block {
+  width: 50%;
+
+  @media (max-width: $small) {
+    width: 100%;
+  }
+}
+
+.typography-block + .button-block {
+  margin-left: 36px;
+
+  @media (max-width: $small) {
+    margin-left: 0;
+    margin-top: 36px;
+  }
+}

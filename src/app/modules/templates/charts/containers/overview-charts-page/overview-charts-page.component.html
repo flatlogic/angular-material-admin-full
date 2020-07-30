@@ -1,0 +1,49 @@
+<app-breadcrumb [path]="routes.OVERVIEW_CHARTS"></app-breadcrumb>
+
+<div class="cards-wrapper">
+  <mat-card class="card">
+    <mat-card-title>
+     <p>Apex Line Chart</p>
+   </mat-card-title>
+    <app-dynamic-updating-chart [currentTheme]="currentTheme"></app-dynamic-updating-chart>
+  </mat-card>
+
+  <mat-card class="card">
+    <mat-card-title>
+      <p>Apex Heatmap Chart</p>
+    </mat-card-title>
+    <app-heatmap-chart [heatmapChartData]="heatmapChartData$ | async" [currentTheme]="currentTheme"></app-heatmap-chart>
+  </mat-card>
+</div>
+
+<div class="cards-wrapper">
+  <mat-card class="card">
+    <mat-card-title>
+      <p>Apex Radar Chart</p>
+    </mat-card-title>
+    <app-radar-chart [radarChartData]="radarChartData$ | async" [currentTheme]="currentTheme"></app-radar-chart>
+  </mat-card>
+
+  <mat-card class="card">
+    <mat-card-title>
+      <p>Apex Bar Chart with image</p>
+    </mat-card-title>
+    <app-image-bar-chart></app-image-bar-chart>
+  </mat-card>
+</div>
+
+<div class="cards-wrapper">
+  <mat-card class="card">
+    <mat-card-title>
+      <p>Apex Dashed Line Chart</p>
+    </mat-card-title>
+    <app-dashed-line-chart [dashedLineChartData]="dashedLineChartData$ | async"></app-dashed-line-chart>
+  </mat-card>
+
+  <mat-card class="card">
+    <mat-card-title>
+      <p>Apex Pie Chart</p>
+    </mat-card-title>
+    <app-update-pie-chart></app-update-pie-chart>
+  </mat-card>
+</div>
