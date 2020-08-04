@@ -1,11 +1,11 @@
 @import "colors";
 @import "variables";
 
-@mixin mat-tab-dark() {
-  .mat-tab-label {
-    color: $white;
-  }
-}
+//@mixin mat-tab-dark() {
+//  .mat-tab-label {
+//    color: $white;
+//  }
+//}
 
 @mixin mat-tab-color-label($color) {
   .nav-items-group {
@@ -67,7 +67,7 @@
 }
 
 @mixin mat-tab-label-dark {
-  .mat-tab-label {
+  div.mat-tab-label {
     padding: 0;
     min-width: 85px;
     color: $white;

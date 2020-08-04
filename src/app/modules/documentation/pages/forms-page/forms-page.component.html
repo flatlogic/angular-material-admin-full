@@ -1,0 +1,64 @@
+<div class="forms-page">
+  <app-breadcrumb [path]="routes.FORMS"></app-breadcrumb>
+
+  <mat-card class="forms-card">
+    <mat-card-title>
+      <p>Form Field</p>
+    </mat-card-title>
+
+    <mat-card-content>
+      <p>
+        <code class="code">{{'<'}}mat-form-field{{'>'}}</code> is a component used to wrap several Angular Material components and
+        apply common Text field styles such as the underline, floating label, and hint messages. In this document,
+        "form field" refers to the wrapper component <code class="code">{{'<'}}mat-form-field{{'>'}}</code> and "form field
+        control" refers to the component that the <code class="code">{{'<'}}mat-form-field{{'>'}}</code> is wrapping (e.g. the
+        input, textarea, select, etc.) The following Angular Material components are designed to work inside a
+        <code class="code">{{'<'}}mat-form-field{{'>'}}</code>:
+      </p>
+
+      <ul>
+        <li><code class="code">{{'<'}}input matNativeControl{{'>'}} & {{'<'}}textarea matNativeControl{{'>'}}</code></li>
+        <li><code class="code">{{'<'}}select matNativeControl{{'>'}}</code></li>
+        <li><code class="code">{{'<'}}mat-select{{'>'}}</code></li>
+        <li><code class="code">{{'<'}}mat-chip-list{{'>'}}</code></li>
+      </ul>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="forms-card">
+    <mat-card-title>
+      <p>Form field appearance variants</p>
+    </mat-card-title>
+
+    <mat-card-content>
+      <p>
+        The <code class="code">{{'<'}}mat-form-field{{'>'}}</code> supports 4 different appearance variants which can be set via
+        the appearance input. The legacy appearance is the default style that the
+        <code class="code">{{'<'}}mat-form-field{{'>'}}</code> has traditionally had. It shows the input box with an underline
+        underneath it. The standard appearance is a slightly updated version of the legacy appearance that has
+        spacing that is more consistent with the fill and outline appearances. The fill appearance displays the form
+        field with a filled background box in addition to the underline. Finally the outline appearance shows the
+        form field with a border all the way around, not just an underline.
+        <br><br>
+
+        There are a couple differences to be aware of between the legacy appearance and the newer standard,
+        fill, and outline appearances. The <code class="code">matPrefix</code>  and <code class="code">matSuffix</code>  elements are center
+        aligned by default for the newer appearances. The Material Design spec shows this as being the standard way
+        to align prefix and suffix icons in the newer appearance variants. We do not recommend using text prefix and
+        suffixes in the new variants because the label and input do not have the same alignment. It is therefore
+        impossible to align the prefix or suffix in a way that looks good when compared with both the label and input text.
+        <br><br>
+
+        The second important difference is that the standard, fill, and outline appearances do not promote
+        placeholders to labels. For the legacy appearance specifying <code class="code">{{'<'}}input placeholder="placeholder"{{'>'}}</code> will result
+        in a floating label being added to the mat-form-field. For the newer variants it will just add a normal
+        placeholder to the input. If you want a floating label, add a <code class="code">{{'<'}}mat-label{{'>'}}</code> to the mat-form-field.
+        <br><br>
+
+        <a class="link" href="https://material.angular.io/components/form-field/overview">More</a>
+      </p>
+    </mat-card-content>
+  </mat-card>
+
+  <app-footer></app-footer>
+</div>

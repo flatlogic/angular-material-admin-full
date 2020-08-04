@@ -1,4 +1,4 @@
-# Angular Material Admin Full (v 1.0.0) — Angular-UI Dashboard Template
+# Angular Material Admin Full (v 1.0.1) — Angular-UI Dashboard Template
 
 Built with [Angular](https://angular.io/), [Angular Material](https://material.angular.io/).
 **No jQuery and Bootstrap!**

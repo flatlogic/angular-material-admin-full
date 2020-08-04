@@ -1,0 +1,23 @@
+@import 'src/app/styles/colors';
+
+.ui-page {
+  padding: 24px;
+}
+
+.ui-card {
+  margin-top: 24px;
+}
+
+.link {
+  color: $blue;
+  text-decoration: none;
+}
+
+.code {
+  background-color: $blue-white;
+  line-height: 33px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  padding: 8px 16px;
+  display: block;
+}

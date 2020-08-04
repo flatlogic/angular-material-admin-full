@@ -12,6 +12,7 @@
 @import "mat-expansion-panel";
 @import "mat-spinner";
 @import "mat-tooltip";
+@import "calendar";
 
 @function ama-light-theme($primary, $accent, $warn, $success, $info, $primary-light) {
   @return map-merge(
@@ -178,12 +179,12 @@ $green-theme: ama-light-theme(
     @include mat-tab-label-active-color($white);
     @include mat-badge();
     @include mat-select-dark();
-    @include mat-tab-dark();
     @include mat-form-field-dark-theme();
     @include mat-expansion-panel-dark;
     @include mat-select;
     @include mat-tab-label-dark;
     @include mat-button-dark;
+    @include calendar-dark;
 
     .mat-checkbox-frame {
       border-color: $white;

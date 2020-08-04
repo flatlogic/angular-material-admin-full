@@ -1,6 +1,7 @@
 export interface ProductDetails {
   id: string;
   image: string;
+  imageLarge?: string;
   imageSmall?: string;
   title: string;
   subtitle: string;

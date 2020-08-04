@@ -1,0 +1,44 @@
+<div class="maps-page">
+  <app-breadcrumb [path]="routes.MAPS"></app-breadcrumb>
+
+  <mat-card class="maps-card">
+    <mat-card-title>
+      <p>Google Maps</p>
+    </mat-card-title>
+
+    <mat-card-content>
+      <p>Run the following command first:</p>
+
+      <code class="code">npm install @agm/core</code>
+
+      <p>Example:</p>
+
+      <code class="code">
+        {{'<'}}!-- this creates a google map on the page with the given lat/lng from --{{'>'}}
+        <br>
+        {{'<'}}!-- the component as the initial center of the map: --{{'>'}}
+        <br>
+        {{'<'}}agm-map [latitude]="lat" [longitude]="lng"{{'>'}}
+        <br>
+          {{'<'}}agm-marker [latitude]="lat" [longitude]="lng"{{'>'}}{{'<'}}/agm-marker{{'>'}}
+        <br>
+        {{'<'}}/agm-map{{'>'}}
+      </code>
+
+      <a class="link" href="https://angular-maps.com/">More</a>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="maps-card">
+    <mat-card-title>
+      <p>Vector Maps</p>
+    </mat-card-title>
+
+    <mat-card-content>
+      <p>Vector Maps build with Amcharts</p>
+      <a class="link" href="https://www.amcharts.com/demos/map-with-pulsating-bullets/">More</a>
+    </mat-card-content>
+  </mat-card>
+
+  <app-footer></app-footer>
+</div>

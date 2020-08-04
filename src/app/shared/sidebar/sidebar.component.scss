@@ -127,12 +127,6 @@ mat-tree-node {
   min-height: 45px;
   outline: none;
 
-  //&.active {
-  //  & p {
-  //    color: $sidebar-font-color-active;
-  //  }
-  //}
-
   &:hover {
     cursor: pointer;
     background-color: $sidebar-background-color-hover;

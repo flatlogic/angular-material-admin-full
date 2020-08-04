@@ -1,15 +1,30 @@
 @import "src/app/styles/colors";
 @import "src/app/styles/font";
+@import "src/app/styles/variables";
+@import "src/app/styles/sidebar";
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: $normal) {
+    flex-wrap: wrap;
+    height: 100px;
+  }
+
+  @media (max-width: $small) {
+    height: 150px;
+  }
 }
 
 .header-title-wrapper {
   display: flex;
   align-items: center;
+
+  @media (max-width: $small) {
+    overflow: hidden;
+  }
 }
 
 .header-button {
@@ -19,11 +34,28 @@
 
 .header-title {
   margin-left: 24px;
+
+  @media (max-width: $small) {
+    text-overflow: ellipsis;
+  }
 }
 
 .header-toolbar-wrapper {
   display: flex;
   align-items: center;
+
+  @media (max-width: $normal) {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  @media (max-width: $small) {
+    flex-wrap: wrap;
+  }
+}
+
+.header-icons-wrapper {
+  display: flex;
 }
 
 a {
@@ -44,30 +76,76 @@ a {
   }
 }
 
-.sidebar-wrapper {
-  height: 100vh;
+.documentation-sidebar-wrapper {
+  height: calc(100vh - 64px);
 }
 
-.sidebar-item-wrapper {
+.documentation-sidebar {
+  height:calc(100vh - 64px);
+  width: 240px;
+
+  @media(max-width: $normal) {
+    margin-top: 64px;
+  }
+}
+
+.mat-node {
+  padding-left: 16px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $sidebar-background-color-hover;
+  }
+}
+
+.documentation-sidebar-node-wrapper {
   padding: 8px 16px;
   display: flex;
   align-items: center;
   cursor: pointer;
   outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  justify-content: space-between;
+
+  &:hover {
+    background-color: $sidebar-background-color-hover;
+  }
+
+  &>.documentation-sidebar-icon {
+    margin-right: 0;
+  }
 }
 
-.sidebar-item-title {
+.documentation-sidebar-item-wrapper {
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+
+  &:hover {
+    background-color: $sidebar-background-color-hover;
+  }
+
+  &>.documentation-sidebar-icon {
+    margin-right: 0;
+  }
+}
+
+.documentation-sidebar-item-title {
   display: flex;
   align-items: center;
 }
 
-.sidebar-icon {
+.documentation-sidebar-icon {
   color: $light-grey;
   margin-right: 24px;
 }
 
-.sidebar-text {
-  color: $light-grey;
+.documentation-sidebar-text {
   font-size: $fs-small;
   font-weight: $fw-lighter;
   margin: 0;
@@ -75,4 +153,69 @@ a {
 
 .mat-tree-node {
   outline: none;
+}
+
+.rotateUp {
+  transform: rotate(180deg);
+  transition: transform .3s linear;
+}
+
+.rotateDown {
+  transform: rotate(0deg);
+  transition: transform .3s linear;
+}
+
+.circle {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: $sidebar-circle-color;
+  margin-right: 20px;
+}
+
+.mat-list-base {
+  & .mat-list-item, .mat-menu-trigger {
+    color: $sidebar-title-color;
+
+    &.active {
+      background-color: $sidebar-background-color-active;
+      color: $sidebar-font-color-active;
+
+      & .mat-icon {
+        color: $blue;
+      }
+    }
+
+    &:hover {
+      background-color: $sidebar-background-color-hover;
+    }
+  }
+}
+
+mat-tree-node {
+  & p {
+    color: $sidebar-font-color;
+  }
+
+  &.active {
+    background-color: $sidebar-background-color-active;
+
+    & p {
+      color: $sidebar-font-color-active;
+    }
+
+    & div.circle{
+      background-color: $blue;
+    }
+  }
+
+  &[aria-expanded="true"] {
+    & mat-icon:first-child {
+      color: $blue;
+    }
+
+    & p {
+      color: $sidebar-font-color-active;
+    }
+  }
 }

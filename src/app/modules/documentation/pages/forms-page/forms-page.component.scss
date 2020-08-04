@@ -1,0 +1,30 @@
+@import 'src/app/styles/colors';
+
+.forms-page {
+  padding: 24px;
+}
+
+.forms-card {
+  margin-top: 24px;
+
+  & p {
+    line-height: 33px;
+  }
+}
+
+li {
+  line-height: 33px;
+}
+
+.code {
+  background-color: $blue-white;
+  height: auto;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  padding: 8px 16px;
+}
+
+.link {
+  color: $blue;
+  text-decoration: none;
+}

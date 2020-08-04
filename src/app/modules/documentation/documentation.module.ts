@@ -14,11 +14,17 @@ import {MatCardModule} from '@angular/material/card';
 import { OverviewPageComponent } from './pages/overview-page/overview-page.component';
 import { LicencesPageComponent } from './pages/licences-page/licences-page.component';
 import { QuickStartPageComponent } from './pages/quick-start-page/quick-start-page.component';
+import { StructurePageComponent } from './pages/structure-page/structure-page.component';
+import { ChartsPageComponent } from './pages/charts-page/charts-page.component';
+import { FormsPageComponent } from './pages/forms-page/forms-page.component';
+import { UiPageComponent } from './pages/ui-page/ui-page.component';
+import { MapsPageComponent } from './pages/maps-page/maps-page.component';
+import { TablesPageComponent } from './pages/tables-page/tables-page.component';
 
 
 
 @NgModule({
-  declarations: [DocumentationPageComponent, LibsPageComponent, OverviewPageComponent, LicencesPageComponent, QuickStartPageComponent],
+  declarations: [DocumentationPageComponent, LibsPageComponent, OverviewPageComponent, LicencesPageComponent, QuickStartPageComponent, StructurePageComponent, ChartsPageComponent, FormsPageComponent, UiPageComponent, MapsPageComponent, TablesPageComponent],
   imports: [
     CommonModule,
     DocumentationRoutingModule,

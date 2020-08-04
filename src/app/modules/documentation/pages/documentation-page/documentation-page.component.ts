@@ -1,8 +1,9 @@
-import {ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
+import {ChangeDetectorRef, Component, OnDestroy, ViewChild} from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
 import {routes} from '../../../../consts';
 import {FlatTreeControl} from '@angular/cdk/tree';
 import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
+import {MatSidenav} from '@angular/material/sidenav';
 
 const TREE_DATA: any = [
   {
@@ -11,6 +12,16 @@ const TREE_DATA: any = [
       {name: 'Overview', route: routes.OVERVIEW, active: 'active'},
       {name: 'Licences', route: routes.LICENCES, active: 'active'},
       {name: 'Quick start', route: routes.QUICK_START, active: 'active'},
+    ]
+  },
+  {
+    name: 'Components',
+    children: [
+      {name: 'Charts', route: routes.CHARTS, active: 'active'},
+      {name: 'Forms', route: routes.FORMS, active: 'active'},
+      {name: 'UI', route: routes.UI, active: 'active'},
+      {name: 'Maps', route: routes.MAPS, active: 'active'},
+      {name: 'Tables', route: routes.TABLES, active: 'active'},
     ]
   }
 ];
@@ -21,11 +32,11 @@ const TREE_DATA: any = [
   styleUrls: ['./documentation-page.component.scss']
 })
 export class DocumentationPageComponent implements OnDestroy {
+  @ViewChild('sidenav') sidenav: MatSidenav;
   public isShowSidebar: boolean;
   public mobileQuery: MediaQueryList;
   public routes: typeof routes = routes;
   private mobileQueryListener: () => void;
-  public isOpenUiElements = false;
 
 
   private _transformer = (node: any, level: number) => {
@@ -63,6 +74,6 @@ export class DocumentationPageComponent implements OnDestroy {
   public ngOnDestroy(): void {
     this.mobileQuery.removeListener(this.mobileQueryListener);
 
-    // this.sidenav.close();
+    this.sidenav.close();
   }
 }

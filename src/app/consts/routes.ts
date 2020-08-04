@@ -19,9 +19,15 @@ export enum routes {
   //--- Documentation ---//
 
   LIBS = '/documentation/libs',
+  STRUCTURE = '/documentation/structure',
   OVERVIEW = '/documentation/overview',
   LICENCES = '/documentation/licences',
   QUICK_START = '/documentation/quick start',
+  CHARTS = '/documentation/charts',
+  FORMS = '/documentation/forms',
+  UI = '/documentation/ui',
+  MAPS = '/documentation/maps',
+  TABLES = '/documentation/tables',
 
   //--- Core module ---//
 
@@ -77,9 +83,5 @@ export enum routes {
   WIDGET = '/ui/widget',
 
 
-  TABLES = '/tables',
-  UI_ELEMENTS_ICONS = '/ui/icons',
-  UI_ELEMENTS_CHARTS = '/ui/charts',
-  UI_ELEMENTS_MAP = '/ui/map',
   LOGIN = '/login'
 }

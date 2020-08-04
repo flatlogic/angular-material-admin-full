@@ -2,62 +2,85 @@
 
   <div class="header-title-wrapper">
     <button mat-mini-fab color="primary" class="header-button">
-      <mat-icon>menu</mat-icon>
+      <mat-icon *ngIf="!isShowSidebar" (click)="sidenav.toggle(true)">menu</mat-icon>
+      <mat-icon *ngIf="isShowSidebar" (click)="sidenav.toggle(false)">arrow_back</mat-icon>
     </button>
     <h6 class="header-title">Angular Material Admin Full Documentation</h6>
   </div>
 
   <div class="header-toolbar-wrapper">
-    <a href="https://twitter.com/flatlogic">
-      <mat-icon class="header-icon" fontSet="fa fa-fs" fontIcon="fa-twitter"></mat-icon>
-    </a>
-    <a href="https://dribbble.com/flatlogic">
-      <mat-icon class="header-icon" fontSet="fa fa-fs" fontIcon="fa-dribbble"></mat-icon>
-    </a>
-    <a href="https://www.facebook.com/flatlogic">
-      <mat-icon class="header-icon" fontSet="fa fa-fs" fontIcon="fa-facebook"></mat-icon>
-    </a>
-    <a href="https://instagram.com/flatlogiccom/">
-      <mat-icon class="header-icon" fontSet="fa fa-fs" fontIcon="fa-instagram"></mat-icon>
-    </a>
-    <a href="https://www.linkedin.com/company/flatlogic/">
-      <mat-icon class="header-icon" fontSet="fa fa-fs" fontIcon="fa-linkedin"></mat-icon>
-    </a>
-    <a href="https://github.com/flatlogic">
-      <mat-icon class="header-icon" fontSet="fa fa-fs" fontIcon="fa-github"></mat-icon>
-    </a>
+    <div class="header-icons-wrapper">
+      <a href="https://twitter.com/flatlogic">
+        <mat-icon class="header-icon" fontSet="fa fa-fs" fontIcon="fa-twitter"></mat-icon>
+      </a>
+      <a href="https://dribbble.com/flatlogic">
+        <mat-icon class="header-icon" fontSet="fa fa-fs" fontIcon="fa-dribbble"></mat-icon>
+      </a>
+      <a href="https://www.facebook.com/flatlogic">
+        <mat-icon class="header-icon" fontSet="fa fa-fs" fontIcon="fa-facebook"></mat-icon>
+      </a>
+      <a href="https://instagram.com/flatlogiccom/">
+        <mat-icon class="header-icon" fontSet="fa fa-fs" fontIcon="fa-instagram"></mat-icon>
+      </a>
+      <a href="https://www.linkedin.com/company/flatlogic/">
+        <mat-icon class="header-icon" fontSet="fa fa-fs" fontIcon="fa-linkedin"></mat-icon>
+      </a>
+      <a href="https://github.com/flatlogic">
+        <mat-icon class="header-icon" fontSet="fa fa-fs" fontIcon="fa-github"></mat-icon>
+      </a>
+    </div>
 
-    <button class="header-button" mat-flat-button color="primary">live preview</button>
-    <button class="header-button" mat-stroked-button color="warn">buy</button>
+    <div>
+      <a href="https://demo.flatlogic.com/angular-material-admin-full">
+        <button class="header-button" mat-flat-button color="primary">live preview</button>
+      </a>
+      <a href="https://flatlogic.com/templates/angular">
+       <button class="header-button" mat-stroked-button color="warn">buy</button>
+      </a>
+    </div>
   </div>
 </mat-toolbar>
 
-<mat-sidenav-container class="sidebar-wrapper">
+<mat-sidenav-container class="documentation-sidebar-wrapper">
   <mat-sidenav
     #sidenav
     mode="side"
     [(opened)]="isShowSidebar"
-    class="layout-sidebar"
+    class="documentation-sidebar"
     [mode]="mobileQuery.matches ? 'over' : 'side'"
     [fixedInViewport]="mobileQuery.matches"
   >
     <mat-list>
       <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
-        <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding routerLink="{{node.route}}" routerLinkActive="{{node.active}}">
-          <div class="sidebar-item-wrapper">
-            <p class="sidebar-text">{{node.name}}</p>
+        <mat-tree-node class="mat-node" *matTreeNodeDef="let node" matTreeNodePadding routerLink="{{node.route}}" routerLinkActive="{{node.active}}">
+          <div class="documentation-sidebar-item-wrapper">
+            <div class="circle"></div>
+            <p class="documentation-sidebar-text">{{node.name}}</p>
           </div>
         </mat-tree-node>
 
         <mat-tree-node *matTreeNodeDef="let node; when: hasChild" class="mat-node">
-          <div *ngIf="node.name === 'Getting Started'" class="sidebar-item-wrapper" matTreeNodeToggle>
-            <div class="sidebar-item-title">
-              <mat-icon class="sidebar-icon">inbox</mat-icon>
-              <p class="sidebar-text">{{node.name}}</p>
+          <div *ngIf="node.name === 'Getting Started'" class="documentation-sidebar-node-wrapper" matTreeNodeToggle>
+            <div class="documentation-sidebar-item-title">
+              <mat-icon class="documentation-sidebar-icon">inbox</mat-icon>
+              <p class="documentation-sidebar-text">{{node.name}}</p>
             </div>
 
             <mat-icon
-              class="sidebar-icon"
+              class="documentation-sidebar-icon"
+              [ngClass]="{rotateUp: treeControl.isExpanded(node), rotateDown: !treeControl.isExpanded(node)}"
+            >keyboard_arrow_down
+            </mat-icon>
+          </div>
+
+          <div *ngIf="node.name === 'Components'" class="documentation-sidebar-node-wrapper" matTreeNodeToggle>
+            <div class="documentation-sidebar-item-title">
+              <mat-icon class="documentation-sidebar-icon">filter_none</mat-icon>
+              <p class="documentation-sidebar-text">{{node.name}}</p>
+            </div>
+
+            <mat-icon
+              class="documentation-sidebar-icon"
               [ngClass]="{rotateUp: treeControl.isExpanded(node), rotateDown: !treeControl.isExpanded(node)}"
             >keyboard_arrow_down
             </mat-icon>
@@ -65,9 +88,19 @@
         </mat-tree-node>
       </mat-tree>
 
-      <mat-list-item class="sidebar-item-wrapper" routerLink="{{routes.LIBS}}" routerLinkActive="active">
-        <mat-icon class="sidebar-icon">local_library</mat-icon> <p class="sidebar-text">Libs</p>
+      <mat-list-item class="documentation-sidebar-item-wrapper" routerLink="{{routes.STRUCTURE}}" routerLinkActive="active">
+        <mat-icon class="documentation-sidebar-icon">article</mat-icon> <p class="documentation-sidebar-text">Structure</p>
       </mat-list-item>
+
+      <mat-list-item class="documentation-sidebar-item-wrapper" routerLink="{{routes.LIBS}}" routerLinkActive="active">
+        <mat-icon class="documentation-sidebar-icon">local_library</mat-icon> <p class="documentation-sidebar-text">Libs</p>
+      </mat-list-item>
+
+      <a href="https://flatlogic.com/templates/angular">
+        <mat-list-item class="documentation-sidebar-item-wrapper">
+          <mat-icon class="documentation-sidebar-icon">shopping_cart</mat-icon> <p class="documentation-sidebar-text">Purchase</p>
+        </mat-list-item>
+      </a>
     </mat-list>
   </mat-sidenav>
 

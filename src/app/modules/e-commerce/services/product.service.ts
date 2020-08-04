@@ -7,6 +7,7 @@ let products: ProductDetails[] = [
   {
     id: '1',
     image: './assets/e-commerce/products/1.png',
+    imageLarge: './assets/e-commerce/products/large-1.png',
     imageSmall: './assets/e-commerce/managment/1.png',
     title: 'Trainers',
     subtitle: 'Trainers in white',
@@ -26,6 +27,7 @@ let products: ProductDetails[] = [
   {
     id: '2',
     image: './assets/e-commerce/products/2.png',
+    imageLarge: './assets/e-commerce/products/large-2.png',
     imageSmall: './assets/e-commerce/managment/2.png',
     title: 'Boots',
     subtitle: 'Trainers in blue',
@@ -45,6 +47,7 @@ let products: ProductDetails[] = [
   {
     id: '3',
     image: './assets/e-commerce/products/3.png',
+    imageLarge: './assets/e-commerce/products/large-3.png',
     imageSmall: './assets/e-commerce/managment/3.png',
     title: 'Flat sandals',
     subtitle: 'Trainers in white',
@@ -64,6 +67,7 @@ let products: ProductDetails[] = [
   {
     id: '4',
     image: './assets/e-commerce/products/4.png',
+    imageLarge: './assets/e-commerce/products/large-4.png',
     imageSmall: './assets/e-commerce/managment/4.png',
     title: 'Trainers',
     subtitle: 'Trainers in blue',
@@ -83,6 +87,7 @@ let products: ProductDetails[] = [
   {
     id: '5',
     image: './assets/e-commerce/products/5.png',
+    imageLarge: './assets/e-commerce/products/large-5.png',
     imageSmall: './assets/e-commerce/managment/5.png',
     title: 'Flat sandals',
     subtitle: 'Trainers in white',
@@ -102,6 +107,7 @@ let products: ProductDetails[] = [
   {
     id: '6',
     image: './assets/e-commerce/products/6.png',
+    imageLarge: './assets/e-commerce/products/large-6.png',
     imageSmall: './assets/e-commerce/managment/6.png',
     title: 'Flat sandals',
     subtitle: 'Trainers in blue',
@@ -121,6 +127,7 @@ let products: ProductDetails[] = [
   {
     id: '7',
     image: './assets/e-commerce/products/1.png',
+    imageLarge: './assets/e-commerce/products/large-1.png',
     imageSmall: './assets/e-commerce/managment/1.png',
     title: 'Trainers',
     subtitle: 'Trainers in white',
@@ -140,6 +147,7 @@ let products: ProductDetails[] = [
   {
     id: '8',
     image: './assets/e-commerce/products/2.png',
+    imageLarge: './assets/e-commerce/products/large-2.png',
     imageSmall: './assets/e-commerce/managment/2.png',
     title: 'Boots',
     subtitle: 'Trainers in blue',
@@ -159,6 +167,7 @@ let products: ProductDetails[] = [
   {
     id: '9',
     image: './assets/e-commerce/products/3.png',
+    imageLarge: './assets/e-commerce/products/large-3.png',
     imageSmall: './assets/e-commerce/managment/3.png',
     title: 'Flat sandals',
     subtitle: 'Trainers in white',
@@ -178,6 +187,7 @@ let products: ProductDetails[] = [
   {
     id: '10',
     image: './assets/e-commerce/products/4.png',
+    imageLarge: './assets/e-commerce/products/large-4.png',
     imageSmall: './assets/e-commerce/managment/4.png',
     title: 'Trainers',
     subtitle: 'Trainers in blue',
@@ -197,6 +207,7 @@ let products: ProductDetails[] = [
   {
     id: '11',
     image: './assets/e-commerce/products/5.png',
+    imageLarge: './assets/e-commerce/products/large-5.png',
     imageSmall: './assets/e-commerce/managment/5.png',
     title: 'Flat sandals',
     subtitle: 'Trainers in white',
@@ -216,6 +227,7 @@ let products: ProductDetails[] = [
   {
     id: '12',
     image: './assets/e-commerce/products/6.png',
+    imageLarge: './assets/e-commerce/products/large-6.png',
     imageSmall: './assets/e-commerce/managment/6.png',
     title: 'Flat sandals',
     subtitle: 'Trainers in blue',

@@ -1,0 +1,22 @@
+@import 'src/app/styles/colors';
+
+.charts-page {
+  padding: 24px;
+}
+
+.chart-card {
+  margin-top: 24px;
+}
+
+.link {
+  color: $blue;
+  text-decoration: none;
+}
+
+.code {
+  background-color: $blue-white;
+  height: auto;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  padding: 8px 16px;
+}

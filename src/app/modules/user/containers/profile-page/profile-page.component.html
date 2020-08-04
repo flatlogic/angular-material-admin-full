@@ -26,7 +26,9 @@
                 <mat-icon class="calendar-array">keyboard_arrow_left</mat-icon>
               </div>
 
-              <div class="calendar-date-title">{{viewDate | date: 'LLLL yyyy'}}</div>
+              <div>
+                <p class="calendar-date-title">{{viewDate | date: 'LLLL yyyy'}}</p>
+              </div>
 
               <div class="calendar-array-wrapper" mwlCalendarNextView view="month" [(viewDate)]="viewDate">
                 <mat-icon class="calendar-array">keyboard_arrow_right</mat-icon>

@@ -1,4 +1,4 @@
-@mixin calendar() {
+@mixin calendar {
   .cal-month-view {
     background: transparent;
   }
@@ -90,5 +90,11 @@
 
   .cal-month-view .cal-cell {
     flex: 0;
+  }
+}
+
+@mixin calendar-dark {
+  .cal-month-view .cal-day-cell.cal-weekend .cal-day-number {
+    color: $white;
   }
 }
