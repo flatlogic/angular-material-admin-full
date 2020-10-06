@@ -1,9 +1,9 @@
-# Angular Material Admin Full (v 1.0.1) — Angular-UI Dashboard Template
+# Angular Material Admin Full (v 1.0.2) — Angular-UI Dashboard Template
 
 Built with [Angular](https://angular.io/), [Angular Material](https://material.angular.io/).
 **No jQuery and Bootstrap!**
 
-**This version uses Angular 9.1.1, Angular Material 9.2.1**
+**This version uses Angular 9.1.12, Angular Material 9.2.4**
 
 [Demo](https://demo.flatlogic.com/angular-material-admin-full). Use any credentials to log in.
 
@@ -11,10 +11,10 @@ Built with [Angular](https://angular.io/), [Angular Material](https://material.a
 
 ## Features
 
-- Angular (**9.1.1**)
+- Angular (**9.1.12**)
 - **No jQuery and Bootstrap!**
 - Mobile friendly layout (responsive)
-- Angular Material 9.2.1
+- Angular Material 9.2.4
 - Modular Architecture
 - Styled Components
 - Stylish, clean, responsive layout
