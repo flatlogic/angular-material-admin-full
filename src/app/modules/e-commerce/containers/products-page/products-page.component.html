@@ -62,6 +62,11 @@
   </mat-form-field>
 </div>
 
-<div class="products-wrapper">
-  <app-product-card class="product" *ngFor="let product of (products$ | async)" [product]="product"></app-product-card>
+<div class="spinner-aligner_center" *ngIf="productService.isReceiving; else productsWidget">
+  <mat-spinner></mat-spinner>
 </div>
+<ng-template #productsWidget>
+  <div class="products-wrapper">
+    <app-product-card class="product" *ngFor="let product of products" [product]="product"></app-product-card>
+  </div>
+</ng-template>

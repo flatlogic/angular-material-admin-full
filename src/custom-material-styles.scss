@@ -1,0 +1,13 @@
+// .special-material-behaviour {
+    .mat-select-panel {
+        min-height: 500px;
+        .mat-option {
+            height: max-content !important;
+            .mat-option-text {
+                padding: 10px 0;
+                display: flex !important;
+                justify-content: center !important;
+            }
+        }
+    }
+// }

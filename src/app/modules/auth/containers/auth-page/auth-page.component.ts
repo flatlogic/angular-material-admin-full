@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { AuthService } from '../../services';
 import { routes } from '../../../../consts';
+import { LoginFormCreds } from 'src/app/interfaces/LoginFormCreds';
 
 @Component({
   selector: 'app-auth-page',
@@ -14,18 +15,16 @@ export class AuthPageComponent {
   public routers: typeof routes = routes;
 
   constructor(
-    private service: AuthService,
+    private _authService: AuthService,
     private router: Router
   ) { }
 
-  public sendLoginForm(): void {
-    this.service.login();
-
-    this.router.navigate([this.routers.PROFILE]).then();
+  public sendLoginForm(loginFormCreds: LoginFormCreds): void {
+    this._authService.login(loginFormCreds);
   }
 
   public sendSignForm(): void {
-    this.service.sign();
+    this._authService.sign();
 
     this.router.navigate([this.routers.PROFILE]).then();
   }

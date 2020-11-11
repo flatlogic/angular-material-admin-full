@@ -1,79 +1,82 @@
 import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
 import {routes} from '../../../../consts';
-import {ProductDetails} from '../../models/product-details';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { Product, ProductService } from '../../services';
+import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product-edit-form',
   templateUrl: './product-edit-form.component.html',
   styleUrls: ['./product-edit-form.component.scss'],
 })
-export class ProductEditFormComponent implements OnInit {
-  @Input() product: ProductDetails;
-  @Output() editProduct: EventEmitter<ProductDetails> = new EventEmitter<ProductDetails>();
+export class ProductEditFormComponent {
+  @Output() editProduct: EventEmitter<Product> = new EventEmitter<Product>();
   public router: typeof routes = routes;
   public form: FormGroup;
+  public imagesObservable$: Observable<any>;
+  public retrievedId;
+  
+  constructor(public productService: ProductService, private _activatedRoute: ActivatedRoute) {
+    this.imagesObservable$ = this.productService.getProductImages();
 
-  selected = 'option';
-
-  constructor() {
     this.form = new FormGroup({
-      image: new FormControl('', Validators['required']),
+      img: new FormControl('', Validators['required']),
       title: new FormControl('', Validators['required']),
       subtitle: new FormControl('', Validators['required']),
-      price: new FormControl('', Validators['required']),
-      discount: new FormControl('', Validators['required']),
-      description1: new FormControl('', Validators['required']),
-      description2: new FormControl('', Validators['required']),
-      code: new FormControl('', Validators['required']),
+      price: new FormControl(0, Validators['required']),
+      discount: new FormControl(0, Validators['required']),
+      description_1: new FormControl('', Validators['required']),
+      description_2: new FormControl('', Validators['required']),
+      code: new FormControl(0, Validators['required']),
       hashtag: new FormControl('', Validators['required']),
       technology: new FormControl('', Validators['required']),
-      rating: new FormControl('', Validators['required']),
-      status: new FormControl('', Validators['required']),
+      rating: new FormControl(0, Validators['required']),
     });
-  }
 
-  ngOnInit(): void {
-    if (this.product) {
-      this.image.setValue('option');
-      this.title.setValue(this.product.title);
-      this.subtitle.setValue(this.product.subtitle);
-      this.price.setValue(this.product.price);
-      this.discount.setValue(this.product.discount);
-      this.description1.setValue(this.product.description1);
-      this.description2.setValue(this.product.description2);
-      this.code.setValue(this.product.code);
-      this.hashtag.setValue(this.product.hashtag);
-      this.technology.setValue(this.product.technology);
-      this.rating.setValue(this.product.rating);
-      this.status.setValue(this.product.status);
-    }
+    this._activatedRoute.params.subscribe(params => {
+      this.retrievedId = params.id;
+      if(this.retrievedId) {
+        this.productService.getProduct(this.retrievedId).subscribe((pr: Product) => {
+          this.img.setValue(pr.img);
+          this.title.setValue(pr.title);
+          this.subtitle.setValue(pr.subtitle);
+          this.price.setValue(pr.price);
+          this.discount.setValue(pr.discount);
+          this.description_1.setValue(pr.description_1);
+          this.description_2.setValue(pr.description_2);
+          this.code.setValue(pr.code);
+          this.hashtag.setValue(pr.hashtag);
+          this.technology.setValue(pr.technology);
+          this.rating.setValue(pr.rating);
+        });
+      }
+    })
   }
 
   public save(): void {
     this.editProduct.emit({
       id: this.id,
-      image: this.image.value,
+      img: this.img.value,
       title: this.title.value,
       subtitle: this.subtitle.value,
       price: this.price.value,
       discount: this.discount.value,
-      description1: this.description1.value,
-      description2: this.description2.value,
+      description_1: this.description_1.value,
+      description_2: this.description_2.value,
       code: this.code.value,
       hashtag: this.hashtag.value,
       technology: this.technology.value,
       rating: this.rating.value,
-      status: this.status.value,
     })
   }
 
   get id() {
-    return this.product && this.product.id ? this.product.id : '77';
+    return this.retrievedId ? this.retrievedId : +'77';
   }
 
-  get image() {
-    return this.form.get('image') as FormControl;
+  get img() {
+    return this.form.get('img') as FormControl;
   }
 
   get title() {
@@ -92,12 +95,12 @@ export class ProductEditFormComponent implements OnInit {
     return this.form.get('discount') as FormControl;
   }
 
-  get description1() {
-    return this.form.get('description1') as FormControl;
+  get description_1() {
+    return this.form.get('description_1') as FormControl;
   }
 
-  get description2() {
-    return this.form.get('description2') as FormControl;
+  get description_2() {
+    return this.form.get('description_2') as FormControl;
   }
 
   get code() {
@@ -114,9 +117,5 @@ export class ProductEditFormComponent implements OnInit {
 
   get rating() {
     return this.form.get('rating') as FormControl;
-  }
-
-  get status() {
-    return this.form.get('status') as FormControl;
   }
 }

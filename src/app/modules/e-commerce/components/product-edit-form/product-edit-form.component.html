@@ -4,15 +4,16 @@
   </mat-card-title>
 
   <mat-card-content>
-
-    <div class="input-wrapper">
+    <div class="input-wrapper special-material-behaviour ">
       <p class="input-title">Image</p>
       <mat-form-field class="input-field" appearance="standard">
-        <mat-select [(value)]="selected" [ngClass]="selected">
-          <mat-option>None</mat-option>
-          <mat-option value="option">Option 1</mat-option>
-          <mat-option value="option2">Option 2</mat-option>
-          <mat-option value="option3">Option 3</mat-option>
+        <mat-select [formControl]="img" >
+          <mat-select-trigger>
+            <img height="150" [src]="img.value" />
+          </mat-select-trigger>
+            <mat-option *ngFor="let imageURL of (imagesObservable$ | async)" [value]="imageURL">
+              <img height="150" [src]="imageURL" />
+            </mat-option>
         </mat-select>
       </mat-form-field>
     </div>
@@ -48,14 +49,14 @@
     <div class="input-wrapper">
       <p class="input-title">Description 1</p>
       <mat-form-field appearance="outline" class="input-field">
-        <input matInput [formControl]="description1" class="input-text">
+        <input matInput [formControl]="description_1" class="input-text">
       </mat-form-field>
     </div>
 
     <div class="input-wrapper">
       <p class="input-title">Description 2</p>
       <mat-form-field appearance="outline" class="input-field">
-        <input matInput [formControl]="description2" class="input-text">
+        <input matInput [formControl]="description_2" class="input-text">
       </mat-form-field>
     </div>
 

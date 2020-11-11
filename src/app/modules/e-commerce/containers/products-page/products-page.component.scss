@@ -1,5 +1,11 @@
 @import "src/app/styles/variables";
 
+.spinner-aligner_center {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
 .selects-wrapper {
   margin-top: 24px;
   display: flex;

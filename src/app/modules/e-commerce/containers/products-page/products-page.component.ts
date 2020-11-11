@@ -1,23 +1,24 @@
 import {Component, OnInit} from '@angular/core';
 
 import { routes } from '../../../../consts';
-import {ProductsService} from '../../services';
-import {Observable} from 'rxjs';
-import {ProductCard} from '../../models';
 import {FormControl, FormGroup } from '@angular/forms';
+import { Product, ProductService } from '../../services';
 
 @Component({
-  selector: 'app-products-page',
+  selector: 'app-product-grid-page',
   templateUrl: './products-page.component.html',
   styleUrls: ['./products-page.component.scss']
 })
 export class ProductsPageComponent implements OnInit {
   public routes: typeof routes = routes;
-  public products$: Observable<ProductCard[]>
+  public products: Product[] = [];
   public form: FormGroup;
 
-  constructor(private service: ProductsService) {
-    this.products$ = this.service.getProducts();
+  constructor(public productService: ProductService) {
+    this.productService.getProducts().subscribe((products: Product[]) => {
+      this.products = products;
+      this.productService.finishGetProducts();
+    });
   }
 
   public ngOnInit() {

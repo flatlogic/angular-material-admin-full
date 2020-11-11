@@ -10,7 +10,8 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { YearPipe } from './pipes';
 import { AuthService, EmailService } from './services';
 import { LoginFormComponent, SignFormComponent } from './components';
-import { AuthGuard } from './guards';
+import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
+import { AuthGuard } from 'src/app/guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,10 @@ import { AuthGuard } from './guards';
   providers: [
     AuthService,
     EmailService,
-    AuthGuard
+    AuthGuard,
+    // for jwt helper 
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService
   ]
 })
 export class AuthModule { }

@@ -1,22 +1,22 @@
 <app-breadcrumb [path]="routes.PRODUCT"></app-breadcrumb>
 
 <mat-card class="product-info-wrapper">
-  <img class="product-image" [src]="(product$ | async).imageLarge" alt="product-image">
+  <img class="product-image" [src]="currentProduct.img" alt="product-image">
 
   <div class="info-wrapper">
     <div class="info-title-wrapper">
       <div class="info-inner-wrapper">
-        <p class="product-title">{{(product$ | async).title}}</p>
-        <p class="product-subtitle">{{(product$ | async).subtitle}}</p>
+        <p class="product-title">{{currentProduct.title}}</p>
+        <p class="product-subtitle">{{currentProduct.subtitle}}</p>
       </div>
 
       <div class="product-pop-wrapper">
-        <p class="product-pop">{{(product$ | async).rating}}</p>
+        <p class="product-pop">{{currentProduct.rating}}</p>
         <mat-icon class="product-pop-icon" color="accent">star</mat-icon>
       </div>
     </div>
 
-    <p class="product-price">{{(product$ | async).price}}</p>
+    <p class="product-price">{{currentProduct.price}}</p>
 
     <p class="product-size-title">Size Guide</p>
 
@@ -81,21 +81,21 @@
       <p class="text-info-title">PRODUCT DESCRIPTION</p>
 
       <ul>
-        <li>{{(product$ | async).description1}}</li>
-        <li>{{(product$ | async).description2}}</li>
+        <li>{{currentProduct.description_1}}</li>
+        <li>{{currentProduct.description_2}}</li>
       </ul>
     </div>
 
     <div class="text-info-item-wrapper middle-block">
       <div>
         <p class="text-info-title">PRODUCT CODE</p>
-        <p>{{(product$ | async).code}}</p>
+        <p>{{currentProduct.code}}</p>
       </div>
 
       <div>
         <p class="text-info-title">TECHNOLOGY</p>
         <ul>
-          <li *ngFor="let technology of (product$ | async).technology">{{technology}}</li>
+          <li *ngFor="let technology of currentProduct.technology">{{technology}}</li>
         </ul>
       </div>
     </div>
@@ -103,7 +103,7 @@
     <div class="text-info-item-wrapper">
       <p class="text-info-title">SHARE</p>
 
-      <p>Share photo with a tag <span class="tag">{{(product$ | async).hashtag}}</span></p>
+      <p>Share photo with a tag <span class="tag">{{currentProduct.hashtag}}</span></p>
 
       <div class="icons-wrapper">
         <div class="icon-wrapper">
@@ -122,7 +122,7 @@
       <p class="text-info-title">RATING & REVIEWS</p>
 
       <div class="product-pop-wrapper">
-        <p class="product-pop">{{(product$ | async).rating}}</p>
+        <p class="product-pop">{{currentProduct.rating}}</p>
         <mat-icon class="product-pop-icon" color="accent">star</mat-icon>
       </div>
 
@@ -137,5 +137,5 @@
 <h3 class="similar-products-title">You may also like</h3>
 
 <div class="similar-products-wrapper">
-  <app-product-card class="similar-product" *ngFor="let product of (products$ | async)" [product]="product"></app-product-card>
+  <app-product-card class="similar-product" *ngFor="let product of additionalProducts" [product]="product"></app-product-card>
 </div>

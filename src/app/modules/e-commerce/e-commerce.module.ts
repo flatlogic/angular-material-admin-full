@@ -14,8 +14,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
-
-import { ProductsService } from './services';
 import { ECommerceRoutingModule } from './e-commerce-routing.module';
 import { SharedModule } from '../../shared/shared.module';
 import { ProductEditFormComponent, ProductCardComponent } from './components';
@@ -26,6 +24,7 @@ import {
   ProductEditPageComponent,
   ProductCreatePageComponent
 } from './containers';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -53,10 +52,9 @@ import {
     MatTooltipModule,
     MatCheckboxModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatProgressSpinnerModule,
   ],
-  providers: [
-    ProductsService
-  ]
+  providers: []
 })
 export class ECommerceModule { }

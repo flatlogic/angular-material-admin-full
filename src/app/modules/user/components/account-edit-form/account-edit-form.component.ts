@@ -16,7 +16,7 @@ export class AccountEditFormComponent implements OnInit {
     this.editForm = new FormGroup({
       userName: new FormControl('user'),
       userEmail: new FormControl('user@mail.com'),
-      userStatus: new FormControl('admin'),
+      userStatus: new FormControl('password'),
     });
   }
 

@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { DashboardPageComponent } from './modules/dashboard/containers';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
-import { AuthGuard } from './modules/auth/guards';
 import { LayoutComponent } from './shared/layout/layout.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {

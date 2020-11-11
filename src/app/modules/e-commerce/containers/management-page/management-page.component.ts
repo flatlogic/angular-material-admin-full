@@ -4,25 +4,31 @@ import {MatTableDataSource} from '@angular/material/table';
 import {SelectionModel} from '@angular/cdk/collections';
 import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
-import {ProductService} from '../../services';
-import {Observable} from 'rxjs';
-import {ProductDetails} from '../../models/product-details';
-import {take} from 'rxjs/operators';
+import {Product, ProductService} from '../../services';
 
 @Component({
   selector: 'app-management-page',
   templateUrl: './management-page.component.html',
   styleUrls: ['./management-page.component.scss']
 })
-export class ManagementPageComponent implements OnInit {
+export class ManagementPageComponent {
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   public routes: typeof routes = routes;
-  public products$: Observable<ProductDetails[]>;
+  public products: Product[] = [];
   public displayedColumns: string[] = ['select', 'id', 'image', 'title', 'subtitle', 'price', 'rating', 'actions'];
-  public dataSource: MatTableDataSource<ProductDetails>;
-
+  public dataSource: MatTableDataSource<Product>;
   selection = new SelectionModel<any>(true, []);
+
+  constructor(public productService: ProductService) {
+    this.productService.getProducts().subscribe((products: Product[]) => {
+      this.dataSource = new MatTableDataSource(products);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+      this.products = products;
+      this.productService.finishGetProducts();
+    });
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -44,37 +50,18 @@ export class ManagementPageComponent implements OnInit {
   }
 
   /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: ProductDetails): string {
+  checkboxLabel(row?: Product): string {
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
   }
 
-  constructor(private service: ProductService) {
-    this.products$ = this.service.getProducts();
-
-    this.products$.pipe(
-      take(1)
-    ).subscribe((products: ProductDetails[]) => {
-      this.dataSource = new MatTableDataSource(products);
-    });
-  }
-
-  ngOnInit() {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-  }
-
   public delete(id: string) {
-    this.service.deleteProduct(id);
-
-    this.products$ = this.service.getProducts();
-
-    this.products$.pipe(
-      take(1)
-    ).subscribe((products: ProductDetails[]) => {
-      this.dataSource = new MatTableDataSource(products);
-    });
+    this.productService.deleteProduct(id)
+      .subscribe(() => {
+        this.products = this.products.filter(product => product.id !== +id);
+        this.dataSource = new MatTableDataSource(this.products);
+      });
   }
 }

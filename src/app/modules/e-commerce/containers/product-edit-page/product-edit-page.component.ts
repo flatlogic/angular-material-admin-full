@@ -2,8 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {routes} from '../../../../consts';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Observable} from 'rxjs';
-import {ProductService} from '../../services';
-import {ProductDetails} from '../../models/product-details';
+import {Product, ProductService} from '../../services';
 
 @Component({
   selector: 'app-product-edit-page',
@@ -16,21 +15,22 @@ export class ProductEditPageComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private service: ProductService,
+    private _productService: ProductService,
     private router: Router
   ) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe((params: any) => {
       if (params.params.id) {
-        this.product$ = this.service.getProduct(params.params.id);
+        this.product$ = this._productService.getProduct(params.params.id);
       }
     })
   }
 
-  public saveEditProduct(product: ProductDetails) {
-    this.service.saveChangedProduct(product);
-
-    this.router.navigate([this.routes.MANAGEMENT]).then();
+  public saveEditProduct(product: Product) {
+    this._productService.updateProduct(product).subscribe(() => {
+      this._productService.finishUpdatingProduct();
+      this.router.navigate([this.routes.MANAGEMENT]).then();
+    });
   }
 }

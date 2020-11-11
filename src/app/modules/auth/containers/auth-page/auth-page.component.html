@@ -4,19 +4,8 @@
       <mat-tab-group class="auth-page__group" mat-stretch-tabs>
         <mat-tab label="Login">
           <h4 class="auth-page__group-title">Good Morning, User</h4>
-          <div class="auth-page__google-button-wrapper">
-            <button mat-raised-button class="auth-page__google-button">
-              <img class="auth-page__google-button-icon" src="./assets/auth/google.svg" alt="google">Sign in with Google
-            </button>
-          </div>
 
-          <div class="auth-page__border-wrapper">
-            <div class="auth-page__border-line"></div>
-            <p class="auth-page__border-title">or</p>
-            <div class="auth-page__border-line"></div>
-          </div>
-
-          <app-login-form (sendLoginForm)="sendLoginForm()"></app-login-form>
+          <app-login-form></app-login-form>
 
         </mat-tab>
         <mat-tab label="New User">
@@ -25,17 +14,6 @@
 
           <app-sign-form (sendSignForm)="sendSignForm()"></app-sign-form>
 
-          <div class="auth-page__border-wrapper">
-            <div class="auth-page__border-line"></div>
-            <p class="auth-page__border-title">or</p>
-            <div class="auth-page__border-line"></div>
-          </div>
-
-          <div class="auth-page__google-button-wrapper">
-            <button mat-raised-button class="auth-page__google-button">
-              <img class="auth-page__google-button-icon" src="./assets/auth/google.svg" alt="google">Sign in with Google
-            </button>
-          </div>
         </mat-tab>
       </mat-tab-group>
 

@@ -1,6 +1,6 @@
-import {Component, Input} from '@angular/core';
-import {ProductCard} from '../../models';
-import {routes} from '../../../../consts';
+import { Component, Input } from '@angular/core';
+import { routes } from '../../../../consts';
+import { Product } from '../../services';
 
 @Component({
   selector: 'app-product-card',
@@ -8,6 +8,6 @@ import {routes} from '../../../../consts';
   styleUrls: ['./product-card.component.scss']
 })
 export class ProductCardComponent {
-  @Input() product: ProductCard;
+  @Input() product: Product;
   public routes: typeof routes = routes;
 }

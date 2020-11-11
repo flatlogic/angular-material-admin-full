@@ -20,6 +20,10 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {FormsModule} from '@angular/forms';
+import { AppConfig } from './app.config';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './interceptors';
+import { ErrorInterceptor } from './interceptors/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -27,6 +31,7 @@ import {FormsModule} from '@angular/forms';
     NotFoundComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     SharedModule,
     CoreModule,
@@ -48,7 +53,11 @@ import {FormsModule} from '@angular/forms';
     MatSlideToggleModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    AppConfig
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

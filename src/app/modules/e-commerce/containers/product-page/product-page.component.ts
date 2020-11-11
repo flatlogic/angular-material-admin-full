@@ -1,10 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {routes} from '../../../../consts';
 import {FormControl, FormGroup} from '@angular/forms';
-import {ProductService, ProductsService} from '../../services';
-import {Observable} from 'rxjs';
-import {ProductCard} from '../../models';
-import {ProductDetails} from '../../models/product-details';
+import {Product, ProductService} from '../../services';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
@@ -12,31 +9,29 @@ import {ActivatedRoute} from '@angular/router';
   templateUrl: './product-page.component.html',
   styleUrls: ['./product-page.component.scss']
 })
-export class ProductPageComponent implements OnInit {
+export class ProductPageComponent {
   public routes: typeof routes = routes;
   public form: FormGroup;
-  public products$: Observable<ProductCard[]>
-  public product$: Observable<ProductDetails>
+  public additionalProducts: Product[] = [];
+  public currentProduct: Product = new Product();
 
   constructor(
-    private service: ProductService,
+    public productService: ProductService,
     private route: ActivatedRoute
   ) {
-    this.products$ = this.service.getSimilarProducts();
-  }
-
-  public ngOnInit() {
     this.form = new FormGroup({
       size: new FormControl('2'),
       value: new FormControl('2'),
     });
 
-    this.route.paramMap.subscribe((params: any) => {
-      if (params.params.id) {
-        this.product$ = this.service.getProduct(params.params.id);
-      } else {
-        this.product$ = this.service.getProduct('1');
-      }
+    this.route.params.subscribe((params: any) => {
+      this.productService.getProduct(params.id || '1').subscribe((product: Product) => {
+        this.currentProduct = product;
+      });
+      this.productService.getProducts().subscribe((products: Product[]) => {
+        this.additionalProducts = products;
+        this.productService.finishGetProducts();
+      })
     });
   }
 

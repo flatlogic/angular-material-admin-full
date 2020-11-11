@@ -1,321 +1,227 @@
 import {Injectable} from '@angular/core';
-import {Observable, of} from 'rxjs';
-import {ProductDetails} from '../models/product-details';
-import {ProductCard} from '../models';
+import {from, Observable, of} from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { AppConfig } from 'src/app/app.config';
+import { flatMap, map, share, toArray } from 'rxjs/operators';
+import { string } from '@amcharts/amcharts4/core';
 
-let products: ProductDetails[] = [
-  {
-    id: '1',
-    image: './assets/e-commerce/products/1.png',
-    imageLarge: './assets/e-commerce/products/large-1.png',
-    imageSmall: './assets/e-commerce/managment/1.png',
-    title: 'Trainers',
-    subtitle: 'Trainers in white',
-    description1: 'Sneakers (also known as athletic shoes, tennis shoes,gym shoes, runners, takkies,' +
-      ' or trainers) are shoes primarily designed for sports or other forms of physical exercise, but' +
-      ' which are now also often used for everyday wear.',
-    description2: 'The term generally describes a type of footwear with a flexible sole made of rubber' +
-      ' or synthetic material and an upper part made of leather or synthetic materials.',
-    technology: ['Ollie patch', 'Cup soles', 'Vulcanized rubber soles'],
-    hashtag: '#whitetrainers',
-    code: '135234',
-    discount: '20',
-    price: '$80',
-    rating: '4.6',
-    status: 'New'
-  },
-  {
-    id: '2',
-    image: './assets/e-commerce/products/2.png',
-    imageLarge: './assets/e-commerce/products/large-2.png',
-    imageSmall: './assets/e-commerce/managment/2.png',
-    title: 'Boots',
-    subtitle: 'Trainers in blue',
-    description1: 'Sneakers (also known as athletic shoes, tennis shoes,gym shoes, runners, takkies,' +
-      ' or trainers) are shoes primarily designed for sports or other forms of physical exercise, but' +
-      ' which are now also often used for everyday wear.',
-    description2: 'The term generally describes a type of footwear with a flexible sole made of rubber' +
-      ' or synthetic material and an upper part made of leather or synthetic materials.',
-    technology: ['Ollie patch', 'Cup soles', 'Vulcanized rubber soles'],
-    hashtag: '#whitetrainers',
-    code: '135264',
-    discount: '20',
-    price: '$37',
-    rating: '4.6',
-    status: 'Sale'
-  },
-  {
-    id: '3',
-    image: './assets/e-commerce/products/3.png',
-    imageLarge: './assets/e-commerce/products/large-3.png',
-    imageSmall: './assets/e-commerce/managment/3.png',
-    title: 'Flat sandals',
-    subtitle: 'Trainers in white',
-    description1: 'Sneakers (also known as athletic shoes, tennis shoes,gym shoes, runners, takkies,' +
-      ' or trainers) are shoes primarily designed for sports or other forms of physical exercise, but' +
-      ' which are now also often used for everyday wear.',
-    description2: 'The term generally describes a type of footwear with a flexible sole made of rubber' +
-      ' or synthetic material and an upper part made of leather or synthetic materials.',
-    technology: ['Ollie patch', 'Cup soles', 'Vulcanized rubber soles'],
-    hashtag: '#whitetrainers',
-    code: '125234',
-    discount: '20',
-    price: '$70',
-    rating: '4.6',
-    status: 'New'
-  },
-  {
-    id: '4',
-    image: './assets/e-commerce/products/4.png',
-    imageLarge: './assets/e-commerce/products/large-4.png',
-    imageSmall: './assets/e-commerce/managment/4.png',
-    title: 'Trainers',
-    subtitle: 'Trainers in blue',
-    description1: 'Sneakers (also known as athletic shoes, tennis shoes,gym shoes, runners, takkies,' +
-      ' or trainers) are shoes primarily designed for sports or other forms of physical exercise, but' +
-      ' which are now also often used for everyday wear.',
-    description2: 'The term generally describes a type of footwear with a flexible sole made of rubber' +
-      ' or synthetic material and an upper part made of leather or synthetic materials.',
-    technology: ['Ollie patch', 'Cup soles', 'Vulcanized rubber soles'],
-    hashtag: '#whitetrainers',
-    code: '133234',
-    discount: '20',
-    price: '$85',
-    rating: '4.6',
-    status: 'Sale'
-  },
-  {
-    id: '5',
-    image: './assets/e-commerce/products/5.png',
-    imageLarge: './assets/e-commerce/products/large-5.png',
-    imageSmall: './assets/e-commerce/managment/5.png',
-    title: 'Flat sandals',
-    subtitle: 'Trainers in white',
-    description1: 'Sneakers (also known as athletic shoes, tennis shoes,gym shoes, runners, takkies,' +
-      ' or trainers) are shoes primarily designed for sports or other forms of physical exercise, but' +
-      ' which are now also often used for everyday wear.',
-    description2: 'The term generally describes a type of footwear with a flexible sole made of rubber' +
-      ' or synthetic material and an upper part made of leather or synthetic materials.',
-    technology: ['Ollie patch', 'Cup soles', 'Vulcanized rubber soles'],
-    hashtag: '#whitetrainers',
-    code: '138234',
-    discount: '20',
-    price: '$12',
-    rating: '4.6',
-    status: 'New'
-  },
-  {
-    id: '6',
-    image: './assets/e-commerce/products/6.png',
-    imageLarge: './assets/e-commerce/products/large-6.png',
-    imageSmall: './assets/e-commerce/managment/6.png',
-    title: 'Flat sandals',
-    subtitle: 'Trainers in blue',
-    description1: 'Sneakers (also known as athletic shoes, tennis shoes,gym shoes, runners, takkies,' +
-      ' or trainers) are shoes primarily designed for sports or other forms of physical exercise, but' +
-      ' which are now also often used for everyday wear.',
-    description2: 'The term generally describes a type of footwear with a flexible sole made of rubber' +
-      ' or synthetic material and an upper part made of leather or synthetic materials.',
-    technology: ['Ollie patch', 'Cup soles', 'Vulcanized rubber soles'],
-    hashtag: '#whitetrainers',
-    code: '135237',
-    discount: '20',
-    price: '$76',
-    rating: '4.6',
-    status: 'Sale'
-  },
-  {
-    id: '7',
-    image: './assets/e-commerce/products/1.png',
-    imageLarge: './assets/e-commerce/products/large-1.png',
-    imageSmall: './assets/e-commerce/managment/1.png',
-    title: 'Trainers',
-    subtitle: 'Trainers in white',
-    description1: 'Sneakers (also known as athletic shoes, tennis shoes,gym shoes, runners, takkies,' +
-      ' or trainers) are shoes primarily designed for sports or other forms of physical exercise, but' +
-      ' which are now also often used for everyday wear.',
-    description2: 'The term generally describes a type of footwear with a flexible sole made of rubber' +
-      ' or synthetic material and an upper part made of leather or synthetic materials.',
-    technology: ['Ollie patch', 'Cup soles', 'Vulcanized rubber soles'],
-    hashtag: '#whitetrainers',
-    code: '135234',
-    discount: '20',
-    price: '$80',
-    rating: '4.6',
-    status: 'New'
-  },
-  {
-    id: '8',
-    image: './assets/e-commerce/products/2.png',
-    imageLarge: './assets/e-commerce/products/large-2.png',
-    imageSmall: './assets/e-commerce/managment/2.png',
-    title: 'Boots',
-    subtitle: 'Trainers in blue',
-    description1: 'Sneakers (also known as athletic shoes, tennis shoes,gym shoes, runners, takkies,' +
-      ' or trainers) are shoes primarily designed for sports or other forms of physical exercise, but' +
-      ' which are now also often used for everyday wear.',
-    description2: 'The term generally describes a type of footwear with a flexible sole made of rubber' +
-      ' or synthetic material and an upper part made of leather or synthetic materials.',
-    technology: ['Ollie patch', 'Cup soles', 'Vulcanized rubber soles'],
-    hashtag: '#whitetrainers',
-    code: '135264',
-    discount: '20',
-    price: '$37',
-    rating: '4.6',
-    status: 'Sale'
-  },
-  {
-    id: '9',
-    image: './assets/e-commerce/products/3.png',
-    imageLarge: './assets/e-commerce/products/large-3.png',
-    imageSmall: './assets/e-commerce/managment/3.png',
-    title: 'Flat sandals',
-    subtitle: 'Trainers in white',
-    description1: 'Sneakers (also known as athletic shoes, tennis shoes,gym shoes, runners, takkies,' +
-      ' or trainers) are shoes primarily designed for sports or other forms of physical exercise, but' +
-      ' which are now also often used for everyday wear.',
-    description2: 'The term generally describes a type of footwear with a flexible sole made of rubber' +
-      ' or synthetic material and an upper part made of leather or synthetic materials.',
-    technology: ['Ollie patch', 'Cup soles', 'Vulcanized rubber soles'],
-    hashtag: '#whitetrainers',
-    code: '125234',
-    discount: '20',
-    price: '$70',
-    rating: '4.6',
-    status: 'New'
-  },
-  {
-    id: '10',
-    image: './assets/e-commerce/products/4.png',
-    imageLarge: './assets/e-commerce/products/large-4.png',
-    imageSmall: './assets/e-commerce/managment/4.png',
-    title: 'Trainers',
-    subtitle: 'Trainers in blue',
-    description1: 'Sneakers (also known as athletic shoes, tennis shoes,gym shoes, runners, takkies,' +
-      ' or trainers) are shoes primarily designed for sports or other forms of physical exercise, but' +
-      ' which are now also often used for everyday wear.',
-    description2: 'The term generally describes a type of footwear with a flexible sole made of rubber' +
-      ' or synthetic material and an upper part made of leather or synthetic materials.',
-    technology: ['Ollie patch', 'Cup soles', 'Vulcanized rubber soles'],
-    hashtag: '#whitetrainers',
-    code: '133234',
-    discount: '20',
-    price: '$85',
-    rating: '4.6',
-    status: 'Sale'
-  },
-  {
-    id: '11',
-    image: './assets/e-commerce/products/5.png',
-    imageLarge: './assets/e-commerce/products/large-5.png',
-    imageSmall: './assets/e-commerce/managment/5.png',
-    title: 'Flat sandals',
-    subtitle: 'Trainers in white',
-    description1: 'Sneakers (also known as athletic shoes, tennis shoes,gym shoes, runners, takkies,' +
-      ' or trainers) are shoes primarily designed for sports or other forms of physical exercise, but' +
-      ' which are now also often used for everyday wear.',
-    description2: 'The term generally describes a type of footwear with a flexible sole made of rubber' +
-      ' or synthetic material and an upper part made of leather or synthetic materials.',
-    technology: ['Ollie patch', 'Cup soles', 'Vulcanized rubber soles'],
-    hashtag: '#whitetrainers',
-    code: '138234',
-    discount: '20',
-    price: '$12',
-    rating: '4.6',
-    status: 'New'
-  },
-  {
-    id: '12',
-    image: './assets/e-commerce/products/6.png',
-    imageLarge: './assets/e-commerce/products/large-6.png',
-    imageSmall: './assets/e-commerce/managment/6.png',
-    title: 'Flat sandals',
-    subtitle: 'Trainers in blue',
-    description1: 'Sneakers (also known as athletic shoes, tennis shoes,gym shoes, runners, takkies,' +
-      ' or trainers) are shoes primarily designed for sports or other forms of physical exercise, but' +
-      ' which are now also often used for everyday wear.',
-    description2: 'The term generally describes a type of footwear with a flexible sole made of rubber' +
-      ' or synthetic material and an upper part made of leather or synthetic materials.',
-    technology: ['Ollie patch', 'Cup soles', 'Vulcanized rubber soles'],
-    hashtag: '#whitetrainers',
-    code: '135237',
-    discount: '20',
-    price: '$76',
-    rating: '4.6',
-    status: 'Sale'
+export class Product {
+  id?: number;
+  img?: string;
+  title?: string;
+  subtitle?: string;
+  price?: number;
+  rating?: number;
+  description_1?: string;
+  description_2?: string;
+  code?: number;
+  hashtag?: string;
+  technology?: string[];
+  discount?: number;
+  status?: string = "New";
+
+  constructor(id?) {
+    if (id) {
+      this.id = id;
+    }
+    this.img = '';
+    this.title = '';
+    this.subtitle = '';
+    this.price = 0.01;
+    this.rating = 5;
+    this.description_1 = '';
+    this.description_2 = '';
+    this.code = null;
+    this.hashtag = '';
+    this.technology = [];
+    this.discount = 0;
+    this.status = "New";
   }
-]
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  public getProducts(): Observable<ProductDetails[]> {
-    return of(products);
+  config: any;
+  _isCreating: boolean = false;
+  _isReceiving: boolean = false;
+  _isUpdating: boolean = false;
+  _isDeleting: boolean = false;
+  _isRetrievingProductImage: boolean = false;
+  
+  public products$: Observable<Product[]>;
+  public product$: Observable<Product>;
+
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    appConfig: AppConfig
+  ) {
+    this.config = appConfig.getConfig();
+  }
+  
+  public setImgField(product: any) {
+    if(!product) return {};
+    let imgString = '';
+    let resourceApi = (this.config.resourceApi) ? this.config.resourceApi : '';
+
+    if(product.img) {
+      imgString = product.img;
+    }
+
+    return {
+      ...product,
+      img: resourceApi + imgString
+    }
+  }
+  
+  getProducts(isForced: boolean = false) {
+    this.startGetProducts();
+    this.products$ = this.http.get<Array<Product>>('/products')
+    .pipe(
+        flatMap(data => data),
+        map(product => this.setImgField(product)),
+        toArray(),
+        share()
+    );
+    return this.products$;
   }
 
-  public getProduct(id: string): Observable<ProductDetails> {
-    return of(products.find((product: ProductDetails) => product.id === id));
+  getProduct(id, isForced: boolean = false) {
+    this.finishGetProducts();
+    return this.product$ = this.http.get<Product>('/products/' + id)
+    .pipe(
+      map(product => this.setImgField(product)),
+      share()
+    );
   }
 
-  public saveChangedProduct(editProduct: ProductDetails) {
-    products.map((product: ProductDetails, i: number) => {
-      if (product.id === editProduct.id) {
-        products.splice(i, 1, editProduct);
+  updateProduct(payload: Product) {
+    if(!payload) return;
+
+    if(!Array.isArray(payload.technology)) {
+      if(typeof(payload.technology) === "string") {
+        payload.technology = (payload.technology as string).split(',');
+      } else {
+        payload.technology = [];
       }
-    });
+    }
+
+    this.startUpdatingProduct();
+    return this.http.put('/products/' + payload.id, payload);
   }
 
-  public deleteProduct(id: string): void {
-    products.map((product: ProductDetails, i: number) => {
-      if (product.id === id) {
-        products.splice(i, 1);
+  createProduct(payload: Product) {
+    if(!payload) return;
+
+    if(!Array.isArray(payload.technology)) {
+      if(typeof(payload.technology) === "string") {
+        payload.technology = (payload.technology as string).split(',');
+      } else {
+        payload.technology = [];
       }
-    });
+    }
+
+    this.startCreatingProduct();
+    return this.http.post('/products', payload);
   }
 
-  public getSimilarProducts(): Observable<ProductCard[]> {
-    return of([
-      {
-        id: '1',
-        image: './assets/e-commerce/products/1.png',
-        title: 'Trainers',
-        subtitle: 'Trainers in white',
-        price: '$80',
-        rating: '4.6',
-        status: 'New'
-      },
-      {
-        id: '2',
-        image: './assets/e-commerce/products/2.png',
-        title: 'Boots',
-        subtitle: 'Trainers in blue',
-        price: '$37',
-        rating: '4.6',
-        status: 'Sale'
-      },
-      {
-        id: '3',
-        image: './assets/e-commerce/products/3.png',
-        title: 'Flat sandals',
-        subtitle: 'Trainers in white',
-        price: '$70',
-        rating: '4.6',
-        status: 'New'
-      },
-      {
-        id: '4',
-        image: './assets/e-commerce/products/4.png',
-        title: 'Trainers',
-        subtitle: 'Trainers in blue',
-        price: '$85',
-        rating: '4.6',
-        status: 'Sale'
-      }
-    ]);
+  deleteProduct(id) {
+    this.startDeletingProduct();
+    return this.http.delete('/products/' + id);
   }
 
-  public createProduct(product: ProductDetails): void {
-    products.push(product);
+  getProductImages() {
+    this.startRetrievingProductImages()
+    return this.http.get<Array<string>>('/products/images-list')
+    .pipe(
+      flatMap(data => data),
+      map(img => {
+        if(!img) return '';
+        
+        let resourceApi = (this.config.resourceApi) ? this.config.resourceApi : '';
+        return `${resourceApi}${img}`;
+      }),
+      toArray(),
+      share()
+    );
+  }
+
+  startGetProducts() {
+    this.isReceiving = true;
+  }
+
+  startRetrievingProductImages() {
+    this.isRetrievingProductImage = true;
+  }
+  
+  startUpdatingProduct() {
+    this.isUpdating = true;
+  }
+
+  startDeletingProduct() {
+    this.isDeleting = true;
+  }
+
+  startCreatingProduct() {
+    this.isCreating = true;
+  }
+
+  finishGetProducts() {
+    this.isReceiving = false;
+  }
+
+  finishRetrievingProductImages() {
+    this.isRetrievingProductImage = false;
+  }
+
+  finishUpdatingProduct() {
+    this.isUpdating = false;
+  }
+
+  finishCreatingProduct() {
+    this.isCreating = false;
+  }
+
+  get isCreating() {
+    return this._isCreating;
+  }
+
+  set isCreating(isCreating) {
+    this._isCreating = isCreating;
+  }
+
+  get isReceiving() {
+    return this._isReceiving;
+  }
+
+  set isReceiving(isReceiving) {
+    this._isReceiving = isReceiving;
+  }
+
+  get isUpdating() {
+    return this._isUpdating;
+  }
+
+  set isUpdating(isUpdating) {
+    this._isUpdating = isUpdating;
+  }
+
+  get isDeleting() {
+    return this._isDeleting;
+  }
+
+  set isDeleting(isDeleting) {
+    this._isDeleting = isDeleting;
+  }
+
+  get isRetrievingProductImage() {
+    return this._isRetrievingProductImage;
+  }
+
+  set isRetrievingProductImage(newIsRetrievingProductImage) {
+    this._isRetrievingProductImage = newIsRetrievingProductImage;
   }
 }
