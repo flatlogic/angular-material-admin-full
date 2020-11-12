@@ -30,7 +30,6 @@ export class ProductPageComponent {
       });
       this.productService.getProducts().subscribe((products: Product[]) => {
         this.additionalProducts = products;
-        this.productService.finishGetProducts();
       })
     });
   }

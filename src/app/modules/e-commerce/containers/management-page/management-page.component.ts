@@ -26,7 +26,6 @@ export class ManagementPageComponent {
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
       this.products = products;
-      this.productService.finishGetProducts();
     });
   }
 

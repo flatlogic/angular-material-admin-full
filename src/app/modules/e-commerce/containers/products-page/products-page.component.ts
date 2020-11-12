@@ -17,7 +17,6 @@ export class ProductsPageComponent implements OnInit {
   constructor(public productService: ProductService) {
     this.productService.getProducts().subscribe((products: Product[]) => {
       this.products = products;
-      this.productService.finishGetProducts();
     });
   }
 

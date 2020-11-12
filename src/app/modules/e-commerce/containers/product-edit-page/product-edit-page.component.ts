@@ -29,7 +29,6 @@ export class ProductEditPageComponent implements OnInit {
 
   public saveEditProduct(product: Product) {
     this._productService.updateProduct(product).subscribe(() => {
-      this._productService.finishUpdatingProduct();
       this.router.navigate([this.routes.MANAGEMENT]).then();
     });
   }

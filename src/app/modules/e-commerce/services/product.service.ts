@@ -1,9 +1,9 @@
-import {Injectable} from '@angular/core';
-import {from, Observable, of} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { from, Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AppConfig } from 'src/app/app.config';
-import { flatMap, map, share, toArray } from 'rxjs/operators';
+import { finalize, flatMap, map, share, toArray } from 'rxjs/operators';
 import { string } from '@amcharts/amcharts4/core';
 
 export class Product {
@@ -50,7 +50,7 @@ export class ProductService {
   _isUpdating: boolean = false;
   _isDeleting: boolean = false;
   _isRetrievingProductImage: boolean = false;
-  
+
   public products$: Observable<Product[]>;
   public product$: Observable<Product>;
 
@@ -61,13 +61,13 @@ export class ProductService {
   ) {
     this.config = appConfig.getConfig();
   }
-  
+
   public setImgField(product: any) {
-    if(!product) return {};
+    if (!product) return {};
     let imgString = '';
     let resourceApi = (this.config.resourceApi) ? this.config.resourceApi : '';
 
-    if(product.img) {
+    if (product.img) {
       imgString = product.img;
     }
 
@@ -76,33 +76,35 @@ export class ProductService {
       img: resourceApi + imgString
     }
   }
-  
+
   getProducts(isForced: boolean = false) {
     this.startGetProducts();
     this.products$ = this.http.get<Array<Product>>('/products')
-    .pipe(
+      .pipe(
         flatMap(data => data),
         map(product => this.setImgField(product)),
         toArray(),
-        share()
-    );
+        share(),
+        finalize(() => this.finishGetProducts())
+      );
     return this.products$;
   }
 
   getProduct(id, isForced: boolean = false) {
-    this.finishGetProducts();
+    this.startGetProducts();
     return this.product$ = this.http.get<Product>('/products/' + id)
-    .pipe(
-      map(product => this.setImgField(product)),
-      share()
-    );
+      .pipe(
+        map(product => this.setImgField(product)),
+        share(),
+        finalize(() => this.finishGetProducts())
+      );
   }
 
   updateProduct(payload: Product) {
-    if(!payload) return;
+    if (!payload) return;
 
-    if(!Array.isArray(payload.technology)) {
-      if(typeof(payload.technology) === "string") {
+    if (!Array.isArray(payload.technology)) {
+      if (typeof (payload.technology) === "string") {
         payload.technology = (payload.technology as string).split(',');
       } else {
         payload.technology = [];
@@ -110,14 +112,17 @@ export class ProductService {
     }
 
     this.startUpdatingProduct();
-    return this.http.put('/products/' + payload.id, payload);
+    return this.http.put('/products/' + payload.id, payload)
+      .pipe(
+        finalize(() => this.finishUpdatingProduct())
+      );
   }
 
   createProduct(payload: Product) {
-    if(!payload) return;
+    if (!payload) return;
 
-    if(!Array.isArray(payload.technology)) {
-      if(typeof(payload.technology) === "string") {
+    if (!Array.isArray(payload.technology)) {
+      if (typeof (payload.technology) === "string") {
         payload.technology = (payload.technology as string).split(',');
       } else {
         payload.technology = [];
@@ -125,28 +130,35 @@ export class ProductService {
     }
 
     this.startCreatingProduct();
-    return this.http.post('/products', payload);
+    return this.http.post('/products', payload)
+      .pipe(
+        finalize(() => this.finishCreatingProduct())
+      );
   }
 
   deleteProduct(id) {
     this.startDeletingProduct();
-    return this.http.delete('/products/' + id);
+    return this.http.delete('/products/' + id)
+      .pipe(
+        finalize(() => this.finishDeletingProduct())
+      );
   }
 
   getProductImages() {
     this.startRetrievingProductImages()
     return this.http.get<Array<string>>('/products/images-list')
-    .pipe(
-      flatMap(data => data),
-      map(img => {
-        if(!img) return '';
-        
-        let resourceApi = (this.config.resourceApi) ? this.config.resourceApi : '';
-        return `${resourceApi}${img}`;
-      }),
-      toArray(),
-      share()
-    );
+      .pipe(
+        flatMap(data => data),
+        map(img => {
+          if (!img) return '';
+
+          let resourceApi = (this.config.resourceApi) ? this.config.resourceApi : '';
+          return `${resourceApi}${img}`;
+        }),
+        toArray(),
+        share(),
+        finalize(() => this.finishRetrievingProductImages())
+      );
   }
 
   startGetProducts() {
@@ -156,7 +168,7 @@ export class ProductService {
   startRetrievingProductImages() {
     this.isRetrievingProductImage = true;
   }
-  
+
   startUpdatingProduct() {
     this.isUpdating = true;
   }
@@ -183,6 +195,10 @@ export class ProductService {
 
   finishCreatingProduct() {
     this.isCreating = false;
+  }
+
+  finishDeletingProduct() {
+    this.isDeleting = false;
   }
 
   get isCreating() {

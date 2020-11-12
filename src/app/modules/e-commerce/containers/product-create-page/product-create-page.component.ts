@@ -19,7 +19,6 @@ export class ProductCreatePageComponent {
 
   public createProduct(product: Product): void {
     this._productService.createProduct(product).subscribe(() => {
-      this._productService.finishCreatingProduct();
       this.router.navigate([this.routes.MANAGEMENT]).then();
     });
   }
