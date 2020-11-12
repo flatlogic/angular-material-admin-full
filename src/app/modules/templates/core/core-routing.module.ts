@@ -4,10 +4,6 @@ import { NgModule } from '@angular/core';
 import { ColorsPageComponent, TypographyPageComponent, GridPageComponent } from './components';
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   redirectTo: 'typography'
-  // },
   {
     path: 'typography',
     component: TypographyPageComponent

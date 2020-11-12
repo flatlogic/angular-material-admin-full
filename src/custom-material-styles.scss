@@ -1,13 +1,12 @@
-// .special-material-behaviour {
-    .mat-select-panel {
-        min-height: 500px;
-        .mat-option {
-            height: max-content !important;
-            .mat-option-text {
-                padding: 10px 0;
-                display: flex !important;
-                justify-content: center !important;
-            }
+// TODO: need to be changed/removed, if you do not want these styles to applied to whole materials in application
+.mat-select-panel {
+    min-height: 500px;
+    .mat-option {
+        height: max-content !important;
+        .mat-option-text {
+            padding: 10px 0;
+            display: flex !important;
+            justify-content: center !important;
         }
     }
-// }
+}

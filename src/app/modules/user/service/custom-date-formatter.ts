@@ -9,8 +9,4 @@ export class CustomDateFormatter extends CalendarDateFormatter {
   public monthViewColumnHeader({ date, locale }: DateFormatterParams): string {
     return new DatePipe(locale).transform(date, 'EEEEE', locale);
   }
-
-  // public monthViewTitle({ date, locale }: DateFormatterParams): string {
-  //   return new DatePipe(locale).transform(date, 'MMM y', locale);
-  // }
 }

@@ -58,24 +58,7 @@ export class VectorMapPageComponent implements AfterViewInit {
     circle.fill = color(colors.BLUE);
     circle.stroke = color('#fff');
     circle.strokeWidth = 2;
-
-    // let circle2 = imageSeries.mapImages.template.createChild(am4core.Circle);
-    // circle2.radius = 3;
-    // circle2.propertyFields.fill = "color";
-    //
-    //
-    // circle2.events.on("inited", function(event){
-    //   animateBullet(event.target);
-    // })
-    //
-    //
-    // function animateBullet(circle) {
-    //   let animation = circle.animate([{ property: "scale", from: 1, to: 5 }, { property: "opacity", from: 1, to: 0 }], 1000, am4core.ease.circleOut);
-    //   animation.events.on("animationended", function(event){
-    //     animateBullet(event.target.object);
-    //   })
-    // }
-
+    
     imageSeries.data = [ {
       "title": "Brussels",
       "latitude": 50.8371,
