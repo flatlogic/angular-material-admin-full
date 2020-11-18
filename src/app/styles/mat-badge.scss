@@ -7,7 +7,9 @@
 @mixin badge-line-text {
   .mat-badge-medium .mat-badge-content {
     width: auto;
-    padding: 0 8px;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 4px 8px;
     border-radius: 35px;
     height: 16px;
     line-height: 16px;

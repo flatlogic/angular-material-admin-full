@@ -152,7 +152,7 @@ span {
 }
 
 .button-wrapper + .button-wrapper {
-  margin-left: 8px;
+  margin-left: 16px;
 
   @media (max-width: $small) {
     margin-left: 0;
