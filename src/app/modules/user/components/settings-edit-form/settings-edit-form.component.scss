@@ -13,6 +13,9 @@
 
 .settings-item-wrapper {
   margin-top: 24px;
+  &.first-setting {
+    margin-top: 0;
+  }
 }
 
 .settings-subtitle {

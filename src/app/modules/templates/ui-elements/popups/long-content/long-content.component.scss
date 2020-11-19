@@ -14,18 +14,9 @@
 .button-wrapper {
   display: flex;
   justify-content: flex-end;
+  margin-bottom: 1rem;
 }
 
-.button {
-  color: $blue;
-  background-color: transparent;
-  box-shadow: none;
-
-  &:hover {
-    background-color: $white-gray;
-  }
-
-  & + .button {
+.button + .button {
     margin-left: 8px;
-  }
 }

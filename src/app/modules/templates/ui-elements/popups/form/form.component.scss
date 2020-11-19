@@ -20,16 +20,6 @@
   justify-content: flex-end;
 }
 
-.button {
-  color: $blue;
-  background-color: transparent;
-  box-shadow: none;
-
-  &:hover {
-    background-color: $white-gray;
-  }
-
-  & + .button {
+.button + .button {
     margin-left: 8px;
-  }
 }

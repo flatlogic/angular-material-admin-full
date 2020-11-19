@@ -113,7 +113,7 @@ div + mat-card {
   }
 
   button + button {
-    margin-left: 8px;
+    margin-left: 16px;
 
     @media (min-width: $small) and (max-width: ($normal - 1px)) {
       margin-left: 0;

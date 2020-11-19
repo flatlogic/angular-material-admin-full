@@ -75,7 +75,7 @@
 
 mat-card-content.content {
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
 
   @media (max-width: $medium) {
     flex-wrap: wrap;
