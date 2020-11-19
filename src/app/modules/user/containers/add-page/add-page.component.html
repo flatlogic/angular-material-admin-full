@@ -42,7 +42,6 @@
 </mat-card>
 
 <mat-card *ngIf="step === 0" class="steps-card">
-
   <mat-card-content class="content">
     <div class="content-wrapper">
       <mat-card-title class="content-title">Create New Account</mat-card-title>
@@ -75,7 +74,7 @@
           <mat-hint>Please choose the role</mat-hint>
         </mat-form-field>
 
-        <button mat-flat-button color="primary" (click)="increment()">next</button>
+        <button mat-flat-button color="primary" class="next-button" (click)="increment()">next</button>
       </div>
     </div>
   </mat-card-content>
