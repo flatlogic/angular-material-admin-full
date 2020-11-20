@@ -17,10 +17,7 @@
 }
 
 .img {
-  width: 20%;
-
   @media (max-width: $small) {
-    width: 50%;
     height: auto;
   }
 }

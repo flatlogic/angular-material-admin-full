@@ -1,14 +1,14 @@
 export enum routes {
   DASHBOARD = '/dashboard',
 
-  //--- User module ---//
+  // --- User module --- //
 
   PROFILE = '/user/profile',
   USER_LIST = '/user/list',
   USER_ADD = '/user/add',
   USER_EDIT = '/user/edit',
 
-  //--- E-commerce ---//
+  // --- E-commerce ---//
 
   MANAGEMENT = '/e-commerce/management',
   PRODUCT_EDIT = '/e-commerce/edit',
@@ -16,7 +16,7 @@ export enum routes {
   PRODUCTS = '/e-commerce/products',
   PRODUCT = '/e-commerce/product',
 
-  //--- Documentation ---//
+  // --- Documentation ---//
 
   LIBS = '/documentation/libs',
   STRUCTURE = '/documentation/structure',
@@ -29,45 +29,45 @@ export enum routes {
   MAPS = '/documentation/maps',
   TABLES = '/documentation/tables',
 
-  //--- Core module ---//
+  // --- Core module ---//
 
   TYPOGRAPHY = '/core/typography',
   COLORS = '/core/colors',
   GRID = '/core/grid',
 
-  //--- Tables module ---//
+  // --- Tables module ---//
 
   TABLES_BASIC = '/tables/basic',
   TABLES_DYNAMIC = '/tables/dynamic',
 
-  //--- Forms module ---//
+  // --- Forms module ---//
 
   FORMS_ELEMENTS = '/forms/elements',
   FORMS_VALIDATION = '/forms/validation',
 
-  //--- Charts module ---//
+  // --- Charts module ---//
 
   BAR_CHARTS = '/charts/bar',
   LINE_CHARTS = '/charts/line',
   PIE_CHARTS = '/charts/pie',
   OVERVIEW_CHARTS = '/charts/overview',
 
-  //--- Maps module ---//
+  // --- Maps module --- //
 
   GOOGLE_MAP = '/maps/google',
   VECTOR_MAP = '/maps/vector',
 
-  //--- Extra module ---//
+  // --- Extra module ---//
 
   CALENDAR = '/extra/calendar',
   INVOICE = '/extra/invoice',
   LOGIN_PAGE = '/extra/login',
-  ERROR_PAGE = '/extra/error',
+  ERROR_PAGE = '/extra/errorpage',
   GALLERY = '/extra/gallery',
   SEARCH_RESULT = '/extra/search result',
   TIME_LINE = '/extra/time line',
 
-  //--- Ui Elements module ---//
+  // --- Ui Elements module --- //
 
   ICONS = '/ui/icons',
   BADGE = '/ui/badge',

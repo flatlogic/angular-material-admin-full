@@ -2,7 +2,7 @@
 
 .forms-wrapper {
   display: flex;
-  margin-top: 36px;
+  margin-top: 24px;
   width: 100%;
 
   @media (max-width: $small) {
@@ -25,7 +25,7 @@
 }
 
 .left-from {
-  margin-right: 18px;
+  margin-right: 24px;
 
   @media (max-width: $small) {
     margin-right: 0;
