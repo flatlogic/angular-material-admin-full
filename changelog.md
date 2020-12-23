@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.4]
+
+### Fixed
+- Change badge text in the sidebar
+
 ## [1.0.3]
 
 ### Fixed
