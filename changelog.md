@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.4]
+
+### Fixed
+- Fix links in settings
+
 ## [1.0.3]
 
 ### Fixed

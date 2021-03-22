@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Output} from '@angular/core';
+import {routes} from '../../consts/routes';
 
 @Component({
   selector: 'app-settings-menu-app',
@@ -6,6 +7,8 @@ import {Component, EventEmitter, Output} from '@angular/core';
   styleUrls: ['./settings-menu.component.scss']
 })
 export class SettingsMenuAppComponent {
+  public routes: typeof routes = routes;
+
   @Output() themeOnBlue: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() themeOnPink: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() themeOnGreen: EventEmitter<boolean> = new EventEmitter<boolean>();
