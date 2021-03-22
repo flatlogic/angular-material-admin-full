@@ -1,9 +1,18 @@
 # Changelog
 
-## [1.0.4]
+## [1.0.6]
 
 ### Fixed
 - Fix links in settings
+
+## [1.0.5]
+
+- Updated documentation
+
+## [1.0.4]
+
+### Fixed
+- Change badge text in the sidebar
 
 ## [1.0.3]
 
