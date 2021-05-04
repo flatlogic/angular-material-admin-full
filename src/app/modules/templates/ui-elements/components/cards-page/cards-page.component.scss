@@ -6,11 +6,11 @@
   margin: 24px 0;
   height: 460px;
   background-size: cover;
-  background: url("src/assets/ui-elements/cards/mac.png") round;
+  background: url("/assets/ui-elements/cards/mac.png") round;
   color: $white;
 
   @media (max-width: $small) {
-    background: url("src/assets/ui-elements/cards/mac.png");
+    background: url("/assets/ui-elements/cards/mac.png");
   }
 
   .title {
