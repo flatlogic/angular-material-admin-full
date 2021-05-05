@@ -1,5 +1,31 @@
 # Changelog
 
+## [1.0.7] - 05/05/2021
+### Updated
+
+- Updated the Angular builder;
+- Updated the Angular CLI;
+- Update Angular Material;
+
+###Updated packages
+    @angular/animations: 10.2.5 -> 11.2.12
+    @angular/cdk: 9.2.4 -> 11.2.11
+    @angular/common: 10.2.5 -> 11.2.12
+    @angular/compiler: 10.2.5 -> 11.2.12
+    @angular/core: 10.2.5 -> 11.2.12
+    @angular/forms: 10.2.5 -> 11.2.12
+    @angular/material: 9.2.4 -> 11.2.11
+    @angular/platform-browser: 10.2.5 -> 11.2.12
+    @angular/platform-browser-dynamic: 10.2.5 -> 11.2.12
+    @angular/router: 10.2.5 -> 11.2.12
+    @angular-devkit/build-angular: 0.1002.3 -> 0.1102.11
+    @angular/cli: 10.2.3 -> 11.2.11
+    @angular/compiler-cli: 10.2.5 -> 11.2.12
+    @angular/language-service: 10.2.5 -> 11.2.12
+    @types/jasmine: 3.5.14 -> 3.6.0
+    codelyzer: 5.1.2 -> 6.0.0
+    typescript: 4.0.7 -> 4.1.5
+
 ## [1.0.6]
 
 ### Fixed
