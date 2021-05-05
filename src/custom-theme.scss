@@ -260,6 +260,31 @@ $ama-radio-button-theme: ama-light-theme($ama-primary, $ama-accent, $ama-warn, $
 /**             Chip             **/
 /**********************************/
 
+@mixin custom-mat-chips-color($foreground, $background) {
+  background-color: $background;
+  color: $foreground;
+
+  .mat-chip-remove {
+    color: $foreground;
+    opacity: 0.4;
+  }
+}
+
+@mixin _mat-theme-elevation($zValue, $theme, $opacity: $mat-elevation-opacity) {
+  $foreground: map-get($theme, foreground);
+  $elevation-color: map-get($foreground, elevation);
+  $elevation-color-or-default: if($elevation-color == null, $mat-elevation-color, $elevation-color);
+
+  @include mat-elevation($zValue, $elevation-color-or-default, $opacity);
+}
+
+@mixin mat-chips-theme-color($palette) {
+  @include custom-mat-chips-color(mat-color($palette, default-contrast), mat-color($palette));
+
+  .mat-ripple-element {
+    @include _mat-chips-ripple-background($palette, default-contrast, 0.1);
+  }
+}
 
 $ama-chip-theme: ama-light-theme($ama-primary, $ama-accent, $ama-warn, $ama-success, $ama-info, $ama-primary-light);
 
@@ -277,7 +302,7 @@ $ama-chip-theme: ama-light-theme($ama-primary, $ama-accent, $ama-warn, $ama-succ
   $unselected-foreground: mat-color($foreground, text);
 
   .mat-chip.mat-standard-chip {
-    @include mat-chips-color($unselected-foreground, $unselected-background);
+    @include custom-mat-chips-color($unselected-foreground, $unselected-background);
 
     &:not(.mat-chip-disabled) {
       &:active {

@@ -5,7 +5,7 @@ import { DatePipe } from '@angular/common';
   name: 'year'
 })
 export class YearPipe extends DatePipe implements PipeTransform {
-  transform(date: Date): string {
+  transform(date: Date): any {
     return super.transform(date, 'y');
   }
 }
