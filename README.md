@@ -3,7 +3,7 @@
 Built with [Angular](https://angular.io/), [Angular Material](https://material.angular.io/).
 **No jQuery and Bootstrap!**
 
-**This version uses Angular 9.1.12, Angular Material 9.2.4**
+**This version uses Angular 11.2**
 
 [Demo](https://demo.flatlogic.com/angular-material-admin-full). Use any credentials to log in.
 
@@ -11,10 +11,10 @@ Built with [Angular](https://angular.io/), [Angular Material](https://material.a
 
 ## Features
 
-- Angular (**9.1.12**)
+- Angular (**11.2**)
 - **No jQuery and Bootstrap!**
 - Mobile friendly layout (responsive)
-- Angular Material 9.2.4
+- Angular Material 11.2
 - Modular Architecture
 - Styled Components
 - Stylish, clean, responsive layout
@@ -64,7 +64,7 @@ Open http://localhost:4200 to view it in the browser.
 Builds the app for production to the build folder.
 It correctly bundles Angular in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.
+The build is minified, and the filenames include the hashes.
 Your app is ready to be deployed!
 
 ## Support
