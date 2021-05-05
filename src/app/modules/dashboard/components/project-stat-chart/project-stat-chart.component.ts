@@ -65,8 +65,7 @@ export class ProjectStatChartComponent implements OnInit {
         bar: {
           horizontal: false,
           columnWidth: '70%',
-          endingShape: 'rounded',
-          startingShape: 'rounded'
+          borderRadius: 5
         }
       },
       dataLabels: {
