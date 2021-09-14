@@ -8,6 +8,8 @@ import {ProductService} from '../../services';
 import {Observable} from 'rxjs';
 import {ProductDetails} from '../../models/product-details';
 import {take} from 'rxjs/operators';
+import { DeletePopupComponent } from '../../../../shared/popups/delete-popup/delete-popup.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-management-page',
@@ -21,6 +23,8 @@ export class ManagementPageComponent implements OnInit {
   public products$: Observable<ProductDetails[]>;
   public displayedColumns: string[] = ['select', 'id', 'image', 'title', 'subtitle', 'price', 'rating', 'actions'];
   public dataSource: MatTableDataSource<ProductDetails>;
+  deleteConfirmSubscription;
+  selectedId: string;
 
   selection = new SelectionModel<any>(true, []);
 
@@ -51,7 +55,8 @@ export class ManagementPageComponent implements OnInit {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
   }
 
-  constructor(private service: ProductService) {
+  constructor(private service: ProductService,
+              public dialog: MatDialog) {
     this.products$ = this.service.getProducts();
 
     this.products$.pipe(
@@ -64,6 +69,17 @@ export class ManagementPageComponent implements OnInit {
   ngOnInit() {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+  }
+
+  openDeleteModal(id: string): void {
+    this.selectedId = id;
+    const dialogRef = this.dialog.open(DeletePopupComponent, {
+      width: '512px'
+    });
+
+    this.deleteConfirmSubscription = dialogRef.componentInstance.deleteConfirmed.subscribe(result => {
+      this.delete(this.selectedId);
+    });
   }
 
   public delete(id: string) {

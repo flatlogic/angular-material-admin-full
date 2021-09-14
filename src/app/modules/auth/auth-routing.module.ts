@@ -7,7 +7,12 @@ const routes: Routes = [
   {
     path: '',
     component: AuthPageComponent
-  }
+  },
+  {
+    path: 'register',
+    component: AuthPageComponent
+  },
+
 ];
 
 @NgModule({

@@ -34,7 +34,7 @@ export class HeaderComponent {
   }
 
   public signOut(): void {
-    this.userService.signOut();
+    this.userService.logoutUser();
 
     this.router.navigate([this.routers.LOGIN]);
   }

@@ -68,13 +68,22 @@
                   "with": "src/environments/environment.hmr.ts"
                 }
               ]
+            },
+            "backend": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.backend.ts"
+                }
+              ]
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-material-admin:build"
+            "browserTarget": "angular-material-admin:build",
+            "port": 3000
           },
           "configurations": {
             "production": {
@@ -83,6 +92,9 @@
             "hmr": {
               "hmr": true,
               "browserTarget": "angular-material-admin:build:hmr"
+            },
+            "backend": {
+              "browserTarget": "angular-material-admin:build:backend"
             }
           }
         },

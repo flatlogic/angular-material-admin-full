@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../services';
 
 @Component({
   selector: 'app-sign-form',
@@ -9,6 +10,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class SignFormComponent implements OnInit {
   @Output() sendSignForm = new EventEmitter<void>();
   public form: FormGroup;
+
+  constructor(public authService: AuthService) {
+  }
 
   public ngOnInit(): void {
     this.form = new FormGroup({
@@ -20,7 +24,7 @@ export class SignFormComponent implements OnInit {
 
   public sign(): void {
     if (this.form.valid) {
-      this.sendSignForm.emit();
+      this.sendSignForm.emit(this.form.value);
     }
   }
 }
