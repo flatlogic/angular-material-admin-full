@@ -1,3 +1,9 @@
+<div *ngIf="authService.errorMessage" class="notification notification_transparent-pink">
+  <div class="notification__icon-wrapper notification__icon-wrapper_solid-pink">
+    <mat-icon>report</mat-icon>
+  </div>
+  <p class="notification__title">{{authService.errorMessage}}</p>
+</div>
 <form class="form" [formGroup]="form" (ngSubmit)="sign()">
   <mat-form-field class="form__input">
     <input matInput placeholder="Full name" formControlName="name">

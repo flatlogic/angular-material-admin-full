@@ -25,6 +25,7 @@ import {MatInputModule} from '@angular/material/input';
 import {SettingsMenuAppComponent} from './settings-menu/settings-menu.component';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { DeletePopupComponent } from './popups/delete-popup/delete-popup.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     LayoutComponent,
     BreadcrumbComponent,
     ChatPopupComponent,
-    SettingsMenuAppComponent
+    SettingsMenuAppComponent,
+    DeletePopupComponent
   ],
   imports: [
     HeaderModule,
@@ -64,7 +66,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     SettingsMenuComponent,
     DateMenuComponent,
     LayoutComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    DeletePopupComponent
   ]
 })
 export class SharedModule { }

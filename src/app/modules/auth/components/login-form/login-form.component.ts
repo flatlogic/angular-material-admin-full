@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AppConfig } from '../../../../app.config';
 
 @Component({
   selector: 'app-login-form',
@@ -9,19 +10,22 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class LoginFormComponent implements OnInit {
   @Output() sendLoginForm = new EventEmitter<void>();
   public form: FormGroup;
-  public flatlogicEmail = 'admin@flatlogic.com';
-  public flatlogicPassword = 'admin';
+  config: any;
+
+  constructor(appConfig: AppConfig) {
+    this.config = appConfig.getConfig();
+  }
 
   public ngOnInit(): void {
     this.form = new FormGroup({
-      email: new FormControl(this.flatlogicEmail, [Validators.required, Validators.email]),
-      password: new FormControl(this.flatlogicPassword, [Validators.required])
+      email: new FormControl(this.config.auth.email, [Validators.required, Validators.email]),
+      password: new FormControl(this.config.auth.password, [Validators.required])
     });
   }
 
   public login(): void {
     if (this.form.valid) {
-      this.sendLoginForm.emit();
+      this.sendLoginForm.emit(this.form.value);
     }
   }
 }

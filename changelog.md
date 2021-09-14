@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.8] - 09/14/2021
+### Updated
+
+- Updated login page;
+- Updated register page;
+- Added delete confirmation popup;
+
 ## [1.0.7] - 05/05/2021
 ### Updated
 

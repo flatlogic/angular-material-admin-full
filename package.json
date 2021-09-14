@@ -1,9 +1,10 @@
 {
   "name": "angular-material-admin",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:backend": "ng serve --configuration backend",
     "build": "ng build --prod",
     "lint": "ng lint",
     "hmr": "ng serve --configuration hmr"
@@ -21,6 +22,7 @@
     "@angular/platform-browser": "~11.2.12",
     "@angular/platform-browser-dynamic": "~11.2.12",
     "@angular/router": "~11.2.12",
+    "@auth0/angular-jwt": "^3.0.1",
     "@fullcalendar/angular": "4.4.5-beta",
     "@fullcalendar/core": "4.4.2",
     "@fullcalendar/daygrid": "4.4.2",

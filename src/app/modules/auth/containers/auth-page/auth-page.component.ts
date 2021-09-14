@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { AuthService } from '../../services';
 import { routes } from '../../../../consts';
@@ -13,20 +13,29 @@ export class AuthPageComponent {
   public todayDate: Date = new Date();
   public routers: typeof routes = routes;
 
-  constructor(
-    private service: AuthService,
-    private router: Router
-  ) { }
+  constructor(private authService: AuthService,
+              private route: ActivatedRoute,
+              private router: Router) {
+    if (this.authService.isAuthenticated()) {
+      this.authService.receiveLogin();
+    }
 
-  public sendLoginForm(): void {
-    this.service.login();
-
-    this.router.navigate([this.routers.PROFILE]).then();
+    this.route.queryParams.subscribe((params) => {
+      if (params.token) {
+        this.authService.receiveToken(params.token);
+      }
+    });
   }
 
-  public sendSignForm(): void {
-    this.service.sign();
+  public sendLoginForm(creds: any): void {
+    this.authService.loginUser(creds);
+  }
 
-    this.router.navigate([this.routers.PROFILE]).then();
+  public sendSignForm(creds: any): void {
+    this.authService.registerUser(creds);
+  }
+
+  public googleLogin() {
+    this.authService.loginUser({social: 'google'});
   }
 }
