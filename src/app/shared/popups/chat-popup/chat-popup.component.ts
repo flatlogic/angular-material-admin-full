@@ -7,6 +7,24 @@ import {MatDialogRef} from '@angular/material/dialog';
   styleUrls: ['./chat-popup.component.scss']
 })
 export class ChatPopupComponent {
+  message: string;
+  chatList = [
+    {
+      imgUrl: './assets/sidebar/2.png',
+      userName: 'Jane Hew',
+      message: 'Hey! How it\'s going?'
+    },
+    {
+      imgUrl: './assets/sidebar/3.png',
+      userName: 'Axel Pittman',
+      message: 'I\'ll definitely buy this template'
+    },
+    {
+      imgUrl: './assets/sidebar/5.png',
+      userName: 'Sophia Fernandez',
+      message: 'What\'s the font-family?'
+    }
+  ];
 
   constructor(
     public dialogRef: MatDialogRef<ChatPopupComponent>,
@@ -16,4 +34,13 @@ export class ChatPopupComponent {
     this.dialogRef.close();
   }
 
+  send(): void {
+    const chat =     {
+      imgUrl: './assets/header/avatar.png',
+      userName: 'Robbert Cotton',
+      message: this.message
+    };
+    this.chatList.push(chat);
+    this.message = '';
+  }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { AuthService } from '../../services';
@@ -7,7 +7,8 @@ import { routes } from '../../../../consts';
 @Component({
   selector: 'app-auth-page',
   templateUrl: './auth-page.component.html',
-  styleUrls: ['./auth-page.component.scss']
+  styleUrls: ['./auth-page.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AuthPageComponent {
   public todayDate: Date = new Date();
@@ -17,7 +18,7 @@ export class AuthPageComponent {
               private route: ActivatedRoute,
               private router: Router) {
     if (this.authService.isAuthenticated()) {
-      this.authService.receiveLogin();
+      this.authService.logoutUser();
     }
 
     this.route.queryParams.subscribe((params) => {

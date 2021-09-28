@@ -7,12 +7,16 @@
   height: 100%;
   display: flex;
 
+  .mat-tab-label {
+    font-size: $fs-medium;
+  }
+
   @media (max-width: $medium) {
     flex-direction: column;
   }
 
-  &__content-block {
-    width: 37%;
+  .content-block {
+    width: 40%;
     height: 100%;
     background-color: $white;
     display: flex;
@@ -24,8 +28,8 @@
     }
   }
 
-  &__content-wrapper {
-    width: 45%;
+  .content-wrapper {
+    width: 55%;
     height: 100%;
     padding: 16px;
     display: flex;
@@ -41,21 +45,21 @@
     }
   }
 
-  &__group {
+  .group {
     margin-top: 28px;
   }
 
-  &__group-title {
-    font-size: 32px;
+  .group-title {
+    font-size: 3rem;
     font-weight: $fw-normal;
     margin-top: 37px;
-    letter-spacing: -0.7px;
     text-align: center;
-    line-height: 37px;
+    line-height: 3.125rem;
+    letter-spacing: normal;
     color: $dark-grey;
   }
 
-  &__group-sub-title {
+  .group-sub-title {
     font-size: $fs-large;
     font-weight: $fw-normal;
     margin-bottom: 30px;
@@ -65,7 +69,7 @@
     color: $dark-grey;
   }
 
-  &__google-button-wrapper {
+  .google-button-wrapper {
     margin-top: 32px;
     margin-bottom: 10px;
     width: 100%;
@@ -74,40 +78,42 @@
     align-items: center;
   }
 
-  &__google-button {
+  .google-button {
     width: 95%;
     padding: 0;
+    font-size: .875rem;
     background-color: $white;
     box-shadow: 0 0 11px 0 $shadow-white, 0 0 0 -2px $shadow-grey, 0 1px 8px 0 $shadow-dark-grey;
   }
 
-  &__google-button-icon {
+  .google-button-icon {
     width: 20px;
     margin-right: 16px;
   }
 
-  &__border-wrapper {
+  .border-wrapper {
     align-items: center;
     display: flex;
     justify-content: center;
     margin: 32px 0;
   }
 
-  &__border-line {
+  .border-line {
     height: 1px;
     width: 100%;
     background-color: $light-grey;
     opacity: 0.3;
   }
 
-  &__border-title {
-    font-size: $fs-xs;
+  .border-title {
+    font-size: $fs-small;
+    font-family: Roboto,Helvetica,Arial,sans-serif;
     padding: 0 16px;
     margin: 0;
-    color: $dark-grey
+    color: black;
   }
 
-  &__logo {
+  .logo {
     width: 63%;
     height: 100%;
     background-color: $blue;
@@ -119,7 +125,7 @@
     }
   }
 
-  &__logo-wrapper {
+  .logo-wrapper {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -127,11 +133,11 @@
     align-items: center;
   }
 
-  &__logo-img {
+  .logo-img {
     margin-bottom: 50px;
   }
 
-  &__logo-title {
+  .logo-title {
     font-size: 62px;
     color: $white;
     font-weight: 500;
@@ -139,7 +145,7 @@
     line-height: 62px;
   }
 
-  &__footer-title {
+  .footer-title {
     color: $blue;
     font-size: 10px;
     opacity: 0.7;

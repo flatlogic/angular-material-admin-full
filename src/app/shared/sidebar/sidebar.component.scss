@@ -106,6 +106,11 @@
         height: 16px;
       }
     }
+    .nodejs-sup {
+      span {
+        right: -65px;
+      }
+    }
   }
 
   &>mat-icon {
@@ -210,19 +215,51 @@ mat-tree-node[aria-expanded="true"] {
 }
 
 .add-section-menu {
-  background-color: $blue;
+  background-color: $light-blue;
   padding: 24px;
+  //.blueTheme, .mat-input-element {
+  //  caret-color: #9013FE !important;
+  //}
+  //.form-field, .mat-focused  {
+  //  color: red;
+  //  caret-color: #9013FE !important;
+  //}
 }
+
+//
+//::ng-deep .form-field.mat-focused .mat-form-field-underline {
+//  //display: none;
+//  color: #31C2A0;
+//}
+//
+//
+//::ng-deep .form-field input {
+//  caret-color: red;
+//  color: yellow;
+//}
+//
+//.mat-form-field-ripple {
+//  background-color: yellow !important;
+//}
+//
+//.mat-form-field.mat-focused .mat-form-field-ripple {
+//  background-color: #69f0ae !important;
+//}
 
 .menu-title {
   font-size: $fs-normal;
   color: $white;
+  //caret-color: $yellow;
   margin: 0;
 }
 
 .form-field {
   color: $white;
 }
+
+//.mat-form-field.mat-focused .mat-form-field-label {
+//  color: #00D318 !important;
+//}
 
 .menu-buttons-wrapper {
   display: flex;

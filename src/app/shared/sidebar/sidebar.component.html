@@ -20,7 +20,7 @@
       <div *ngIf="node.name === 'E-commerce'" class="mat-tree-item" matTreeNodeToggle>
         <div>
           <mat-icon>shopping_cart</mat-icon>
-          <p matBadge="NodeJS/.NET" matBadgeColor="success">{{node.name}}</p>
+          <p class="nodejs-sup" matBadge="NodeJS/.NET" matBadgeColor="success">{{node.name}}</p>
         </div>
         <mat-icon
           [ngClass]="{rotateUp: treeControl.isExpanded(node), rotateDown: !treeControl.isExpanded(node)}"
@@ -204,7 +204,7 @@
     <div class="add-section-menu">
       <h3 class="menu-title">Add section</h3>
 
-      <mat-form-field (click)="stopPropagation($event)" class="form-field">
+      <mat-form-field (click)="stopPropagation($event)" appearance="standard" class="form-field">
         <input matInput placeholder="Section name">
       </mat-form-field>
 
