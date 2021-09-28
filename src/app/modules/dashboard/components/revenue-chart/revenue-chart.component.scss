@@ -29,11 +29,10 @@
   &__content {
     display: flex;
     align-items: center;
-    justify-content: space-between;
 
     &-chart {
       height: 140px;
-      width: 50%;
+      width: 60%;
       max-width: 218px
     }
   }

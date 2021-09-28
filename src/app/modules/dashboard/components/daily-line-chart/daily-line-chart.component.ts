@@ -60,35 +60,10 @@ export class DailyLineChartComponent implements OnInit, OnChanges, AfterViewInit
 
   public ngOnChanges(changes: SimpleChanges): void {
     if (changes.currentTheme && changes.currentTheme.currentValue && this.chartObj) {
-      this.chartObj.updateOptions({
-        colors: [
-          this.currentTheme === 'blue'
-          ? colors.BLUE
-          : this.currentTheme === 'green'
-            ? colors.GREEN
-            : colors.PINK,
-          this.currentMode === 'dark'
-          ? colors.DARK_BLUE
-          : colors.LIGHT_BLUE,
-          colors.YELLOW
-        ]
-      })
+      this.updateChartOptions();
     }
-
     if (changes.currentMode && changes.currentMode.currentValue && this.chartObj) {
-      this.chartObj.updateOptions({
-        colors: [
-          this.currentTheme === 'blue'
-            ? colors.BLUE
-            : this.currentTheme === 'green'
-            ? colors.GREEN
-            : colors.PINK,
-          this.currentMode === 'dark'
-            ? colors.DARK_BLUE
-            : colors.LIGHT_BLUE,
-          colors.YELLOW
-        ]
-      })
+      this.updateChartOptions();
     }
   }
 
@@ -96,9 +71,26 @@ export class DailyLineChartComponent implements OnInit, OnChanges, AfterViewInit
     this.chartObj = new ApexCharts(
       this.chart.nativeElement,
       this.chartOptions
-    )
+    );
 
     this.chartObj.render();
+    this.updateChartOptions();
+  }
+
+  private updateChartOptions(): void {
+    this.chartObj.updateOptions({
+      colors: [
+        this.currentTheme === 'blue'
+          ? colors.BLUE
+          : this.currentTheme === 'green'
+          ? colors.GREEN
+          : colors.PINK,
+        this.currentMode === 'dark'
+          ? colors.DARK_BLUE
+          : colors.LIGHT_BLUE,
+        colors.YELLOW
+      ]
+    });
   }
 
   public initChart(data: TimeData, labels: string[]): void {

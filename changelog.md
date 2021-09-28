@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.9] - 09/27/2021
+### Updated
+
+- Updated auth page;
+- Refactored code, fixed chat;
+
 ## [1.0.8] - 09/14/2021
 ### Updated
 

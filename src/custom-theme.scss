@@ -428,3 +428,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   margin-right: 64px;
   margin-top: -55px;
 }
+
+.blueTheme .mat-progress-bar-buffer {
+  background-color: $white-blue;
+}
+
+.blueTheme .mat-progress-bar.mat-accent .mat-progress-bar-buffer {
+  background-color: $white-blue;
+}
