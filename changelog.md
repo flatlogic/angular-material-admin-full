@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.0] - 11/11/2021
+### Updated
+
+- Updated apexcharts package;
+
+###Updated packages
+    apexcharts: 3.19.3 -> 3.26.0
+
 ## [1.0.9] - 09/27/2021
 ### Updated
 
