@@ -1,6 +1,6 @@
 {
   "name": "angular-material-admin",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -30,7 +30,7 @@
     "@fullcalendar/timegrid": "4.4.2",
     "@ngmodule/material-carousel": "^0.6.0",
     "angular-calendar": "^0.28.20",
-    "apexcharts": "^3.19.3",
+    "apexcharts": "^3.26.0",
     "date-fns": "^2.14.0",
     "echarts": "^4.7.0",
     "font-awesome": "^4.7.0",
