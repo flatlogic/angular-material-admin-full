@@ -1,0 +1,65 @@
+//== Scroll bar
+
+$scrollbar-track-color: $light-grey;
+$scrollbar-track-piece-color: $white;
+$scrollbar-thumb-color: $light-grey;
+$scrollbar-corner-color: $light-grey;
+
+$scrollbar-track-dark-color: #23232d;
+$scrollbar-track-piece-dark-color: #13131a;
+$scrollbar-thumb-dark-color: #23232d;
+$scrollbar-corner-dark-color: #23232d;
+
+@mixin scrollbar() {
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 3px;
+  }
+  ::-webkit-scrollbar-button {
+    display: none;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: $scrollbar-track-color;
+  }
+  ::-webkit-scrollbar-track-piece {
+    background-color: $scrollbar-track-piece-color;
+  }
+  ::-webkit-scrollbar-thumb {
+    height: 50px;
+    background-color: $light-grey;
+    border-radius: 36px;
+  }
+  ::-webkit-scrollbar-corner {
+    background-color: $scrollbar-corner-color;
+  }
+  ::-webkit-resizer {
+    background-color: $dark-grey;
+  }
+}
+
+@mixin scrollbar-dark() {
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 3px;
+  }
+  ::-webkit-scrollbar-button {
+    display: none;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: $scrollbar-track-dark-color;
+  }
+  ::-webkit-scrollbar-track-piece {
+    background-color: $scrollbar-track-piece-dark-color;
+  }
+  ::-webkit-scrollbar-thumb {
+    height: 50px;
+    background-color: $scrollbar-thumb-dark-color;
+    border-radius: 36px;
+  }
+  ::-webkit-scrollbar-corner {
+    background-color: $scrollbar-corner-dark-color;
+  }
+  ::-webkit-resizer {
+    background-color: $dark-grey;
+  }
+}

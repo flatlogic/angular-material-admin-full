@@ -1,0 +1,104 @@
+<app-breadcrumb [path]="routes.Users_EDIT"></app-breadcrumb>
+
+<mat-card class="card">
+  <mat-card-title>
+    <h4 class="h4">Edit Users</h4>
+  </mat-card-title>
+
+  <mat-card-content [formGroup]="form">
+    <div class="input-wrapper">
+      <p class="input-title">First Name</p>
+      <mat-form-field appearance="legacy" class="input-field">
+        <input
+          matInput
+          formControlName="firstName"
+          placeholder="First Name"
+          class="input-text"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="input-wrapper">
+      <p class="input-title">Last Name</p>
+      <mat-form-field appearance="legacy" class="input-field">
+        <input
+          matInput
+          formControlName="lastName"
+          placeholder="Last Name"
+          class="input-text"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="input-wrapper">
+      <p class="input-title">Phone Number</p>
+      <mat-form-field appearance="legacy" class="input-field">
+        <input
+          matInput
+          formControlName="phoneNumber"
+          placeholder="Phone Number"
+          class="input-text"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="input-wrapper">
+      <p class="input-title">E-Mail</p>
+      <mat-form-field appearance="legacy" class="input-field">
+        <input
+          matInput
+          formControlName="email"
+          placeholder="E-Mail"
+          class="input-text"
+        />
+      </mat-form-field>
+    </div>
+
+    <p class="input-title">Role</p>
+
+    <div class="checkbox-wrapper">
+      <mat-radio-group formControlName="role">
+        <mat-radio-button color="primary" [value]="'admin'">
+          admin
+        </mat-radio-button>
+      </mat-radio-group>
+
+      <mat-radio-group formControlName="role">
+        <mat-radio-button color="primary" [value]="'user'">
+          user
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <div class="checkbox-wrapper">
+      <div class="checkbox-item">
+        <p class="checkbox-item-title">Disabled</p>
+        <mat-checkbox color="primary" formControlName="disabled"></mat-checkbox>
+      </div>
+    </div>
+
+    <app-image-uploader
+      (imageUploaded)="avatarAdd($event)"
+      (imageDeleted)="avatarDel($event)"
+      [imageList]="form.value.avatar"
+      [entityName]="'users'"
+      [propertyName]="'avatar'"
+    >
+    </app-image-uploader>
+
+    <div class="input-wrapper">
+      <p class="input-title">Password</p>
+      <mat-form-field appearance="legacy" class="input-field">
+        <input
+          matInput
+          formControlName="password"
+          placeholder="Password"
+          class="input-text"
+        />
+      </mat-form-field>
+    </div>
+
+    <button (click)="onSave()" mat-flat-button color="success">Save</button>
+    <button (click)="onCancel()" mat-flat-button color="default">Cancel</button>
+  </mat-card-content>
+</mat-card>

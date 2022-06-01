@@ -1,0 +1,28 @@
+@import 'colors';
+
+$breadcrumb-title-color: $grey;
+$breadcrumb-active-title-color: $blue;
+
+@mixin breadcrumb {
+  .breadcrumb-list.mat-list-base {
+    & .mat-list-item {
+      color: $breadcrumb-title-color;
+
+      &.active {
+        color: $breadcrumb-active-title-color;
+      }
+    }
+  }
+}
+
+@mixin breadcrumb-dark {
+  .breadcrumb-list.mat-list-base {
+    & .mat-list-item {
+      color: $white;
+
+      &.active {
+        color: $breadcrumb-active-title-color;
+      }
+    }
+  }
+}

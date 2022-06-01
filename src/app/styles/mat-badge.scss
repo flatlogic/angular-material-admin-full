@@ -1,0 +1,19 @@
+@mixin mat-badge() {
+  .mat-badge-medium.mat-badge-after .mat-badge-content {
+    right: -10px;
+  }
+}
+
+@mixin badge-line-text {
+  .mat-badge-medium .mat-badge-content {
+    width: auto;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 4px 8px;
+    border-radius: 35px;
+    height: 16px;
+    line-height: 16px;
+    right: -20px;
+    top: -15px;
+  }
+}

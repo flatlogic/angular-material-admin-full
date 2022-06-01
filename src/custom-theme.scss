@@ -1,0 +1,492 @@
+@import '~@angular/material/theming';
+@import '~@ng-select/ng-select/themes/material.theme.css';
+@import '~@danielmoncada/angular-datetime-picker/assets/style/picker.min.css';
+@import 'src/app/styles/colors';
+@import 'src/app/styles/variables';
+@import 'src/app/styles/font';
+@import 'src/app/styles/header';
+@import 'src/app/styles/sidebar';
+@import 'src/app/styles/settings';
+@import 'src/app/styles/footer';
+@import 'src/app/styles/themes';
+@import 'src/app/styles/scrollbar';
+@import 'src/app/styles/mat-tab';
+@import 'src/app/styles/mat-card';
+@import 'src/app/styles/mat-form-field';
+@import 'src/app/styles/typography';
+@import 'src/app/styles/notification';
+
+@include mat-core();
+
+$ama-primary: mat-palette($ama-blue);
+$ama-primary-light: mat-palette($ama-light-blue);
+$ama-accent: mat-palette($ama-yellow);
+$ama-warn: mat-palette($ama-pink);
+$ama-success: mat-palette($ama-green);
+$ama-info: mat-palette($ama-violet);
+
+@function ama-light-theme(
+  $primary,
+  $accent,
+  $warn,
+  $success,
+  $info,
+  $primary-light
+) {
+  @return map-merge(
+    mat-light-theme($primary, $accent, $warn),
+    (
+      success: $success,
+      info: $info,
+      primary-light: $primary-light,
+    )
+  );
+}
+
+/***********************************/
+/** Angular Material Admin THEME **/
+/**********************************/
+
+$ama-theme: ama-light-theme(
+  $ama-primary,
+  $ama-accent,
+  $ama-warn,
+  $ama-success,
+  $ama-info,
+  $ama-primary-light
+);
+
+@include angular-material-theme($ama-theme);
+
+/***********************************/
+/**            Badge             **/
+/**********************************/
+
+$ama-badge-theme: ama-light-theme(
+  $ama-primary,
+  $ama-accent,
+  $ama-warn,
+  $ama-success,
+  $ama-info,
+  $ama-primary-light
+);
+
+@mixin mat-badge-theme($theme) {
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $primary: map-get($theme, primary);
+  $primary-light: map-get($theme, primary-light);
+  $success: map-get($theme, success);
+  $info: map-get($theme, info);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .mat-badge-content {
+    color: mat-color($primary, default-contrast);
+    background: mat-color($primary);
+
+    @include cdk-high-contrast(active, off) {
+      outline: solid 1px;
+      border-radius: 0;
+    }
+  }
+
+  .mat-badge-accent {
+    .mat-badge-content {
+      background: mat-color($accent);
+      color: mat-color($accent, default-contrast);
+    }
+  }
+
+  .mat-badge-warn {
+    .mat-badge-content {
+      color: mat-color($warn, default-contrast);
+      background: mat-color($warn);
+    }
+  }
+
+  .mat-badge-success {
+    .mat-badge-content {
+      color: mat-color($success, default-contrast);
+      background: mat-color($success);
+    }
+  }
+
+  .mat-badge-info {
+    .mat-badge-content {
+      color: mat-color($info, default-contrast);
+      background: mat-color($info);
+    }
+  }
+
+  .mat-badge-primary-light {
+    .mat-badge-content {
+      color: mat-color($primary-light, default-contrast);
+      background: mat-color($primary-light);
+    }
+  }
+
+  .mat-badge {
+    position: relative;
+  }
+
+  .mat-badge-hidden {
+    .mat-badge-content {
+      display: none;
+    }
+  }
+
+  .mat-badge-disabled {
+    .mat-badge-content {
+      $app-background: mat-color($background, 'background');
+      $badge-color: mat-color($foreground, disabled-button);
+
+      // The disabled color usually has some kind of opacity, but because the badge is overlayed
+      // on top of something else, it won't look good if it's opaque. If it is a color *type*,
+      // we convert it into a solid color by taking the opacity from the rgba value and using
+      // the value to determine the percentage of the background to put into foreground when
+      // mixing the colors together.
+      @if (
+        type-of($badge-color) == color and type-of($app-background) == color
+      ) {
+        $badge-opacity: opacity($badge-color);
+        background: mix(
+          $app-background,
+          rgba($badge-color, 1),
+          (1 - $badge-opacity) * 100%
+        );
+      } @else {
+        background: $badge-color;
+      }
+
+      color: mat-color($foreground, disabled-text);
+    }
+  }
+
+  .mat-badge-content {
+    position: absolute;
+    text-align: center;
+    display: inline-block;
+    border-radius: 50%;
+    transition: transform 200ms ease-in-out;
+    transform: scale(0.6);
+    overflow: hidden;
+    font-weight: 400;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    pointer-events: none;
+  }
+
+  .ng-animate-disabled .mat-badge-content,
+  .mat-badge-content._mat-animation-noopable {
+    transition: none;
+  }
+
+  // The active class is added after the element is added
+  // so it can animate scale to default
+  .mat-badge-content.mat-badge-active {
+    // Scale to `none` instead of `1` to avoid blurry text in some browsers.
+    transform: none;
+  }
+
+  //.mat-badge-small {
+  //  @include _mat-badge-size($mat-badge-small-size);
+  //}
+  //.mat-badge-medium {
+  //  @include _mat-badge-size($mat-badge-default-size);
+  //}
+  //.mat-badge-large {
+  //  @include _mat-badge-size($mat-badge-large-size);
+  //}
+}
+
+@include mat-badge-theme($ama-badge-theme);
+
+/***********************************/
+/**          Radio Button        **/
+/**********************************/
+
+$ama-radio-button-theme: ama-light-theme(
+  $ama-primary,
+  $ama-accent,
+  $ama-warn,
+  $ama-success,
+  $ama-info,
+  $ama-primary-light
+);
+
+@mixin _mat-radio-color($palette) {
+  &.mat-radio-checked .mat-radio-outer-circle {
+    border-color: mat-color($palette);
+  }
+
+  .mat-radio-inner-circle,
+  .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple),
+  &.mat-radio-checked .mat-radio-persistent-ripple,
+  &:active .mat-radio-persistent-ripple {
+    background-color: mat-color($palette);
+  }
+}
+
+@mixin mat-radio-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $success: map-get($theme, success);
+  $info: map-get($theme, info);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .mat-radio-outer-circle {
+    border-color: mat-color($foreground, secondary-text);
+  }
+
+  .mat-radio-button {
+    &.mat-primary {
+      @include _mat-radio-color($primary);
+    }
+
+    &.mat-accent {
+      @include _mat-radio-color($success);
+    }
+
+    &.mat-warn {
+      @include _mat-radio-color($warn);
+    }
+
+    // This needs extra specificity, because the classes above are combined
+    // (e.g. `.mat-radio-button.mat-accent`) which increases their specificity a lot.
+    // TODO: consider making the selectors into descendants (`.mat-primary .mat-radio-button`).
+    &.mat-radio-disabled {
+      &.mat-radio-checked .mat-radio-outer-circle,
+      .mat-radio-outer-circle {
+        border-color: mat-color($foreground, disabled);
+      }
+
+      .mat-radio-ripple .mat-ripple-element,
+      .mat-radio-inner-circle {
+        background-color: mat-color($foreground, disabled);
+      }
+
+      .mat-radio-label-content {
+        color: mat-color($foreground, disabled);
+      }
+    }
+
+    // Switch this to a solid color since we're using `opacity`
+    // to control how opaque the ripple should be.
+    .mat-ripple-element {
+      background-color: map_get($foreground, base);
+    }
+  }
+}
+
+@include mat-radio-theme($ama-radio-button-theme);
+
+/***********************************/
+/**             Chip             **/
+/**********************************/
+
+@mixin custom-mat-chips-color($foreground, $background) {
+  background-color: $background;
+  color: $foreground;
+
+  .mat-chip-remove {
+    color: $foreground;
+    opacity: 0.4;
+  }
+}
+
+@mixin _mat-theme-elevation($zValue, $theme, $opacity: $mat-elevation-opacity) {
+  $foreground: map-get($theme, foreground);
+  $elevation-color: map-get($foreground, elevation);
+  $elevation-color-or-default: if(
+    $elevation-color == null,
+    $mat-elevation-color,
+    $elevation-color
+  );
+
+  @include mat-elevation($zValue, $elevation-color-or-default, $opacity);
+}
+
+@mixin mat-chips-theme-color($palette) {
+  @include custom-mat-chips-color(
+    mat-color($palette, default-contrast),
+    mat-color($palette)
+  );
+
+  //.mat-ripple-element {
+  //  @include _mat-chips-ripple-background($palette, default-contrast, 0.1);
+  //}
+}
+
+$ama-chip-theme: ama-light-theme(
+  $ama-primary,
+  $ama-accent,
+  $ama-warn,
+  $ama-success,
+  $ama-info,
+  $ama-primary-light
+);
+
+@mixin mat-chips-theme($theme) {
+  $is-dark-theme: map-get($theme, is-dark);
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $success: map-get($theme, success);
+  $info: map-get($theme, info);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  $unselected-background: mat-color($background, unselected-chip);
+  $unselected-foreground: mat-color($foreground, text);
+
+  .mat-chip.mat-standard-chip {
+    @include custom-mat-chips-color(
+      $unselected-foreground,
+      $unselected-background
+    );
+
+    &:not(.mat-chip-disabled) {
+      &:active {
+        @include _mat-theme-elevation(3, $theme);
+      }
+
+      .mat-chip-remove:hover {
+        opacity: 0.54;
+      }
+    }
+
+    &.mat-chip-disabled {
+      opacity: 0.4;
+    }
+
+    &::after {
+      background: map_get($foreground, base);
+    }
+  }
+
+  .mat-chip.mat-standard-chip.mat-chip-selected {
+    &.mat-primary {
+      @include mat-chips-theme-color($primary);
+    }
+
+    &.mat-warn {
+      @include mat-chips-theme-color($warn);
+    }
+
+    &.mat-accent {
+      @include mat-chips-theme-color($accent);
+    }
+
+    &.mat-success {
+      @include mat-chips-theme-color($success);
+    }
+
+    &.mat-info {
+      @include mat-chips-theme-color($info);
+    }
+  }
+}
+
+@include mat-chips-theme($ama-chip-theme);
+
+/***********************************/
+/**           Buttons            **/
+/**********************************/
+
+$ama-button-theme: ama-light-theme(
+  $ama-primary,
+  $ama-accent,
+  $ama-warn,
+  $ama-success,
+  $ama-info,
+  $ama-primary-light
+);
+
+@mixin _mat-button-theme-property($theme, $property, $hue) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $success: map-get($theme, success);
+  $info: map-get($theme, info);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  &.mat-primary {
+    #{$property}: mat-color($primary, $hue);
+    border-color: mat-color($primary, $hue) !important;
+  }
+  &.mat-accent {
+    #{$property}: mat-color($accent, $hue);
+    border-color: mat-color($accent, $hue) !important;
+  }
+  &.mat-warn {
+    #{$property}: mat-color($warn, $hue);
+    border-color: mat-color($warn, $hue) !important;
+  }
+  &.mat-success {
+    #{$property}: mat-color($success, $hue);
+    border-color: mat-color($success, $hue) !important;
+  }
+  &.mat-info {
+    #{$property}: mat-color($info, $hue);
+    border-color: mat-color($info, $hue) !important;
+  }
+
+  &.mat-primary,
+  &.mat-accent,
+  &.mat-warn,
+  &.mat-success,
+  &[disabled] {
+    &[disabled] {
+      $palette: if($property == 'color', $foreground, $background);
+      #{$property}: mat-color($palette, disabled-button);
+    }
+  }
+}
+
+@include mat-button-theme($ama-button-theme);
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+@include notification;
+@include typography;
+@include scrollbar();
+@include mat-form-field();
+
+@include blueTheme();
+@include pinkTheme();
+@include greenTheme();
+@include darkMode();
+@include mat-tab-label;
+@include mat-card;
+
+.mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple),
+.mat-option:hover:not(.mat-option-disabled) {
+  background-color: $blue-white;
+}
+
+.mat-select-panel {
+  & .mat-option {
+    font-size: 16px !important;
+  }
+}
+
+.mat-menu-panel.settings-theme-menu {
+  margin-right: 64px;
+  margin-top: -55px;
+}
+
+.ng-select .ng-select-container {
+  min-width: 150px;
+  min-height: 40.5px;
+}

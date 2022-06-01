@@ -1,0 +1,23 @@
+<h2 class="title">Confirmation</h2>
+<p class="text">Are you sure to delete this item?</p>
+
+<div class="button-wrapper">
+  <button
+    class="button"
+    mat-stroked-button
+    color="primary"
+    (click)="cancel()"
+    tabindex="-1"
+  >
+    CANCEL
+  </button>
+  <button
+    class="button"
+    mat-raised-button
+    color="primary"
+    (click)="delete()"
+    tabindex="-1"
+  >
+    DELETE
+  </button>
+</div>

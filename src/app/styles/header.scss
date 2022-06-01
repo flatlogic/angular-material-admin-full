@@ -1,0 +1,55 @@
+//== Header
+
+$header-height: 64px;
+$header-button-background-color: transparent;
+$header-button-background-color-hover: $black-08;
+$header-button-font-color: $white;
+$header-button-box-shadow: none;
+$header-title-font-color: $white;
+
+$header-background-dark-theme: #31313c;
+$header-title-color-dark-theme: #889aff;
+
+@mixin header() {
+  .header {
+    .mat-mini-fab {
+      background-color: $header-button-background-color;
+      box-shadow: $header-button-box-shadow;
+
+      &:hover {
+        background-color: $header-button-background-color-hover;
+      }
+
+      &:not([class*='mat-elevation-z']) {
+        box-shadow: inherit;
+      }
+    }
+  }
+}
+
+@mixin header-dark() {
+  .mat-toolbar.mat-primary.header {
+    background-color: $header-background-dark-theme;
+
+    .mat-mini-fab {
+      background-color: $header-button-background-color;
+      box-shadow: $header-button-box-shadow;
+
+      .header__title-button-icon {
+        color: $header-title-color-dark-theme;
+      }
+
+      &:hover {
+        background-color: $header-button-background-color-hover;
+      }
+
+      &:not([class*='mat-elevation-z']) {
+        box-shadow: inherit;
+      }
+    }
+
+    .header__title-text {
+      color: $header-title-color-dark-theme;
+    }
+  }
+}

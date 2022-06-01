@@ -1,0 +1,48 @@
+<div class="settings-wrapper" [matMenuTriggerFor]="settingsMenu">
+  <mat-icon>settings</mat-icon>
+
+  <mat-menu #settingsMenu="matMenu" class="settings-theme-menu">
+    <div class="settings-menu-wrapper">
+      <p class="menu-title">color theme</p>
+
+      <div class="radio-group">
+        <mat-radio-button
+          color="primary"
+          [checked]="isBlueTheme"
+          (click)="changeThemeOnBlue()"
+        ></mat-radio-button>
+        <mat-radio-button
+          color="warn"
+          [checked]="isPinkTheme"
+          (click)="changeThemeOnPink()"
+        ></mat-radio-button>
+        <mat-radio-button
+          color="accent"
+          [checked]="isGreenTheme"
+          (click)="changeThemeOnGreen()"
+        ></mat-radio-button>
+      </div>
+
+      <hr class="bord" />
+
+      <p class="menu-title">dark mode</p>
+
+      <div class="slide-wrapper">
+        <mat-slide-toggle
+          (click)="onDarkMode()"
+          color="warn"
+        ></mat-slide-toggle>
+      </div>
+
+      <div class="buttons-wrapper">
+        <a
+          mat-raised-button
+          color="success"
+          target="_blank"
+          href="https://flatlogic.com/templates/angular-material-admin-full"
+          >BUY</a
+        >
+      </div>
+    </div>
+  </mat-menu>
+</div>

@@ -1,0 +1,11 @@
+<div class="form-group">
+  <button (click)="fileInput.click()" mat-flat-button color="default">
+    Select file
+    <input (change)="uploadFile($event)" type="file" #fileInput name="..." />
+  </button>
+</div>
+<div class="mt-2" *ngIf="files.length > 0">
+  <a *ngFor="let file of files" href="{{ file.publicUrl }}" download>
+    {{ file.name }} <i class="la la-times" (click)="deleteFile(file.id)"></i>
+  </a>
+</div>

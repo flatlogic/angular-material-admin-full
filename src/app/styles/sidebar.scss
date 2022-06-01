@@ -1,0 +1,119 @@
+@import 'src/app/styles/colors';
+
+//== Sidebar
+
+$sidebar-font-color: $gray-08;
+$sidebar-font-color-active: $dark-grey;
+$sidebar-background-color-active: $blue-white;
+$sidebar-background-color-hover: $blue-white;
+$sidebar-icon-color: $gray-06;
+$sidebar-title-color: $sidebar-font-color;
+$sidebar-circle-color: $light-grey;
+
+$sidebar-background-dark-theme: #23232d;
+$sidebar-background-hover-dark-theme: #13131a;
+$sidebar-background-active-dark-theme: #13131a;
+$sidebar-color-active-dark-theme: #d6d6d6;
+
+@mixin sidebar($color) {
+  $sidebar-icon-color-active: $color;
+
+  .sidebar.mat-list-base {
+    & .mat-list-item,
+    .mat-menu-trigger {
+      color: $sidebar-title-color;
+
+      &.active {
+        background-color: $sidebar-background-color-active;
+        color: $sidebar-font-color-active;
+
+        & .mat-icon {
+          color: $sidebar-icon-color-active;
+        }
+      }
+
+      &:hover {
+        background-color: $sidebar-background-color-hover;
+      }
+    }
+  }
+
+  .mat-tree-node {
+    & p {
+      color: $sidebar-font-color;
+    }
+
+    &.active {
+      background-color: $sidebar-background-color-active;
+
+      & p {
+        color: $sidebar-font-color-active;
+      }
+
+      & div.circle {
+        background-color: $sidebar-icon-color-active;
+      }
+    }
+
+    &[aria-expanded='true'] {
+      & .mat-tree-item {
+        & mat-icon:first-child {
+          color: $sidebar-icon-color-active;
+        }
+
+        & p {
+          color: $sidebar-font-color-active;
+        }
+      }
+    }
+  }
+}
+
+@mixin sidebar-dark() {
+  .mat-tree {
+    background-color: $sidebar-background-dark-theme;
+
+    .mat-tree-item,
+    .mat-tree-node {
+      & p {
+        color: $sidebar-color-active-dark-theme;
+      }
+
+      &.active {
+        background-color: $sidebar-background-active-dark-theme;
+      }
+
+      &:hover {
+        background-color: $sidebar-background-hover-dark-theme;
+      }
+
+      &[aria-expanded='true'] {
+        & .mat-tree-item {
+          & p {
+            color: $sidebar-color-active-dark-theme;
+          }
+        }
+      }
+    }
+  }
+
+  .sidebar.mat-list-base {
+    & .mat-list-item,
+    .mat-menu-trigger {
+      color: $sidebar-color-active-dark-theme;
+
+      &.active {
+        color: $sidebar-color-active-dark-theme;
+        background-color: $sidebar-background-active-dark-theme;
+      }
+
+      &:hover {
+        background-color: $sidebar-background-hover-dark-theme;
+      }
+    }
+  }
+
+  .mat-drawer {
+    background-color: $sidebar-background-dark-theme;
+  }
+}

@@ -1,0 +1,6 @@
+@mixin mat-spinner {
+  mat-spinner.mat-progress-spinner.mat-progress-spinner-indeterminate-animation[mode='indeterminate']
+    circle {
+    animation-duration: 13000ms;
+  }
+}

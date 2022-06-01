@@ -1,0 +1,21 @@
+@import './src/app/styles/font';
+@import './src/app/styles/colors';
+
+.title {
+  font-size: $fs-large;
+  color: $dark-grey;
+}
+
+.text {
+  font-size: $fs-normal;
+  color: $grey;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.button + .button {
+  margin-left: 8px;
+}

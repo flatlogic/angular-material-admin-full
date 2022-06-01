@@ -1,0 +1,80 @@
+<mat-card-content class="card-content">
+  <div *ngFor="let filter of config; let i = index" class="input-wrapper">
+    <ng-select
+      (change)="onSelect($event, i, filter)"
+      [items]="filters"
+      [searchable]="false"
+      [clearable]="false"
+      bindLabel="label"
+      bindValue="title"
+      placeholder="Filter"
+    >
+    </ng-select>
+    <mat-form-field
+      *ngIf="!filter.number"
+      appearance="legacy"
+      class="input-field text-field"
+    >
+      <input
+        (keyup)="onKeyUp($event.target.value, i, filter)"
+        matInput
+        placeholder="Contains"
+        class="input-text"
+        type="text"
+      />
+    </mat-form-field>
+    <mat-form-field
+      *ngIf="filter.number"
+      appearance="legacy"
+      class="input-field number-field"
+    >
+      <input
+        (keyup)="onKeyUp('', i, filter, $event.target.value)"
+        matInput
+        placeholder="From"
+        class="input-number"
+        type="text"
+      />
+    </mat-form-field>
+    <mat-form-field
+      *ngIf="filter.number"
+      appearance="legacy"
+      class="input-field number-field"
+    >
+      <input
+        (keyup)="onKeyUp('', i, filter, '', $event.target.value)"
+        matInput
+        placeholder="To"
+        class="input-number"
+        type="text"
+      />
+    </mat-form-field>
+
+    <button
+      mat-flat-button
+      color="success"
+      class="table-button"
+      (click)="delFilter(filter)"
+    >
+      delete
+    </button>
+  </div>
+  <div class="filter-buttons">
+    <button
+      mat-flat-button
+      color="warn"
+      class="table-button"
+      (click)="clearFilters()"
+    >
+      clear
+    </button>
+    <button
+      mat-flat-button
+      color="success"
+      class="table-button"
+      (click)="submitHandler()"
+    >
+      apply
+    </button>
+  </div>
+</mat-card-content>

@@ -1,0 +1,30 @@
+@import 'src/app/styles/variables';
+@import 'src/app/styles/colors';
+
+.layout {
+  width: 100%;
+  height: 100vh;
+}
+
+.layout-sidebar {
+  height: calc(100vh - 64px);
+  margin-top: 64px;
+  width: 240px;
+
+  @media (max-width: $small) {
+    width: 218px;
+  }
+}
+
+.layout-content {
+  background-color: $background-color;
+  margin-top: 64px;
+  height: -webkit-fill-available;
+  padding: $sidebar-content-padding;
+  box-sizing: border-box;
+
+  @media (max-width: $small) {
+    width: 100%;
+    padding: $sidebar-content-mobile-padding;
+  }
+}

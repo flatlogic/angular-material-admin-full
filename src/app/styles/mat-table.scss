@@ -1,0 +1,39 @@
+@mixin mat-table() {
+  .mat-table {
+    background: transparent;
+
+    tr {
+      &:hover {
+        background-color: $black-04;
+      }
+
+      &:last-child {
+        & td {
+          border: none;
+        }
+      }
+    }
+  }
+}
+
+@mixin mat-table-dark() {
+  .mat-table {
+    background: transparent;
+
+    th {
+      color: #d6d6d6;
+
+      &.mat-header-cell {
+        border-color: $white-70;
+      }
+    }
+
+    td {
+      color: $white;
+
+      &.mat-cell {
+        border-color: $white-70;
+      }
+    }
+  }
+}

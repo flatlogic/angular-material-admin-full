@@ -1,0 +1,20 @@
+@mixin footer($color) {
+  .footer {
+    &__link-item {
+      color: $color;
+    }
+
+    .mat-mini-fab.mat-accent {
+      background-color: transparent;
+      box-shadow: none;
+
+      &:hover {
+        background-color: $header-button-background-color-hover;
+      }
+
+      &:not([class*='mat-elevation-z']) {
+        box-shadow: inherit;
+      }
+    }
+  }
+}

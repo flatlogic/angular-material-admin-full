@@ -1,0 +1,37 @@
+@import 'colors';
+@import 'font';
+
+@mixin mat-select {
+  & .mat-select-value {
+    max-width: max-content;
+    overflow: unset;
+  }
+
+  & .mat-select-value-text {
+    font-size: $fs-normal;
+    font-weight: $fw-lighter;
+    color: $dark-grey;
+  }
+}
+
+@mixin mat-select-dark {
+  .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: $white;
+  }
+
+  .mat-select-arrow {
+    color: #d6d6d6;
+  }
+
+  .mat-form-field-label {
+    color: $white;
+  }
+
+  .mat-select-trigger {
+    width: 100%;
+
+    & .mat-select-value-text {
+      color: $white;
+    }
+  }
+}

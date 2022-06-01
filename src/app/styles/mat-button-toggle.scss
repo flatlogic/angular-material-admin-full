@@ -1,0 +1,7 @@
+@import 'colors';
+
+@mixin mat-toggle() {
+  .mat-button-toggle-checked.mat-button-toggle-appearance-standard {
+    color: $white;
+  }
+}

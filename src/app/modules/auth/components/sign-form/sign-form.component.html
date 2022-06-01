@@ -1,0 +1,48 @@
+<div
+  *ngIf="authService.errorMessage"
+  class="notification notification_transparent-pink"
+>
+  <div class="notification__icon-wrapper notification__icon-wrapper_solid-pink">
+    <mat-icon>report</mat-icon>
+  </div>
+  <p class="notification__title">{{ authService.errorMessage }}</p>
+</div>
+<form class="form" [formGroup]="form" (ngSubmit)="register()">
+  <mat-form-field class="form__input">
+    <input
+      matInput
+      placeholder="Email Address"
+      type="email"
+      formControlName="email"
+    />
+  </mat-form-field>
+
+  <mat-form-field class="form__input">
+    <input
+      matInput
+      placeholder="Password"
+      type="password"
+      formControlName="password"
+    />
+  </mat-form-field>
+
+  <mat-form-field class="form__input">
+    <input
+      matInput
+      placeholder="Confirm Password"
+      type="password"
+      formControlName="confirmPassword"
+    />
+  </mat-form-field>
+
+  <div class="form-actions">
+    <button
+      class="form-actions__create"
+      mat-raised-button
+      color="primary"
+      type="submit"
+    >
+      Create your account
+    </button>
+  </div>
+</form>

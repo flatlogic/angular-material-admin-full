@@ -1,0 +1,218 @@
+@import 'palettes';
+@import 'mat-card';
+@import 'mat-paginator';
+@import 'mat-table';
+@import 'breadcrumb';
+@import 'mat-select';
+@import 'mat-tab';
+@import 'mat-toolbar';
+@import 'mat-button';
+@import 'mat-badge';
+@import 'mat-button-toggle';
+@import 'mat-expansion-panel';
+@import 'mat-spinner';
+@import 'mat-tooltip';
+
+@function ama-light-theme(
+  $primary,
+  $accent,
+  $warn,
+  $success,
+  $info,
+  $primary-light
+) {
+  @return map-merge(
+    mat-light-theme($primary, $accent, $warn),
+    (
+      success: $success,
+      info: $info,
+      primary-light: $primary-light,
+    )
+  );
+}
+
+/***********************************/
+/**        BLUE THEME            **/
+/**********************************/
+
+$blue-theme-primary: mat-palette($ama-blue);
+$blue-theme-primary-light: mat-palette($ama-light-blue);
+$blue-theme-accent: mat-palette($ama-yellow);
+$blue-theme-warn: mat-palette($ama-pink);
+$blue-theme-success: mat-palette($ama-green);
+$blue-theme-info: mat-palette($ama-violet);
+
+$blue-theme: ama-light-theme(
+  $blue-theme-primary,
+  $blue-theme-accent,
+  $blue-theme-warn,
+  $blue-theme-success,
+  $blue-theme-info,
+  $blue-theme-primary-light
+);
+
+@mixin blueTheme() {
+  .blueTheme {
+    @include angular-material-theme($blue-theme);
+
+    @include header();
+    @include mat-card();
+    @include mat-paginator();
+    @include mat-table();
+    @include mat-toolbar();
+    @include mat-button();
+    @include mat-toggle();
+    @include mat-spinner;
+    @include mat-tab-without-border();
+    @include mat-tab-color-label($blue);
+    @include mat-tab-label-active-color($blue);
+    @include mat-tooltip;
+    @include mat-expansion-panel;
+    @include breadcrumb();
+    @include mat-badge();
+    @include sidebar($blue);
+    @include footer($blue);
+    @include settings($blue);
+    @include mat-select;
+    @include mat-tab-label;
+  }
+}
+
+/***********************************/
+/**        PINK THEME            **/
+/**********************************/
+
+$pink-theme-primary: mat-palette($ama-pink);
+$pink-theme-primary-light: mat-palette($ama-light-blue);
+$pink-theme-accent: mat-palette($ama-yellow);
+$pink-theme-warn: mat-palette($ama-blue);
+$pink-theme-success: mat-palette($ama-green);
+$pink-theme-info: mat-palette($ama-violet);
+
+$pink-theme: ama-light-theme(
+  $pink-theme-primary,
+  $pink-theme-accent,
+  $pink-theme-warn,
+  $pink-theme-success,
+  $pink-theme-info,
+  $pink-theme-primary-light
+);
+
+@mixin pinkTheme() {
+  .pinkTheme {
+    @include angular-material-theme($pink-theme);
+
+    @include header();
+    @include mat-card();
+    @include mat-paginator();
+    @include mat-table();
+    @include mat-toggle();
+    @include mat-spinner;
+    @include mat-button();
+    @include mat-tooltip;
+    @include mat-expansion-panel;
+    @include mat-tab-without-border();
+    @include mat-tab-color-label($pink);
+    @include mat-tab-label-active-color($pink);
+    @include breadcrumb();
+    @include sidebar($pink);
+    @include mat-badge();
+    @include footer($pink);
+    @include settings($pink);
+    @include mat-select;
+    @include mat-tab-label;
+  }
+}
+
+/***********************************/
+/**       GREEN THEME            **/
+/**********************************/
+
+$green-theme-primary: mat-palette($ama-green);
+$green-theme-primary-light: mat-palette($ama-light-blue);
+$green-theme-accent: mat-palette($ama-yellow);
+$green-theme-warn: mat-palette($ama-pink);
+$green-theme-success: mat-palette($ama-blue);
+$green-theme-info: mat-palette($ama-violet);
+
+$green-theme: ama-light-theme(
+  $green-theme-primary,
+  $green-theme-accent,
+  $green-theme-warn,
+  $green-theme-success,
+  $green-theme-info,
+  $green-theme-primary-light
+);
+
+@mixin greenTheme() {
+  .greenTheme {
+    @include angular-material-theme($green-theme);
+
+    @include header();
+    @include mat-card();
+    @include mat-paginator();
+    @include mat-table();
+    @include mat-tab-without-border();
+    @include mat-toggle();
+    @include mat-spinner;
+    @include mat-tooltip;
+    @include mat-tab-label-active-color($green);
+    @include mat-expansion-panel;
+    @include mat-tab-color-label($green);
+    @include breadcrumb();
+    @include sidebar($green);
+    @include mat-badge();
+    @include mat-button();
+    @include footer($green);
+    @include settings($green);
+    @include mat-select;
+    @include mat-tab-label;
+  }
+}
+
+/***********************************/
+/**          DARK MODE           **/
+/**********************************/
+
+@mixin darkMode() {
+  .darkMode {
+    @include header-dark();
+    @include mat-card-dark();
+    @include sidebar-dark();
+    @include scrollbar-dark();
+    @include breadcrumb-dark();
+    @include mat-paginator-dark();
+    @include mat-table-dark();
+    @include mat-tab-without-border();
+    @include mat-toggle();
+    @include mat-tooltip;
+    @include mat-tab-label-active-color($white);
+    @include mat-badge();
+    @include mat-select-dark();
+    @include mat-form-field-dark-theme();
+    @include mat-expansion-panel-dark;
+    @include mat-select;
+    @include mat-tab-label-dark;
+    @include mat-button-dark;
+
+    .mat-checkbox-frame {
+      border-color: $white;
+    }
+
+    .mat-radio-outer-circle {
+      border-color: $white;
+    }
+
+    .mat-radio-button.mat-radio-disabled .mat-radio-outer-circle {
+      border-color: $white-50;
+    }
+
+    .mat-radio-button.mat-radio-disabled .mat-radio-label-content {
+      color: $white-50;
+    }
+
+    .layout-content {
+      background-color: #13131a !important;
+    }
+  }
+}

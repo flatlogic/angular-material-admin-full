@@ -1,0 +1,71 @@
+@import 'colors';
+
+$card-font-color: $dark-grey;
+$card-title-font-color: $grey;
+$card-padding: 24px;
+$card-title-font-size: $fs-medium;
+$card-title-font-weight: $fw-lighter;
+$card-shadow: 0 3px 11px 0 $shadow-white, 0 3px 3px -2px $shadow-grey,
+  0 1px 8px 0 $shadow-dark-grey;
+
+$card-background-dark-theme: #23232d;
+
+@mixin mat-card() {
+  .mat-card {
+    color: $card-font-color;
+    margin: 0;
+    box-shadow: $card-shadow;
+    padding: $card-padding;
+
+    &:not([class*='mat-elevation-z']) {
+      box-shadow: $card-shadow;
+    }
+
+    .mat-card-title {
+      & > p {
+        font-size: $card-title-font-size;
+        font-weight: $card-title-font-weight;
+        color: $card-title-font-color;
+      }
+    }
+  }
+}
+
+@mixin mat-card-dark() {
+  .mat-card {
+    color: $white;
+    background-color: $card-background-dark-theme;
+
+    & p {
+      color: $white;
+    }
+
+    &:not([class*='mat-elevation-z']) {
+      box-shadow: none;
+    }
+
+    .mat-card-title {
+      & p {
+        color: $white;
+      }
+    }
+
+    .mat-card-subtitle {
+      & p {
+        color: #d6d6d6;
+      }
+    }
+
+    .mat-card-content {
+      & p {
+        color: #d6d6d6;
+      }
+    }
+
+    .mat-card-footer {
+      & p {
+        color: #d6d6d6;
+      }
+    }
+  }
+}

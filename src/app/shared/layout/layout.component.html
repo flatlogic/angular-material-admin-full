@@ -1,0 +1,37 @@
+<div
+  [class.blueTheme]="isBlueTheme"
+  [class.pinkTheme]="isPinkTheme"
+  [class.greenTheme]="isGreenTheme"
+  [class.darkMode]="isDarkMode"
+>
+  <app-header
+    (isShowSidebar)="sidenav.toggle($event)"
+    [isMenuOpened]="isShowSidebar"
+  ></app-header>
+
+  <app-settings-menu-app
+    (darkMode)="onDarkMode($event)"
+    (themeOnBlue)="changeThemeOnBlue()"
+    (themeOnPink)="changeThemeOnPink()"
+    (themeOnGreen)="changeThemeOnGreen()"
+  ></app-settings-menu-app>
+
+  <mat-sidenav-container class="layout">
+    <mat-sidenav
+      #sidenav
+      mode="side"
+      [(opened)]="isShowSidebar"
+      class="layout-sidebar"
+      [mode]="mobileQuery.matches ? 'over' : 'side'"
+      [fixedInViewport]="mobileQuery.matches"
+    >
+      <app-sidebar></app-sidebar>
+    </mat-sidenav>
+
+    <mat-sidenav-content class="layout-content">
+      <router-outlet></router-outlet>
+
+      <app-footer></app-footer>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

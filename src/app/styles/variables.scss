@@ -1,0 +1,63 @@
+@import 'colors';
+
+//== Viewports
+
+$extra-small: 576px;
+$small: 576px;
+$medium: 768px;
+$large: 992px;
+$normal: 1024px;
+$extra-large: 1200px;
+$xxl: 1440px;
+
+//== Material Toolbar
+
+$toolbar-title-font-color: $grey;
+$toolbar-button-font-color: $white;
+$toolbar-button-background-color: $pink;
+$toolbar-button-background-color-active: $dark-pink;
+$toolbar-padding: 8px 24px 6px 24px;
+
+//== Material Sidebar Content
+
+$sidebar-content-padding: 36px;
+$sidebar-content-mobile-padding: 16px;
+
+//== Material Tabs
+
+$tabs-header-font-color: $blue;
+$tabs-header-font-color-active: $blue;
+$tabs-ink-bar-color: $blue;
+
+//== Apex Chart X axis tooltip
+
+$chart-tooltip-background-color: $blue;
+$chart-tooltip-border-color: $blue;
+$chart-tooltip-font-color: $white;
+
+//== Header
+
+$header-height: 64px;
+
+$header-button-background-color: transparent;
+$header-button-background-color-hover: $black-08;
+$header-button-font-color: $white;
+$header-button-box-shadow: none;
+
+$header-title-font-color: $white;
+
+//== Footer
+
+$footer-height: 48px;
+$footer-link-color: $blue;
+$footer-icon-color: $gray-06;
+$footer-icon-background-color-hover: $black-08;
+
+//== Settings menu element
+
+$settings-button-background-color: $white;
+$settings-button-background-color-hover: $blue;
+$settings-button-color: $light-grey;
+$settings-button-color-hover: $white-35;
+$settings-menu-font-color: $dark-grey;
+$settings-menu-background-color-hover: $blue-white;

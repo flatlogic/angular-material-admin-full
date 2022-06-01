@@ -1,0 +1,18 @@
+@import 'src/app/styles/variables';
+@import 'src/app/styles/colors';
+
+@mixin mat-expansion-panel {
+  .mat-expansion-indicator::after {
+    color: $white;
+  }
+}
+
+@mixin mat-expansion-panel-dark {
+  mat-expansion-panel.mat-expansion-panel:not([class*='mat-elevation-z']) {
+    box-shadow: none;
+  }
+
+  .mat-expansion-indicator::after {
+    color: $white;
+  }
+}

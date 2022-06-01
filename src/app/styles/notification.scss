@@ -1,0 +1,26 @@
+@mixin notification {
+  .toast-top-center {
+    top: 76px;
+  }
+
+  .toast-top-left {
+    top: 76px;
+  }
+
+  .toast-top-right {
+    top: 76px;
+  }
+
+  .toast-bottom-center {
+    bottom: 12px;
+  }
+
+  .toast-container .ngx-toastr {
+    border-radius: 45px;
+    box-shadow: none;
+  }
+
+  .toast-container .ngx-toastr:hover {
+    box-shadow: 0 0 12px $light-grey;
+  }
+}

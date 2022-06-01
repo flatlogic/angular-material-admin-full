@@ -1,0 +1,247 @@
+<app-breadcrumb [path]="routes.Users"></app-breadcrumb>
+
+<div class="filter-form">
+  <button mat-flat-button color="success" [routerLink]="routes.Users_CREATE">
+    New
+  </button>
+  <button
+    mat-flat-button
+    color="success"
+    class="filter-button"
+    (click)="addFilter()"
+  >
+    Add filter
+  </button>
+
+  <mat-card class="card" *ngIf="showFilters">
+    <app-filter
+      [filters]="filters"
+      [config]="config"
+      (clearFilterConfirmed)="clearFilters()"
+      (deleteFilterConfirmed)="delFilter()"
+      (submitConfirmed)="submitHandler($event)"
+    >
+    </app-filter>
+  </mat-card>
+</div>
+
+<mat-card class="card">
+  <mat-card-content class="card-content">
+    <a href="{{ redirectToSwagger() }}">API documentation for users</a>
+    <div class="table-title-wrapper">
+      <p class="table-title">Users</p>
+    </div>
+
+    <div class="table-wrapper">
+      <table
+        mat-table
+        [dataSource]="dataSource"
+        matSort
+        matSortDisableClear="true"
+        class="table"
+        (matSortChange)="sort($event)"
+      >
+        <!-- First Name Column -->
+
+        <ng-container matColumnDef="firstName">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            class="table-header"
+            mat-sort-header
+          >
+            First Name
+          </th>
+          <td
+            mat-cell
+            *matCellDef="let row"
+            class="table-body"
+            (click)="edit(row)"
+          >
+            {{ row.firstName }}
+          </td>
+        </ng-container>
+
+        <!-- Last Name Column -->
+
+        <ng-container matColumnDef="lastName">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            class="table-header"
+            mat-sort-header
+          >
+            Last Name
+          </th>
+          <td
+            mat-cell
+            *matCellDef="let row"
+            class="table-body"
+            (click)="edit(row)"
+          >
+            {{ row.lastName }}
+          </td>
+        </ng-container>
+
+        <!-- Phone Number Column -->
+
+        <ng-container matColumnDef="phoneNumber">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            class="table-header"
+            mat-sort-header
+          >
+            Phone Number
+          </th>
+          <td
+            mat-cell
+            *matCellDef="let row"
+            class="table-body"
+            (click)="edit(row)"
+          >
+            {{ row.phoneNumber }}
+          </td>
+        </ng-container>
+
+        <!-- E-Mail Column -->
+
+        <ng-container matColumnDef="email">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            class="table-header"
+            mat-sort-header
+          >
+            E-Mail
+          </th>
+          <td
+            mat-cell
+            *matCellDef="let row"
+            class="table-body"
+            (click)="edit(row)"
+          >
+            {{ row.email }}
+          </td>
+        </ng-container>
+
+        <!-- Role Column -->
+
+        <ng-container matColumnDef="role">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            class="table-header"
+            mat-sort-header
+          >
+            Role
+          </th>
+          <td
+            mat-cell
+            *matCellDef="let row"
+            class="table-body"
+            (click)="edit(row)"
+          >
+            {{ row.role }}
+          </td>
+        </ng-container>
+
+        <!-- Disabled Column -->
+
+        <ng-container matColumnDef="disabled">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            class="table-header"
+            mat-sort-header
+          >
+            Disabled
+          </th>
+          <td
+            mat-cell
+            *matCellDef="let row"
+            class="table-body"
+            (click)="$event.stopPropagation()"
+          >
+            <mat-checkbox
+              color="primary"
+              [checked]="row.disabled"
+            ></mat-checkbox>
+          </td>
+        </ng-container>
+
+        <!-- Avatar Column -->
+
+        <ng-container matColumnDef="avatar">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            class="table-header"
+            mat-sort-header
+          >
+            Avatar
+          </th>
+          <td
+            mat-cell
+            *matCellDef="let row"
+            class="table-body"
+            (click)="edit(row)"
+          >
+            <img
+              *ngIf="row.avatar.length"
+              [src]="dataFormatterService.oneImageFormatter(row.avatar)"
+              alt="..."
+              class="table-img"
+              title="image"
+            />
+          </td>
+        </ng-container>
+
+        <!-- Action Column -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef class="table-header">
+            Actions
+          </th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            class="table-body"
+            (click)="$event.stopPropagation()"
+          >
+            <div class="table-buttons-wrapper">
+              <button
+                mat-flat-button
+                color="success"
+                class="table-button"
+                (click)="edit(element)"
+              >
+                edit
+              </button>
+              <button
+                mat-flat-button
+                color="warn"
+                class="table-button"
+                (click)="openDeleteModal(element.id)"
+              >
+                delete
+              </button>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr
+          mat-row
+          *matRowDef="let row; columns: displayedColumns"
+          (click)="edit(row)"
+        ></tr>
+      </table>
+    </div>
+
+    <mat-paginator
+      [pageSizeOptions]="[10, 20, 50, 100]"
+      showFirstLastButtons
+      (page)="setLimit($event)"
+    ></mat-paginator>
+  </mat-card-content>
+</mat-card>

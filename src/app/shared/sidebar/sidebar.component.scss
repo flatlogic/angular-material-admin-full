@@ -1,0 +1,251 @@
+@import 'src/app/styles/colors';
+@import 'src/app/styles/font';
+@import 'src/app/styles/variables';
+@import 'src/app/styles/sidebar';
+
+.mat-list-base {
+  border-bottom: 1px solid $gray-80;
+  width: 100%;
+  padding-bottom: 16px;
+
+  &:last-child {
+    border-top: 1px solid $gray-80;
+  }
+
+  & .mat-list-item {
+    display: flex;
+    cursor: pointer;
+    width: auto;
+    padding: 0 16px;
+    font-size: $fs-small;
+    height: 45px;
+
+    &.active {
+      outline: none;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.mat-icon {
+  margin-right: 24px;
+  font-size: $fs-large;
+  color: $sidebar-icon-color;
+  padding: 0;
+}
+
+.sidebar-title {
+  color: $sidebar-title-color;
+  font-size: $fs-small;
+  text-transform: uppercase;
+  margin-top: 24px;
+  margin-left: 36px;
+  margin-bottom: 16px;
+}
+
+.mat-list-base .mat-list-item.ui-element {
+  padding-left: 40px;
+}
+
+.circle {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: $sidebar-circle-color;
+  margin-left: 20px;
+}
+
+.project-circle {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 34px;
+  margin-left: 8px;
+
+  &_yellow {
+    background-color: $yellow;
+  }
+
+  &_blue {
+    background-color: $blue;
+  }
+
+  &_pink {
+    background-color: $pink;
+  }
+}
+
+.mat-tree-item {
+  display: flex;
+  cursor: pointer;
+  padding-left: 33px;
+  justify-content: space-between;
+  width: 100%;
+  height: 45px;
+  align-items: center;
+
+  & div {
+    display: flex;
+    align-items: center;
+
+    & p {
+      margin: 0;
+
+      & span {
+        width: auto;
+        padding: 0 5px;
+        border-radius: 32px;
+        top: -14px;
+        right: -30px;
+        line-height: 16px;
+        height: 16px;
+      }
+    }
+  }
+
+  & > mat-icon {
+    display: none;
+  }
+}
+
+.mat-node {
+  &:hover {
+    & .mat-tree-item {
+      & mat-icon {
+        display: block;
+      }
+    }
+  }
+}
+
+mat-tree-node {
+  min-height: 45px;
+  outline: none;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $sidebar-background-color-hover;
+  }
+}
+
+mat-tree-node[aria-expanded='true'] {
+  & .mat-tree-item {
+    & mat-icon {
+      display: block;
+    }
+  }
+}
+
+.mat-tree-second-item {
+  display: flex;
+  align-items: center;
+
+  & div {
+    margin-right: 20px;
+  }
+
+  & p {
+    margin: 0;
+  }
+}
+
+.rotateUp {
+  transform: rotate(180deg);
+  transition: transform 0.3s linear;
+}
+
+.rotateDown {
+  transform: rotate(0deg);
+  transition: transform 0.3s linear;
+}
+
+.mat-badge-content {
+  font-weight: $fw-normal;
+}
+
+.add-section-wrapper,
+.chat-section-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  cursor: pointer;
+  margin-bottom: -8px;
+}
+
+.chat-section-wrapper {
+  padding: 8px 16px 16px 0;
+}
+
+.add-icon-wrapper,
+.chat-icon-wrapper {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: $pink;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 24px 0 12px;
+}
+
+.chat-icon-wrapper {
+  width: 45px;
+  height: 45px;
+  background-color: $blue;
+  margin-right: 8px;
+  margin-left: 0;
+}
+
+.add-icon,
+.chat-icon {
+  color: $white;
+  margin: 0;
+}
+
+.add-section-title,
+.chat-section-title {
+  margin: 0;
+}
+
+.add-section-menu {
+  background-color: $blue;
+  padding: 24px;
+}
+
+.menu-title {
+  font-size: $fs-normal;
+  color: $white;
+  margin: 0;
+}
+
+.form-field {
+  color: $white;
+}
+
+.menu-buttons-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.menu-button {
+  box-shadow: none;
+
+  & + .menu-cancel-button {
+    margin-left: 5px;
+  }
+}
+
+.menu-cancel-button {
+  box-shadow: none;
+
+  &:hover {
+    background-color: #8b9bff;
+  }
+}
+
+.space {
+  margin-bottom: 240px;
+}

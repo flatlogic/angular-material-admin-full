@@ -1,0 +1,51 @@
+@import 'src/app/styles/colors';
+@import 'src/app/styles/font';
+
+.breadcrumb-card {
+  padding: 0;
+}
+
+.breadcrumb-list {
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.breadcrumb-list-item {
+  cursor: pointer;
+  width: auto;
+  font-size: $fs-regular;
+  color: $grey;
+  outline: none;
+
+  &.active {
+    color: $blue;
+    background: transparent;
+  }
+}
+
+:host ::ng-deep {
+  .breadcrumb-list-item .mat-list-item-content {
+    padding-right: 0;
+  }
+
+  .breadcrumb-list-item + .breadcrumb-list-item {
+    .mat-list-item-content {
+      padding-left: 0;
+    }
+  }
+}
+
+.text {
+  &:first-letter {
+    text-transform: uppercase;
+  }
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  font-size: $fs-medium;
+  padding: 0;
+}

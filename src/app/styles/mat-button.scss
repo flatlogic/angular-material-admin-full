@@ -1,0 +1,31 @@
+@import 'colors';
+
+$raised-button-shadow: 0 3px 11px 0 $shadow-white, 0 3px 3px -2px $shadow-grey,
+  0 1px 8px 0 $shadow-dark-grey;
+
+@mixin mat-button() {
+  .mat-flat-button,
+  .mat-raised-button,
+  .mat-fab,
+  .mat-mini-fab {
+    color: $dark-grey;
+    background-color: $default;
+    letter-spacing: 0.02857em;
+    text-transform: uppercase;
+    box-shadow: none;
+  }
+
+  .mat-mini-fab:not([class*='mat-elevation-z']) {
+    box-shadow: none;
+  }
+
+  .mat-raised-button:not([class*='mat-elevation-z']) {
+    box-shadow: $raised-button-shadow;
+  }
+}
+
+@mixin mat-button-dark() {
+  .mat-raised-button:not([class*='mat-elevation-z']) {
+    box-shadow: none;
+  }
+}

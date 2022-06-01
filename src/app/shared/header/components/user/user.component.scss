@@ -1,0 +1,110 @@
+@import 'src/app/styles/colors';
+@import 'src/app/styles/font';
+@import 'src/app/styles/variables';
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  margin-right: 16px;
+  box-shadow: none;
+  font-size: $fs-regular;
+}
+
+.user-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.user-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-left: 16px;
+  cursor: pointer;
+}
+
+.user-button {
+  background-color: $blue;
+  box-shadow: none;
+  margin-left: 16px;
+
+  &__icon {
+    color: $white-35;
+  }
+
+  &:hover {
+    background-color: $black-08;
+  }
+
+  @media (max-width: $small) {
+    margin-top: 0;
+  }
+}
+
+.user-menu-title {
+  padding: 16px 48px 0 16px;
+  margin-bottom: 4px;
+
+  &__name {
+    margin-bottom: 4px;
+    font-weight: $fw-lighter;
+    font-size: $fs-large;
+    color: $dark-grey;
+  }
+
+  &__link {
+    color: $blue;
+    font-weight: $fw-lighter;
+    font-size: $fs-small;
+    text-decoration: none;
+  }
+}
+
+.user-menu-icon {
+  color: $light-grey;
+  margin-right: 16px;
+  opacity: 0.8;
+}
+
+.sign-button-wrapper {
+  text-align: center;
+  padding: 8px 0 16px 0;
+  width: 100%;
+}
+
+.sign-button {
+  border: 1px solid;
+  color: $blue;
+  background-color: $white;
+  width: 80%;
+}
+
+.user-menu {
+  &__item-title {
+    color: $light-grey;
+
+    &:hover {
+      color: $dark-grey;
+      background-color: $blue-white;
+
+      & .user-menu-icon {
+        color: #536dfe;
+      }
+    }
+  }
+}
+
+.greeting-text {
+  font-size: $fs-small;
+  font-weight: $fw-lighter;
+  color: $white;
+  margin: 0 0 0 8px;
+}
+
+.user-name {
+  font-size: $fs-small;
+  color: $white;
+  margin: 0;
+  font-weight: $fw-bold;
+  font-family: Arial, sans-serif;
+}

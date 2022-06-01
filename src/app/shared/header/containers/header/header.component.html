@@ -1,0 +1,24 @@
+<mat-toolbar class="header" color="primary">
+  <div class="header__title">
+    <button
+      class="header__title-button"
+      mat-mini-fab
+      (click)="openMenu()"
+      color="primary"
+    >
+      <mat-icon *ngIf="!isMenuOpened" class="header__title-button-icon"
+        >menu</mat-icon
+      >
+      <mat-icon *ngIf="isMenuOpened" class="header__title-button-icon"
+        >arrow_back</mat-icon
+      >
+    </button>
+    <h6 class="header__title-text">Angular-Material-Admin-Full</h6>
+  </div>
+
+  <div class="header-toolbar">
+    <app-search></app-search>
+    <app-notifications></app-notifications>
+    <app-user [user]="user$ | async" (signOut)="signOut()"></app-user>
+  </div>
+</mat-toolbar>
