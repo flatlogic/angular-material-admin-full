@@ -1,0 +1,26 @@
+@import './src/app/styles/colors';
+@import './src/app/styles/variables';
+
+.cards-wrapper {
+  display: flex;
+  margin-top: 36px;
+
+  @media (max-width: $small) {
+    flex-wrap: wrap;
+  }
+}
+
+.card {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.card + .card {
+  margin-left: 36px;
+
+  @media (max-width: $small) {
+    margin-left: 0;
+    margin-top: 36px;
+  }
+}
+

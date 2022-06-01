@@ -1,0 +1,154 @@
+@import "src/app/styles/font";
+@import "src/app/styles/colors";
+@import "src/app/styles/variables";
+
+.add-line-card {
+  margin-top: 24px;
+  padding: 48px;
+
+  @media(max-width: $small) {
+    padding: 24px;
+  }
+}
+
+.add-line-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media(max-width: $small) {
+    overflow-x: auto;
+  }
+}
+
+.add-line-item-wrapper {
+  display: flex;
+  align-items: center;
+
+  &.active {
+    & .add-line-item {
+      background-color: $blue;
+    }
+
+    & .add-line-item-title {
+      color: $dark-grey;
+    }
+  }
+}
+
+.add-line-item {
+  width: 24px;
+  height: 24px;
+  background-color: $gray-06;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.add-line-item-text {
+  color: $white;
+  font-size: 12px;
+  margin: 0;
+}
+
+.add-line-item-icon {
+  color: $white;
+  font-size: 12px;
+  margin: 0;
+  height: 12px;
+  width: 12px;
+}
+
+.add-line-item-title {
+  color: $grey;
+  font-size: $fs-small;
+  font-weight: $fw-normal;
+  margin: 0 0 0 8px;
+  width: max-content;
+
+  @media(max-width: $small) {
+    display: none;
+  }
+}
+
+.break-line-wrapper {
+  width: 100%;
+  margin: 0 8px;
+  min-width: 50px;
+
+  @media(max-width: $small) {
+    display: none;
+  }
+}
+
+.steps-card {
+  margin-top: 24px;
+  box-shadow: 0 3px 11px 0 $shadow-white, 0 3px 3px -2px $shadow-grey, 0 1px 8px 0 $shadow-dark-grey;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+}
+
+.content-wrapper {
+  @media(max-width: $small) {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+.content-title {
+  margin-bottom: 30px;
+}
+
+.font-wrapper {
+  width: max-content;
+
+  @media(max-width: $small) {
+    width: 100%;
+  }
+}
+
+.upload-image-text {
+  font-size: $fs-normal;
+  font-weight: $fw-normal;
+  color: $grey;
+  margin: 0;
+
+  &:last-child {
+    margin-bottom: 20px;
+  }
+}
+
+.upload-image-button {
+  margin: 20px 0;
+}
+
+.form-field {
+  display: block;
+  width: 600px;
+  margin-bottom: 35px;
+
+  @media (max-width: $small) {
+    width: 100%;
+  }
+}
+
+.form-select {
+  width: 100%;
+}
+
+.next-button {
+  float: right;
+}
+
+.buttons-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  text-transform: uppercase;
+}

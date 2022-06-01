@@ -1,0 +1,56 @@
+<h3 class="title">Grid system</h3>
+
+<div style="margin-top: 24px; display: flex; justify-content: flex-end">
+  <mat-grid-list cols="2" rowHeight="52" gutterSize="24" style="width: 200px">
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <div class="first-grid-item-2">
+        <span>1</span>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <div class="second-grid-item-2">
+        <span>2</span>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+<div style="margin-top: 24px">
+  <mat-grid-list cols="2" rowHeight="52" gutterSize="24">
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <div class="first-grid-item-2">
+        <span>1</span>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <div class="second-grid-item-2">
+        <span>2</span>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+<div style="margin-top: 24px">
+  <mat-grid-list cols="3" rowHeight="52" gutterSize="24">
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <div class="first-grid-item-2">
+        <span>1</span>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <div class="second-grid-item-2">
+        <span>2</span>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <div class="third-grid-item-2">
+        <span>3</span>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+<div class="button-wrapper">
+  <button class="button" mat-stroked-button color="primary" (click)="close()" tabindex="-1">CANCEL</button>
+  <button class="button" mat-raised-button color="primary" (click)="close()" tabindex="-1">OK</button>
+</div>

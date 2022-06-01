@@ -1,0 +1,27 @@
+@import "src/app/styles/variables";
+
+.card {
+  margin-top: 24px;
+}
+
+.card-content {
+  display: flex;
+  justify-content: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+
+  @media (max-width: $small) {
+    width: 100%;
+  }
+}
+
+.buttons-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 24px;
+}

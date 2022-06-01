@@ -1,0 +1,43 @@
+@import "./src/app/styles/colors";
+@import "./src/app/styles/font";
+
+.title {
+  font-size: $fs-regular;
+  color: $dark-grey;
+}
+
+.button-wrapper {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.button + .button {
+    margin-left: 8px;
+}
+
+@mixin grid-item-2 {
+  width: 93px;
+  height: 100%;
+  border-radius: 4px;
+  color: $white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.first-grid-item-2 {
+  @include grid-item-2;
+  background-color: $blue;
+  justify-self: flex-end;
+}
+
+.second-grid-item-2 {
+  @include grid-item-2;
+  background-color: $yellow;
+}
+
+.third-grid-item-2 {
+  @include grid-item-2;
+  background-color: $pink;
+}

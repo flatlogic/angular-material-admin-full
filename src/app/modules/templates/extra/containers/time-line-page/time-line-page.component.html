@@ -1,0 +1,80 @@
+<app-breadcrumb [path]="routes.TIME_LINE"></app-breadcrumb>
+
+<div class="time-line-block-wrapper">
+  <div class="time-line-block">
+    <div class="time-line-left-block first-child">
+      <app-time-line-card class="time-line-card" [timeLineItem]="(timeLineData$ | async)[0]"></app-time-line-card>
+    </div>
+
+    <div class="line-wrapper">
+      <div class="time-line-circle blue first-child">
+        <mat-icon class="time-line-circle-icon">navigation</mat-icon>
+      </div>
+
+      <div class="line"></div>
+    </div>
+
+    <div class="time-line-right-block first-child">
+      <p class="day">{{(timeLineData$ | async)[0].date.day}}</p>
+      <p class="time">{{(timeLineData$ | async)[0].date.time}}</p>
+    </div>
+  </div>
+
+  <div class="time-line-block">
+    <div class="time-line-left-block">
+      <p class="day">{{(timeLineData$ | async)[1].date.day}}</p>
+      <p class="time">{{(timeLineData$ | async)[1].date.time}}</p>
+    </div>
+
+    <div class="line-wrapper">
+      <div class="time-line-circle pink">
+        <mat-icon class="time-line-circle-icon">chat_bubble</mat-icon>
+      </div>
+
+      <div class="line"></div>
+    </div>
+
+    <div class="time-line-right-block">
+      <app-time-line-card class="time-line-card" [timeLineItem]="(timeLineData$ | async)[1]"></app-time-line-card>
+    </div>
+  </div>
+
+  <div class="time-line-block">
+    <div class="time-line-left-block">
+      <app-time-line-card class="time-line-card" [timeLineItem]="(timeLineData$ | async)[2]"></app-time-line-card>
+    </div>
+
+    <div class="line-wrapper">
+      <div class="time-line-circle yellow">
+        <mat-icon class="time-line-circle-icon">free_breakfast</mat-icon>
+      </div>
+
+      <div class="line"></div>
+    </div>
+
+    <div class="time-line-right-block">
+      <p class="day">{{(timeLineData$ | async)[2].date.day}}</p>
+      <p class="time">{{(timeLineData$ | async)[2].date.time}}</p>
+    </div>
+  </div>
+
+  <div class="time-line-block">
+    <div class="time-line-left-block">
+      <p class="day">{{(timeLineData$ | async)[3].date.day}}</p>
+      <p class="time">{{(timeLineData$ | async)[3].date.time}}</p>
+    </div>
+
+    <div class="line-wrapper">
+      <div class="time-line-circle green">
+        <p class="time-line-circle-text">J</p>
+      </div>
+
+      <div class="line"></div>
+    </div>
+
+    <div class="time-line-right-block">
+      <app-time-line-card class="time-line-card" [timeLineItem]="(timeLineData$ | async)[3]"></app-time-line-card>
+    </div>
+  </div>
+</div>
+

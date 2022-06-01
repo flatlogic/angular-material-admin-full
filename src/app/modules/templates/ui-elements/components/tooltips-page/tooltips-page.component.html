@@ -1,0 +1,222 @@
+<app-breadcrumb [path]="routes.TOOLTIPS"></app-breadcrumb>
+
+<div class="content-wrapper">
+  <div class="cards-wrapper">
+    <mat-card class="card">
+      <mat-card-title>
+        <p>Tooltip Example</p>
+      </mat-card-title>
+
+      <mat-card-content class="content">
+        <button
+          class="button"
+          #tooltip="matTooltip"
+          (click)="showTooltip()"
+          mat-flat-button
+          color="primary"
+          [matTooltipDisabled]="!isShow"
+          matTooltip="Info about the action"
+          matTooltipClass="tooltip-blue"
+        >tooltip on click</button>
+
+        <button
+          class="button"
+          mat-flat-button
+          color="warn"
+          matTooltipPosition="above"
+          matTooltip="Info about the action"
+          matTooltipClass="tooltip-pink"
+        >tooltip on hover</button>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="card">
+      <mat-card-title>
+        <p>Popover Example</p>
+      </mat-card-title>
+
+      <mat-card-content>
+        <div class="popover-wrapper">
+          <popover-content
+            #popoverOnHover
+            [closeOnMouseOutside]="true"
+            class="popover"
+          >
+            <mat-card>
+              <mat-card-subtitle>
+                <p>The content of the Popover.</p>
+              </mat-card-subtitle>
+            </mat-card>
+          </popover-content>
+
+          <button
+            [popover]="popoverOnHover"
+            popoverPlacement="top"
+            [popoverOnHover]="true"
+            [popoverCloseOnMouseOutside]="true"
+            mat-flat-button
+            color="default"
+          >open popover
+          </button>
+
+          <p class="card-text">Hover with a Popover.</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="cards-wrapper">
+    <mat-card class="card">
+      <mat-card-title>
+        <p>Tooltip Directions</p>
+      </mat-card-title>
+
+      <mat-card-content class="content">
+        <div class="tooltip-directions-content-wrapper">
+          <button
+            class="tooltip-button"
+            mat-flat-button
+            color="primary"
+            matTooltipPosition="above"
+            matTooltip="Info about the action"
+          >tooltip on top</button>
+
+          <button
+            class="tooltip-button"
+            mat-flat-button
+            color="primary"
+            matTooltipPosition="right"
+            matTooltip="Info about the action"
+          >tooltip on right</button>
+
+          <button
+            class="tooltip-button"
+            mat-flat-button
+            color="primary"
+            matTooltipPosition="below"
+            matTooltip="Info about the action"
+          >tooltip on bottom</button>
+
+          <button
+            class="tooltip-button"
+            mat-flat-button
+            color="primary"
+            matTooltipPosition="left"
+            matTooltip="Info about the action"
+          >tooltip on left</button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="card">
+      <mat-card-title>
+        <p>Popover Directions</p>
+      </mat-card-title>
+
+      <mat-card-content>
+        <div class="popovers-wrapper">
+          <div class="popover-wrapper">
+            <popover-content
+              #popoverOnTop
+              [closeOnMouseOutside]="true"
+              class="popover"
+            >
+              <mat-card>
+                <mat-card-subtitle>
+                  <p class="popover-title">The content of the Popover.</p>
+                </mat-card-subtitle>
+              </mat-card>
+            </popover-content>
+
+            <button
+              [popover]="popoverOnTop"
+              popoverPlacement="top"
+              [popoverOnHover]="true"
+              [popoverCloseOnMouseOutside]="true"
+              mat-flat-button
+              class="popover-button"
+              color="default"
+            >popover on top
+            </button>
+          </div>
+
+          <div class="popover-wrapper">
+            <popover-content
+              #popoverOnBottom
+              [closeOnMouseOutside]="true"
+              class="popover"
+            >
+              <mat-card>
+                <mat-card-subtitle>
+                  <p class="popover-title">The content of the Popover.</p>
+                </mat-card-subtitle>
+              </mat-card>
+            </popover-content>
+
+            <button
+              [popover]="popoverOnBottom"
+              popoverPlacement="bottom"
+              [popoverOnHover]="true"
+              [popoverCloseOnMouseOutside]="true"
+              mat-flat-button
+              color="default"
+              class="popover-button"
+            >popover on bottom
+            </button>
+          </div>
+
+          <div class="popover-wrapper">
+            <popover-content
+              #popoverOnLeft
+              [closeOnMouseOutside]="true"
+              class="popover"
+            >
+              <mat-card>
+                <mat-card-subtitle>
+                  <p class="popover-title">The content of the Popover.</p>
+                </mat-card-subtitle>
+              </mat-card>
+            </popover-content>
+
+            <button
+              [popover]="popoverOnLeft"
+              popoverPlacement="left"
+              [popoverOnHover]="true"
+              [popoverCloseOnMouseOutside]="true"
+              mat-flat-button
+              color="default"
+              class="popover-button"
+            >popover on left
+            </button>
+          </div>
+
+          <div class="popover-wrapper">
+            <popover-content
+              #popoverOnRight
+              [closeOnMouseOutside]="true"
+              class="popover"
+            >
+              <mat-card>
+                <mat-card-subtitle>
+                  <p class="popover-title">The content of the Popover.</p>
+                </mat-card-subtitle>
+              </mat-card>
+            </popover-content>
+
+            <button
+              [popover]="popoverOnRight"
+              popoverPlacement="right"
+              [popoverOnHover]="true"
+              [popoverCloseOnMouseOutside]="true"
+              mat-flat-button
+              color="default"
+              class="popover-button"
+            >popover on right
+            </button>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+

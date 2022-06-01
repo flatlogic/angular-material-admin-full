@@ -1,0 +1,96 @@
+@import "src/app/styles/mat-badge";
+@import "src/app/styles/variables";
+
+.content-wrapper {
+  margin-top: 36px;
+  display: flex;
+
+  @media (max-width: $small) {
+    flex-wrap: wrap;
+  }
+}
+
+.badge-card {
+  width: 50%;
+  margin-right: 18px;
+
+  .subtitle {
+    margin-bottom: 22px;
+  }
+
+  @media (max-width: $small) {
+    width: 100%;
+    margin-right: 0;
+  }
+}
+
+.mat-badge-medium.mat-badge-above .mat-badge-content {
+  margin-right: -21px;
+  top: -20px;
+}
+
+.second-subtitle {
+  padding-top: 24px;
+}
+
+.icon-badge-card {
+  width: 50%;
+  margin-left: 18px;
+
+  @media (max-width: $small) {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 36px;
+  }
+}
+
+.icon-badge-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 0;
+}
+
+.icon-badge + .icon-badge {
+  margin-left: 16px;
+}
+
+.tabs-badge-wrapper {
+  margin: 16px 0;
+}
+
+.tab-title {
+  margin: 0;
+  width: 100%;
+
+  & span.mat-badge-content {
+    margin-right: -10px !important;
+    top: -12px !important;
+    padding: 0;
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
+  }
+}
+
+.empty-block {
+  width: 100%;
+  height: 1px;
+}
+
+.text {
+  width: fit-content;
+  margin: 24px 0;
+}
+
+.h1 {
+  @media (max-width: $normal) {
+    display: none;
+  }
+}
+
+.chips-card {
+  margin-top: 36px;
+}
+
+@include badge-line-text;

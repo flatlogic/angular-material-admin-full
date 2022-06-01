@@ -1,0 +1,14 @@
+@import 'src/app/styles/font';
+@import 'src/app/styles/colors';
+
+.date-menu {
+  border: none;
+  width: auto;
+  padding: 8px 0 8px 4px;
+}
+
+.date-option {
+  font-size: $fs-normal;
+  font-weight: $fw-lighter;
+  color: $dark-grey;
+}

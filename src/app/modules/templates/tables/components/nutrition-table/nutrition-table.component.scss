@@ -1,0 +1,71 @@
+@import "src/app/styles/colors";
+@import "src/app/styles/font";
+@import "src/app/styles/variables";
+
+.card-title {
+  font-size: $fs-regular;
+  color: $grey;
+  font-weight: $fw-lighter;
+  margin-bottom: 8px;
+}
+
+.card-subtitle {
+  font-size: $fs-normal;
+  color: $dark-grey;
+  font-weight: $fw-lighter;
+  margin-bottom: 24px;
+}
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+  font-size: $fs-regular;
+  color: $dark-grey;
+  font-weight: $fw-lighter;
+  padding: 0 24px 0 24px;
+
+  @media(max-width: $small) {
+    padding: 0;
+  }
+}
+
+.table-header-title {
+  margin: 0;
+  line-height: 36px;
+}
+
+.table-header-button {
+  background-color: inherit;
+  color: $dark-grey;
+  box-shadow: none;
+  width: 48px;
+  height: 48px;
+
+  &:hover {
+    background-color: $black-08;
+  }
+}
+
+.table {
+  width: 100%;
+}
+
+.col-header {
+  font-size: $fs-normal;
+  color: $dark-grey;
+  font-weight: $fw-normal;
+  padding: 14px 40px 14px 24px;
+}
+
+.col-body {
+  font-size: $fs-small;
+  color: $dark-grey;
+  font-weight: $fw-lighter;
+  padding: 14px 40px 14px 24px;
+}

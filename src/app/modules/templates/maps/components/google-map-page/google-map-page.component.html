@@ -1,0 +1,9 @@
+<app-breadcrumb [path]="routes.GOOGLE_MAP"></app-breadcrumb>
+
+<mat-card class="card">
+  <mat-card-content class="card-content">
+    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" class="agm-map">
+      <agm-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="true"></agm-marker>
+    </agm-map>
+  </mat-card-content>
+</mat-card>

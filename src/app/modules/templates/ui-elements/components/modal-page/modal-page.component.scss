@@ -1,0 +1,66 @@
+@import "src/app/styles/colors";
+@import "src/app/styles/variables";
+@import "src/app/styles/font";
+
+.content-wrapper {
+  display: flex;
+
+  @media (max-width: $medium) {
+    flex-wrap: wrap;
+  }
+
+  .content-block {
+    width: 100%;
+    margin-top: 24px;
+
+    & + .content-block {
+      margin-left: 36px;
+
+      @media (max-width: $medium) {
+        margin-left: 0;
+        margin-top: 36px;
+      }
+    }
+
+    mat-card + mat-card {
+      margin-top: 36px;
+    }
+  }
+}
+
+button + button {
+  margin-left: 16px;
+
+  @media (max-width: $small) {
+    margin-left: 0;
+    margin-top: 8px;
+  }
+}
+
+.code-wrapper {
+  background-color: $blue-white;
+  height: auto;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  padding: 16px 16px 0 16px;
+}
+
+.code {
+  font-size: $fs-xs;
+}
+
+.button {
+  text-transform: uppercase;
+}
+
+.blue {
+  color: $blue;
+}
+
+.pink {
+  color: $pink;
+}
+
+.grey {
+  color: $grey;
+}

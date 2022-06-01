@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { routes } from '../../consts/routes';
+import { routes } from '../../consts';
 import { FlatTreeControl } from '@angular/cdk/tree';
 import {
   MatTreeFlatDataSource,

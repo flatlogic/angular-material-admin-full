@@ -1,0 +1,37 @@
+<mat-card class="steps-card">
+  <mat-card-title>Create New Account</mat-card-title>
+
+  <mat-card-content class="content">
+    <div class="font-wrapper">
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>User Name</mat-label>
+        <input matInput>
+        <mat-hint>Please enter your user name</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Email Address</mat-label>
+        <input matInput>
+        <mat-hint>We’ll never share your email with anyone else</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Password</mat-label>
+        <input matInput>
+        <mat-hint>Enter your password. Min 6 characters long</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Role</mat-label>
+        <mat-select class="form-select">
+          <mat-option value="user">User</mat-option>
+          <mat-option value="admin">Admin</mat-option>
+        </mat-select>
+        <mat-hint>Please choose the role</mat-hint>
+      </mat-form-field>
+
+      <button mat-flat-button color="primary">next</button>
+    </div>
+  </mat-card-content>
+</mat-card>
+

@@ -1,0 +1,76 @@
+@import "../../../../styles/colors";
+@import "../../../../styles/font";
+@import "../../../../styles/variables";
+
+.card {
+  margin-top: 36px;
+
+  @media (max-width: $small) {
+    margin: 36px 0;
+  }
+}
+
+.wrapper {
+  display: flex;
+  margin-bottom: 25px;
+
+  @media (max-width: $small) {
+    flex-direction: column;
+  }
+}
+
+.article-img-wrapper {
+  width: 40%;
+
+  @media (max-width: $small) {
+    width: 100%;
+  }
+}
+
+.article-text-wrapper {
+  width: 60%;
+  margin-left: 24px;
+
+  @media (max-width: $small) {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 24px;
+  }
+}
+
+.article-writer {
+  font-weight: $fw-normal;
+  font-size: 12px;
+  line-height: 14px;
+  color: $gray-06;
+  margin-bottom: 9px;
+}
+
+.article-text {
+  font-weight: $fw-normal;
+  font-size: $fs-small;
+  line-height: 21px;
+  color: $grey;
+  margin-bottom: 20px;
+}
+
+.article-info-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.article-info {
+  font-weight: $fw-normal;
+  font-size: 12px;
+  line-height: 14px;
+  color: $gray-06;
+  margin: 0;
+}
+
+.article-icon {
+  padding: 0;
+  width: 13px;
+  height: 16px;
+  font-size: $fs-normal;
+}

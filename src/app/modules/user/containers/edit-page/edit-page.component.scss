@@ -1,0 +1,40 @@
+@import "src/app/styles/variables";
+@import "src/app/styles/font";
+@import "src/app/styles/colors";
+
+.edit-nav-card, .form-card {
+  margin-top: 24px;
+}
+
+.edit-nav-card {
+  .add-line-card {
+    padding: 0 30px;
+  }
+}
+
+.nav-items-group {
+  padding: 8px;
+}
+
+.nav-item-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 12px 6px;
+}
+
+.nav-item-title {
+  margin: 0 0 0 8px;
+  font-size: $fs-small;
+  font-weight: $fw-normal;
+  text-transform: uppercase;
+
+  @media(max-width: $small) {
+    display: none;
+  }
+}
+
+.nav-empty-item {
+  width: 100%;
+  height: 1px;
+}

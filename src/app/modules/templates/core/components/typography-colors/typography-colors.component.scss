@@ -1,0 +1,65 @@
+@import "../../../../../styles/colors";
+@import "../../../../../styles/variables";
+
+
+.typography-card {
+  box-shadow: 0 3px 11px 0 $shadow-white, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.typography-content {
+
+  &__wrapper {
+    display: flex;
+    padding: 0 8px;
+
+    @media (max-width: $small) {
+      flex-wrap: wrap;
+    }
+  }
+
+  &__item-wrapper {
+    box-shadow: 0 3px 11px 0 $shadow-white, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A;
+    width: 100%;
+    margin: 16px;
+  }
+
+  &__headings, &__colors, &__settings, &__size {
+    margin-top: 8px;
+    border: 1px dashed $blue;
+    padding: 32px 16px;
+
+    h1 {
+      @media (max-width: $small) {
+        line-height: 46px;
+      }
+    }
+  }
+
+  &__colors {
+    &_blue {
+      color: $blue;
+    }
+
+    &_green {
+      color: $green;
+    }
+
+    &_pink {
+      color: $pink;
+    }
+
+    &_yellow {
+      color: $yellow;
+    }
+
+    &_light-blue {
+      color: $light-blue;
+    }
+
+    &_violet {
+      color: $violet;
+    }
+  }
+}

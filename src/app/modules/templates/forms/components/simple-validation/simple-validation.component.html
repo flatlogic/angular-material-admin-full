@@ -1,0 +1,26 @@
+<mat-card class="card">
+  <mat-card-title>
+    <p>Dead simple validation</p>
+  </mat-card-title>
+
+  <mat-card-content class="card-content">
+    <form [formGroup]="form" class="form">
+      <mat-form-field>
+        <mat-label>Simple required</mat-label>
+        <input matInput formControlName="optionA">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Min-length On Change</mat-label>
+        <input matInput formControlName="optionB">
+        <mat-hint>At least 10</mat-hint>
+      </mat-form-field>
+
+
+      <div class="buttons-wrapper">
+        <button mat-raised-button>Cancel</button>
+        <button mat-raised-button color="success" (click)="validate()">Validate</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

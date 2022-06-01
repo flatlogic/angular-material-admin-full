@@ -1,0 +1,23 @@
+<div class="edit-form-wrapper">
+  <h3>Account</h3>
+
+  <mat-form-field appearance="outline" class="form-item">
+    <input matInput [formControl]="userName">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="form-item">
+    <input matInput [formControl]="userEmail">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="form-item">
+    <mat-select [formControl]="userStatus">
+      <mat-option value="admin">Admin</mat-option>
+      <mat-option value="user">User</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="button-wrapper">
+    <button mat-stroked-button color="primary" class="reset-button">Reset</button>
+    <button mat-flat-button color="success">Save</button>
+  </div>
+</div>

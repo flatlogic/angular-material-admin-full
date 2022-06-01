@@ -1,0 +1,20 @@
+@import "src/app/styles/variables";
+
+.button-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (max-width: $small) {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+button {
+  margin: 8px 0;
+}
+
+button + button {
+  margin-left: 8px;
+}

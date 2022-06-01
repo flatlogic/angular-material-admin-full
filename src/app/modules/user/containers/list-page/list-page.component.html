@@ -1,0 +1,141 @@
+<app-breadcrumb [path]="routes.Users"></app-breadcrumb>
+
+<mat-card class="add-card">
+  <mat-card-content class="add-content">
+    <div class="first-buttons-wrapper">
+      <button mat-flat-button color="success" class="add-button" [routerLink]="routes.Users">
+        <div class="button-inert-wrapper">
+          <mat-icon>add</mat-icon>
+          <p class="button-text">Add</p>
+        </div>
+      </button>
+
+      <button mat-stroked-button color="primary" class="filters-button">
+        <div class="button-inert-wrapper">
+          <mat-icon>filter_list</mat-icon>
+          <p class="button-text">filters</p>
+        </div>
+      </button>
+    </div>
+
+    <div class="second-buttons-wrapper">
+      <button mat-stroked-button color="warn" class="download-button">
+        <div class="button-inert-wrapper">
+          <mat-icon>get_app</mat-icon>
+          <p class="button-text">download</p>
+        </div>
+      </button>
+
+      <mat-form-field appearance="outline" class="search mat-form-field-should-float">
+        <mat-label>Search</mat-label>
+        <input matInput>
+        <mat-icon matPrefix>search</mat-icon>
+      </mat-form-field>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="users-table">
+  <mat-card-content>
+    <div class="table-wrapper">
+      <table mat-table [dataSource]="dataSource" matSort class="table">
+
+        <!-- Checkbox Column -->
+        <ng-container matColumnDef="select">
+          <th mat-header-cell *matHeaderCellDef>
+            <mat-checkbox
+              (change)="$event ? masterToggle() : null"
+              [checked]="selection.hasValue() && isAllSelected()"
+              [indeterminate]="selection.hasValue() && !isAllSelected()"
+              [aria-label]="checkboxLabel()"
+              color="warn"
+            ></mat-checkbox>
+          </th>
+          <td mat-cell *matCellDef="let row">
+            <mat-checkbox
+              (click)="$event.stopPropagation()"
+              (change)="$event ? selection.toggle(row) : null"
+              [checked]="selection.isSelected(row)"
+              [aria-label]="checkboxLabel(row)"
+              color="warn"
+            ></mat-checkbox>
+          </td>
+        </ng-container>
+
+        <!-- Id Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef class="table-header" mat-sort-header> ID </th>
+          <td mat-cell *matCellDef="let element" class="table-body"> {{element.id}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef class="table-header" mat-sort-header> NAME </th>
+          <td mat-cell *matCellDef="let element" class="table-body">
+            <div class="name-wrapper">
+              <img class="user-avatar" src="./assets/user/list/{{element.id}}.png" alt="avatar">
+              <p class="user-name">{{element.name}}</p>
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Role Column -->
+        <ng-container matColumnDef="role">
+          <th mat-header-cell *matHeaderCellDef class="table-header" mat-sort-header> ROLE </th>
+          <td mat-cell *matCellDef="let element" class="table-body"> {{element.role}} </td>
+        </ng-container>
+
+        <!-- Company Name Column -->
+        <ng-container matColumnDef="company_name">
+          <th mat-header-cell *matHeaderCellDef class="table-header" mat-sort-header> COMPANY </th>
+          <td mat-cell *matCellDef="let element" class="table-body"> {{element.companyName}} </td>
+        </ng-container>
+
+        <!-- Email Column -->
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef class="table-header" mat-sort-header> EMAIL </th>
+          <td mat-cell *matCellDef="let element" class="table-body">{{element.email}}</td>
+        </ng-container>
+
+        <!-- Status Column -->
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef class="table-header" mat-sort-header> STATUS </th>
+          <td mat-cell *matCellDef="let element" class="table-body">
+            <mat-chip-list>
+              <mat-chip class="badge" [color]="element.status === 'active' ? 'primary' : 'warn'" selected>{{element.status | titlecase}}</mat-chip>
+            </mat-chip-list>
+          </td>
+        </ng-container>
+
+
+        <!-- Created At Column -->
+        <ng-container matColumnDef="created_at">
+          <th mat-header-cell *matHeaderCellDef class="table-header" mat-sort-header> CREATED </th>
+          <td mat-cell *matCellDef="let element" class="table-body">{{element.createdAt}}</td>
+        </ng-container>
+
+        <!-- Action Column -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef class="table-header"> ACTIONS </th>
+          <td mat-cell *matCellDef="let element" class="table-body">
+            <div class="action-icon-wrapper">
+              <mat-icon class="action-icon" [matMenuTriggerFor]="menu">more_vert</mat-icon>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item>Edit</button>
+                <button mat-menu-item>Info</button>
+                <button mat-menu-item>Delete</button>
+              </mat-menu>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </mat-card-content>
+
+</mat-card>
+

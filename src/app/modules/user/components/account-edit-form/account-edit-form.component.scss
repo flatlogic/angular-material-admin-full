@@ -1,0 +1,33 @@
+@import 'src/app/styles/colors';
+@import 'src/app/styles/variables';
+
+.edit-form-wrapper {
+  margin: 0 auto;
+  width: 600px;
+
+  @media (max-width: $small) {
+    width: 100%;
+  }
+}
+
+.form-item {
+  display: block;
+  width: 600px;
+  margin-bottom: 16px;
+
+  @media (max-width: $small) {
+    width: 100%;
+  }
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reset-button {
+  border-color: $blue;
+  box-shadow: none;
+  text-transform: uppercase;
+}

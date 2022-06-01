@@ -1,0 +1,91 @@
+@import "../../../../styles/font";
+@import "../../../../styles/colors";
+@import "../../../../styles/variables";
+
+.card {
+  padding: 18px;
+
+  @media (max-width: $small) {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+.folders-wrapper {
+  display: flex;
+  margin-top: 56px;
+  justify-content: space-between;
+  overflow-x: auto;
+
+  @media (min-width: $small) and (max-width: $xxl) {
+    margin-top: 37px;
+  }
+}
+
+.folder {
+  width: 125px;
+  min-width: 125px;
+  height: 90px;
+  padding: 8px;
+  background-size: cover;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+
+  & + .folder {
+    margin-left: 8px;
+  }
+
+  @media (max-width: $xxl) {
+    margin-bottom: 16px;
+  }
+}
+
+.folder-blue {
+  background-image: url("../../../../../assets/user/profile/folder-blue.svg");
+}
+
+.folder-pink {
+  background-image: url("../../../../../assets/user/profile/folder-pink.svg");
+}
+
+.folder-green {
+  background-image: url("../../../../../assets/user/profile/folder-green.svg");
+}
+
+.folder-yellow {
+  background-image: url("../../../../../assets/user/profile/folder-yellow.svg");
+}
+
+.folder-dark-blue {
+  background-image: url("../../../../../assets/user/profile/folder-dark-blue.svg");
+}
+
+.folder-dark-pink {
+  background-image: url("../../../../../assets/user/profile/folder-dark-pink.svg");
+}
+
+.folder-dark-green {
+  background-image: url("../../../../../assets/user/profile/folder-dark-green.svg");
+}
+
+.folder-dark-yellow {
+  background-image: url("../../../../../assets/user/profile/folder-dark-yellow.svg");
+}
+
+.folder-title {
+  font-weight: $fw-bold;
+  font-size: $fs-regular;
+  line-height: 22px;
+  color: $white;
+  margin-bottom: 2px;
+  margin-top: 14px;
+}
+
+.folder-subtitle {
+  font-weight: $fw-normal;
+  font-size: 13px;
+  line-height: 16px;
+  color: $white;
+  margin: 0;
+}

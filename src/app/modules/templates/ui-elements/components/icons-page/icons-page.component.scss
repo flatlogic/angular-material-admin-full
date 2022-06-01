@@ -1,0 +1,60 @@
+@import '../../../../../styles/colors';
+@import '../../../../../styles/font';
+
+.icons-wrapper {
+  padding:0;
+  margin-top: 24px;
+  box-shadow: 0 3px 11px 0 $shadow-white, 0 3px 3px -2px $shadow-grey, 0 1px 8px 0 $shadow-dark-grey;
+}
+
+.tab-label {
+  margin: 0;
+  text-transform: uppercase;
+  padding: 0 16px;
+}
+
+.icons-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px 24px 16px 24px;
+
+  &__title {
+    font-weight: $fw-lighter;
+    font-size: $fs-xxxl;
+    color: $light-grey;
+    line-height: 1;
+    letter-spacing: -0.24992px;
+  }
+
+  &__button {
+    height: 41.6px;
+    width: 90.11px;
+    color: $white;
+    background-color: $pink;
+    line-height: 1.75;
+    font-size: $fs-normal;
+    font-weight: $fw-lighter;
+  }
+}
+
+.icons-content {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  overflow: hidden;
+  padding: 0 16px;
+
+  &__icon-wrapper {
+    width: 170px;
+    padding: 8px;
+    color: $grey;
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon-title {
+    padding-left: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

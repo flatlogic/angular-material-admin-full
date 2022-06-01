@@ -1,0 +1,51 @@
+<mat-card class="material-table">
+  <mat-card-title class="material-table__header">
+    <p class="material-table__title">Material-UI Table</p>
+    <app-settings-menu></app-settings-menu>
+  </mat-card-title>
+
+  <mat-card-content class="material-table__content">
+    <table mat-table [dataSource]="dataSource" class="material-table__table">
+      <ng-container *ngFor="let column of displayedColumns" matColumnDef="{{column}}" class="material-table__table-row">
+        <th mat-header-cell *matHeaderCellDef class="material-table__table-row-title">
+          <p>{{column}}</p>
+        </th>
+
+        <td mat-cell *matCellDef="let element" class="material-table__table-content">
+          <span *ngIf="column !== 'name' && column !=='status'">{{element[column]}}</span>
+          <div *ngIf="column === 'name'" class="material-table__content-badge" [ngClass]="element[column]">
+            <div style="display: flex; align-items: center">
+              <button
+                mat-mini-fab
+                class="user-button"
+                color="{{
+                element.status === 'send'
+                ? 'success'
+                : element.status === 'pending'
+                ? 'accent'
+                : element.status === 'progress'
+                ? 'primary'
+                : 'warn'
+              }}"
+              >{{element[column].slice(0, 1).toUpperCase()}}</button>
+              <p style="color: #4A4A4A; margin: 0 0 0 8px; font-size: 14px">{{element[column]}}</p>
+            </div>
+          </div>
+          <div *ngIf="column === 'status'" [ngClass]="element[column]">
+            <mat-chip-list>
+              <mat-chip
+                class="material-table__content-badge"
+                [color]="element[column] === 'send' ? 'primary' : element[column] === 'declined' ? 'warn' : 'accent'"
+                selected
+              >{{element[column]}}</mat-chip>
+            </mat-chip-list>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mat-card-content>
+</mat-card>
+

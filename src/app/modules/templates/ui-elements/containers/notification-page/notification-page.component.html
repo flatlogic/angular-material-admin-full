@@ -1,0 +1,240 @@
+<app-breadcrumb [path]="routes.NOTIFICATION"></app-breadcrumb>
+
+<div class="page-content">
+  <mat-card class="page-content__first-item-wrapper">
+    <div class="page-content__first-item-element">
+      <mat-card-title>
+        <p>Layout Options</p>
+      </mat-card-title>
+      <mat-card-subtitle>
+        <p>There are few position options available for notifications. You can click any of them to change notifications position:</p>
+      </mat-card-subtitle>
+      <mat-card-content>
+        <div class="select-position">
+          <div class="select-position__items-wrapper">
+            <button
+              class="select-position__item-top"
+              [ngClass]="{active: toastrPosition === toastrPositionTypes.topLeft}"
+              (click)="setToastrPosition(toastrPositionTypes.topLeft)"
+            ></button>
+            <button
+              class="select-position__center-top-item"
+              [ngClass]="{active: toastrPosition === toastrPositionTypes.topCenter}"
+              (click)="setToastrPosition(toastrPositionTypes.topCenter)"
+            ></button>
+            <button
+              class="select-position__item-top"
+              [ngClass]="{active: toastrPosition === toastrPositionTypes.topRight}"
+              (click)="setToastrPosition(toastrPositionTypes.topRight)"
+            ></button>
+          </div>
+          <p class="select-position__title">Click any position</p>
+          <div class="select-position__items-wrapper">
+            <button
+              class="select-position__item-bottom"
+              [ngClass]="{active: toastrPosition === toastrPositionTypes.bottomLeft}"
+              (click)="setToastrPosition(toastrPositionTypes.bottomLeft)"
+            ></button>
+            <button
+              class="select-position__center-bottom-item"
+              [ngClass]="{active: toastrPosition === toastrPositionTypes.bottomCenter}"
+              (click)="setToastrPosition(toastrPositionTypes.bottomCenter)"
+            ></button>
+            <button
+              class="select-position__item-bottom"
+              [ngClass]="{active: toastrPosition === toastrPositionTypes.bottomRight}"
+              (click)="setToastrPosition(toastrPositionTypes.bottomRight)"
+            ></button>
+          </div>
+        </div>
+      </mat-card-content>
+    </div>
+    <div class="page-content__first-item-element">
+      <mat-card-title>
+        <p>Notifications Types</p>
+      </mat-card-title>
+      <mat-card-subtitle>
+        <p>Different types of notifications for lost of use cases. Custom classes are also supported.</p>
+      </mat-card-subtitle>
+      <mat-card-content>
+        <div class="position-buttons-wrapper">
+          <button
+            class="position-button position-button_blue"
+            mat-raised-button
+            (click)="showInfoToastr()"
+          >Info Message</button>
+          <button
+            class="position-button position-button_pink"
+            mat-raised-button
+            (click)="showErrorToastr()"
+          >Error + Retry Message</button>
+          <button
+            class="position-button position-button_green"
+            mat-raised-button
+            (click)="showSuccess()"
+          >Success Message</button>
+        </div>
+      </mat-card-content>
+    </div>
+    <div class="page-content__first-item-element">
+      <mat-card-title>
+        <p>Usage</p>
+      </mat-card-title>
+      <mat-card-subtitle>
+        <p>Notifications are created with the help of <a class="link" [href]="toastrLink">ngx-toastr</a></p>
+      </mat-card-subtitle>
+      <mat-card-content class="code-block">
+        <pre class="code-wrapper">
+<code class="code">import {{'{'}} ToastrService {{'}'}} from 'ngx-toastr';</code>
+
+<code class="code">@Component({{'{'}}...{{'}'}})</code>
+<code class="code">export class YourComponent {{'{'}}</code>
+  <code class="code pink">constructor(private toastr: ToastrService) {{'{'}}{{'}'}}</code>
+
+  <code class="code blue">public showSuccess() {{'{'}}</code>
+    <code class="code green">this.toastr.success(</code>
+      <code>'Hello world!', 'Toastr fun!'</code>
+    <code class="code green">);</code>
+  <code class="code blue">{{'}'}}</code>
+<code>{{'}'}}</code>
+        </pre>
+        <p>For more API information refer to the library documentation</p>
+      </mat-card-content>
+    </div>
+  </mat-card>
+
+  <div class="page-content__items-wrapper">
+    <mat-card class="page-content__item">
+      <mat-card-title>
+        <p>Notification Types Examples</p>
+      </mat-card-title>
+      <mat-card-content>
+        <div class="notification notification_solid-pink">
+          <div class="notification__icon-wrapper notification__icon-wrapper_transparent">
+            <mat-icon>email</mat-icon>
+          </div>
+          <p class="notification__title notification__title_white">Thanks for Checking out Messenger</p>
+        </div>
+        <div class="notification notification_solid-blue" >
+          <div class="notification__icon-wrapper notification__icon-wrapper_transparent">
+            <mat-icon>announcement</mat-icon>
+          </div>
+          <p class="notification__title notification__title_white">New user feedback received</p>
+        </div>
+        <div class="notification notification_solid-green">
+          <div class="notification__icon-wrapper notification__icon-wrapper_transparent">
+            <mat-icon>account_box</mat-icon>
+          </div>
+          <p class="notification__title notification__title_white">New customer is registered</p>
+        </div>
+        <div class="notification notification_solid-yellow">
+          <div class="notification__icon-wrapper notification__icon-wrapper_transparent">
+            <mat-icon>done</mat-icon>
+          </div>
+          <p class="notification__title notification__title_white">The order was shipped</p>
+        </div>
+        <div class="notification notification_solid-blue">
+          <div class="notification__icon-wrapper notification__icon-wrapper_transparent">
+            <mat-icon>business_center</mat-icon>
+          </div>
+          <p class="notification__title notification__title_white">The order was delivered</p>
+        </div>
+        <div class="notification notification_solid-violet">
+          <div class="notification__icon-wrapper notification__icon-wrapper_transparent">
+            <mat-icon>info</mat-icon>
+          </div>
+          <p class="notification__title notification__title_white">5 Defence alerts</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="page-content__item">
+      <mat-card-title>
+        <p>Notification Types Examples</p>
+      </mat-card-title>
+      <mat-card-content>
+        <div class="notification notification_transparent-pink">
+          <div class="notification__icon-wrapper notification__icon-wrapper_solid-pink">
+            <mat-icon>report</mat-icon>
+          </div>
+          <p class="notification__title">New report has been received</p>
+        </div>
+        <div class="notification notification_transparent-blue">
+          <div class="notification__icon-wrapper notification__icon-wrapper_solid-blue">
+            <mat-icon>announcement</mat-icon>
+          </div>
+          <p class="notification__title">New user feedback received</p>
+        </div>
+        <div class="notification notification_transparent-green">
+          <div class="notification__icon-wrapper notification__icon-wrapper_solid-green">
+            <mat-icon>done</mat-icon>
+          </div>
+          <p class="notification__title">The item was shipped</p>
+        </div>
+        <div class="notification notification_transparent-yellow">
+          <div class="notification__icon-wrapper notification__icon-wrapper_solid-yellow">
+            <mat-icon>email</mat-icon>
+          </div>
+          <p class="notification__title">The new message from user @nahawaii</p>
+        </div>
+        <div class="notification notification_transparent-blue">
+          <div class="notification__icon-wrapper notification__icon-wrapper_solid-blue">
+            <mat-icon class="icon-rotate">get_app</mat-icon>
+          </div>
+          <p class="notification__title">Your file is ready to upload</p>
+        </div>
+        <div class="notification notification_transparent-violet">
+          <div class="notification__icon-wrapper notification__icon-wrapper_solid-violet">
+            <mat-icon>disc_full</mat-icon>
+          </div>
+          <p class="notification__title">The disc is full</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="page-content__item">
+      <mat-card-title>
+        <p>Notification Types Examples</p>
+      </mat-card-title>
+      <mat-card-content>
+        <div class="notification">
+          <div class="notification__icon-wrapper-circle notification__icon-wrapper-circle_transparent-pink">
+            <mat-icon>report</mat-icon>
+          </div>
+          <p class="notification__title">New report has been received</p>
+        </div>
+        <div class="notification">
+          <div class="notification__icon-wrapper-circle notification__icon-wrapper-circle_transparent-blue">
+            <mat-icon>announcement</mat-icon>
+          </div>
+          <p class="notification__title">New user feedback received</p>
+        </div>
+        <div class="notification">
+          <div class="notification__icon-wrapper-circle notification__icon-wrapper-circle_transparent-green">
+            <mat-icon>done</mat-icon>
+          </div>
+          <p class="notification__title">The item was shipped</p>
+        </div>
+        <div class="notification">
+          <div class="notification__icon-wrapper-circle notification__icon-wrapper-circle_transparent-yellow">
+            <mat-icon>email</mat-icon>
+          </div>
+          <p class="notification__title">The new message from user @nahawaii</p>
+        </div>
+        <div class="notification">
+          <div class="notification__icon-wrapper-circle notification__icon-wrapper-circle_transparent-blue">
+            <mat-icon class="icon-rotate">get_app</mat-icon>
+          </div>
+          <p class="notification__title">Your file is ready to upload</p>
+        </div>
+        <div class="notification">
+          <div class="notification__icon-wrapper-circle notification__icon-wrapper-circle_transparent-violet">
+            <mat-icon>disc_full</mat-icon>
+          </div>
+          <p class="notification__title">The disc is full</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+

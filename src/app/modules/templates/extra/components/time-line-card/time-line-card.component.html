@@ -1,0 +1,63 @@
+<mat-card class="card">
+  <mat-card-title class="customer-info">
+    <img src="{{timeLineItem.img}}" alt="{{timeLineItem.img}}" class="avatar">
+
+    <div class="customer-name-wrapper">
+      <p class="customer-name"><a class="link">{{timeLineItem.name}}</a> {{timeLineItem.nik}}</p>
+      <p class="date-publish">{{timeLineItem.datePublish}}</p>
+    </div>
+  </mat-card-title>
+
+  <mat-card-subtitle class="description">
+    <p class="title-text" *ngIf="timeLineItem.title">{{timeLineItem.title}}</p>
+    <p class="description-text">{{timeLineItem.description}}</p>
+  </mat-card-subtitle>
+
+  <mat-card-content class="content">
+    <div *ngIf="timeLineItem.content.type === 'map'" style="width: 100%; height: 200px">
+      <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" class="agm-map">
+        <agm-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="true"></agm-marker>
+      </agm-map>
+    </div>
+
+    <img class="content-img" *ngIf="timeLineItem.content.type !== 'map' && timeLineItem.content.img" src="{{timeLineItem.content.img}}">
+
+    <div class="content-text-wrapper" *ngIf="timeLineItem.content.type !== 'map' && timeLineItem.content.text">
+      <button color="default" mat-flat-button class="content-button" (click)="showText()">Read more...</button>
+      <p class="content-text" *ngIf="isShowText">{{timeLineItem.content.text}}</p>
+    </div>
+
+    <div class="action-wrapper">
+      <div class="icons-block">
+        <button color="default" mat-mini-fab class="icon-wrapper">
+          <mat-icon class="icon">favorite</mat-icon>
+        </button>
+        <button color="default" mat-mini-fab class="icon-wrapper">
+          <mat-icon class="icon">message</mat-icon>
+        </button>
+      </div>
+
+      <div *ngIf="timeLineItem.likes.length !== 0" class="likes-wrapper">
+        <img class="likes-logo" *ngFor="let item of timeLineItem.likes" src="{{item.img}}" alt="{{item.img}}">
+      </div>
+    </div>
+
+  </mat-card-content>
+
+  <mat-card-footer *ngIf="timeLineItem.comments.length !==0" class="comments">
+    <div *ngFor="let item of timeLineItem.comments" class="comment-wrapper">
+      <img class="avatar" src="{{item.img}}" alt="{{item.img}}">
+      <div>
+        <p class="comment-name"><a class="link">{{item.name}}</a> {{item.date}}</p>
+        <p class="comment-text">{{item.comment}}</p>
+      </div>
+    </div>
+
+    <div class="custom-comment-wrapper">
+      <button mat-mini-fab color="primary" class="custom-icon">P</button>
+      <mat-form-field class="custom-comment">
+        <input matInput placeholder="Write your comment...">
+      </mat-form-field>
+    </div>
+  </mat-card-footer>
+</mat-card>

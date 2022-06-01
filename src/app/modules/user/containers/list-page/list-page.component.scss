@@ -1,0 +1,167 @@
+@import './src/app/styles/colors';
+@import './src/app/styles/font';
+@import './src/app/styles/variables';
+
+.add-card {
+  margin-top: 24px;
+  height: 90px;
+
+  @media (max-width: $small) {
+    height: auto;
+  }
+}
+
+.add-content {
+  display: flex;
+  justify-content: space-between;
+
+  @media (max-width: $small) {
+    flex-wrap: wrap;
+  }
+}
+
+.first-buttons-wrapper {
+  display: flex;
+
+  @media (max-width: $small) {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+.add-button {
+  padding: 6px 16px;
+  height: fit-content;
+}
+
+.button-inert-wrapper {
+  display: flex;
+  align-items: center;
+
+  @media (max-width: $small) {
+    justify-content: center;
+  }
+}
+
+.button-text {
+  margin: 0 0 0 8px;
+}
+
+.second-buttons-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  @media (max-width: $small) {
+    width: 100%;
+    align-items: flex-start;
+    margin-top: 16px;
+    height: auto;
+  }
+}
+
+.filters-button {
+  display: block;
+  padding: 5px 15px;
+  text-transform: uppercase;
+  border-color: $blue;
+  box-shadow: none;
+  margin: 0 0 0 16px;
+  width: fit-content;
+  height: fit-content;
+}
+
+.download-button {
+  display: block;
+  padding: 5px 15px;
+  text-transform: uppercase;
+  border-color: $pink;
+  box-shadow: none;
+  margin-bottom: 8px;
+  width: fit-content;
+
+  @media (max-width: $small) {
+    width: 100%;
+  }
+}
+
+.search {
+  margin-bottom: -18px;
+
+  @media (max-width: $small) {
+    width: 100%;
+    margin: 16px 0 0 0;
+  }
+}
+
+.users-table {
+  margin-top: 24px;
+  box-shadow: 0 3px 11px 0 $shadow-white, 0 3px 3px -2px $shadow-grey, 0 1px 8px 0 $shadow-dark-grey;
+}
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+}
+
+.table-header {
+  padding: 14px 30px 14px 15px;
+  color: $dark-grey;
+  font-size: $fs-small;
+  font-weight: $fw-normal;
+  width: max-content;
+}
+
+.table-body {
+  padding: 14px 30px 14px 15px;
+  color: $dark-grey;
+  font-size: $fs-small;
+  font-weight: $fw-lighter;
+}
+
+.name-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.user-avatar {
+  margin-right: 8px;
+}
+
+.user-name {
+  margin: 0;
+  width: max-content;
+}
+
+.badge {
+  min-height: 18px;
+}
+
+.action-icons-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.action-icon-wrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $light-grey;
+
+  &:hover {
+    background-color: $black-04;
+  }
+}
+
+.action-icon {
+  padding: 0;
+  font-size: $fs-large;
+}

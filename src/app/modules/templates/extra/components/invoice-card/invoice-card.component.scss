@@ -1,0 +1,177 @@
+@import "src/app/styles/colors";
+@import "src/app/styles/font";
+@import "src/app/styles/variables";
+
+.card {
+  margin-top: 24px;
+}
+
+p {
+  font-size: $fs-normal;
+  font-weight: $fw-lighter;
+  color: $dark-grey;
+  margin: 0;
+  line-height: 1.5;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+span {
+  font-weight: $fw-bold;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  color: $dark-grey;
+  font-size: $fs-normal;
+}
+
+.card-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.img {
+  max-height: 100px;
+  border-radius: 10px;
+  margin-right: 24px;
+}
+
+.card-subtitle {
+  display: flex;
+  justify-content: space-between;
+
+  @media (max-width: $small) {
+    flex-wrap: wrap;
+  }
+}
+
+.client-block {
+  text-align: right;
+
+  @media (max-width: $small) {
+    text-align: left;
+    margin-top: 36px;
+  }
+}
+
+.info-title {
+  font-size: $fs-large;
+  margin-bottom: 16px;
+}
+
+.info-name {
+  font-size: $fs-regular;
+}
+
+.company-status {
+  font-weight: $fw-bold;
+}
+
+.link {
+  color: $blue;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.contacts {
+  font-weight: $fw-lighter;
+  text-decoration: underline dotted;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+}
+
+.mat-row:nth-child(odd){
+  background-color: $blue-white;
+}
+
+.table-header {
+  font-size: 15px;
+  font-weight: $fw-normal;
+  padding: 14px 40px 24px 14px;
+  color: $dark-grey;
+  text-transform: uppercase;
+}
+
+.table-body {
+  font-size: 15px;
+  font-weight: $fw-lighter;
+  padding: 14px 40px 24px 14px;
+  color: $dark-grey;
+}
+
+.card-footer {
+  padding: 24px;
+}
+
+.total-block {
+  display: flex;
+  justify-content: space-between;
+
+  @media (max-width: $small) {
+    flex-wrap: wrap;
+  }
+}
+
+.total-line {
+  display: flex;
+  justify-content: space-between;
+}
+
+.total-title-wrapper {
+  @media (max-width: $small) {
+    margin-top: 24px;
+  }
+}
+
+.total-title {
+  font-weight: $fw-lighter;
+  margin: 0 16px 16px 0;
+}
+
+.total {
+  font-weight: $fw-bold;
+}
+
+.action-block {
+  text-align: right;
+  margin-top: 24px;
+}
+
+.button-wrapper {
+  padding: 3.5px 12px;
+  box-shadow: 0 3px 11px 0 $shadow-white, 0 3px 3px -2px $shadow-grey, 0 1px 8px 0 $shadow-dark-grey;
+}
+
+.button-wrapper + .button-wrapper {
+  margin-left: 16px;
+
+  @media (max-width: $small) {
+    margin-left: 0;
+    margin-top: 16px;
+  }
+}
+
+.button-text {
+  font-size: $fs-small;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  margin-right: 8px;
+  font-size: $fs-large;
+  padding: 0;
+}
+
+.white-text {
+  color: $white;
+}

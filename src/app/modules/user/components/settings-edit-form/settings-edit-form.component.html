@@ -1,0 +1,33 @@
+<div class="settings-form-wrapper">
+  <h3>Settings</h3>
+
+  <mat-form-field appearance="outline" class="form-item">
+    <mat-select [formControl]="lang">
+      <mat-option value="eng">English</mat-option>
+      <mat-option value="admin">Admin</mat-option>
+      <mat-option value="user">User</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="settings-item-wrapper first-setting">
+    <h3 class="settings-subtitle">Communication:</h3>
+    <mat-checkbox [checked]="true" color="warn" class="checkbox">Email</mat-checkbox>
+    <mat-checkbox color="warn" class="checkbox">Messages</mat-checkbox>
+    <mat-checkbox color="warn" class="checkbox">Phone</mat-checkbox>
+  </div>
+
+  <div class="settings-item-wrapper">
+    <h3 class="settings-subtitle">Email notification</h3>
+    <mat-slide-toggle [checked]="true" color="primary"></mat-slide-toggle>
+  </div>
+
+  <div class="settings-item-wrapper">
+    <h3 class="settings-subtitle">Send copy to personal email</h3>
+    <mat-slide-toggle color="primary"></mat-slide-toggle>
+  </div>
+
+  <div class="button-wrapper">
+    <button mat-stroked-button color="primary">Reset</button>
+    <button mat-flat-button color="success">Save</button>
+  </div>
+</div>

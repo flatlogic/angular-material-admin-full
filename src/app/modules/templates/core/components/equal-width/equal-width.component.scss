@@ -1,0 +1,43 @@
+@import "../../../../../styles/colors";
+@import "../../../../../styles/font";
+
+@mixin grid-item {
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  color: $white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.first-grid-item {
+  @include grid-item;
+  background-color: $blue;
+}
+
+.second-grid-item {
+  @include grid-item;
+  background-color: $pink;
+}
+
+.code-wrapper {
+  background-color: $blue-white;
+  height: 145px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  padding: 16px 16px 0 16px;
+}
+
+.code {
+  font-size: $fs-xs;
+}
+
+.blue {
+  color: $blue;
+}
+
+.pink {
+  color: $pink;
+}
+

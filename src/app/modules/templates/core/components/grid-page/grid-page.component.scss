@@ -1,0 +1,24 @@
+@import "src/app/styles/variables";
+
+.usage {
+  display: flex;
+  width: 100%;
+  margin-top: 36px;
+
+  @media(max-width: $normal) {
+    flex-wrap: wrap;
+  }
+}
+
+.usage-block {
+  width: 100%;
+}
+
+.usage-block + .usage-block {
+  margin-left: 36px;
+
+  @media(max-width: $normal) {
+    margin-left: 0;
+    margin-top: 36px;
+  }
+}

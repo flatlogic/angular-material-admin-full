@@ -1,0 +1,75 @@
+<mat-card class="employee-table-wrapper">
+  <mat-card-title class="employee-table-wrapper__header">
+    <p *ngIf="!isShowFilterInput" class="employee-table-wrapper__title">Employee List</p>
+    <div *ngIf="isShowFilterInput" class="employee-table-wrapper__search">
+      <div class="employee-table-wrapper__icon-wrapper">
+        <mat-icon class="employee-table-wrapper__icon">search</mat-icon>
+      </div>
+      <input matInput class="employee-table-wrapper__search-input" (keyup)="applyFilter($event)">
+      <button class="employee-table-wrapper__button" mat-mini-fab color="default" (click)="showFilterInput()">
+        <mat-icon class="employee-table-wrapper__icon">close</mat-icon>
+      </button>
+    </div>
+    <button class="employee-table-wrapper__button" mat-mini-fab color="default" (click)="showFilterInput()">
+      <mat-icon class="employee-table-wrapper__icon">search</mat-icon>
+    </button>
+  </mat-card-title>
+  <mat-card-content class="employee-table__content">
+    <table class="employee-table__table" mat-table [dataSource]="dataSource">
+
+      <!-- Checkbox Column -->
+      <ng-container matColumnDef="select">
+        <th class="employee-table__table-checkbox" mat-header-cell *matHeaderCellDef>
+          <mat-checkbox
+            color="warn"
+            (change)="$event ? masterToggle() : null"
+            [checked]="selection.hasValue() && isAllSelected()"
+            [indeterminate]="selection.hasValue() && !isAllSelected()"
+            [aria-label]="checkboxLabel()">
+          </mat-checkbox>
+        </th>
+        <td class="employee-table__table-checkbox" mat-cell *matCellDef="let row">
+          <mat-checkbox
+            color="warn"
+            (click)="$event.stopPropagation()"
+            (change)="$event ? selection.toggle(row) : null"
+            [checked]="selection.isSelected(row)"
+            [aria-label]="checkboxLabel(row)">
+          </mat-checkbox>
+        </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name" >
+        <th class="employee-table__table-header" mat-header-cell *matHeaderCellDef > Name </th>
+        <td class="employee-table__table-body" mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <!-- Company Column -->
+      <ng-container matColumnDef="company">
+        <th class="employee-table__table-header" mat-header-cell *matHeaderCellDef> Company </th>
+        <td class="employee-table__table-body" mat-cell *matCellDef="let element"> {{element.company}} </td>
+      </ng-container>
+
+      <!-- City Column -->
+      <ng-container matColumnDef="city">
+        <th class="employee-table__table-header" mat-header-cell *matHeaderCellDef> City </th>
+        <td class="employee-table__table-body" mat-cell *matCellDef="let element"> {{element.city}} </td>
+      </ng-container>
+
+      <!-- State Column -->
+      <ng-container matColumnDef="state">
+        <th class="employee-table__table-header" mat-header-cell *matHeaderCellDef> State </th>
+        <td class="employee-table__table-body" mat-cell *matCellDef="let element"> {{element.state}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+          (click)="selection.toggle(row)">
+      </tr>
+    </table>
+  </mat-card-content>
+  <div class="pagination">
+    <mat-paginator [pageSizeOptions]="[10, 15, 100]" showFirstLastButtons></mat-paginator>
+  </div>
+</mat-card>

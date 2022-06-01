@@ -1,0 +1,94 @@
+<app-breadcrumb [path]="routes.BADGE"></app-breadcrumb>
+
+<div class="content-wrapper">
+  <mat-card class="badge-card">
+    <mat-card-title>
+      <p>Badge Example</p>
+    </mat-card-title>
+    <mat-card-subtitle class="subtitle">
+      <p>Badge generates a small badge to the top-right of its child(ren)</p>
+    </mat-card-subtitle>
+
+    <mat-card-content>
+      <h1 class="text h1" matBadge="Primary" matBadgePosition="above after" matBadgeOverlap="false" matBadgeColor="primary">Example heading</h1>
+      <h2 class="text" matBadge="Accent" matBadgePosition="after" matBadgeOverlap="false" matBadgeColor="accent">Example heading</h2>
+      <h3 class="text" matBadge="Warn" matBadgeOverlap="false" matBadgeColor="warn">Example heading</h3>
+      <h4 class="text" matBadge="Info" matBadgeOverlap="false" matBadgeColor="info">Example heading</h4>
+      <h5 class="text" matBadge="Success" matBadgeOverlap="false" matBadgeColor="success">Example heading</h5>
+      <h6 class="text" matBadge="Primary light" matBadgeOverlap="false" matBadgeColor="primary-light">Example heading</h6>
+
+      <mat-card-subtitle class="second-subtitle">
+        <p>Badges can be used as part of links or buttons to provide a counter.</p>
+      </mat-card-subtitle>
+
+      <button mat-raised-button matBadge="1" matBadgeOverlap="false" matBadgeColor="success">Example heading</button>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="icon-badge-card">
+    <mat-card-title>
+      <p>Icon Badges</p>
+    </mat-card-title>
+    <mat-card-subtitle>
+      <p>Badge can also be used as a parent of a icon as well as a parent of a clickable icon</p>
+    </mat-card-subtitle>
+
+    <mat-card-content>
+      <div class="icon-badge-wrapper">
+        <mat-icon matBadge="4" matBadgeColor="primary" class="icon-badge">email</mat-icon>
+        <mat-icon matBadge="10" matBadgeColor="warn" class="icon-badge">email</mat-icon>
+        <mat-icon matBadge="4" matBadgeColor="accent" class="icon-badge">email</mat-icon>
+      </div>
+
+      <div class="tabs-badge-wrapper">
+        <mat-tab-group mat-stretch-tabs>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <p matBadge="4" matBadgeColor="warn" class="tab-title">Item One</p>
+            </ng-template>
+            <div class="empty-block"></div>
+          </mat-tab>
+          <mat-tab label="Item Two">
+            <div class="empty-block"></div>
+          </mat-tab>
+          <mat-tab label="Item Three">
+            <div class="empty-block"></div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+
+      <mat-card-subtitle class="second-subtitle">
+        <p>
+          You can use the matBadgePosition properties to move the badge to any corner of the wrapped element.
+        </p>
+      </mat-card-subtitle>
+
+      <div class="icon-badge-wrapper">
+        <mat-icon class="icon-badge" matBadge="4" matBadgeColor="success">shopping_cart</mat-icon>
+        <mat-icon class="icon-badge" matBadge="10" matBadgeColor="accent" matBadgePosition="below after">shopping_cart</mat-icon>
+        <mat-icon class="icon-badge" matBadge="4" matBadgeColor="warn" matBadgePosition="before">shopping_cart</mat-icon>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<mat-card class="chips-card">
+  <mat-card-title>
+    <p>Chips</p>
+  </mat-card-title>
+  <mat-card-subtitle>
+    <p>Chips allow users to enter information, make selections, filter content, or trigger actions.</p>
+  </mat-card-subtitle>
+
+  <mat-card-content>
+    <mat-chip-list aria-label="Fish selection">
+      <mat-chip color="primary" selected>Primary</mat-chip>
+      <mat-chip color="warn" selected>Warning</mat-chip>
+      <mat-chip color="accent" selected>Accent</mat-chip>
+      <mat-chip color="info" selected>Info</mat-chip>
+      <mat-chip color="success" selected>Success</mat-chip>
+    </mat-chip-list>
+  </mat-card-content>
+</mat-card>
+

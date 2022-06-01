@@ -1,0 +1,102 @@
+<div class="profile-form-wrapper">
+  <h3>Personal Information</h3>
+
+  <p>Photo:</p>
+
+  <button mat-flat-button color="primary" class="upload-button">Upload an image</button>
+
+  <p>.PNG, .JPG, .JPEG</p>
+
+  <mat-form-field appearance="outline" class="form-item">
+    <input matInput [formControl]="userName">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="form-item">
+    <input matInput [formControl]="userSecondName">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="form-item">
+    <input matInput [formControl]="userPhone">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="form-item">
+    <input matInput [formControl]="userEmail">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="form-item">
+    <mat-select [formControl]="userCountry">
+      <mat-option value="us">United State</mat-option>
+      <mat-option value="admin">Admin</mat-option>
+      <mat-option value="user">User</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="form-item">
+    <mat-select [formControl]="userState">
+      <mat-option value="california">California</mat-option>
+      <mat-option value="admin">Admin</mat-option>
+      <mat-option value="user">User</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="form-item">
+    <mat-select [formControl]="userCity">
+      <mat-option value="poloAlto">Polo Alto</mat-option>
+      <mat-option value="admin">Admin</mat-option>
+      <mat-option value="user">User</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="form-item">
+    <input matInput [formControl]="userStreet">
+  </mat-form-field>
+
+  <h3>Company Information</h3>
+
+  <mat-form-field appearance="outline" class="form-item">
+    <input matInput [formControl]="companyName">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="form-item">
+    <input matInput [formControl]="companyId">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="form-item">
+    <input matInput [formControl]="companyEmail">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="form-item">
+    <input matInput [formControl]="companyPhone">
+  </mat-form-field>
+
+  <h3>Social</h3>
+
+  <mat-form-field appearance="outline" class="form-item">
+    <input matInput [formControl]="facebook">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="form-item">
+    <input matInput [formControl]="twitter">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="form-item">
+    <input matInput [formControl]="instagram">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="form-item">
+    <input matInput [formControl]="github">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="form-item">
+    <input matInput [formControl]="codepen">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="form-item">
+    <input matInput [formControl]="nik">
+  </mat-form-field>
+
+  <div class="button-wrapper">
+    <button mat-stroked-button color="primary" class="reset-button">Reset</button>
+    <button mat-flat-button color="success">Save</button>
+  </div>
+</div>

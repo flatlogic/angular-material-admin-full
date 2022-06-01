@@ -1,0 +1,35 @@
+@import "src/app/styles/colors";
+@import "src/app/styles/font";
+@import "src/app/styles/variables";
+
+.event-wrapper {
+  width: 317px;
+}
+
+.title {
+  font-size: $fs-regular;
+  color: $dark-grey;
+}
+
+.subtitle {
+  font-size: $fs-small;
+  color: $dark-grey;
+}
+
+.form {
+  display: block;
+}
+
+.button {
+  background-color: transparent;
+  color: $dark-grey;
+  box-shadow: none;
+
+  &:hover {
+    background-color: $header-button-background-color-hover;
+  }
+}
+
+button + button {
+  margin-left: 8px;
+}

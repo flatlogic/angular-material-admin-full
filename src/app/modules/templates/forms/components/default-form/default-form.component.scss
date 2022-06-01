@@ -1,0 +1,15 @@
+@import './src/app/styles/font';
+@import './src/app/styles/colors';
+
+.card-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+.input-title {
+  font-size: $fs-normal;
+  font-weight: $fw-lighter;
+  color: $dark-grey;
+}

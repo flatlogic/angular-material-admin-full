@@ -1,0 +1,56 @@
+@import "src/app/styles/colors";
+@import "src/app/styles/font";
+@import "src/app/styles/variables";
+
+.content-wrapper {
+  margin-top: 36px;
+
+  .card {
+    + .card {
+      margin-top: 48px;
+    }
+  }
+}
+
+.toolbar{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.button {
+  box-shadow: none;
+
+  &:hover {
+    background: #8B9BFF;
+  }
+}
+
+.content-text {
+  font-size: $fs-normal;
+  color: $dark-grey;
+  margin: 24px 0;
+}
+
+.navbar-title-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.menu-icon {
+  margin-right: 16px;
+}
+
+.navbar-title-button-wrapper {
+  display: inherit;
+
+  @media (max-width: $medium) {
+    display: none;
+  }
+}
+
+.user-row {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}

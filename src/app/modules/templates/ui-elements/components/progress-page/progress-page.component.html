@@ -1,0 +1,34 @@
+<app-breadcrumb [path]="routes.PROGRESS"></app-breadcrumb>
+
+<div class="content-wrapper">
+
+  <mat-card class="card">
+    <mat-card-title>
+      <p>Circular Indeterminate</p>
+    </mat-card-title>
+
+    <mat-card-content>
+      <div class="spinners-wrapper">
+        <mat-spinner color="primary" [diameter]="40"></mat-spinner>
+        <mat-spinner color="accent" [diameter]="40"></mat-spinner>
+        <mat-spinner color="warn" [diameter]="40"></mat-spinner>
+        <mat-spinner color="success" [diameter]="40"></mat-spinner>
+        <mat-spinner color="info" [diameter]="40"></mat-spinner>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="card">
+    <mat-card-title>
+      <p>Linear Indeterminate</p>
+    </mat-card-title>
+
+    <mat-card-content>
+      <div>
+        <mat-progress-bar mode="indeterminate"  color="primary"></mat-progress-bar>
+        <mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+

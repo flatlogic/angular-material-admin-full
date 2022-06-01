@@ -1,0 +1,92 @@
+<app-breadcrumb [path]="routes.PROFILE"></app-breadcrumb>
+
+<div class="main-content-wrapper">
+  <div class="left-content-wrapper">
+    <app-user-info></app-user-info>
+
+    <div class="inner-content-wrapper">
+      <app-user-media class="user-media"></app-user-media>
+      <app-user-projects class="user-projects"></app-user-projects>
+    </div>
+
+    <app-user-article></app-user-article>
+  </div>
+
+  <div class="right-content-wrapper">
+    <app-user-files [isDark]="isDarkMode"></app-user-files>
+
+    <div class="bottom-right-content-wrapper">
+      <app-user-tasks class="user-tasks"></app-user-tasks>
+
+      <div class="right-bottom-right-content-wrapper">
+        <div class="calendar-wrapper">
+          <mat-card>
+            <div class="calendar-navigation">
+              <div class="calendar-array-wrapper" mwlCalendarPreviousView view="month" [(viewDate)]="viewDate">
+                <mat-icon class="calendar-array">keyboard_arrow_left</mat-icon>
+              </div>
+
+              <div>
+                <p class="calendar-date-title">{{viewDate | date: 'LLLL yyyy'}}</p>
+              </div>
+
+              <div class="calendar-array-wrapper" mwlCalendarNextView view="month" [(viewDate)]="viewDate">
+                <mat-icon class="calendar-array">keyboard_arrow_right</mat-icon>
+              </div>
+            </div>
+
+            <mwl-calendar-month-view [viewDate]="viewDate" [events]="calendarEvents"></mwl-calendar-month-view>
+          </mat-card>
+        </div>
+
+        <div class="views-wrapper">
+          <mat-card>
+            <mat-card-title class="views-title-wrapper">
+              <p class="views-title">Views</p>
+              <mat-icon class="views-title-icon">more_vert</mat-icon>
+            </mat-card-title>
+
+            <mat-card-content class="views-content">
+              <div class="views-info-wrapper">
+                <p class="views-value">7.156</p>
+                <img src="./assets/user/profile/trending-up.svg" class="trending-up-icon">
+                <p class="views-percent">7.2%</p>
+
+                <button mat-stroked-button color="primary" class="views-button">See More</button>
+              </div>
+
+              <div class="views-chart-wrapper">
+                <apx-chart
+                  [series]="chart.series"
+                  [chart]="chart.chart"
+                  [xaxis]="chart.xaxis"
+                  [stroke]="chart.stroke"
+                  [dataLabels]="chart.dataLabels"
+                  [yaxis]="chart.yaxis"
+                  [labels]="chart.labels"
+                  [legend]="chart.legend"
+                  [grid]="chart.grid"
+                  [tooltip]="chart.tooltip"
+                  [colors]="chart.colors"
+                  [fill]="chart.fill"
+                ></apx-chart>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+
+        <div class="update-wrapper">
+          <mat-card class="update-card">
+            <div class="update-title-wrapper">
+              <img src="./assets/user/profile/update-icon.svg">
+              <p class="update-title">Updates</p>
+            </div>
+
+            <button mat-stroked-button class="update-button">Details</button>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,32 @@
+<app-breadcrumb [path]="routes.ICONS"></app-breadcrumb>
+
+<mat-card class="icons-wrapper">
+  <mat-tab-group color="primary">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <p class="tab-label">Material Icons</p>
+      </ng-template>
+
+      <div class="icons-content">
+        <div *ngFor="let iconName of materialIcons" class="icons-content__icon-wrapper">
+          <mat-icon>{{toShakeCase(iconName)}}</mat-icon>
+          <span class="icons-content__icon-title">{{iconName}}</span>
+        </div>
+      </div>
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <p class="tab-label">Font Awesome</p>
+      </ng-template>
+
+      <div class="icons-content">
+        <div *ngFor="let iconName of fontAwesomeIcons" class="icons-content__icon-wrapper">
+          <mat-icon fontSet="fa fa-fs" fontIcon="{{toFontAwesomeText(iconName)}}"></mat-icon>
+          <span class="icons-content__icon-title">{{toFontAwesomeText(iconName)}}</span>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</mat-card>
+

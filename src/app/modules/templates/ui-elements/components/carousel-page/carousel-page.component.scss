@@ -1,0 +1,31 @@
+@import "src/app/styles/colors";
+@import "src/app/styles/variables";
+
+.small-carousels-wrapper {
+  display: flex;
+  justify-content: space-between;
+
+  @media (max-width: $small) {
+    flex-wrap: wrap;
+  }
+}
+
+.small-carousel-card {
+  width: 48%;
+
+  @media (max-width: $small) {
+    width: 100%;
+  }
+}
+
+.big-carousel-card, .small-carousel-card {
+  margin-top: 36px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.big-carousel-text {
+  color: $white;
+  padding: 24px;
+}
+

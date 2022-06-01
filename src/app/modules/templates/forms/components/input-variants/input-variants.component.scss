@@ -1,0 +1,42 @@
+@import "src/app/styles/variables";
+
+.checkbox-wrapper {
+  margin: 24px 0;
+  display: flex;
+
+  @media(max-width: $medium) {
+    flex-direction: column;
+  }
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  margin-right: 16px;
+}
+
+.checkbox-item-title {
+  margin: 0 0 0 8px;
+}
+
+.mat-radio-button + .mat-radio-button {
+  margin-left: 16px;
+}
+
+.inputs-wrapper {
+  margin-top: 36px;
+
+  @media(max-width: $normal) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+mat-form-field + mat-form-field {
+  margin-left: 24px;
+
+  @media(max-width: $normal) {
+    margin-top: 24px;
+    margin-left: 0;
+  }
+}

@@ -1,0 +1,40 @@
+<mat-card>
+  <mat-card-title>
+    <p>How it works</p>
+  </mat-card-title>
+  <mat-card-subtitle>
+    <p>
+      Material UI’s grid system uses a series of containers, rows, and columns to layout and align content.
+      It’s built with flexbox and is fully responsive. Below is an example and an in-depth look at how the
+      grid comes together.
+    </p>
+  </mat-card-subtitle>
+
+  <mat-card-content>
+    <mat-grid-list cols="3" rowHeight="52" gutterSize="24">
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <div class="first-grid-item">
+          <span class="grid-item-text">One of three</span>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <div class="second-grid-item">
+          <span class="grid-item-text">One of three</span>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <div class="third-grid-item">
+          <span class="grid-item-text">One of three</span>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    <pre class="code-wrapper">
+<code class="code blue">{{'<'}}mat-grid-list cols="3" rowHeight="52" gutterSize="24"{{'>'}}</code>
+  <code class="code pink">{{'<'}}mat-grid-tile [colspan]="1" [rowspan]="1"{{'>'}}One of three{{'<'}}/mat-grid-tile{{'>'}}</code>
+  <code class="code pink">{{'<'}}mat-grid-tile [colspan]="1" [rowspan]="1"{{'>'}}One of three{{'<'}}/mat-grid-tile{{'>'}}</code>
+  <code class="code pink">{{'<'}}mat-grid-tile [colspan]="1" [rowspan]="1"{{'>'}}One of three{{'<'}}/mat-grid-tile{{'>'}}</code>
+<code class="code blue">{{'<'}}/mat-grid-list{{'>'}}</code>
+    </pre>
+  </mat-card-content>
+</mat-card>

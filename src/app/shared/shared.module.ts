@@ -16,7 +16,9 @@ import { FooterComponent } from './footer/footer.component';
 import { LayoutComponent } from './layout/layout.component';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatBadgeModule } from '@angular/material/badge';
-import { BreadcrumbComponent } from './ui-elements/breadcrumb/breadcrumb.component';
+import { BreadcrumbComponent } from './ui-elements';
+import { SettingsMenuComponent } from './ui-elements/settings-menu/settings-menu.component';
+import { DateMenuComponent } from './ui-elements/date-menu/date-menu.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
@@ -39,6 +41,8 @@ import { FilterComponent } from './filter/filter.component';
     FileUploaderComponent,
     DeletePopupComponent,
     FilterComponent,
+    DateMenuComponent,
+    SettingsMenuComponent,
   ],
   imports: [
     HeaderModule,
@@ -71,6 +75,8 @@ import { FilterComponent } from './filter/filter.component';
     FileUploaderComponent,
     DeletePopupComponent,
     FilterComponent,
+    DateMenuComponent,
+    SettingsMenuComponent
   ],
 })
 export class SharedModule {}

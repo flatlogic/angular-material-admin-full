@@ -1,0 +1,120 @@
+@import 'src/app/styles/font';
+@import 'src/app/styles/colors';
+@import 'src/app/styles/variables';
+
+.content-wrapper {
+  margin-top: 36px;
+}
+
+.cards-wrapper {
+  display: flex;
+
+  @media (max-width: $medium) {
+    flex-wrap: wrap;
+  }
+
+  + .cards-wrapper {
+    margin-top: 36px;
+  }
+}
+
+.cards-wrapper mat-card.card {
+  width: 50%;
+  box-sizing: border-box;
+
+  @media (max-width: $medium) {
+    width: 100%;
+  }
+
+  + .card {
+    margin-left: 36px;
+
+    @media (max-width: $medium) {
+      margin-left: 0;
+      margin-top: 36px;
+    }
+  }
+}
+
+.popovers-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.popover-wrapper {
+  display: flex;
+  align-items: center;
+  margin: 16px 16px 0 0;
+
+  @media (max-width: $medium) {
+    width: 100%;
+  }
+}
+
+.popover {
+  position: absolute;
+  z-index: 1000;
+  top: -8px;
+  left: 0;
+  white-space: nowrap;
+}
+
+.popover-title {
+  margin: 0 !important;
+}
+
+.popover-button {
+  @media (max-width: $medium) {
+    width: 100%;
+  }
+}
+
+.card-text {
+  margin: 0 0 0 16px !important;
+}
+
+mat-card-content.content {
+  display: flex;
+  justify-content: start;
+
+  @media (max-width: $medium) {
+    flex-wrap: wrap;
+  }
+}
+
+.tooltip-directions-content-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.button {
+  @media (max-width: $medium) {
+    width: 100%;
+  }
+
+  & + .button {
+    margin-left: 16px;
+
+    @media (max-width: $medium) {
+      margin-left: 0;
+      margin-top: 16px;
+    }
+  }
+}
+
+.tooltip-button {
+  padding: 6px 16px;
+  margin: 16px 16px 0 0;
+
+  @media (max-width: $medium) {
+    width: 100%;
+  }
+}
+
+.tooltip-blue {
+  background-color: $blue;
+}
+
+.tooltip-pink {
+  background-color: $pink;
+}

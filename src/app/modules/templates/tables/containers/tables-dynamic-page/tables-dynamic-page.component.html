@@ -1,0 +1,7 @@
+<app-breadcrumb [path]="routes.TABLES_DYNAMIC"></app-breadcrumb>
+
+<div class="tables-wrapper">
+  <app-nutrition-table [nutritionTableData]="nutritionTableData$ | async"></app-nutrition-table>
+  <app-custom-table [nutritionTableData]="nutritionTableData$ | async"></app-custom-table>
+</div>
+

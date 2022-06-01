@@ -39,6 +39,11 @@ const route: Routes = [
           import('./modules/CRUD/crud.module').then((m) => m.CrudModule),
       },
       {
+        path: 'user',
+        canActivate: [AuthGuard],
+        loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule)
+      },
+      {
         path: 'app',
         loadChildren: () =>
           import('./modules/pages/pages.module').then((m) => m.PagesModule),

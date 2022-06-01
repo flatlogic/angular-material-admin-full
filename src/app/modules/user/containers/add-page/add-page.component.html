@@ -1,0 +1,257 @@
+<app-breadcrumb [path]="routes.Users_CREATE"></app-breadcrumb>
+
+<mat-card class="add-line-card">
+  <mat-card-content class="add-line-wrapper">
+    <div class="add-line-item-wrapper" [ngClass]="{'active': step >= 0}">
+      <div class="add-line-item">
+        <p *ngIf="step === 0" class="add-line-item-text">1</p>
+        <mat-icon *ngIf="step > 0" class="add-line-item-icon">done</mat-icon>
+      </div>
+      <p class="add-line-item-title">Create Account</p>
+    </div>
+
+    <hr class="break-line-wrapper">
+
+    <div class="add-line-item-wrapper" [ngClass]="{'active': step >= 1}">
+      <div class="add-line-item">
+        <p *ngIf="step <= 1" class="add-line-item-text">2</p>
+        <mat-icon *ngIf="step > 1" class="add-line-item-icon">done</mat-icon>
+      </div>
+      <p class="add-line-item-title">User Details</p>
+    </div>
+
+    <hr class="break-line-wrapper">
+
+    <div class="add-line-item-wrapper" [ngClass]="{'active': step >= 2}">
+      <div class="add-line-item">
+        <p *ngIf="step <= 2" class="add-line-item-text">3</p>
+        <mat-icon *ngIf="step > 2" class="add-line-item-icon">done</mat-icon>
+      </div>
+      <p class="add-line-item-title">Business Details</p>
+    </div>
+
+    <hr class="break-line-wrapper">
+
+    <div class="add-line-item-wrapper" [ngClass]="{'active': step >= 3}">
+      <div class="add-line-item">
+        <p class="add-line-item-text">4</p>
+      </div>
+      <p class="add-line-item-title">Social</p>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card *ngIf="step === 0" class="steps-card">
+  <mat-card-content class="content">
+    <div class="content-wrapper">
+      <mat-card-title class="content-title">Create New Account</mat-card-title>
+
+      <div class="font-wrapper">
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>User Name</mat-label>
+          <input matInput>
+          <mat-hint>Please enter your user name</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Email Address</mat-label>
+          <input matInput>
+          <mat-hint>We’ll never share your email with anyone else</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Password</mat-label>
+          <input matInput>
+          <mat-hint>Enter your password. Min 6 characters long</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Role</mat-label>
+          <mat-select class="form-select">
+            <mat-option value="user">User</mat-option>
+            <mat-option value="admin">Admin</mat-option>
+          </mat-select>
+          <mat-hint>Please choose the role</mat-hint>
+        </mat-form-field>
+
+        <button mat-flat-button color="primary" class="next-button" (click)="increment()">next</button>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card *ngIf="step === 1" class="steps-card">
+  <mat-card-content class="content">
+    <div>
+      <mat-card-title class="content-title">Create User Details</mat-card-title>
+
+      <div class="font-wrapper">
+        <div>
+          <p class="upload-image-text">Photo:</p>
+
+          <button mat-flat-button color="primary" class="upload-image-button">upload an image</button>
+
+          <p class="upload-image-text">.PNG, .JPG, .JPEG</p>
+        </div>
+
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>First Name</mat-label>
+          <input matInput>
+          <mat-hint>Enter your first name</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Last Name</mat-label>
+          <input matInput>
+          <mat-hint>Enter your last name</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Contact Number</mat-label>
+          <input matInput>
+          <mat-hint>Enter your contact number</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Email</mat-label>
+          <input matInput>
+          <mat-hint>Enter your email</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Country</mat-label>
+          <mat-select class="form-select">
+            <mat-option value="user">User</mat-option>
+            <mat-option value="admin">Admin</mat-option>
+          </mat-select>
+          <mat-hint>Please choose the country</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>State</mat-label>
+          <mat-select class="form-select">
+            <mat-option value="user">User</mat-option>
+            <mat-option value="admin">Admin</mat-option>
+          </mat-select>
+          <mat-hint>Please choose the state</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>City</mat-label>
+          <mat-select class="form-select">
+            <mat-option value="user">User</mat-option>
+            <mat-option value="admin">Admin</mat-option>
+          </mat-select>
+          <mat-hint>Please choose the city</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Address</mat-label>
+          <input matInput>
+          <mat-hint>Enter your address</mat-hint>
+        </mat-form-field>
+
+        <div class="buttons-wrapper">
+          <button mat-stroked-button color="primary" (click)="decrement()">back</button>
+          <button mat-flat-button color="primary" (click)="increment()">next</button>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card *ngIf="step === 2" class="steps-card">
+  <mat-card-content class="content">
+    <div>
+      <mat-card-title class="content-title">Business Details</mat-card-title>
+
+      <div class="font-wrapper">
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Company Name</mat-label>
+        <input matInput>
+        <mat-hint>Enter your company name</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Company Registered ID</mat-label>
+        <input matInput>
+        <mat-hint>Enter your company registered ID</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Company Email</mat-label>
+        <input matInput>
+        <mat-hint>Enter your company email</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Company Contact</mat-label>
+        <input matInput>
+        <mat-hint>Enter your company contact</mat-hint>
+      </mat-form-field>
+
+      <div class="buttons-wrapper">
+        <button mat-stroked-button color="primary" (click)="decrement()">back</button>
+        <button mat-flat-button color="primary" (click)="increment()">next</button>
+      </div>
+    </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card *ngIf="step === 3" class="steps-card">
+  <mat-card-content class="content">
+    <div>
+      <mat-card-title class="content-title">Social</mat-card-title>
+
+      <div class="font-wrapper">
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Facebook</mat-label>
+        <input matInput>
+        <mat-hint>Enter your Facebook link</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Twitter</mat-label>
+        <input matInput>
+        <mat-hint>Enter your Twitter link</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Instagram</mat-label>
+        <input matInput>
+        <mat-hint>Enter your Instagram link</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Company Contact</mat-label>
+        <input matInput>
+        <mat-hint>Enter your company contact</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>GitHub</mat-label>
+        <input matInput>
+        <mat-hint>Enter your GitHub link</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>CodePen</mat-label>
+        <input matInput>
+        <mat-hint>Enter your CodePen link</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Slack</mat-label>
+        <input matInput>
+        <mat-hint>Enter your Slack link</mat-hint>
+      </mat-form-field>
+
+      <div class="buttons-wrapper">
+        <button mat-stroked-button color="primary" (click)="decrement()">back</button>
+        <button mat-flat-button color="primary" [routerLink]="routes.Users">finish</button>
+      </div>
+    </div>
+    </div>
+  </mat-card-content>
+</mat-card>

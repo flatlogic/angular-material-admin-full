@@ -1,14 +1,14 @@
 <mat-list class="sidebar">
+  <mat-list-item routerLink="{{routes.PROFILE}}" routerLinkActive="active">
+    <mat-icon>account_circle</mat-icon> Profile
+  </mat-list-item>
+
   <mat-list-item routerLink="{{ routes.DASHBOARD }}" routerLinkActive="active">
     <mat-icon>home</mat-icon> Dashboard
   </mat-list-item>
 
   <mat-list-item routerLink="admin/users" routerLinkActive="active">
     <mat-icon>description</mat-icon> Users
-  </mat-list-item>
-
-  <mat-list-item routerLink="{{ routes.PROFILE }}" routerLinkActive="active">
-    <mat-icon>account_circle</mat-icon> Profile
   </mat-list-item>
 
   <mat-list-item routerLink="{{ routes.CHANGE_PASSWORD }}">

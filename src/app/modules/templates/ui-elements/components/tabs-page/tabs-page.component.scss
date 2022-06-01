@@ -1,0 +1,77 @@
+@import 'src/app/styles/colors';
+@import 'src/app/styles/font';
+@import 'src/app/styles/variables';
+
+.tabs-content-wrapper {
+  margin-top: 36px;
+}
+
+.cards-wrapper {
+  display: flex;
+
+  @media (max-width: $medium) {
+    flex-wrap: wrap;
+  }
+
+  + .cards-wrapper {
+    margin-top: 36px;
+  }
+}
+
+.card {
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 3px 11px 0 $shadow-white, 0 3px 3px -2px $shadow-grey, 0 1px 8px 0 $shadow-dark-grey;
+
+  + .card {
+    margin-left: 36px;
+
+    @media (max-width: $medium) {
+      margin-left: 0;
+      margin-top: 36px;
+    }
+  }
+}
+
+.tab-label {
+  text-transform: uppercase;
+  font-size: $fs-small;
+  font-weight: $fw-normal;
+  margin: 0;
+}
+
+.tab-icon {
+  padding: 0;
+  margin: 0 8px 0 0;
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+}
+
+.tab-text {
+  font-size: $fs-normal;
+  font-weight: $fw-lighter;
+  color: $dark-grey;
+  padding: 24px;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: flex-end;
+
+  button + button {
+    margin-left: 16px;
+  }
+}
+
+.expansion-panel {
+  background-color: $blue;
+}
+
+.panel-title, .panel-text {
+  color: $white;
+  margin: 0;
+}

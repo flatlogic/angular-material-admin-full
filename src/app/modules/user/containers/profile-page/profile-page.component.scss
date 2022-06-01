@@ -1,0 +1,248 @@
+@import "../../../../styles/colors";
+@import "../../../../styles/font";
+@import "../../../../styles/variables";
+
+.main-content-wrapper {
+  display: flex;
+  width: 100%;
+  margin-top: 36px;
+
+  @media (max-width: $medium) {
+    flex-wrap: wrap;
+  }
+}
+
+.left-content-wrapper {
+  width: 40%;
+  padding-right: 18px;
+  box-sizing: border-box;
+
+  @media (max-width: $medium) {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+.right-content-wrapper {
+  width: 60%;
+  padding-left: 18px;
+  box-sizing: border-box;
+
+  @media (max-width: $medium) {
+    width: 100%;
+    margin-top: 0;
+    padding: 0;
+  }
+
+  @media (min-width: $medium) and (max-width: $large) {
+    margin-top: 36px;
+  }
+}
+
+.bottom-right-content-wrapper {
+  display: flex;
+  height: fit-content;
+  margin-top: 36px;
+
+  @media (max-width: $medium) {
+    flex-direction: column;
+    height: fit-content;
+  }
+}
+
+.user-tasks {
+  width: 60%;
+  margin-right: 18px;
+
+  @media (max-width: $medium) {
+    width: 100%;
+    margin-right: 0;
+  }
+}
+
+.right-bottom-right-content-wrapper {
+  width: 40%;
+  margin-left: 18px;
+  height: fit-content;
+
+  @media (max-width: $medium) {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 36px;
+  }
+}
+
+.inner-content-wrapper {
+  display: flex;
+  width: 100%;
+  margin-top: 36px;
+
+  @media (max-width: $small) {
+    flex-wrap: wrap;
+  }
+}
+
+.user-media, .user-projects {
+  width: 50%;
+
+  @media (max-width: $medium) {
+    width: 100%;
+    height: fit-content;
+  }
+
+  @media (min-width: $medium) and (max-width: $normal) {
+    height: auto;
+  }
+}
+
+.user-media {
+  margin-right: 18px;
+
+  @media (max-width: $medium) {
+    margin-right: 0;
+  }
+
+  @media (min-width: $medium) and (max-width: $normal) {
+    margin-right: 8px;
+  }
+}
+
+.user-projects {
+  margin-left: 18px;
+
+  @media (max-width: $medium) {
+    margin-left: 0;
+  }
+
+  @media (min-width: $medium) and (max-width: $normal) {
+    margin-left: 8px;
+  }
+}
+
+.calendar-wrapper {
+  width: 100%;
+}
+
+.calendar-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1;
+}
+
+.calendar-array-wrapper {
+  color: $gray-70;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.calendar-date-title {
+  font-family: Fira Sans, sans-serif;
+  font-weight: $fw-lighter;
+  font-size: $fs-normal;
+  line-height: 18px;
+  color: $grey;
+  text-align: center;
+  margin: 0;
+}
+
+.views-wrapper {
+  width: 100%;
+  margin-top: 36px;
+}
+
+.views-title-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.views-title {
+  font-family: Fira Sans, sans-serif;
+  font-weight: $fw-normal;
+  font-size: $fs-regular;
+  line-height: 25px;
+  color: $dark-grey;
+  margin: 0;
+}
+
+.views-title-icon {
+  color: $gray-70;
+}
+
+.views-content {
+  display: flex;
+  height: 100px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.views-info-wrapper {
+
+}
+
+.views-value {
+  font-family: Fira Sans, sans-serif;
+  font-weight: $fw-normal;
+  font-size: $fs-large;
+  line-height: 34px;
+  color: $dark-grey;
+  margin: 0 8px 0 0;
+  display: inline;
+}
+
+.trending-up-icon {
+  padding-bottom: 4px;
+}
+
+.views-percent {
+  font-family: Fira Sans, sans-serif;
+  font-weight: $fw-normal;
+  font-size: $fs-xs;
+  line-height: 9px;
+  color: $green;
+}
+
+.views-button {
+  font-size: 12px;
+  border-color: $blue;
+  box-shadow: none;
+}
+
+.views-chart-wrapper {
+  margin-left: 23px;
+  margin-top: 40px;
+}
+
+.update-wrapper {
+  width: 100%;
+  margin-top: 36px;
+}
+
+.update-card {
+  background-color: #536DFE;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px;
+}
+
+.update-title-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.update-title {
+  font-family: Fira Sans, sans-serif;
+  font-weight: $fw-normal;
+  font-size: $fs-regular;
+  line-height: 23px;
+  color: $white;
+  margin: 0 0 0 12px;
+}
+
+.update-button {
+  box-shadow: none;
+  color: $white;
+  border-color: $white !important;
+}

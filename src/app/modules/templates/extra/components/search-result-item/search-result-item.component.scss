@@ -1,0 +1,82 @@
+@import 'src/app/styles/font';
+@import 'src/app/styles/colors';
+@import 'src/app/styles/variables';
+
+.card {
+  padding: 0;
+  overflow:hidden;
+  margin-top: 24px;
+  height: 160px;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+  height: 100%;
+}
+
+.img {
+  @media (max-width: $small) {
+    height: auto;
+  }
+}
+
+.description-wrapper {
+  padding: 18px;
+  width: 50%;
+
+  @media (max-width: $medium) {
+    width: 35%;
+  }
+}
+
+.title {
+  cursor: pointer;
+  margin: 0;
+  font-size: $fs-medium;
+  font-weight: $fw-extra-bold;
+  color: $blue;
+  line-height: 1.5;
+  letter-spacing: 0.15px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.subtitle {
+  color: $dark-grey;
+
+  @media (max-width: $small) {
+    display: none;
+  }
+}
+
+.description {
+  color: $dark-grey;
+  font-size: $fs-normal;
+  font-weight: $fw-lighter;
+  margin: 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+
+  @media (max-width: $small) {
+    display: none;
+  }
+}
+
+.price-wrapper {
+  padding: 24px;
+
+  @media (max-width: $small) {
+    display: none;
+  }
+}
+
+.price {
+  font-weight: $fw-bold;
+  font-size: $fs-normal;
+  color: $dark-grey;
+}

@@ -1,0 +1,33 @@
+@import "src/app/styles/variables";
+
+.content-wrapper {
+  margin-top: 36px;
+  display: flex;
+
+  @media (max-width: $small) {
+    flex-wrap: wrap;
+  }
+}
+
+.card {
+  width: 100%;
+
+  + .card {
+    margin-left: 36px;
+
+    @media (max-width: $small) {
+      margin-left: 0;
+      margin-top: 36px;
+    }
+  }
+}
+
+.spinners-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+mat-progress-bar + mat-progress-bar {
+  margin-top: 16px;
+}

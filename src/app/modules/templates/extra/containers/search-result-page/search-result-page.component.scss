@@ -1,0 +1,75 @@
+@import 'src/app/styles/colors';
+@import 'src/app/styles/variables';
+
+.tool-box {
+  margin-top: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (max-width: $small) {
+    flex-wrap: wrap;
+  }
+}
+
+.time-selects-wrapper {
+  display: flex;
+
+  @media (max-width: $small) {
+    margin-bottom: 16px;
+  }
+}
+
+app-type-item-select + app-time-period-select {
+  margin-left: 8px;
+}
+
+.mat-button-toggle-group {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  border-color: $blue;
+}
+
+.mat-button-toggle {
+  background-color: transparent;
+  color: $blue;
+  padding: 0 7px;
+}
+
+.mat-button-toggle-checked {
+  background-color: $blue;
+  color: $white;
+}
+
+.result-title {
+  margin: 8px 0 0 0;
+  color: $dark-grey;
+}
+
+.result-wrapper {
+  display: flex;
+  width: 100%;
+
+  @media (max-width: $small) {
+    flex-wrap: wrap-reverse;
+  }
+}
+
+.result-items-wrapper {
+  width: 70%;
+
+  @media (max-width: $small) {
+    width: 100%;
+  }
+}
+
+.result-filtering-wrapper {
+  width: 30%;
+  margin: 24px 0 0 24px;
+
+  @media (max-width: $small) {
+    width: 100%;
+    margin: 36px 0 0 0;
+  }
+}

@@ -1,0 +1,14 @@
+<h3 class="title">Subscribe</h3>
+
+<p class="text">
+  To subscribe to this website, please enter your email address here. We will send updates occasionally.
+</p>
+
+<mat-form-field class="form">
+  <input matInput placeholder="Email Address" [(ngModel)]="data.email">
+</mat-form-field>
+
+<div class="button-wrapper">
+  <button class="button" mat-stroked-button color="primary" (click)="close()" tabindex="-1">CANCEL</button>
+  <button class="button" mat-raised-button color="primary" tabindex="-1" [mat-dialog-close]="data.email">SUBSCRIBE</button>
+</div>

@@ -1,0 +1,68 @@
+<app-breadcrumb [path]="routes.Users_EDIT"></app-breadcrumb>
+
+<mat-card class="edit-nav-card">
+  <mat-card-content>
+    <mat-tab-group
+      mat-align-tabs="center"
+      class="nav-items-group"
+      [selectedIndex]="selectedTab.value"
+      (selectedIndexChange)="selectedTab.setValue($event)"
+    >
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <div class="nav-item-wrapper">
+            <img class="nav-item-icon" src="./assets/user/edit/account.svg">
+            <p class="nav-item-title">Account</p>
+          </div>
+        </ng-template>
+
+        <div class="nav-empty-item"></div>
+      </mat-tab>
+
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <div class="nav-item-wrapper">
+            <mat-icon class="nav-item-icon">perm_identity</mat-icon>
+            <p class="nav-item-title">Profile</p>
+          </div>
+        </ng-template>
+
+        <div class="nav-empty-item"></div>
+      </mat-tab>
+
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <div class="nav-item-wrapper">
+            <mat-icon class="nav-item-icon">lock</mat-icon>
+            <p class="nav-item-title">Change Password</p>
+          </div>
+        </ng-template>
+
+        <div class="nav-empty-item"></div>
+      </mat-tab>
+
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <div class="nav-item-wrapper">
+            <mat-icon class="nav-item-icon">settings</mat-icon>
+            <p class="nav-item-title">Settings</p>
+          </div>
+        </ng-template>
+
+        <div class="nav-empty-item"></div>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="form-card">
+  <mat-card-content>
+    <app-account-edit-form *ngIf="selectedTab.value === 0"></app-account-edit-form>
+
+    <app-profile-edit-form *ngIf="selectedTab.value === 1"></app-profile-edit-form>
+
+    <app-password-edit-form *ngIf="selectedTab.value === 2"></app-password-edit-form>
+
+    <app-settings-edit-form *ngIf="selectedTab.value === 3"></app-settings-edit-form>
+  </mat-card-content>
+</mat-card>
