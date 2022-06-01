@@ -1,6 +1,6 @@
 {
   "name": "angularmaterialadminfull",
-  "description": "Angular-Material-Admin-Full - template backend",
+  "description": "Angular-Material-Admin-Full",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
