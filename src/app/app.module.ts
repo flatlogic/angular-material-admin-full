@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { ToastrModule } from 'ngx-toastr';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { DashboardModule } from './modules/dashboard/dashboard.module';
 
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
@@ -31,6 +32,7 @@ import { HttpInterceptorService } from './shared/services/http-interceptor.servi
     CrudModule,
     BrowserAnimationsModule,
     RouterModule,
+    DashboardModule,
     AppRoutingModule,
     ToastrModule.forRoot(),
     MatCardModule,

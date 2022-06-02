@@ -27,6 +27,7 @@
     "angular-calendar": "^0.28.20",
     "apexcharts": "^3.35.3",
     "date-fns": "^2.14.0",
+    "echarts": "^4.7.0",
     "font-awesome": "^4.7.0",
     "moment": "2.15.2",
     "ng-apexcharts": "^1.7.1",

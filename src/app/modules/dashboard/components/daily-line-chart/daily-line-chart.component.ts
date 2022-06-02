@@ -7,12 +7,16 @@ import {
   ApexTooltip,
   ApexMarkers,
   ApexXAxis,
+  ApexStroke,
+  ApexLegend,
+  ApexGrid,
   ApexPlotOptions
 } from 'ng-apexcharts';
 
 import { DailyLineChartData, TimeData } from '../../models';
 import { colors } from '../../../../consts';
 import { customTooltip } from '../../consts';
+import * as ApexCharts from 'apexcharts';
 
 type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -163,7 +167,7 @@ export class DailyLineChartComponent implements OnInit, OnChanges, AfterViewInit
           stops: [0, 100, 100, 100]
         }
       },
-      labels: labels,
+      labels,
       xaxis: {
         type: 'datetime',
         labels: {

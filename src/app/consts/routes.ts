@@ -1,5 +1,5 @@
 export enum routes {
-  DASHBOARD = '/app/dashboard',
+  DASHBOARD = '/dashboard',
   PROFILE = '/user/profile',
   CHANGE_PASSWORD = '/app/change-password',
   LOGIN = '/login',

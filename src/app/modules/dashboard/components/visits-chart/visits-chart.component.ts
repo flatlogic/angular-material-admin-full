@@ -2,7 +2,7 @@ import {AfterViewInit, Component, ElementRef, Input, OnChanges, SimpleChanges, V
 
 import { VisitsChartData } from '../../models';
 import { colors } from '../../../../consts';
-import {ChartOptions} from '../../../templates/charts/models/chart-options';
+import { ChartOptions } from '../../../templates/charts/models/chart-options';
 
 @Component({
   selector: 'app-visits-chart',
@@ -19,6 +19,7 @@ export class VisitsChartComponent implements OnChanges, AfterViewInit {
   public colors: typeof colors = colors;
   public chartOptions: Partial<ChartOptions>;
 
+  // tslint:disable-next-line:use-lifecycle-interface
   public ngOnInit(): void {
     this.initChart();
   }
@@ -35,7 +36,7 @@ export class VisitsChartComponent implements OnChanges, AfterViewInit {
               : colors.PINK
           ]
         }
-      })
+      });
     }
   }
 
@@ -43,7 +44,7 @@ export class VisitsChartComponent implements OnChanges, AfterViewInit {
     this.chartObj = new ApexCharts(
       this.chart.nativeElement,
       this.chartOptions
-    )
+    );
 
     this.chartObj.render();
   }
@@ -54,7 +55,7 @@ export class VisitsChartComponent implements OnChanges, AfterViewInit {
       chart: {
         height: 130,
         width: 130,
-        type: "radialBar",
+        type: 'radialBar',
         offsetY: -10
       },
       plotOptions: {
@@ -63,16 +64,16 @@ export class VisitsChartComponent implements OnChanges, AfterViewInit {
           endAngle: 180,
           dataLabels: {
             name: {
-              fontSize: "16px",
+              fontSize: '16px',
               color: undefined,
               offsetY: 120
             },
             value: {
               offsetY: 76,
-              fontSize: "22px",
+              fontSize: '22px',
               color: undefined,
-              formatter: function(val) {
-                return val + "%";
+              formatter(val) {
+                return val + '%';
               }
             },
             show: false

@@ -43,6 +43,7 @@ export class DashboardPageComponent {
     this.projectsStatsData$ = this.service.loadProjectsStatsData();
   }
 
+  // tslint:disable-next-line:use-lifecycle-interface
   public ngOnInit(): void {
     this.sharedService.currentTheme.subscribe((theme: string) => {
       this.currentTheme = theme;

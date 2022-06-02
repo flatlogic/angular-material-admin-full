@@ -7,7 +7,7 @@ import {
   ApexStroke,
   ApexYAxis,
   ApexTitleSubtitle,
-  ApexLegend, ApexGrid
+  ApexLegend, ApexGrid, ApexFill
 } from 'ng-apexcharts';
 
 import { ServerChartData } from '../../models';
