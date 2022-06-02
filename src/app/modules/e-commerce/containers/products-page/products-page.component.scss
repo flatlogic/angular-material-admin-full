@@ -1,0 +1,55 @@
+@import "src/app/styles/variables";
+
+.selects-wrapper {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  @media (max-width: $small) {
+    flex-wrap: wrap;
+  }
+}
+
+.select-wrapper {
+  width: 15%;
+
+  @media (max-width: $small) {
+    width: 100%;
+  }
+
+  & + .select-wrapper {
+    margin-left: 16px;
+
+    @media (max-width: $small) {
+      margin-top: 0px;
+      margin-left: 0;
+    }
+  }
+}
+
+.select {
+  border: 0;
+  width: 100%;
+}
+
+.products-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  @media (max-width: $small) {
+    margin-top: -10px;
+  }
+}
+
+.product {
+  width: 23%;
+  margin: 1.2vw 0;
+
+  @media (max-width: $small) {
+    width: 100%;
+    margin: 16px 0;
+  }
+}

@@ -1,0 +1,284 @@
+@import "src/app/styles/colors";
+@import "src/app/styles/font";
+@import "src/app/styles/variables";
+
+.product-info-wrapper {
+  display: flex;
+  padding: 0;
+  overflow: hidden;
+  margin-top: 24px;
+
+  @media (max-width: $small) {
+    flex-wrap: wrap;
+  }
+}
+
+.product-image {
+  width: 50%;
+
+  @media (max-width: $small) {
+    width: 100%;
+  }
+}
+
+.info-wrapper {
+  width: 50%;
+  padding: 24px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @media (max-width: $small) {
+    width: 100%;
+  }
+}
+
+.info-title-wrapper {
+  display: flex;
+}
+
+.info-inner-wrapper {
+  margin-right: 36px;
+}
+
+.product-pop-wrapper {
+  display: flex;
+}
+
+.product-pop {
+  display: inline;
+  font-size: $fs-large;
+  font-weight: $fw-lighter;
+  color: $yellow;
+  margin: 0 8px 0 0;
+}
+
+.product-pop-icon {
+  font-size: 24px;
+  padding: 0;
+}
+
+.product-title {
+  font-size: 26px;
+  font-weight: $fw-lighter;
+  color: $dark-grey;
+  text-transform: uppercase;
+  margin: 0 0 10px 0;
+}
+
+.product-subtitle {
+  font-size: $fs-normal;
+  font-weight: $fw-lighter;
+  color: $dark-grey;
+  margin: 0;
+}
+
+.product-price {
+  font-size: $fs-medium;
+  font-weight: $fw-normal;
+  color: $dark-grey;
+  margin: 16px 0;
+}
+
+.product-size-title {
+  font-size: $fs-small;
+  font-weight: $fw-lighter;
+  color: $dark-grey;
+  margin-bottom: 4px;
+}
+
+.product-selects-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  @media (max-width: $small) {
+    flex-wrap: wrap;
+    margin-top: 24px;
+  }
+}
+
+.product-select-field {
+  margin: 0;
+  width: 50%;
+
+  @media (max-width: $small) {
+    width: 100%;
+  }
+
+  & + .product-select-field {
+    margin-left: 16px;
+
+    @media (max-width: $small) {
+      margin-left: 0;
+      margin-top: 16px;
+    }
+  }
+}
+
+.product-select {
+  border: none;
+}
+
+.action-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 4px 0 16px 0;
+
+  @media (max-width: $small) {
+    flex-wrap: wrap;
+  }
+}
+
+.action-button {
+  width: 50%;
+
+  @media (max-width: $small) {
+    width: 100%;
+  }
+
+  & + .action-button {
+    margin-left: 16px;
+
+    @media (max-width: $small) {
+      margin-top: 16px;
+      margin-left: 0;
+    }
+  }
+}
+
+.inner-button-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 0;
+}
+
+.text-button {
+  margin: 0 16px 0 0;
+}
+
+.card-wrapper {
+  display: flex;
+  align-items: center;
+  margin: 0 0 10px 0;
+}
+
+.card {
+  width: 40px;
+
+  & + .card {
+    margin-left: 8px;
+  }
+}
+
+.product-benefit {
+  font-size: $fs-normal;
+  font-weight: $fw-lighter;
+  color: $grey;
+  margin: 0;
+}
+
+.product-text-info-wrapper {
+  margin-top: 38px;
+  box-shadow: 0 3px 11px 0 $shadow-white, 0 3px 3px -2px $shadow-grey, 0 1px 8px 0 $shadow-dark-grey;
+}
+
+.product-text-info-content {
+  display: flex;
+
+  @media (max-width: $small) {
+    flex-wrap: wrap;
+  }
+}
+
+.text-info-item-wrapper {
+  width: 100%;
+
+  & + .text-info-item-wrapper {
+    margin-left: 24px;
+
+    @media (max-width: $small) {
+      margin-top: 24px;
+      margin-left: 0;
+    }
+  }
+}
+
+.middle-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.text-info-title {
+  font-size: $fs-medium;
+  font-weight: $fw-lighter;
+  margin-bottom: 16px;
+  color: $dark-grey;
+  text-transform: uppercase;
+}
+
+.tag {
+  color: $blue;
+}
+
+.icons-wrapper {
+  display: flex;
+  margin: 0 0 16px -10px;
+}
+
+.icon-wrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background-color: $black-08;
+  }
+}
+
+.icon {
+  padding: 0;
+  width: 18px;
+  height: 20px;
+  color: $light-grey;
+}
+
+.product-reviews {
+  margin: 14px 0;
+}
+
+.product-link {
+  color: $blue;
+  text-decoration: none;
+}
+
+.similar-products-title {
+  font-size: 26px;
+  font-weight: $fw-lighter;
+  color: $light-grey;
+  margin: 38px 0 18px 0;
+}
+
+.similar-products-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.similar-product {
+  width: 23%;
+  margin: 8px 0;
+
+  @media (max-width: $small) {
+    width: 100%;
+    margin: 20px 0;
+  }
+}

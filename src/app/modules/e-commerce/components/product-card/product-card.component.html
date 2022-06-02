@@ -1,0 +1,22 @@
+<mat-card class="product-card" [routerLink]="[routes.PRODUCT, product.id]">
+  <mat-card-content>
+    <img src="{{product.image}}" alt="{{product.title}}" class="product-img">
+    <mat-chip-list>
+      <mat-chip class="product-status" [color]="product.status === 'Sale' ? 'warn' : 'primary'" selected>{{product.status}}</mat-chip>
+    </mat-chip-list>
+
+    <div class="product-title-wrapper">
+      <p class="product-title">{{product.title}}</p>
+      <p class="product-subtitle">{{product.subtitle}}</p>
+    </div>
+
+    <div class="product-price-wrapper">
+      <p class="product-price">{{product.price}}</p>
+
+      <div class="product-pop-wrapper">
+        <p class="product-pop">{{product.rating}}</p>
+        <mat-icon color="accent" class="pop-icon">star</mat-icon>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

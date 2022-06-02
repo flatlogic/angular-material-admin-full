@@ -13,14 +13,12 @@ import {
   TypographyPageComponent,
   VerticalAlignmentComponent
 } from './components';
-import {MatCardModule} from '@angular/material/card';
-import {MatButtonModule} from '@angular/material/button';
-import {SharedModule} from '../../../shared/shared.module';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatTableModule} from '@angular/material/table';
-import { GridTableComponent } from './components/grid-table/grid-table.component';
-
-
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { SharedModule } from '../../../shared/shared.module';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatTableModule } from '@angular/material/table';
+import { GridTableComponent } from './components';
 
 @NgModule({
   declarations: [

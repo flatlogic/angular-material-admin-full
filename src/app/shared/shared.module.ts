@@ -16,9 +16,8 @@ import { FooterComponent } from './footer/footer.component';
 import { LayoutComponent } from './layout/layout.component';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatBadgeModule } from '@angular/material/badge';
-import { BreadcrumbComponent } from './ui-elements';
-import { SettingsMenuComponent } from './ui-elements/settings-menu/settings-menu.component';
-import { DateMenuComponent } from './ui-elements/date-menu/date-menu.component';
+import { ChatPopupComponent } from './popups/chat-popup/chat-popup.component';
+import { SettingsMenuComponent, DateMenuComponent, BreadcrumbComponent } from './ui-elements';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
@@ -43,6 +42,7 @@ import { FilterComponent } from './filter/filter.component';
     FilterComponent,
     DateMenuComponent,
     SettingsMenuComponent,
+    ChatPopupComponent,
   ],
   imports: [
     HeaderModule,

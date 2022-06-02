@@ -1,0 +1,22 @@
+<div>
+  <div class="chat-title-wrapper">
+    <h3 class="chat-title">Chat</h3>
+    <mat-icon class="close-icon" (click)="close()">clear</mat-icon>
+  </div>
+
+  <div *ngFor="let chat of chatList" class="message-wrapper">
+    <img [src]="chat.imgUrl" class="user-icon">
+    <div>
+      <p class="user-name">{{chat.userName}}</p>
+      <p class="user-message">{{chat.message}}</p>
+    </div>
+  </div>
+
+  <div class="comment-wrapper">
+    <mat-form-field class="comment-input">
+      <input matInput [(ngModel)]="message" placeholder="Type a message">
+    </mat-form-field>
+
+    <button mat-flat-button color="primary" class="send-button" (click)="send()">Send</button>
+  </div>
+</div>

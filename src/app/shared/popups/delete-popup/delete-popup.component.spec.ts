@@ -8,8 +8,9 @@ describe('DeletePopupComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DeletePopupComponent],
-    }).compileComponents();
+      declarations: [ DeletePopupComponent ]
+    })
+    .compileComponents();
   });
 
   beforeEach(() => {

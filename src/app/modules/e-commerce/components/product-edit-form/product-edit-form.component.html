@@ -1,0 +1,94 @@
+<mat-card class="card">
+  <mat-card-title>
+    <p>New product</p>
+  </mat-card-title>
+
+  <mat-card-content>
+
+    <div class="input-wrapper">
+      <p class="input-title">Image</p>
+      <mat-form-field class="input-field" appearance="standard">
+        <mat-select [(value)]="selected" [ngClass]="selected">
+          <mat-option>None</mat-option>
+          <mat-option value="option">Option 1</mat-option>
+          <mat-option value="option2">Option 2</mat-option>
+          <mat-option value="option3">Option 3</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="input-wrapper">
+      <p class="input-title">Title</p>
+      <mat-form-field appearance="outline" class="input-field">
+        <input matInput [formControl]="title" class="input-text">
+      </mat-form-field>
+    </div>
+
+    <div class="input-wrapper">
+      <p class="input-title">Subtitle</p>
+      <mat-form-field appearance="outline" class="input-field">
+        <input matInput [formControl]="subtitle" class="input-text">
+      </mat-form-field>
+    </div>
+
+    <div class="input-wrapper">
+      <p class="input-title">Price</p>
+      <mat-form-field appearance="outline" class="input-field">
+        <input matInput [formControl]="price" class="input-text" type="number">
+      </mat-form-field>
+    </div>
+
+    <div class="input-wrapper">
+      <p class="input-title">Discount</p>
+      <mat-form-field appearance="outline" class="input-field">
+        <input matInput [formControl]="discount" class="input-text" type="number">
+      </mat-form-field>
+    </div>
+
+    <div class="input-wrapper">
+      <p class="input-title">Description 1</p>
+      <mat-form-field appearance="outline" class="input-field">
+        <input matInput [formControl]="description1" class="input-text">
+      </mat-form-field>
+    </div>
+
+    <div class="input-wrapper">
+      <p class="input-title">Description 2</p>
+      <mat-form-field appearance="outline" class="input-field">
+        <input matInput [formControl]="description2" class="input-text">
+      </mat-form-field>
+    </div>
+
+    <div class="input-wrapper">
+      <p class="input-title">Code</p>
+      <mat-form-field appearance="outline" class="input-field">
+        <input matInput [formControl]="code" class="input-text" type="number">
+      </mat-form-field>
+    </div>
+
+    <div class="input-wrapper">
+      <p class="input-title">Hashtag</p>
+      <mat-form-field appearance="outline" class="input-field">
+        <input matInput [formControl]="hashtag" class="input-text">
+      </mat-form-field>
+    </div>
+
+    <div class="input-wrapper">
+      <p class="input-title">Technology</p>
+      <mat-form-field appearance="outline" class="input-field">
+        <input matInput [formControl]="technology" class="input-text">
+      </mat-form-field>
+    </div>
+
+    <div class="input-wrapper">
+      <p class="input-title">Rating</p>
+      <mat-form-field appearance="outline" class="input-field">
+        <input matInput [formControl]="rating" class="input-text" type="number">
+      </mat-form-field>
+    </div>
+
+    <button mat-flat-button color="success" (click)="save()">save</button>
+    <button mat-flat-button color="defailt" routerLink="{{router.MANAGEMENT}}">back</button>
+
+  </mat-card-content>
+</mat-card>

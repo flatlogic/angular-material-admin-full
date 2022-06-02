@@ -1,0 +1,141 @@
+<app-breadcrumb [path]="routes.PRODUCT"></app-breadcrumb>
+
+<mat-card class="product-info-wrapper">
+  <img class="product-image" [src]="(product$ | async).imageLarge" alt="product-image">
+
+  <div class="info-wrapper">
+    <div class="info-title-wrapper">
+      <div class="info-inner-wrapper">
+        <p class="product-title">{{(product$ | async).title}}</p>
+        <p class="product-subtitle">{{(product$ | async).subtitle}}</p>
+      </div>
+
+      <div class="product-pop-wrapper">
+        <p class="product-pop">{{(product$ | async).rating}}</p>
+        <mat-icon class="product-pop-icon" color="accent">star</mat-icon>
+      </div>
+    </div>
+
+    <p class="product-price">{{(product$ | async).price}}</p>
+
+    <p class="product-size-title">Size Guide</p>
+
+    <div class="product-selects-wrapper">
+      <mat-form-field appearance="outline" class="product-select-field">
+        <mat-label>Select size</mat-label>
+        <mat-select class="product-select" [formControl]="size">
+          <mat-option value="1">1</mat-option>
+          <mat-option value="2">2</mat-option>
+          <mat-option value="3">3</mat-option>
+          <mat-option value="4">4</mat-option>
+          <mat-option value="5">5</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="product-select-field">
+        <mat-select class="product-select" [formControl]="value">
+          <mat-option value="1">1</mat-option>
+          <mat-option value="2">2</mat-option>
+          <mat-option value="3">3</mat-option>
+          <mat-option value="4">4</mat-option>
+          <mat-option value="5">5</mat-option>
+          <mat-option value="6">6</mat-option>
+          <mat-option value="7">7</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="action-wrapper">
+      <button mat-flat-button color="primary" class="action-button">
+        <div class="inner-button-wrapper">
+          <p class="text-button">Add to bag</p>
+          <mat-icon>shopping_cart</mat-icon>
+        </div>
+      </button>
+
+      <button mat-flat-button color="warn" class="action-button">
+        <div class="inner-button-wrapper">
+          <p class="text-button">Add to wishlist</p>
+          <mat-icon>favorite</mat-icon>
+        </div>
+      </button>
+    </div>
+
+    <div class="card-wrapper">
+      <img class="card" src="./assets/e-commerce/product/mastercard.png" alt="mastercard">
+      <img class="card" src="./assets/e-commerce/product/visa.png" alt="visa">
+      <img class="card" src="./assets/e-commerce/product/paypal.png" alt="paypal">
+    </div>
+
+    <p class="product-benefit">FREE Delivery & Returns</p>
+  </div>
+</mat-card>
+
+<mat-card class="product-text-info-wrapper">
+  <mat-card-title>
+    <p>Product Info</p>
+  </mat-card-title>
+
+  <mat-card-content class="product-text-info-content">
+    <div class="text-info-item-wrapper">
+      <p class="text-info-title">PRODUCT DESCRIPTION</p>
+
+      <ul>
+        <li>{{(product$ | async).description1}}</li>
+        <li>{{(product$ | async).description2}}</li>
+      </ul>
+    </div>
+
+    <div class="text-info-item-wrapper middle-block">
+      <div>
+        <p class="text-info-title">PRODUCT CODE</p>
+        <p>{{(product$ | async).code}}</p>
+      </div>
+
+      <div>
+        <p class="text-info-title">TECHNOLOGY</p>
+        <ul>
+          <li *ngFor="let technology of (product$ | async).technology">{{technology}}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="text-info-item-wrapper">
+      <p class="text-info-title">SHARE</p>
+
+      <p>Share photo with a tag <span class="tag">{{(product$ | async).hashtag}}</span></p>
+
+      <div class="icons-wrapper">
+        <div class="icon-wrapper">
+          <mat-icon fontSet="fa fa-fs" fontIcon="fa-facebook-square" class="icon"></mat-icon>
+        </div>
+
+        <div class="icon-wrapper">
+          <mat-icon fontSet="fa fa-fs" fontIcon="fa-instagram" class="icon"></mat-icon>
+        </div>
+
+        <div class="icon-wrapper">
+          <mat-icon fontSet="fa fa-fs" fontIcon="fa-twitter" class="icon"></mat-icon>
+        </div>
+      </div>
+
+      <p class="text-info-title">RATING & REVIEWS</p>
+
+      <div class="product-pop-wrapper">
+        <p class="product-pop">{{(product$ | async).rating}}</p>
+        <mat-icon class="product-pop-icon" color="accent">star</mat-icon>
+      </div>
+
+      <p class="product-reviews">32 Reviews</p>
+
+      <a class="product-link" routerLink="{{routes.DASHBOARD}}">Read all</a>
+    </div>
+
+  </mat-card-content>
+</mat-card>
+
+<h3 class="similar-products-title">You may also like</h3>
+
+<div class="similar-products-wrapper">
+  <app-product-card class="similar-product" *ngFor="let product of (products$ | async)" [product]="product"></app-product-card>
+</div>

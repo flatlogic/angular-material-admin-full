@@ -1285,6 +1285,13 @@
   dependencies:
     tslib "^2.3.1"
 
+"@ngbmodule/material-carousel@^0.7.2":
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/@ngbmodule/material-carousel/-/material-carousel-0.7.2.tgz#74477490d945aa62db3e986f119484dc93eb6db6"
+  integrity sha512-ubIYq7VgnuajKMlEv+OrnIzZgyo3Es8dIk76pGJNfsBZaIeVtfgZi85gDydnzyj1uDbAzpMfFw0vvzf7ve22SA==
+  dependencies:
+    tslib "^2.0.0"
+
 "@ngtools/webpack@13.2.5":
   version "13.2.5"
   resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-13.2.5.tgz#083ac647926403df741d5f6b5a3edd3a545a9b2f"
@@ -4328,12 +4335,12 @@ ngx-smart-popover@^1.4.0:
   dependencies:
     tslib "^1.9.0"
 
-ngx-toastr@^14.2.1:
-  version "14.2.1"
-  resolved "https://registry.yarnpkg.com/ngx-toastr/-/ngx-toastr-14.2.1.tgz#2899cc6e69af607aa89a2de807c32b46fdc035f8"
-  integrity sha512-1Kq//y8tTgglUYKHIziZwpo4R7fe4/neidcxfbAXzXtcViSjT4Z21Vgqn/inoBlwoc7E9qXQDuZoJr2lanCgGA==
+ngx-toastr@^12.0.1:
+  version "12.1.0"
+  resolved "https://registry.yarnpkg.com/ngx-toastr/-/ngx-toastr-12.1.0.tgz#50f6eee4262f4ba342918f06f98a657f223194cf"
+  integrity sha512-rytCRBhvuudj614Kfj9GoIVQDrFuLvHSMP1YrMwTmR1SNkNJZOpGKmaSDCCBrNDkSrGouzMWBlFbl1UDBBsiqw==
   dependencies:
-    tslib "^2.3.0"
+    tslib "^1.10.0"
 
 ngx-trend@^5.0.1:
   version "5.0.1"
