@@ -1,0 +1,35 @@
+<mat-card class="chart">
+  <mat-card-title class="chart__header">
+    <p class="chart__title">Daily Line Chart</p>
+    <div class="chart-legend">
+      <div class="chart-legend__item">
+        <div class="chart-legend__icon yellow"></div><span class="chart-legend__title">Tablet</span>
+      </div>
+      <div class="chart-legend__item">
+        <div
+          class="chart-legend__icon"
+          [ngClass]="{
+            'blue' : currentTheme === 'blue',
+            'pink' : currentTheme === 'pink',
+            'green' : currentTheme === 'green'
+          }"
+        ></div>
+        <span class="chart-legend__title">Mobile</span>
+      </div>
+      <div class="chart-legend__item">
+        <div class="chart-legend__icon light-blue"></div><span class="chart-legend__title">Desktop</span>
+      </div>
+    </div>
+
+    <mat-select class="chart-select" [(ngModel)]="selectedMatSelectValue" (selectionChange)="changedMatSelectionValue()">
+      <mat-option class="select-option" [value]="matSelectFields.daily">Daily</mat-option>
+      <mat-option class="select-option" [value]="matSelectFields.weekly">Weekly</mat-option>
+      <mat-option class="select-option" [value]="matSelectFields.monthly">Monthly</mat-option>
+    </mat-select>
+
+  </mat-card-title>
+
+  <mat-card-content class="chart__content">
+    <div #chart class="chart__content-item"></div>
+  </mat-card-content>
+</mat-card>

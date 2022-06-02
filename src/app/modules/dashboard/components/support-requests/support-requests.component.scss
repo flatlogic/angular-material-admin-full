@@ -1,0 +1,130 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/font';
+@import '../../../../styles/variables';
+
+.support-requests {
+  padding: 0;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    padding: 24px 24px 8px;
+    margin-bottom: 0;
+  }
+
+  &__title {
+    font-size: $fs-medium;
+    font-weight: $fw-lighter;
+    margin: 0;
+    line-height: 40px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  &__content {
+    height: auto;
+    overflow-y: hidden;
+    overflow-x: scroll;
+
+    @media (max-width: $small) {
+      height: auto;
+    }
+  }
+
+  &__table-row {
+    height: 64px;
+  }
+
+  &__table-row-title {
+    color: $dark-grey;
+    font-size: $fs-small;
+    font-weight: $fw-lighter;
+    line-height: 24px;
+    text-transform: uppercase;
+    padding: 18.4px;
+  }
+
+  &__table-content {
+    color: $dark-grey;
+    font-size: $fs-small;
+    padding: 20px;
+  }
+
+  &__content-badge {
+    width: fit-content;
+    border-radius: 32px;
+    color: $white;
+    text-align: center;
+    padding: 5px 10px;
+    font-size: 13px;
+    box-sizing: border-box;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: $fw-lighter;
+    line-height: 1.75;
+    letter-spacing: 0.45px;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+}
+
+mat-menu {
+  position: absolute;
+}
+
+.delivered {
+  background-color: $green;
+}
+
+.pending {
+  background-color: $blue;
+}
+
+.canseled {
+  background-color: $pink;
+}
+
+.progress {
+  background-color: $yellow;
+}
+
+.table {
+  width: 100%;
+}
+
+.table-header {
+  padding: 14px 40px 14px 24px;
+}
+
+.table-header-text {
+  font-size: $fs-small;
+  font-weight: $fw-normal;
+  color: $light-grey;
+  text-transform: uppercase;
+  width: max-content;
+  margin: 0;
+}
+
+.table-body {
+  padding: 14px 40px 14px 24px;
+}
+
+.table-body-text {
+  font-size: $fs-small;
+  font-weight: $fw-normal;
+  color: $dark-grey;
+  text-transform: uppercase;
+  width: max-content;
+  margin: 0;
+}
+
+.customer-column-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.customer-column-icon {
+  margin-right: 8px;
+}

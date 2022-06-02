@@ -1,0 +1,142 @@
+@import "../../../../styles/colors";
+@import "../../../../styles/variables";
+@import "../../../../styles/font";
+
+.project-stat {
+  display: flex;
+  margin-bottom: 24px;
+
+  &__item {
+    height: 208px;
+    width: 100%;
+
+    @media (min-width: $small) and (max-width: $normal) {
+      margin-top: 24px;
+    }
+
+    & + .project-stat__item {
+      margin-left: 24px;
+
+      @media (max-width: $small) {
+        margin-top: 24px;
+        margin-left: 0;
+      }
+
+      @media (min-width: $small) and (max-width: $normal) {
+        &:last-child {
+          margin-left: 0;
+        }
+      }
+    }
+
+    @media (min-width: $small) and (max-width: $large) {
+      width: 41.3%;
+    }
+
+    @media (min-width: $large) and (max-width: $normal) {
+      width: 43.6%;
+    }
+  }
+
+  &__title {
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title-text {
+    font-weight: $fw-lighter;
+    font-size: $fs-medium;
+    margin: 0;
+  }
+
+  @media (min-width: $small) and (max-width: $normal) {
+    justify-content: start;
+  }
+
+  @media (max-width: $normal) {
+    flex-wrap: wrap;
+  }
+}
+
+.project-stat-content {
+  padding: 8px;
+
+  &__total-info-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+  }
+
+  &__total-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  &__total-info-users {
+    color: $grey;
+    font-weight: $fw-lighter;
+    font-size: $fs-xxxl;
+    margin: 0;
+    height: 45px;
+    letter-spacing: 0.15px;
+  }
+
+  &__total-info-percent {
+    color: $green;
+    font-weight: $fw-lighter;
+    font-size: $fs-small;
+    margin: 0 0 0 5px;
+  }
+
+  &__total-info-percent-warn {
+    color: $pink;
+    font-weight: $fw-lighter;
+    font-size: $fs-small;
+    margin: 0 0 0 5px;
+  }
+
+  &__total-info-chart {
+    position: relative;
+    right: -9px;
+    top: -2px;
+  }
+
+  &__stat-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+  }
+
+  &__stat-value-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  &__stat-value {
+    font-weight: $fw-lighter;
+    font-size: $fs-regular;
+    color: $dark-grey;
+    margin: 0;
+  }
+
+  &__stat-icon {
+    transform: rotate(45deg);
+    color: $green;
+  }
+
+  &__stat-icon-warn {
+    transform: rotate(135deg);
+    color: $pink;
+  }
+
+  &__stat-item-title {
+    color: $light-grey;
+    font-weight: $fw-lighter;
+    font-size: 12px;
+    margin: 0;
+  }
+}

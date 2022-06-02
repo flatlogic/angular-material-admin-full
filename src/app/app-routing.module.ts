@@ -5,6 +5,7 @@ import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { AuthGuard } from './modules/auth/guards';
 import { LayoutComponent } from './shared/layout/layout.component';
 import { routes } from './consts';
+import { DashboardPageComponent } from './modules/dashboard/containers';
 
 const ROUTES: typeof routes = routes;
 
@@ -31,7 +32,12 @@ const route: Routes = [
         path: 'dashboard',
         pathMatch: 'full',
         canActivate: [AuthGuard],
-        children: [],
+        children: [
+          {
+            path: '',
+            component: DashboardPageComponent
+          }
+        ]
       },
       {
         path: 'admin',

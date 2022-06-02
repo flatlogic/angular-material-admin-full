@@ -4307,6 +4307,13 @@ ng-apexcharts@^1.7.1:
   dependencies:
     tslib "^2.0.0"
 
+ngx-echarts@^4.2.2:
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/ngx-echarts/-/ngx-echarts-4.2.2.tgz#9eb5f69f923084869ea014f117915cd6cc366343"
+  integrity sha512-iLxOFnfKhUYP8Qw22AUY2ugSEd1Uvt6AeYhiaSqpg/G6NDmM/NwpdLt+fGAjax2aY7e94ORuwhXnl2gxtNzt7Q==
+  dependencies:
+    tslib "^1.9.0"
+
 ngx-smart-popover@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/ngx-smart-popover/-/ngx-smart-popover-1.4.0.tgz#663093757afccc38b1714fd118b149f42bade58d"
@@ -4320,6 +4327,11 @@ ngx-toastr@^14.2.1:
   integrity sha512-1Kq//y8tTgglUYKHIziZwpo4R7fe4/neidcxfbAXzXtcViSjT4Z21Vgqn/inoBlwoc7E9qXQDuZoJr2lanCgGA==
   dependencies:
     tslib "^2.3.0"
+
+ngx-trend@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/ngx-trend/-/ngx-trend-5.0.1.tgz#4b2f7917eeaf9ccaccab5b45a3f475d755d34c8a"
+  integrity sha512-M7P1jQlwK8998qmkDQjslBZNUrnD3p1nHLuQHPF2Ek/4dpb+FDLogbDcWPbGc2XiepIfBeOaf3Jt1k+X4wHkuQ==
 
 nice-napi@^1.0.2:
   version "1.0.2"

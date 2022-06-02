@@ -30,8 +30,10 @@
     "font-awesome": "^4.7.0",
     "moment": "2.15.2",
     "ng-apexcharts": "^1.7.1",
+    "ngx-echarts": "^4.2.2",
     "ngx-smart-popover": "^1.4.0",
     "ngx-toastr": "^14.2.1",
+    "ngx-trend": "^5.0.1",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4"

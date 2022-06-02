@@ -1,0 +1,147 @@
+<mat-card class="support-requests">
+  <mat-card-title class="support-requests__header">
+    <div>
+      <p class="support-requests__title">Support Requests</p>
+    </div>
+
+    <app-settings-menu></app-settings-menu>
+  </mat-card-title>
+
+  <mat-card-content class="support-requests__content">
+    <table mat-table [dataSource]="dataSource" matSort class="table">
+
+      <!-- Checkbox Column -->
+      <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-checkbox
+            color="warn"
+            (change)="$event ? masterToggle() : null"
+            [checked]="selection.hasValue() && isAllSelected()"
+            [indeterminate]="selection.hasValue() && !isAllSelected()"
+            [aria-label]="checkboxLabel()"
+          ></mat-checkbox>
+        </th>
+        <td mat-cell *matCellDef="let row">
+          <mat-checkbox
+            color="warn"
+            (click)="$event.stopPropagation()"
+            (change)="$event ? selection.toggle(row) : null"
+            [checked]="selection.isSelected(row)"
+            [aria-label]="checkboxLabel(row)"
+          ></mat-checkbox>
+        </td>
+      </ng-container>
+
+      <!-- Order Column -->
+      <ng-container matColumnDef="id" >
+        <th class="table-header" mat-header-cell *matHeaderCellDef mat-sort-header>
+          <p class="table-header-text">Order id</p>
+        </th>
+        <td class="table-body" mat-cell *matCellDef="let element">
+          <p class="table-body-text">{{element.id}}</p>
+        </td>
+      </ng-container>
+
+      <!-- Customer Column -->
+      <ng-container matColumnDef="customer" >
+        <th class="table-header" mat-header-cell *matHeaderCellDef mat-sort-header>
+          <p class="table-header-text">Customer</p>
+        </th>
+        <td class="table-body" mat-cell *matCellDef="let element">
+          <div class="customer-column-wrapper">
+            <button
+              mat-mini-fab
+              class="customer-column-icon"
+              color="{{
+                element.status === 'delivered'
+                ? 'success'
+                : element.status === 'pending'
+                ? 'primary'
+                : element.status === 'progress'
+                ? 'accent'
+                : 'warn'
+              }}"
+            >{{element.customer | shortName}}</button>
+            <p class="table-body-text">{{element.customer}}</p>
+          </div>
+        </td>
+      </ng-container>
+
+      <!-- Office Column -->
+      <ng-container matColumnDef="office" >
+        <th class="table-header" mat-header-cell *matHeaderCellDef mat-sort-header>
+          <p class="table-header-text">Office</p>
+        </th>
+        <td class="table-body" mat-cell *matCellDef="let element">
+          <p class="table-body-text">{{element.office}}</p>
+        </td>
+      </ng-container>
+
+      <!-- Netto Weight Column -->
+      <ng-container matColumnDef="nettoWeight" >
+        <th class="table-header" mat-header-cell *matHeaderCellDef mat-sort-header>
+          <p class="table-header-text">Netto Weight</p>
+        </th>
+        <td class="table-body" mat-cell *matCellDef="let element">
+          <p class="table-body-text">{{element.nettoWeight}}</p>
+        </td>
+      </ng-container>
+
+      <!-- Price Column -->
+      <ng-container matColumnDef="price" >
+        <th class="table-header" mat-header-cell *matHeaderCellDef mat-sort-header>
+          <p class="table-header-text">Price</p>
+        </th>
+        <td class="table-body" mat-cell *matCellDef="let element">
+          <p class="table-body-text">{{element.price}}</p>
+        </td>
+      </ng-container>
+
+      <!-- Date of Purchase Column -->
+      <ng-container matColumnDef="dateOfPurchase" >
+        <th class="table-header" mat-header-cell *matHeaderCellDef mat-sort-header>
+          <p class="table-header-text">Date of purchase</p>
+        </th>
+        <td class="table-body" mat-cell *matCellDef="let element">
+          <p class="table-body-text">{{element.dateOfPurchase}}</p>
+        </td>
+      </ng-container>
+
+      <!-- Date of Delivery Column -->
+      <ng-container matColumnDef="dateOfDelivery" >
+        <th class="table-header" mat-header-cell *matHeaderCellDef mat-sort-header>
+          <p class="table-header-text">Date of Delivery</p>
+        </th>
+        <td class="table-body" mat-cell *matCellDef="let element">
+          <p class="table-body-text">{{element.dateOfDelivery}}</p>
+        </td>
+      </ng-container>
+
+      <!-- Status Column -->
+      <ng-container matColumnDef="status" >
+        <th class="table-header" mat-header-cell *matHeaderCellDef mat-sort-header>
+          <p class="table-header-text">Status</p>
+        </th>
+        <td class="table-body" mat-cell *matCellDef="let element">
+          <div class="support-requests__content-badge" [ngClass]="element.status">
+            <span>{{element.status}}</span>
+          </div>
+        </td>
+      </ng-container>
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions" >
+        <th class="table-header" mat-header-cell *matHeaderCellDef >
+          <p class="table-header-text">Actions</p>
+        </th>
+        <td class="table-body" mat-cell *matCellDef="let element">
+          <app-settings-menu></app-settings-menu>
+        </td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mat-card-content>
+</mat-card>

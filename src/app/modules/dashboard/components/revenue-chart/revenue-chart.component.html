@@ -1,0 +1,26 @@
+<mat-card class="revenue-chart">
+  <mat-card-title class="revenue-chart__header">
+    <p class="revenue-chart__header-title">Revenue Breakdown</p>
+
+    <app-settings-menu></app-settings-menu>
+  </mat-card-title>
+
+  <mat-card-content class="revenue-chart__content">
+    <div class="revenue-chart__content-chart" echarts [options]="revenueChart"></div>
+
+    <div class="legend-wrapper">
+      <div class="legend-item-wrapper">
+        <div class="legend-icon green"></div><p class="legend-text">Group A</p>
+      </div>
+      <div class="legend-item-wrapper">
+        <div class="legend-icon pink"></div><p class="legend-text">Group B</p>
+      </div>
+      <div class="legend-item-wrapper">
+        <div class="legend-icon yellow"></div><p class="legend-text">Group C</p>
+      </div>
+      <div class="legend-item-wrapper">
+        <div class="legend-icon blue"></div><p class="legend-text">Group D</p>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

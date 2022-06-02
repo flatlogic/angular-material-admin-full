@@ -1,0 +1,78 @@
+@import "../../../../styles/colors";
+@import "../../../../styles/font";
+@import "../../../../styles/variables";
+
+.revenue-chart {
+  height: 192px;
+
+  @media (min-width: 1280px) and (max-width: $xxl) {
+    height: 220px;
+  }
+
+  &__header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    &-title {
+      font-size: $fs-regular;
+      font-weight: $fw-lighter;
+      margin: 0;
+      line-height: 40px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+
+    &-chart {
+      height: 140px;
+      width: 60%;
+      max-width: 218px
+    }
+  }
+}
+
+.legend-wrapper {
+
+}
+
+.legend-item-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.legend-icon {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+
+.legend-text {
+  margin: 0 0 0 8px;
+  font-size: $fs-normal;
+  font-width: $fw-lighter;
+  color: $grey;
+  white-space: nowrap;
+}
+
+.blue {
+  background-color: $blue;
+}
+
+.pink {
+  background-color: $pink;
+}
+
+.yellow {
+  background-color: $yellow;
+}
+
+.green {
+  background-color: $green;
+}
