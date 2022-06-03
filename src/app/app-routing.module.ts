@@ -69,11 +69,11 @@ const route: Routes = [
         canActivate: [AuthGuard],
         loadChildren: () => import('./modules/templates/charts/charts.module').then(m => m.ChartsModule)
       },
-      // {
-      //   path: 'maps',
-      //   canActivate: [AuthGuard],
-      //   loadChildren: () => import('./modules/templates/maps/maps.module').then(m => m.MapsModule)
-      // },
+      {
+        path: 'maps',
+        canActivate: [AuthGuard],
+        loadChildren: () => import('./modules/templates/maps/maps.module').then(m => m.MapsModule)
+      },
       // {
       //   path: 'extra',
       //   canActivate: [AuthGuard],

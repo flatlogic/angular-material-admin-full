@@ -10,10 +10,8 @@
   },
   "private": true,
   "dependencies": {
-    "@agm/core": "^3.0.0-beta",
-    "@amcharts/amcharts5": "^5.2.6",
-    "@amcharts/amcharts5-fonts": "^5.0.1",
-    "@amcharts/amcharts5-geodata": "^5.0.3",
+    "@agm/core": "^1.1.0",
+
     "@angular/animations": "^13.2.4",
     "@angular/cdk": "^13.2.4",
     "@angular/common": "~13.2.4",
@@ -49,6 +47,8 @@
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
+    "@amcharts/amcharts4": "^4.9.37",
+    "@amcharts/amcharts4-geodata": "^4.1.17",
     "@angular-devkit/build-angular": "~13.2.5",
     "@angular/cli": "~13.2.5",
     "@angular/compiler-cli": "~13.2.4",
@@ -56,6 +56,7 @@
     "@angularclass/hmr": "^3.0.0",
     "@types/jasmine": "~3.6.0",
     "@types/jasminewd2": "~2.0.8",
+    "@types/echarts": "^4.6.7",
     "@types/node": "^12.12.64",
     "codelyzer": "^6.0.0",
     "ts-node": "~8.3.0",
