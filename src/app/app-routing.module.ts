@@ -60,6 +60,26 @@ const route: Routes = [
         loadChildren: () => import('./modules/templates/ui-elements/ui-elements.module').then(m => m.UiElementsModule)
       },
       {
+        path: 'forms',
+        canActivate: [AuthGuard],
+        loadChildren: () => import('./modules/templates/forms/forms.module').then(m => m.FormsModule)
+      },
+      {
+        path: 'charts',
+        canActivate: [AuthGuard],
+        loadChildren: () => import('./modules/templates/charts/charts.module').then(m => m.ChartsModule)
+      },
+      // {
+      //   path: 'maps',
+      //   canActivate: [AuthGuard],
+      //   loadChildren: () => import('./modules/templates/maps/maps.module').then(m => m.MapsModule)
+      // },
+      // {
+      //   path: 'extra',
+      //   canActivate: [AuthGuard],
+      //   loadChildren: () => import('./modules/templates/extra/extra.module').then(m => m.ExtraModule)
+      // },
+      {
         path: 'admin',
         loadChildren: () =>
           import('./modules/CRUD/crud.module').then((m) => m.CrudModule),

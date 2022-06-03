@@ -10,7 +10,7 @@ import {routes} from '../../../../../consts';
   styleUrls: ['./pie-charts-page.component.scss']
 })
 export class PieChartsPageComponent {
-  public pieChartData$: Observable<PieChartData>
+  public pieChartData$: Observable<PieChartData>;
   public routes: typeof routes = routes;
 
   constructor(private service: ChartsService) {

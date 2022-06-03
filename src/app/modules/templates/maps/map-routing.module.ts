@@ -1,6 +1,6 @@
-import {RouterModule, Routes} from '@angular/router';
-import {NgModule} from '@angular/core';
-import {GoogleMapPageComponent, VectorMapPageComponent} from './components';
+import { RouterModule, Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { GoogleMapPageComponent, VectorMapPageComponent } from './components';
 
 const routes: Routes = [
   {

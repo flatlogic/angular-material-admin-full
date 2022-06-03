@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 import { routes } from '../../../../../consts';
-import {Observable} from 'rxjs';
-import {TimeLineItem} from '../../models';
-import {TimeLineService} from '../../services';
+import { Observable } from 'rxjs';
+import { TimeLineItem } from '../../models';
+import { TimeLineService } from '../../services';
 
 @Component({
   selector: 'app-time-line-page',
@@ -12,7 +12,7 @@ import {TimeLineService} from '../../services';
 })
 export class TimeLinePageComponent {
   public routes: typeof routes = routes;
-  public timeLineData$: Observable<TimeLineItem[]>
+  public timeLineData$: Observable<TimeLineItem[]>;
 
   constructor(private service: TimeLineService) {
     this.timeLineData$  = service.getTimeLineData();

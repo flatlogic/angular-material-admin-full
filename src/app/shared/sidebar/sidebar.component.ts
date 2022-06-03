@@ -58,59 +58,59 @@ const TemplateNode: any = [
       { name: 'Widget', route: routes.WIDGET, active: 'active' },
     ]
   },
-  // {
-  //   name: 'Forms',
-  //   children: [
-  //     { name: 'Form Elements', route: routes.FORMS_ELEMENTS, active: 'active' },
-  //     { name: 'Form Validation', route: routes.FORMS_VALIDATION, active: 'active' },
-  //   ]
-  // },
-  // {
-  //   name: 'Charts',
-  //   children: [
-  //     { name: 'Charts Overview', route: routes.OVERVIEW_CHARTS, active: 'active' },
-  //     { name: 'Line Charts', route: routes.LINE_CHARTS, active: 'active' },
-  //     { name: 'Bar Charts', route: routes.BAR_CHARTS, active: 'active' },
-  //     { name: 'Pie Charts', route: routes.PIE_CHARTS, active: 'active' },
-  //   ]
-  // },
-  // {
-  //   name: 'Maps',
-  //   children: [
-  //     { name: 'Google Map', route: routes.GOOGLE_MAP, active: 'active' },
-  //     { name: 'Vector Map', route: routes.VECTOR_MAP, active: 'active' }
-  //   ]
-  // },
-  // {
-  //   name: 'Extra',
-  //   children: [
-  //     { name: 'Calendar', route: routes.CALENDAR, active: 'active' },
-  //     { name: 'Invoice', route: routes.INVOICE, active: 'active' },
-  //     { name: 'Login Page', route: routes.LOGIN_PAGE, active: 'active' },
-  //     { name: 'Error Page', route: routes.ERROR_PAGE, active: 'active' },
-  //     { name: 'Gallery', route: routes.GALLERY, active: 'active' },
-  //     { name: 'Search Result', route: routes.SEARCH_RESULT, active: 'active' },
-  //     { name: 'Time Line', route: routes.TIME_LINE, active: 'active' }
-  //   ]
-  // },
-  // {
-  //   name: 'Menu Levels',
-  //   children: [
-  //     { name: 'Level 1.1' },
-  //     {
-  //       name: 'Level 1.2',
-  //       children: [
-  //         { name: 'Level 2.1' },
-  //         {
-  //           name: 'Level 2.2',
-  //           children: [
-  //             { name: 'Level 3.1'}
-  //           ]
-  //         }
-  //       ]
-  //     }
-  //   ]
-  // }
+  {
+    name: 'Forms',
+    children: [
+      { name: 'Form Elements', route: routes.FORMS_ELEMENTS, active: 'active' },
+      { name: 'Form Validation', route: routes.FORMS_VALIDATION, active: 'active' },
+    ]
+  },
+  {
+    name: 'Charts',
+    children: [
+      { name: 'Charts Overview', route: routes.OVERVIEW_CHARTS, active: 'active' },
+      { name: 'Line Charts', route: routes.LINE_CHARTS, active: 'active' },
+      { name: 'Bar Charts', route: routes.BAR_CHARTS, active: 'active' },
+      { name: 'Pie Charts', route: routes.PIE_CHARTS, active: 'active' },
+    ]
+  },
+  {
+    name: 'Maps',
+    children: [
+      { name: 'Google Map', route: routes.GOOGLE_MAP, active: 'active' },
+      { name: 'Vector Map', route: routes.VECTOR_MAP, active: 'active' }
+    ]
+  },
+  {
+    name: 'Extra',
+    children: [
+      { name: 'Calendar', route: routes.CALENDAR, active: 'active' },
+      { name: 'Invoice', route: routes.INVOICE, active: 'active' },
+      { name: 'Login Page', route: routes.LOGIN_PAGE, active: 'active' },
+      { name: 'Error Page', route: routes.ERROR_PAGE, active: 'active' },
+      { name: 'Gallery', route: routes.GALLERY, active: 'active' },
+      { name: 'Search Result', route: routes.SEARCH_RESULT, active: 'active' },
+      { name: 'Time Line', route: routes.TIME_LINE, active: 'active' }
+    ]
+  },
+  {
+    name: 'Menu Levels',
+    children: [
+      { name: 'Level 1.1' },
+      {
+        name: 'Level 1.2',
+        children: [
+          { name: 'Level 2.1' },
+          {
+            name: 'Level 2.2',
+            children: [
+              { name: 'Level 3.1'}
+            ]
+          }
+        ]
+      }
+    ]
+  }
 ];
 
 

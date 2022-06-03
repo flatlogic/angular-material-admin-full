@@ -19,7 +19,7 @@ export class OverviewChartsPageComponent implements OnInit {
   public radarChartData$: Observable<RadarChartData>;
   public barChartData$: Observable<BarChartData>;
   public routes: typeof routes = routes;
-  public currentTheme: string = '';
+  public currentTheme = '';
 
   constructor(
     private service: ChartsService,

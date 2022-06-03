@@ -56,4 +56,31 @@ export enum routes {
   PAGINATION = '/ui/pagination',
   PROGRESS = '/ui/progress',
   WIDGET = '/ui/widget',
+
+  // --- Forms module ---//
+
+  FORMS_ELEMENTS = '/forms/elements',
+  FORMS_VALIDATION = '/forms/validation',
+
+  // --- Charts module ---//
+
+  BAR_CHARTS = '/charts/bar',
+  LINE_CHARTS = '/charts/line',
+  PIE_CHARTS = '/charts/pie',
+  OVERVIEW_CHARTS = '/charts/overview',
+
+  // --- Maps module --- //
+
+  GOOGLE_MAP = '/maps/google',
+  VECTOR_MAP = '/maps/vector',
+
+  // --- Extra module ---//
+
+  CALENDAR = '/extra/calendar',
+  INVOICE = '/extra/invoice',
+  LOGIN_PAGE = '/extra/login',
+  ERROR_PAGE = '/extra/errorpage',
+  GALLERY = '/extra/gallery',
+  SEARCH_RESULT = '/extra/search result',
+  TIME_LINE = '/extra/time line',
 }
