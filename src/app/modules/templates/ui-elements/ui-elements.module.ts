@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import {FormsModule} from '@angular/forms';
-import {MatBadgeModule} from '@angular/material/badge';
-import {MatChipsModule} from '@angular/material/chips';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatButtonModule} from '@angular/material/button';
-import {MatCardModule} from '@angular/material/card';
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatIconModule} from '@angular/material/icon';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 
@@ -27,7 +27,7 @@ import { InfoToastrComponent } from './components/info-toastr/info-toastr.compon
 import {
   IconsPageComponent,
   BadgePageComponent,
-  // CarouselPageComponent,
+  CarouselPageComponent,
   CardsPageComponent,
   ModalPageComponent,
   TooltipsPageComponent,
@@ -44,7 +44,7 @@ import {
   GridComponent
 } from './popups';
 
-// import { MatCarouselModule } from '@ngbmodule/material-carousel';
+import { MatCarouselModule } from '@ngbmodule/material-carousel';
 
 
 import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
@@ -72,7 +72,7 @@ import { PopoverModule } from 'ngx-smart-popover';
     SuccessToastComponent,
     ErrorToastrComponent,
     InfoToastrComponent,
-    // CarouselPageComponent,
+    CarouselPageComponent,
     NavbarPageComponent,
     TooltipsPageComponent,
     TabsPageComponent,
@@ -95,7 +95,7 @@ import { PopoverModule } from 'ngx-smart-popover';
         MatInputModule,
         FormsModule,
         MatGridListModule,
-        // MatCarouselModule.forRoot(),
+        MatCarouselModule.forRoot(),
         MatTooltipModule,
         MatExpansionModule,
         MatProgressSpinnerModule,
