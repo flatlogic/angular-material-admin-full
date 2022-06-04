@@ -74,11 +74,11 @@ const route: Routes = [
         canActivate: [AuthGuard],
         loadChildren: () => import('./modules/templates/maps/maps.module').then(m => m.MapsModule)
       },
-      // {
-      //   path: 'extra',
-      //   canActivate: [AuthGuard],
-      //   loadChildren: () => import('./modules/templates/extra/extra.module').then(m => m.ExtraModule)
-      // },
+      {
+        path: 'extra',
+        canActivate: [AuthGuard],
+        loadChildren: () => import('./modules/templates/extra/extra.module').then(m => m.ExtraModule)
+      },
       {
         path: 'admin',
         loadChildren: () =>
