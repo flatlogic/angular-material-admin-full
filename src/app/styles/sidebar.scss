@@ -1,4 +1,4 @@
-@import 'src/app/styles/colors';
+@import "src/app/styles/colors";
 
 //== Sidebar
 
@@ -10,17 +10,16 @@ $sidebar-icon-color: $gray-06;
 $sidebar-title-color: $sidebar-font-color;
 $sidebar-circle-color: $light-grey;
 
-$sidebar-background-dark-theme: #23232d;
-$sidebar-background-hover-dark-theme: #13131a;
-$sidebar-background-active-dark-theme: #13131a;
-$sidebar-color-active-dark-theme: #d6d6d6;
+$sidebar-background-dark-theme: #23232D;
+$sidebar-background-hover-dark-theme: #13131A;
+$sidebar-background-active-dark-theme: #13131A;
+$sidebar-color-active-dark-theme: #D6D6D6;
 
 @mixin sidebar($color) {
   $sidebar-icon-color-active: $color;
 
   .sidebar.mat-list-base {
-    & .mat-list-item,
-    .mat-menu-trigger {
+    & .mat-list-item, .mat-menu-trigger {
       color: $sidebar-title-color;
 
       &.active {
@@ -50,12 +49,12 @@ $sidebar-color-active-dark-theme: #d6d6d6;
         color: $sidebar-font-color-active;
       }
 
-      & div.circle {
+      & div.circle{
         background-color: $sidebar-icon-color-active;
       }
     }
 
-    &[aria-expanded='true'] {
+    &[aria-expanded="true"] {
       & .mat-tree-item {
         & mat-icon:first-child {
           color: $sidebar-icon-color-active;
@@ -73,8 +72,7 @@ $sidebar-color-active-dark-theme: #d6d6d6;
   .mat-tree {
     background-color: $sidebar-background-dark-theme;
 
-    .mat-tree-item,
-    .mat-tree-node {
+    .mat-tree-item, .mat-tree-node {
       & p {
         color: $sidebar-color-active-dark-theme;
       }
@@ -87,7 +85,7 @@ $sidebar-color-active-dark-theme: #d6d6d6;
         background-color: $sidebar-background-hover-dark-theme;
       }
 
-      &[aria-expanded='true'] {
+      &[aria-expanded="true"] {
         & .mat-tree-item {
           & p {
             color: $sidebar-color-active-dark-theme;
@@ -98,8 +96,7 @@ $sidebar-color-active-dark-theme: #d6d6d6;
   }
 
   .sidebar.mat-list-base {
-    & .mat-list-item,
-    .mat-menu-trigger {
+    & .mat-list-item, .mat-menu-trigger {
       color: $sidebar-color-active-dark-theme;
 
       &.active {

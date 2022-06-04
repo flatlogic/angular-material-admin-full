@@ -1,7 +1,8 @@
-@import 'colors';
+@import "colors";
 
 @mixin mat-form-field {
   .add-section-menu {
+
     & .mat-form-field-label {
       color: $white;
     }
@@ -13,14 +14,11 @@
 }
 
 @mixin mat-form-field-dark-theme {
-  & .mat-hint,
-  .mat-form-field-appearance-legacy .mat-hint {
+  & .mat-hint, .mat-form-field-appearance-legacy .mat-hint {
     color: $white-70;
   }
 
-  & .mat-form-field-appearance-legacy .mat-form-field-underline,
-  .mat-form-field-appearance-legacy.mat-form-field-disabled
-    .mat-form-field-underline {
+  & .mat-form-field-appearance-legacy .mat-form-field-underline, .mat-form-field-appearance-legacy.mat-form-field-disabled .mat-form-field-underline {
     background-color: $white-70;
   }
 

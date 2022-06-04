@@ -1,33 +1,24 @@
-@import 'palettes';
-@import 'mat-card';
-@import 'mat-paginator';
-@import 'mat-table';
-@import 'breadcrumb';
-@import 'mat-select';
-@import 'mat-tab';
-@import 'mat-toolbar';
-@import 'mat-button';
-@import 'mat-badge';
-@import 'mat-button-toggle';
-@import 'mat-expansion-panel';
-@import 'mat-spinner';
-@import 'mat-tooltip';
+@import "palettes";
+@import "mat-card";
+@import "mat-paginator";
+@import "mat-table";
+@import "breadcrumb";
+@import "mat-select";
+@import "mat-tab";
+@import "mat-toolbar";
+@import "mat-button";
+@import "mat-badge";
+@import "mat-button-toggle";
+@import "mat-expansion-panel";
+@import "mat-spinner";
+@import "mat-tooltip";
+@import "calendar";
+@import "full-calendar";
 
-@function ama-light-theme(
-  $primary,
-  $accent,
-  $warn,
-  $success,
-  $info,
-  $primary-light
-) {
+@function ama-light-theme($primary, $accent, $warn, $success, $info, $primary-light) {
   @return map-merge(
     mat-light-theme($primary, $accent, $warn),
-    (
-      success: $success,
-      info: $info,
-      primary-light: $primary-light,
-    )
+    (success: $success, info: $info, primary-light: $primary-light)
   );
 }
 
@@ -194,6 +185,7 @@ $green-theme: ama-light-theme(
     @include mat-select;
     @include mat-tab-label-dark;
     @include mat-button-dark;
+    @include calendar-dark;
 
     .mat-checkbox-frame {
       border-color: $white;
@@ -212,7 +204,7 @@ $green-theme: ama-light-theme(
     }
 
     .layout-content {
-      background-color: #13131a !important;
+      background-color: #13131A !important;
     }
   }
 }

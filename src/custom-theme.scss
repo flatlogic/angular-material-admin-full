@@ -1,20 +1,26 @@
 @import '~@angular/material/theming';
-@import '~@ng-select/ng-select/themes/material.theme.css';
-@import '~@danielmoncada/angular-datetime-picker/assets/style/picker.min.css';
-@import 'src/app/styles/colors';
-@import 'src/app/styles/variables';
-@import 'src/app/styles/font';
-@import 'src/app/styles/header';
-@import 'src/app/styles/sidebar';
-@import 'src/app/styles/settings';
-@import 'src/app/styles/footer';
-@import 'src/app/styles/themes';
-@import 'src/app/styles/scrollbar';
-@import 'src/app/styles/mat-tab';
-@import 'src/app/styles/mat-card';
-@import 'src/app/styles/mat-form-field';
-@import 'src/app/styles/typography';
-@import 'src/app/styles/notification';
+@import '~@fullcalendar/core/main.css';
+@import '~@fullcalendar/daygrid/main.css';
+@import '~@fullcalendar/timegrid/main.css';
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
+
+@import "src/app/styles/colors";
+@import "src/app/styles/variables";
+@import "src/app/styles/font";
+@import "src/app/styles/header";
+@import "src/app/styles/sidebar";
+@import "src/app/styles/settings";
+@import "src/app/styles/footer";
+@import "src/app/styles/themes";
+@import "src/app/styles/scrollbar";
+@import "src/app/styles/calendar";
+@import "src/app/styles/mat-tab";
+@import "src/app/styles/mat-card";
+@import "src/app/styles/mat-form-field";
+@import "src/app/styles/mat-carousel";
+@import "src/app/styles/typography";
+@import "src/app/styles/notification";
+@import "src/app/styles/full-calendar";
 
 @include mat-core();
 
@@ -462,7 +468,8 @@ body {
 @include typography;
 @include scrollbar();
 @include mat-form-field();
-
+@include calendar();
+@include full-calendar;
 @include blueTheme();
 @include pinkTheme();
 @include greenTheme();

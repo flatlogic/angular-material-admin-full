@@ -12,7 +12,7 @@
         background-color: $header-button-background-color-hover;
       }
 
-      &:not([class*='mat-elevation-z']) {
+      &:not([class*=mat-elevation-z]) {
         box-shadow: inherit;
       }
     }

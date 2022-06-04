@@ -7,8 +7,9 @@ $header-button-font-color: $white;
 $header-button-box-shadow: none;
 $header-title-font-color: $white;
 
-$header-background-dark-theme: #31313c;
-$header-title-color-dark-theme: #889aff;
+$header-background-dark-theme: #31313C;
+$header-title-color-dark-theme: #889AFF;
+
 
 @mixin header() {
   .header {
@@ -20,7 +21,7 @@ $header-title-color-dark-theme: #889aff;
         background-color: $header-button-background-color-hover;
       }
 
-      &:not([class*='mat-elevation-z']) {
+      &:not([class*=mat-elevation-z]) {
         box-shadow: inherit;
       }
     }
@@ -43,7 +44,7 @@ $header-title-color-dark-theme: #889aff;
         background-color: $header-button-background-color-hover;
       }
 
-      &:not([class*='mat-elevation-z']) {
+      &:not([class*=mat-elevation-z]) {
         box-shadow: inherit;
       }
     }

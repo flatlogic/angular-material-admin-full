@@ -1,0 +1,100 @@
+@mixin calendar {
+  .cal-month-view {
+    background: transparent;
+  }
+
+  mwl-calendar-month-view .cal-month-view .cal-cell-row, mwl-calendar-month-view .cal-month-view .cal-cell-row mwl-calendar-month-cell, mwl-calendar-month-view .cal-month-view .cal-cell-row mwl-calendar-month-cell .cal-cell-top {
+    min-height: 17px;
+  }
+
+  span.cal-day-number {
+    margin: 0 !important;
+    font-family: Fira Sans, sans-serif !important;
+    font-weight: $fw-normal !important;
+    font-size: 12px !important;
+    line-height: 14px !important;
+    text-align: center !important;
+    opacity: 1 !important;
+    cursor: pointer;
+  }
+
+  .cal-month-view .cal-day-cell.cal-weekend .cal-day-number {
+    color: $dark-grey;
+  }
+
+  .cal-month-view .cal-days .cal-cell-row {
+    border: none;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  .cal-month-view .cal-day-cell:not(:last-child) {
+    border: none;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  div.cal-cell-row.cal-header {
+    color: $white-gray;
+    margin-bottom: -10px;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  .cal-month-view .cal-cell-row .cal-cell:hover, .cal-month-view .cal-cell.cal-has-events.cal-open {
+    background-color: #8B9BFF;
+  }
+
+  .cal-month-view .cal-day-cell {
+    border: none;
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+    margin-bottom: 12px;
+  }
+
+  .cal-month-view .cal-days {
+    border: none;
+  }
+
+  .cal-month-view .cal-day-cell.cal-today {
+    background-color: #8B9BFF;
+    border-radius: 50%;
+    color: $white;
+    min-width: 20px;
+    min-height: 20px;
+    max-width: 20px;
+    max-height: 20px;
+  }
+
+  div.cal-cell-top {
+    display: flex;
+    align-items: center;
+  }
+
+  span.cal-day-badge {
+    display: none !important;
+  }
+
+  .cal-month-view div.cal-event {
+    width: 4px;
+    height: 4px;
+    margin: 0;
+  }
+
+  .cal-month-view .cal-cell {
+    flex: 0;
+  }
+}
+
+@mixin calendar-dark {
+  .cal-month-view .cal-day-cell.cal-weekend .cal-day-number {
+    color: $white;
+  }
+}

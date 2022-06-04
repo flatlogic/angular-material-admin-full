@@ -1,0 +1,11 @@
+@mixin mat-carousel() {
+  .small-carousel-card, .big-carousel-card {
+    mat-icon {
+      color: white;
+    }
+
+    button.mat-focus-indicator.mat-mini-fab.mat-button-base.mat-accent.ng-star-inserted {
+      background-color: white;
+    }
+  }
+}

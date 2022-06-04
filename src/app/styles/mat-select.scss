@@ -17,10 +17,11 @@
 @mixin mat-select-dark {
   .mat-form-field-appearance-outline .mat-form-field-outline {
     color: $white;
+
   }
 
   .mat-select-arrow {
-    color: #d6d6d6;
+    color: #D6D6D6;
   }
 
   .mat-form-field-label {

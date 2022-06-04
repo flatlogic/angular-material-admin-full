@@ -1,5 +1,5 @@
-@import 'colors';
-@import 'variables';
+@import "colors";
+@import "variables";
 
 //@mixin mat-tab-dark() {
 //  .mat-tab-label {
@@ -16,11 +16,9 @@
 }
 
 @mixin mat-tab-label-active-color($color) {
-  .icons-wrapper,
-  .tabs-content-wrapper {
+  .icons-wrapper, .tabs-content-wrapper {
     & .mat-tab-label-active {
-      & .tab-label,
-      .mat-icon {
+      & .tab-label, .mat-icon {
         color: $color;
       }
     }
@@ -28,8 +26,7 @@
 }
 
 @mixin mat-tab-without-border() {
-  .dashboard-mat-tab,
-  .nav-items-group {
+  .dashboard-mat-tab, .nav-items-group {
     .mat-tab-header {
       border: none;
     }

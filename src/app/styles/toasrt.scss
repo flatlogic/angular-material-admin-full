@@ -1,4 +1,4 @@
-@import 'colors';
+@import "colors";
 
 @mixin toastr-wrapper {
   display: flex;
@@ -22,7 +22,7 @@
 }
 
 @mixin toastr-wrapper-icon {
-  color: $white-80;
+  color:$white-80;
   height: 45px;
   width: 45px;
   display: flex;
