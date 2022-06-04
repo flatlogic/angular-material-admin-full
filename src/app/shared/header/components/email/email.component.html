@@ -1,0 +1,26 @@
+<button class="email-button" color="primary" mat-mini-fab [matMenuTriggerFor]="email">
+  <mat-icon matBadge="4" matBadgeColor="accent" class="email-button__icon">mail_outline</mat-icon>
+</button>
+<mat-menu #email="matMenu" xPosition="before">
+  <div class="email-menu-header">
+    <h4 class="email-menu-header__title">New Messages</h4>
+    <p class="email-menu-header__subtitle">{{emails.length}} New Messages</p>
+  </div>
+
+  <div *ngFor="let email of emails, let i = index" class="mail-wrapper">
+    <div class="mail-wrapper__icon-wrapper">
+      <button class="mail-wrapper__icon" [ngClass]="colors[i]" mat-mini-fab>{{email.name | shortName}}</button>
+      <span class="mail-wrapper__time">{{email.time}}</span>
+    </div>
+    <div class="mail-content">
+      <span class="mail-content__user">{{email.name}}</span>
+      <span class="mail-content__message">{{email.message}}</span>
+    </div>
+  </div>
+
+  <div class="send-message-button-wrapper">
+    <button class="send-message-button" mat-raised-button color="primary">
+      Send New Message <mat-icon class="send-message-button__icon">send</mat-icon>
+    </button>
+  </div>
+</mat-menu>

@@ -1,0 +1,122 @@
+@import 'src/app/styles/colors';
+@import 'src/app/styles/font';
+@import 'src/app/styles/variables';
+
+.email-button {
+  margin-left: 16px;
+
+  &__icon {
+    color: $white-35;
+  }
+
+  @media (max-width: $small) {
+    margin-top: 0;
+  }
+}
+
+.email-menu-header {
+  padding: 16px 16px 0 16px;
+
+  &__title {
+    margin: 0;
+    font-weight: $fw-lighter;
+    font-size: $fs-large;
+    color: $dark-grey;
+  }
+
+  &__subtitle {
+    color: $pink;
+    font-weight: $fw-lighter;
+    font-size: $fs-small;
+    margin: 4px 0 16px 0;
+  }
+}
+
+.mail-wrapper {
+  cursor: pointer;
+  display: flex;
+  padding: 6px 16px;
+
+  &:hover {
+    background-color: $blue-white;
+  }
+
+  &__icon-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__icon {
+    font-weight: $fw-lighter;
+    font-size: $fs-small;
+    color: $white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: none;
+    width: 30px;
+    height: 30px;
+  }
+
+  &__time {
+    text-align: center;
+    color: $grey;
+    font-weight: $fw-lighter;
+    font-size: $fs-xs;
+  }
+}
+
+.mail-content {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding-left: 16px;
+  justify-content: space-between;
+
+  &__user {
+    margin-top: 3px;
+    font-weight: $fw-normal;
+    font-size: $fs-small;
+    color: $dark-grey;
+  }
+
+  &__message {
+    color: $grey;
+    font-weight: $fs-small;
+    font-size: $fs-small;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
+
+.send-message-button-wrapper {
+  margin: 16px 0;
+  text-align: center;
+
+  .send-message-button {
+    width: 224px;
+    height: 48px;
+    border-radius: 32px;
+
+    &__icon {
+      margin-left: 16px;
+    }
+  }
+}
+
+.yellow {
+  background-color: $yellow;
+}
+
+.green {
+  background-color: $green;
+}
+
+.blue {
+  background-color: $blue;
+}
+
+.ping {
+  background-color: $pink;
+}
