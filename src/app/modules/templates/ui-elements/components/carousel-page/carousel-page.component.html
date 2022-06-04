@@ -2,91 +2,33 @@
 
 <div class="small-carousels-wrapper">
   <mat-card  class="small-carousel-card">
-    <mat-card-content>
-      <mat-carousel
-        timings="250ms ease-in"
-        [autoplay]="true"
-        interval="3000"
-        maxWidth="auto"
-        proportion="55"
-        slides="5"
-        [loop]="true"
-        [hideArrows]="true"
-        [hideIndicators]="false"
-        [useKeyboard]="true"
-        [useMouseWheel]="false"
-        orientation="ltr"
-      >
-        <mat-carousel-slide
-          #matCarouselSlide
-          *ngFor="let slide of firstSmallCarousel; let i = index"
-          [image]="slide.image"
-          overlayColor="#00000040"
-          [hideOverlay]="false"
-        >
-        </mat-carousel-slide>
-      </mat-carousel>
-    </mat-card-content>
+    <owl-carousel-o [options]="customOptions">
+      <ng-container *ngFor="let slide of digCarouselSlides">
+        <ng-template carouselSlide [id]="slide.id">
+          <img [src]="slide.src" [alt]="slide.alt" [title]="slide.text">
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
   </mat-card>
 
   <mat-card class="small-carousel-card">
-    <mat-card-content>
-      <mat-carousel
-        timings="250ms ease-in"
-        [autoplay]="true"
-        interval="3000"
-        color="accent"
-        maintainAspectRatio="false"
-        maxWidth="auto"
-        proportion="55"
-        slides="5"
-        [loop]="true"
-        [hideArrows]="false"
-        [hideIndicators]="true"
-        [useKeyboard]="true"
-        [useMouseWheel]="false"
-        orientation="ltr"
-      >
-        <mat-carousel-slide
-          #matCarouselSlide
-          *ngFor="let slide of firstSmallCarousel; let i = index"
-          [image]="slide.image"
-          overlayColor="#00000040"
-          [hideOverlay]="false"
-        >
-        </mat-carousel-slide>
-      </mat-carousel>
-    </mat-card-content>
+    <owl-carousel-o [options]="customOptions">
+      <ng-container *ngFor="let slide of digCarouselSlides">
+        <ng-template carouselSlide [id]="slide.id">
+          <img [src]="slide.src" [alt]="slide.alt" [title]="slide.text">
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
   </mat-card>
 </div>
 
 <mat-card class="big-carousel-card">
-  <mat-card-content>
-    <mat-carousel
-      timings="250ms ease-in"
-      [autoplay]="true"
-      interval="3000"
-      color="accent"
-      maxWidth="auto"
-      proportion="25"
-      slides="5"
-      [loop]="true"
-      [hideArrows]="false"
-      [hideIndicators]="false"
-      [useKeyboard]="true"
-      [useMouseWheel]="false"
-      orientation="ltr"
-    >
-      <mat-carousel-slide
-        #matCarouselSlide
-        *ngFor="let slide of digCarouselSlides; let i = index"
-        [image]="slide.image"
-        overlayColor="#00000040"
-        [hideOverlay]="false"
-      >
-        <h3  class="big-carousel-text">{{slide.text}}</h3>
-      </mat-carousel-slide>
-    </mat-carousel>
-  </mat-card-content>
+  <owl-carousel-o [options]="customOptions">
+    <ng-container *ngFor="let slide of firstSmallCarousel">
+      <ng-template carouselSlide [id]="slide.id">
+        <img [src]="slide.src" [alt]="slide.alt" [title]="slide.text">
+      </ng-template>
+    </ng-container>
+  </owl-carousel-o>
 </mat-card>
 

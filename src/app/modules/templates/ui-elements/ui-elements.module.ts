@@ -15,9 +15,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 
-import {SharedModule} from '../../../shared/shared.module';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
-import {UiElementsRoutingModule} from './ui-elements-routing.module';
+import { SharedModule } from '../../../shared/shared.module';
+
+import { UiElementsRoutingModule } from './ui-elements-routing.module';
 
 import { NotificationPageComponent } from './containers';
 import { SuccessToastComponent } from './components/success-toast/success-toast.component';
@@ -43,8 +45,6 @@ import {
   SubscribedComponent,
   GridComponent
 } from './popups';
-
-import { MatCarouselModule } from '@ngbmodule/material-carousel';
 
 
 import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
@@ -80,28 +80,28 @@ import { PopoverModule } from 'ngx-smart-popover';
     WidgetPageComponent
   ],
     imports: [
-        CommonModule,
-        UiElementsRoutingModule,
-        MatToolbarModule,
-        SharedModule,
-        MatButtonModule,
-        MatCardModule,
-        MatTabsModule,
-        MatIconModule,
-        MatBadgeModule,
-        MatChipsModule,
-        MatDialogModule,
-        MatFormFieldModule,
-        MatInputModule,
-        FormsModule,
-        MatGridListModule,
-        MatCarouselModule.forRoot(),
-        MatTooltipModule,
-        MatExpansionModule,
-        MatProgressSpinnerModule,
-        MatProgressBarModule,
-        MatMenuModule,
-        PopoverModule
+      CarouselModule,
+      CommonModule,
+      UiElementsRoutingModule,
+      MatToolbarModule,
+      SharedModule,
+      MatButtonModule,
+      MatCardModule,
+      MatTabsModule,
+      MatIconModule,
+      MatBadgeModule,
+      MatChipsModule,
+      MatDialogModule,
+      MatFormFieldModule,
+      MatInputModule,
+      FormsModule,
+      MatGridListModule,
+      MatTooltipModule,
+      MatExpansionModule,
+      MatProgressSpinnerModule,
+      MatProgressBarModule,
+      MatMenuModule,
+      PopoverModule
     ]
 })
 export class UiElementsModule { }

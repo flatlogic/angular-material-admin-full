@@ -11,7 +11,7 @@ import {
   CardsPageComponent
 } from './components';
 
-// import { CarouselPageComponent} from './components';
+import { CarouselPageComponent } from './components';
 import { NotificationPageComponent } from './containers';
 import { NavbarPageComponent } from './components/navbar-page/navbar-page.component';
 import { TablesDynamicPageComponent } from '../tables/containers';
@@ -37,10 +37,10 @@ const routes: Routes = [
     path: 'modal',
     component: ModalPageComponent
   },
-  // {
-  //   path: 'carousel',
-  //   component: CarouselPageComponent
-  // },
+  {
+    path: 'carousel',
+    component: CarouselPageComponent
+  },
   {
     path: 'notification',
     component: NotificationPageComponent
