@@ -57,7 +57,7 @@ in [package.json](package.json) file.
 
 Runs the app in the development mode.
 
-Open http://localhost:4200 to view it in the browser.
+Open http://localhost:3000 to view it in the browser.
 
 #### 4. Run `npm build`
 
