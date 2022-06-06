@@ -13,6 +13,7 @@
 @import "mat-spinner";
 @import "mat-tooltip";
 @import "calendar";
+@import "full-calendar";
 
 @function ama-light-theme($primary, $accent, $warn, $success, $info, $primary-light) {
   @return map-merge(

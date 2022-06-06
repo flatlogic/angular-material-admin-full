@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SharedService {
   private updateThemeObservable;
@@ -10,7 +10,7 @@ export class SharedService {
   private current: string = 'blue';
   private mode: string = 'light';
 
-  public currentTheme = new Observable<string>( (observer: any) => {
+  public currentTheme = new Observable<string>((observer: any) => {
     observer.next(this.current);
 
     this.updateThemeObservable = function (newValue) {
@@ -18,7 +18,7 @@ export class SharedService {
     };
   });
 
-  public currentMode = new Observable<string>( (observer: any) => {
+  public currentMode = new Observable<string>((observer: any) => {
     observer.next(this.mode);
 
     this.updateModeObservable = function (newValue) {

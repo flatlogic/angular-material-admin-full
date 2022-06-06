@@ -30,10 +30,9 @@ import {
   ImageBarChartComponent,
   SimplePieChartComponent,
   UpdatePieChartComponent,
-  MonochomePieChartComponent
+  MonochomePieChartComponent,
+  DynamicUpdatingChartComponent
 } from './components';
-import { DynamicUpdatingChartComponent } from './components/dynamic-updating-chart/dynamic-updating-chart.component';
-
 
 @NgModule({
   declarations: [

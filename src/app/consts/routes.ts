@@ -1,12 +1,14 @@
 export enum routes {
   DASHBOARD = '/dashboard',
-
-  // --- User module --- //
-
   PROFILE = '/user/profile',
-  USER_LIST = '/user/list',
-  USER_ADD = '/user/add',
-  USER_EDIT = '/user/edit',
+  CHANGE_PASSWORD = '/app/change-password',
+  LOGIN = '/login',
+
+  // --- CRUD module ---//
+
+  Users = '/admin/users',
+  Users_CREATE = '/admin/users/new',
+  Users_EDIT = '/admin/users/edit',
 
   // --- E-commerce ---//
 
@@ -40,6 +42,21 @@ export enum routes {
   TABLES_BASIC = '/tables/basic',
   TABLES_DYNAMIC = '/tables/dynamic',
 
+  // --- Ui Elements module --- //
+
+  ICONS = '/ui/icons',
+  BADGE = '/ui/badge',
+  CAROUSEL = '/ui/carousel',
+  CARDS = '/ui/cards',
+  MODAL = '/ui/modal',
+  NOTIFICATION = '/ui/notification',
+  NAVBAR = '/ui/navbar',
+  TOOLTIPS = '/ui/tooltips',
+  TABS = '/ui/tabs',
+  PAGINATION = '/ui/pagination',
+  PROGRESS = '/ui/progress',
+  WIDGET = '/ui/widget',
+
   // --- Forms module ---//
 
   FORMS_ELEMENTS = '/forms/elements',
@@ -66,22 +83,4 @@ export enum routes {
   GALLERY = '/extra/gallery',
   SEARCH_RESULT = '/extra/search result',
   TIME_LINE = '/extra/time line',
-
-  // --- Ui Elements module --- //
-
-  ICONS = '/ui/icons',
-  BADGE = '/ui/badge',
-  CAROUSEL = '/ui/carousel',
-  CARDS = '/ui/cards',
-  MODAL = '/ui/modal',
-  NOTIFICATION = '/ui/notification',
-  NAVBAR = '/ui/navbar',
-  TOOLTIPS = '/ui/tooltips',
-  TABS = '/ui/tabs',
-  PAGINATION = '/ui/pagination',
-  PROGRESS = '/ui/progress',
-  WIDGET = '/ui/widget',
-
-
-  LOGIN = '/login'
 }

@@ -9,35 +9,30 @@ import { MatInputModule } from '@angular/material/input';
 import { MatBadgeModule } from '@angular/material/badge';
 
 import { HeaderComponent } from './containers';
-import {UserComponent, EmailComponent, SearchComponent} from './components';
+import { UserComponent, SearchComponent } from './components';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { ShortNamePipe } from './pipes';
-import {RouterModule} from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    UserComponent,
-    EmailComponent,
     NotificationsComponent,
+    UserComponent,
     SearchComponent,
-    ShortNamePipe
+    ShortNamePipe,
   ],
-    exports: [
-        HeaderComponent,
-        ShortNamePipe,
-        SearchComponent
-    ],
-    imports: [
-        CommonModule,
-        MatToolbarModule,
-        MatFormFieldModule,
-        MatIconModule,
-        MatMenuModule,
-        MatButtonModule,
-        MatInputModule,
-        MatBadgeModule,
-        RouterModule
-    ]
+  exports: [HeaderComponent, ShortNamePipe, SearchComponent],
+  imports: [
+    CommonModule,
+    MatToolbarModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatMenuModule,
+    MatButtonModule,
+    MatInputModule,
+    MatBadgeModule,
+    RouterModule,
+  ],
 })
-export class HeaderModule { }
+export class HeaderModule {}

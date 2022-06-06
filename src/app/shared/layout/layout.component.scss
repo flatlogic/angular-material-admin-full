@@ -1,5 +1,5 @@
-@import "src/app/styles/variables";
-@import "src/app/styles/colors";
+@import 'src/app/styles/variables';
+@import 'src/app/styles/colors';
 
 .layout {
   width: 100%;
@@ -7,7 +7,7 @@
 }
 
 .layout-sidebar {
-  height:calc(100vh - 64px);
+  height: calc(100vh - 64px);
   margin-top: 64px;
   width: 240px;
 

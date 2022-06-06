@@ -3,22 +3,25 @@ import { CommonModule } from '@angular/common';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { AuthPageComponent } from './containers';
 import { AuthRoutingModule } from './auth-routing.module';
 import { YearPipe } from './pipes';
-import { AuthService, EmailService } from './services';
 import { LoginFormComponent, SignFormComponent } from './components';
 import { AuthGuard } from './guards';
-import { MatIconModule } from '@angular/material/icon';
+import { HomeComponent } from '../pages/home/home.component';
+import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 
 @NgModule({
   declarations: [
     AuthPageComponent,
     YearPipe,
     LoginFormComponent,
-    SignFormComponent
+    SignFormComponent,
+    HomeComponent,
+    VerifyEmailComponent,
   ],
   imports: [
     CommonModule,
@@ -28,12 +31,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatInputModule,
     MatIconModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ],
-  providers: [
-    AuthService,
-    EmailService,
-    AuthGuard
-  ]
+  providers: [AuthGuard],
 })
-export class AuthModule { }
+export class AuthModule {}

@@ -1,5 +1,5 @@
-@import "src/app/styles/colors";
-@import "src/app/styles/font";
+@import 'src/app/styles/colors';
+@import 'src/app/styles/font';
 
 .breadcrumb-card {
   padding: 0;
@@ -25,9 +25,19 @@
   }
 }
 
-.text {
-  margin-left: -32px;
+:host ::ng-deep {
+  .breadcrumb-list-item .mat-list-item-content {
+    padding-right: 0;
+  }
 
+  .breadcrumb-list-item + .breadcrumb-list-item {
+    .mat-list-item-content {
+      padding-left: 0;
+    }
+  }
+}
+
+.text {
   &:first-letter {
     text-transform: uppercase;
   }

@@ -1,9 +1,9 @@
-import {Component} from '@angular/core';
-import {routes} from '../../consts/routes';
-import {FlatTreeControl} from '@angular/cdk/tree';
-import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
-import {MatDialog} from '@angular/material/dialog';
-import {ChatPopupComponent} from '../popups/chat-popup/chat-popup.component';
+import { Component } from '@angular/core';
+import { routes } from '../../consts';
+import { FlatTreeControl } from '@angular/cdk/tree';
+import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
+import { MatDialog } from '@angular/material/dialog';
+import { ChatPopupComponent } from '../popups/chat-popup/chat-popup.component';
 
 
 const TREE_DATA: any = [
@@ -18,9 +18,9 @@ const TREE_DATA: any = [
   {
     name: 'User',
     children: [
-      { name: 'User List', route: routes.USER_LIST, active: 'active' },
-      { name: 'User Add', route: routes.USER_ADD, active: 'active' },
-      { name: 'User Edit', route: routes.USER_EDIT, active: 'active' },
+      { name: 'User List', route: routes.Users, active: 'active' },
+      { name: 'User Add', route: routes.Users_CREATE, active: 'active' },
+      { name: 'User Edit', route: routes.Users_EDIT, active: 'active' },
     ]
   }
 ];
@@ -136,7 +136,7 @@ export class SidebarComponent {
     return {
       expandable: !!node.children && node.children.length > 0,
       name: node.name,
-      level: level,
+      level,
       route: node.route,
       active: node.active
     };

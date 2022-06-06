@@ -23,7 +23,7 @@
     margin-top: 42px;
     margin-bottom: 67px;
 
-    @media(max-width: $small) {
+    @media (max-width: $small) {
       flex-direction: column;
     }
 
@@ -40,7 +40,7 @@
       font-size: 32px;
       letter-spacing: 0.6px;
 
-      @media(max-width: $small) {
+      @media (max-width: $small) {
         margin: 15px 0 0 0;
       }
     }
@@ -100,7 +100,6 @@
     }
   }
 }
-
 
 .button-wrapper {
   display: flex;

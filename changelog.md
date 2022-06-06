@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.0] - 11/06/2022
+### Updated
+
+- Updated the Angular builder;
+- Updated the Angular CLI;
+- Update Angular Material;
+- Updated packages
+
 ## [1.1.0] - 11/11/2021
 ### Updated
 

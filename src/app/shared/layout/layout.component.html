@@ -4,7 +4,10 @@
   [class.greenTheme]="isGreenTheme"
   [class.darkMode]="isDarkMode"
 >
-  <app-header (isShowSidebar)="sidenav.toggle($event)" [isMenuOpened]="isShowSidebar"></app-header>
+  <app-header
+    (isShowSidebar)="sidenav.toggle($event)"
+    [isMenuOpened]="isShowSidebar"
+  ></app-header>
 
   <app-settings-menu-app
     (darkMode)="onDarkMode($event)"
@@ -31,5 +34,4 @@
       <app-footer></app-footer>
     </mat-sidenav-content>
   </mat-sidenav-container>
-
 </div>

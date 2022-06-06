@@ -1,23 +1,28 @@
-import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
-import { DashboardPageComponent } from './modules/dashboard/containers';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { AuthGuard } from './modules/auth/guards';
 import { LayoutComponent } from './shared/layout/layout.component';
+import { routes } from './consts';
+import { DashboardPageComponent } from './modules/dashboard/containers';
 
-const routes: Routes = [
+const ROUTES: typeof routes = routes;
+
+const route: Routes = [
   {
-    path: 'login',
-    loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule)
+    path: '',
+    redirectTo: ROUTES.DASHBOARD,
+    pathMatch: 'full',
   },
   {
-    path: 'documentation',
-    loadChildren: () => import('./modules/documentation/documentation.module').then(m => m.DocumentationModule)
+    path: 'login',
+    loadChildren: () =>
+      import('./modules/auth/auth.module').then((m) => m.AuthModule),
   },
   {
     path: '404',
-    component: NotFoundComponent
+    component: NotFoundComponent,
   },
   {
     path: '',
@@ -38,11 +43,6 @@ const routes: Routes = [
         path: 'e-commerce',
         canActivate: [AuthGuard],
         loadChildren: () => import('./modules/e-commerce/e-commerce.module').then(m => m.ECommerceModule)
-      },
-      {
-        path: 'user',
-        canActivate: [AuthGuard],
-        loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule)
       },
       {
         path: 'core',
@@ -78,25 +78,38 @@ const routes: Routes = [
         path: 'extra',
         canActivate: [AuthGuard],
         loadChildren: () => import('./modules/templates/extra/extra.module').then(m => m.ExtraModule)
-      }
-    ]
+      },
+      {
+        path: 'admin',
+        loadChildren: () =>
+          import('./modules/CRUD/crud.module').then((m) => m.CrudModule),
+      },
+      {
+        path: 'user',
+        canActivate: [AuthGuard],
+        loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule)
+      },
+      {
+        path: 'app',
+        loadChildren: () =>
+          import('./modules/pages/pages.module').then((m) => m.PagesModule),
+      },
+    ],
   },
   {
     path: '**',
-    redirectTo: '404'
-  }
+    redirectTo: '404',
+  },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, {
-    useHash: true,
-    preloadingStrategy: PreloadAllModules,
-    relativeLinkResolution: 'legacy'
-})
+    RouterModule.forRoot(route, {
+      useHash: true,
+      preloadingStrategy: PreloadAllModules,
+      relativeLinkResolution: 'legacy',
+    }),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}

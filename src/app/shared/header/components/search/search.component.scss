@@ -1,6 +1,6 @@
-@import "src/app/styles/colors";
-@import "src/app/styles/font";
-@import "src/app/styles/variables";
+@import 'src/app/styles/colors';
+@import 'src/app/styles/font';
+@import 'src/app/styles/variables';
 
 .search {
   display: flex;
@@ -31,7 +31,7 @@
 
 .search-input {
   color: $white;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   line-height: 19px;
   font-size: $fs-small;
   background-color: transparent;
@@ -56,6 +56,27 @@
   padding-left: 4px;
 }
 
-@keyframes open_search { from { width: 36px; } to { width: 250px; }  }
-@keyframes open_search_large { from { width: 36px; } to { width: 150px; }  }
-@keyframes move_search-icon { from { padding: 0 7px 3px 0; } to { padding-right: 16px; }  }
+@keyframes open_search {
+  from {
+    width: 36px;
+  }
+  to {
+    width: 250px;
+  }
+}
+@keyframes open_search_large {
+  from {
+    width: 36px;
+  }
+  to {
+    width: 150px;
+  }
+}
+@keyframes move_search-icon {
+  from {
+    padding: 0 7px 3px 0;
+  }
+  to {
+    padding-right: 16px;
+  }
+}

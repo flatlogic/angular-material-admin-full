@@ -1,5 +1,18 @@
 import { Component, Input, OnInit } from '@angular/core';
-
+import {
+  ApexAxisChartSeries,
+  ApexChart,
+  ApexFill,
+  ApexYAxis,
+  ApexTooltip,
+  ApexMarkers,
+  ApexXAxis,
+  ApexStroke,
+  ApexLegend,
+  ApexGrid,
+  ApexPlotOptions,
+  ApexDataLabels
+} from 'ng-apexcharts';
 import { ProjectStatData, ProjectTimeData } from '../../models';
 import { colors } from '../../../../consts';
 

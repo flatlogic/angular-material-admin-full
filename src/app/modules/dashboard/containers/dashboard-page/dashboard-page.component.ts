@@ -27,8 +27,8 @@ export class DashboardPageComponent {
   public visitsChartData$: Observable<VisitsChartData>;
   public projectsStatsData$: Observable<ProjectStatData>;
   public todayDate: Date = new Date();
-  public currentTheme: string = '';
-  public currentMode: string = '';
+  public currentTheme = '';
+  public currentMode = '';
 
   constructor(
     private service: DashboardService,
@@ -43,13 +43,14 @@ export class DashboardPageComponent {
     this.projectsStatsData$ = this.service.loadProjectsStatsData();
   }
 
+  // tslint:disable-next-line:use-lifecycle-interface
   public ngOnInit(): void {
     this.sharedService.currentTheme.subscribe((theme: string) => {
       this.currentTheme = theme;
     });
 
     this.sharedService.currentMode.subscribe((mode: string) => {
-      this.currentMode= mode;
+      this.currentMode = mode;
     });
   }
 }

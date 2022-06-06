@@ -1,24 +1,42 @@
 <div class="user-wrapper">
-  <img src="./assets/header/avatar.png" class="user-icon" [matMenuTriggerFor]="userMenu">
+  <img
+    [matMenuTriggerFor]="userMenu"
+    [src]="avatar()"
+    alt="..."
+    class="user-icon"
+  />
 
   <mat-menu #userMenu="matMenu" xPosition="before">
     <div class="user-menu-title">
-      <h4 class="user-menu-title__name">{{user.name}} {{user.lastName}}</h4>
-      <a class="user-menu-title__link" [href]="flatlogicEmail">Flatlogic.com</a>
+      <h4 class="user-menu-title__name">
+        {{ user?.firstName }} {{ user?.lastName }}
+      </h4>
+      <a [href]="flatlogicEmail" class="user-menu-title__link">Flatlogic.com</a>
     </div>
-    <button mat-menu-item class="user-menu__item-title" [routerLink]="routes.PROFILE">
-      <mat-icon class="user-menu-icon">account_circle</mat-icon>Profile
+    <button
+      [routerLink]="routes.PROFILE"
+      class="user-menu__item-title"
+      mat-menu-item
+    >
+      <mat-icon class="user-menu-icon">account_circle</mat-icon>
+      Profile
     </button>
-    <button mat-menu-item class="user-menu__item-title">
-      <mat-icon class="user-menu-icon">description</mat-icon>Tasks
+    <button class="user-menu__item-title" mat-menu-item>
+      <mat-icon class="user-menu-icon">description</mat-icon>
+      Tasks
     </button>
-    <button mat-menu-item class="user-menu__item-title">
-      <mat-icon class="user-menu-icon">email</mat-icon>Messages
+    <button class="user-menu__item-title" mat-menu-item>
+      <mat-icon class="user-menu-icon">email</mat-icon>
+      Messages
     </button>
     <div class="sign-button-wrapper">
-      <button class="sign-button" mat-flat-button (click)="signOutEmit()">Sign out</button>
+      <button (click)="signOutEmit()" class="sign-button" mat-flat-button>
+        Sign out
+      </button>
     </div>
   </mat-menu>
 
-  <p class="greeting-text">Hi, <span class="user-name">Robbert Cotton</span></p>
+  <p class="greeting-text">
+    Hi, <span class="user-name">{{ user?.firstName }}</span>
+  </p>
 </div>

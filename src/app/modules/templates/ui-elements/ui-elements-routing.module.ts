@@ -1,5 +1,5 @@
-import {RouterModule, Routes} from '@angular/router';
-import {NgModule} from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
 import {
   BadgePageComponent,
   IconsPageComponent,
@@ -7,13 +7,14 @@ import {
   ProgressPageComponent,
   TabsPageComponent,
   TooltipsPageComponent,
-  WidgetPageComponent
+  WidgetPageComponent,
+  CardsPageComponent
 } from './components';
-import {CardsPageComponent} from './components/cards-page/cards-page.component';
-import {NotificationPageComponent} from './containers/notification-page/notification-page.component';
-import {CarouselPageComponent} from './components/carousel-page/carousel-page.component';
-import {NavbarPageComponent} from './components/navbar-page/navbar-page.component';
-import {TablesDynamicPageComponent} from '../tables/containers';
+
+import { CarouselPageComponent } from './components';
+import { NotificationPageComponent } from './containers';
+import { NavbarPageComponent } from './components/navbar-page/navbar-page.component';
+import { TablesDynamicPageComponent } from '../tables/containers';
 
 const routes: Routes = [
   {

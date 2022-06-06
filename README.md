@@ -3,7 +3,7 @@
 Built with [Angular](https://angular.io/), [Angular Material](https://material.angular.io/).
 **No jQuery and Bootstrap!**
 
-**This version uses Angular 11.2**
+**This version uses Angular 13.2**
 
 [Demo](https://demo.flatlogic.com/angular-material-admin-full). Use any credentials to log in.
 
@@ -11,10 +11,10 @@ Built with [Angular](https://angular.io/), [Angular Material](https://material.a
 
 ## Features
 
-- Angular (**11.2**)
+- Angular (**13.2**)
 - **No jQuery and Bootstrap!**
 - Mobile friendly layout (responsive)
-- Angular Material 11.2
+- Angular Material 13.2
 - Modular Architecture
 - Styled Components
 - Stylish, clean, responsive layout

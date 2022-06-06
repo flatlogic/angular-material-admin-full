@@ -4,6 +4,9 @@
 @import '~@fullcalendar/timegrid/main.css';
 @import "../node_modules/angular-calendar/css/angular-calendar.css";
 
+@import "../node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css";
+@import "../node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css";
+
 @import "src/app/styles/colors";
 @import "src/app/styles/variables";
 @import "src/app/styles/font";
@@ -26,32 +29,56 @@
 
 $ama-primary: mat-palette($ama-blue);
 $ama-primary-light: mat-palette($ama-light-blue);
-$ama-accent:  mat-palette($ama-yellow);
-$ama-warn:    mat-palette($ama-pink);
+$ama-accent: mat-palette($ama-yellow);
+$ama-warn: mat-palette($ama-pink);
 $ama-success: mat-palette($ama-green);
 $ama-info: mat-palette($ama-violet);
 
-@function ama-light-theme($primary, $accent, $warn, $success, $info, $primary-light) {
-  @return map-merge(mat-light-theme($primary, $accent, $warn), (success: $success, info: $info, primary-light: $primary-light));
+@function ama-light-theme(
+  $primary,
+  $accent,
+  $warn,
+  $success,
+  $info,
+  $primary-light
+) {
+  @return map-merge(
+    mat-light-theme($primary, $accent, $warn),
+    (
+      success: $success,
+      info: $info,
+      primary-light: $primary-light,
+    )
+  );
 }
-
 
 /***********************************/
 /** Angular Material Admin THEME **/
 /**********************************/
 
-
-$ama-theme: ama-light-theme($ama-primary, $ama-accent, $ama-warn, $ama-success, $ama-info, $ama-primary-light);
+$ama-theme: ama-light-theme(
+  $ama-primary,
+  $ama-accent,
+  $ama-warn,
+  $ama-success,
+  $ama-info,
+  $ama-primary-light
+);
 
 @include angular-material-theme($ama-theme);
-
 
 /***********************************/
 /**            Badge             **/
 /**********************************/
 
-
-$ama-badge-theme: ama-light-theme($ama-primary, $ama-accent, $ama-warn, $ama-success, $ama-info, $ama-primary-light);
+$ama-badge-theme: ama-light-theme(
+  $ama-primary,
+  $ama-accent,
+  $ama-warn,
+  $ama-success,
+  $ama-info,
+  $ama-primary-light
+);
 
 @mixin mat-badge-theme($theme) {
   $accent: map-get($theme, accent);
@@ -128,11 +155,16 @@ $ama-badge-theme: ama-light-theme($ama-primary, $ama-accent, $ama-warn, $ama-suc
       // we convert it into a solid color by taking the opacity from the rgba value and using
       // the value to determine the percentage of the background to put into foreground when
       // mixing the colors together.
-      @if (type-of($badge-color) == color and type-of($app-background) == color) {
+      @if (
+        type-of($badge-color) == color and type-of($app-background) == color
+      ) {
         $badge-opacity: opacity($badge-color);
-        background: mix($app-background, rgba($badge-color, 1), (1 - $badge-opacity) * 100%);
-      }
-      @else {
+        background: mix(
+          $app-background,
+          rgba($badge-color, 1),
+          (1 - $badge-opacity) * 100%
+        );
+      } @else {
         background: $badge-color;
       }
 
@@ -166,26 +198,31 @@ $ama-badge-theme: ama-light-theme($ama-primary, $ama-accent, $ama-warn, $ama-suc
     transform: none;
   }
 
-  .mat-badge-small {
-    @include _mat-badge-size($mat-badge-small-size);
-  }
-  .mat-badge-medium {
-    @include _mat-badge-size($mat-badge-default-size);
-  }
-  .mat-badge-large {
-    @include _mat-badge-size($mat-badge-large-size);
-  }
+  //.mat-badge-small {
+  //  @include _mat-badge-size($mat-badge-small-size);
+  //}
+  //.mat-badge-medium {
+  //  @include _mat-badge-size($mat-badge-default-size);
+  //}
+  //.mat-badge-large {
+  //  @include _mat-badge-size($mat-badge-large-size);
+  //}
 }
 
 @include mat-badge-theme($ama-badge-theme);
-
 
 /***********************************/
 /**          Radio Button        **/
 /**********************************/
 
-
-$ama-radio-button-theme: ama-light-theme($ama-primary, $ama-accent, $ama-warn, $ama-success, $ama-info, $ama-primary-light);
+$ama-radio-button-theme: ama-light-theme(
+  $ama-primary,
+  $ama-accent,
+  $ama-warn,
+  $ama-success,
+  $ama-info,
+  $ama-primary-light
+);
 
 @mixin _mat-radio-color($palette) {
   &.mat-radio-checked .mat-radio-outer-circle {
@@ -255,7 +292,6 @@ $ama-radio-button-theme: ama-light-theme($ama-primary, $ama-accent, $ama-warn, $
 
 @include mat-radio-theme($ama-radio-button-theme);
 
-
 /***********************************/
 /**             Chip             **/
 /**********************************/
@@ -273,20 +309,34 @@ $ama-radio-button-theme: ama-light-theme($ama-primary, $ama-accent, $ama-warn, $
 @mixin _mat-theme-elevation($zValue, $theme, $opacity: $mat-elevation-opacity) {
   $foreground: map-get($theme, foreground);
   $elevation-color: map-get($foreground, elevation);
-  $elevation-color-or-default: if($elevation-color == null, $mat-elevation-color, $elevation-color);
+  $elevation-color-or-default: if(
+    $elevation-color == null,
+    $mat-elevation-color,
+    $elevation-color
+  );
 
   @include mat-elevation($zValue, $elevation-color-or-default, $opacity);
 }
 
 @mixin mat-chips-theme-color($palette) {
-  @include custom-mat-chips-color(mat-color($palette, default-contrast), mat-color($palette));
+  @include custom-mat-chips-color(
+    mat-color($palette, default-contrast),
+    mat-color($palette)
+  );
 
-  .mat-ripple-element {
-    @include _mat-chips-ripple-background($palette, default-contrast, 0.1);
-  }
+  //.mat-ripple-element {
+  //  @include _mat-chips-ripple-background($palette, default-contrast, 0.1);
+  //}
 }
 
-$ama-chip-theme: ama-light-theme($ama-primary, $ama-accent, $ama-warn, $ama-success, $ama-info, $ama-primary-light);
+$ama-chip-theme: ama-light-theme(
+  $ama-primary,
+  $ama-accent,
+  $ama-warn,
+  $ama-success,
+  $ama-info,
+  $ama-primary-light
+);
 
 @mixin mat-chips-theme($theme) {
   $is-dark-theme: map-get($theme, is-dark);
@@ -302,7 +352,10 @@ $ama-chip-theme: ama-light-theme($ama-primary, $ama-accent, $ama-warn, $ama-succ
   $unselected-foreground: mat-color($foreground, text);
 
   .mat-chip.mat-standard-chip {
-    @include custom-mat-chips-color($unselected-foreground, $unselected-background);
+    @include custom-mat-chips-color(
+      $unselected-foreground,
+      $unselected-background
+    );
 
     &:not(.mat-chip-disabled) {
       &:active {
@@ -348,12 +401,18 @@ $ama-chip-theme: ama-light-theme($ama-primary, $ama-accent, $ama-warn, $ama-succ
 
 @include mat-chips-theme($ama-chip-theme);
 
-
 /***********************************/
 /**           Buttons            **/
 /**********************************/
 
-$ama-button-theme: ama-light-theme($ama-primary, $ama-accent, $ama-warn, $ama-success, $ama-info, $ama-primary-light);
+$ama-button-theme: ama-light-theme(
+  $ama-primary,
+  $ama-accent,
+  $ama-warn,
+  $ama-success,
+  $ama-info,
+  $ama-primary-light
+);
 
 @mixin _mat-button-theme-property($theme, $property, $hue) {
   $primary: map-get($theme, primary);
@@ -385,7 +444,11 @@ $ama-button-theme: ama-light-theme($ama-primary, $ama-accent, $ama-warn, $ama-su
     border-color: mat-color($info, $hue) !important;
   }
 
-  &.mat-primary, &.mat-accent, &.mat-warn, &.mat-success, &[disabled] {
+  &.mat-primary,
+  &.mat-accent,
+  &.mat-warn,
+  &.mat-success,
+  &[disabled] {
     &[disabled] {
       $palette: if($property == 'color', $foreground, $background);
       #{$property}: mat-color($palette, disabled-button);
@@ -395,18 +458,21 @@ $ama-button-theme: ama-light-theme($ama-primary, $ama-accent, $ama-warn, $ama-su
 
 @include mat-button-theme($ama-button-theme);
 
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
 
 @include notification;
 @include typography;
 @include scrollbar();
+@include mat-form-field();
 @include calendar();
 @include full-calendar;
-@include mat-form-field();
-@include mat-carousel();
-
 @include blueTheme();
 @include pinkTheme();
 @include greenTheme();
@@ -414,7 +480,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 @include mat-tab-label;
 @include mat-card;
 
-.mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple), .mat-option:hover:not(.mat-option-disabled) {
+.mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple),
+.mat-option:hover:not(.mat-option-disabled) {
   background-color: $blue-white;
 }
 
@@ -429,10 +496,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   margin-top: -55px;
 }
 
-.blueTheme .mat-progress-bar-buffer {
-  background-color: $white-blue;
-}
-
-.blueTheme .mat-progress-bar.mat-accent .mat-progress-bar-buffer {
-  background-color: $white-blue;
+.ng-select .ng-select-container {
+  min-width: 150px;
+  min-height: 40.5px;
 }

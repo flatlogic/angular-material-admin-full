@@ -1,7 +1,7 @@
 import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {ChartOptions} from '../../../templates/charts/models/chart-options';
 
-import {colors} from '../../../../consts/colors';
+import {colors} from '../../../../consts';
 import {CalendarDateFormatter} from 'angular-calendar';
 import {CustomDateFormatter} from '../../service';
 import {routes} from '../../../../consts';
@@ -79,7 +79,7 @@ export class ProfilePageComponent implements OnInit, OnChanges {
       }]
     }
   ];
-  public isDarkMode: boolean = false;
+  public isDarkMode = false;
 
   constructor(private service: SharedService) {
   }
@@ -91,19 +91,19 @@ export class ProfilePageComponent implements OnInit, OnChanges {
 
     this.service.currentMode.subscribe((mode: string) => {
       this.isDarkMode = mode === 'dark';
-    })
+    });
   }
 
   public initChart2(data: number[], color: string): Partial<ChartOptions> {
     return  {
       series: [
         {
-          name: "STOCK ABC",
-          data: data
+          name: 'STOCK ABC',
+          data
         }
       ],
       chart: {
-        type: "area",
+        type: 'area',
         height: 100,
         zoom: {
           enabled: false
@@ -134,7 +134,7 @@ export class ProfilePageComponent implements OnInit, OnChanges {
         '19 Nov 2020',
       ],
       xaxis: {
-        type: "datetime",
+        type: 'datetime',
         labels: {
           show: false
         },
@@ -150,7 +150,7 @@ export class ProfilePageComponent implements OnInit, OnChanges {
         show: false
       },
       legend: {
-        horizontalAlign: "left",
+        horizontalAlign: 'left',
         show: false
       },
       grid: {

@@ -1,24 +1,25 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { AuthService } from '../../services';
 import { routes } from '../../../../consts';
+import { AuthService } from '../../../../shared/services/auth.service';
 
 @Component({
   selector: 'app-auth-page',
   templateUrl: './auth-page.component.html',
   styleUrls: ['./auth-page.component.scss'],
-  encapsulation: ViewEncapsulation.None
 })
 export class AuthPageComponent {
   public todayDate: Date = new Date();
   public routers: typeof routes = routes;
 
-  constructor(private authService: AuthService,
-              private route: ActivatedRoute,
-              private router: Router) {
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private route: ActivatedRoute,
+  ) {
     if (this.authService.isAuthenticated()) {
-      this.authService.logoutUser();
+      this.authService.receiveLogin();
     }
 
     this.route.queryParams.subscribe((params) => {
@@ -37,6 +38,6 @@ export class AuthPageComponent {
   }
 
   public googleLogin() {
-    this.authService.loginUser({social: 'google'});
+    this.authService.loginUser({ social: 'google' });
   }
 }

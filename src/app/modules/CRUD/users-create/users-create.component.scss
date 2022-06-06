@@ -1,0 +1,130 @@
+@import 'src/app/styles/font';
+@import 'src/app/styles/colors';
+@import 'src/app/styles/variables';
+
+.card {
+  margin-top: 24px;
+  box-shadow: 0 3px 11px 0 $shadow-white, 0 3px 3px -2px $shadow-grey,
+    0 1px 8px 0 $shadow-dark-grey;
+}
+
+.input-wrapper {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 16px 0 8px 0;
+
+  @media (max-width: $small) {
+    width: 100%;
+  }
+}
+
+.input-title {
+  font-size: $fs-regular;
+  color: $dark-grey;
+  margin: 0 16px 0 0;
+}
+
+.input-field {
+  width: 80%;
+  font-size: $fs-xs;
+
+  @media (max-width: $small) {
+    width: 80%;
+  }
+}
+
+.input-text,
+textarea {
+  font-size: $fs-regular;
+}
+
+.mat-form-field-wrapper {
+  margin: 0;
+  padding: 0;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 20px 0 16px 0;
+  border: none;
+}
+
+.input-select {
+  border: none;
+  width: 500px;
+}
+
+.input-panel {
+  width: auto;
+  height: auto;
+}
+
+.input-img {
+  width: 200px;
+  height: auto;
+}
+
+button.mat-flat-button + button.mat-flat-button {
+  margin-left: 8px;
+}
+
+.checkbox-wrapper {
+  margin: 18px 0;
+  display: flex;
+
+  @media (max-width: $medium) {
+    flex-direction: column;
+  }
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-item-title {
+  font-size: $fs-regular;
+  color: $dark-grey;
+  margin: 0 !important;
+}
+
+.mat-checkbox,
+.mat-checkbox-inner-container,
+.mat-checkbox-inner-container-no-side-margin {
+  margin-left: 10px !important;
+}
+
+.mat-radio-button {
+  margin-left: 16px;
+}
+
+.inputs-wrapper {
+  margin-top: 36px;
+
+  @media (max-width: $normal) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.mat-success {
+  background-color: $green;
+  color: white;
+}
+
+mat-form-field + mat-form-field {
+  margin-left: 24px;
+
+  @media (max-width: $normal) {
+    margin-top: 24px;
+    margin-left: 0;
+  }
+}
+
+.image-preview {
+  width: 191px;
+  height: 141px;
+  background-size: cover;
+  background-position: 50% center;
+}
