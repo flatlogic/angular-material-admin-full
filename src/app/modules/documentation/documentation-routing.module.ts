@@ -12,7 +12,7 @@ import {TablesPageComponent} from './pages/tables-page/tables-page.component';
 import {MapsPageComponent} from './pages/maps-page/maps-page.component';
 import {UiPageComponent} from './pages/ui-page/ui-page.component';
 
-const routes: Routes = [
+export const DOCUMENTATION_ROUTES: Routes = [
   {
     path: '',
     component: DocumentationPageComponent,
@@ -34,8 +34,13 @@ const routes: Routes = [
         component: LicencesPageComponent
       },
       {
-        path: 'quick start',
+        path: 'quick-start',
         component: QuickStartPageComponent
+      },
+      {
+        path: 'quick start',
+        redirectTo: 'quick-start',
+        pathMatch: 'full'
       },
       {
         path: 'charts',
@@ -63,7 +68,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forChild(routes)
+    RouterModule.forChild(DOCUMENTATION_ROUTES)
   ],
   exports: [RouterModule]
 })

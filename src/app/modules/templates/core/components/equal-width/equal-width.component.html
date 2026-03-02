@@ -1,34 +1,44 @@
-<mat-card>
+<mat-card appearance="outlined">
   <mat-card-title>
     <p>Equal width</p>
   </mat-card-title>
   <mat-card-subtitle>
     <p>
-      For example, here are two grid layouts that apply to every device and viewport, from xs to xl.
-      Add any number of unit-less classes for each breakpoint you need and every column will be the
-      same width.
+      Equal-width columns are easiest to maintain with CSS Grid.
+      Use <code>repeat(..., minmax(0, 1fr))</code> to keep each column the same width.
     </p>
   </mat-card-subtitle>
 
   <mat-card-content>
-    <mat-grid-list cols="2" rowHeight="52" gutterSize="24">
-      <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <div class="first-grid-item">
-          <span>1 of 2</span>
-        </div>
-      </mat-grid-tile>
-      <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <div class="second-grid-item">
-          <span>2 of 2</span>
-        </div>
-      </mat-grid-tile>
-    </mat-grid-list>
+    <div class="equal-grid equal-grid_two">
+      <div class="first-grid-item">
+        <span>1 of 2</span>
+      </div>
+      <div class="second-grid-item">
+        <span>2 of 2</span>
+      </div>
+    </div>
+
+    <div class="equal-grid equal-grid_three">
+      <div class="first-grid-item">
+        <span>1 of 3</span>
+      </div>
+      <div class="second-grid-item">
+        <span>2 of 3</span>
+      </div>
+      <div class="third-grid-item">
+        <span>3 of 3</span>
+      </div>
+    </div>
 
     <pre class="code-wrapper">
-<code class="code blue">{{'<'}}mat-grid-list cols="3" rowHeight="52" gutterSize="24"{{'>'}}</code>
-  <code class="code pink">{{'<'}}mat-grid-tile [colspan]="1" [rowspan]="1"{{'>'}}1 of 2{{'<'}}/mat-grid-tile{{'>'}}</code>
-  <code class="code pink">{{'<'}}mat-grid-tile [colspan]="1" [rowspan]="1"{{'>'}}2 of 2{{'<'}}/mat-grid-tile{{'>'}}</code>
-<code class="code blue">{{'<'}}/mat-grid-list{{'>'}}</code>
+<code class="code blue">{{'<'}}div class="equal-grid equal-grid_three"{{'>'}}</code>
+  <code class="code pink">{{'<'}}div class="equal-grid__item"{{'>'}}1 of 3{{'<'}}/div{{'>'}}</code>
+  <code class="code pink">{{'<'}}div class="equal-grid__item"{{'>'}}2 of 3{{'<'}}/div{{'>'}}</code>
+  <code class="code pink">{{'<'}}div class="equal-grid__item"{{'>'}}3 of 3{{'<'}}/div{{'>'}}</code>
+<code class="code blue">{{'<'}}/div{{'>'}}</code>
+<code class="code grey">equal-grid: display: grid; gap: 24px;</code>
+<code class="code grey">equal-grid_three: grid-template-columns: repeat(3, minmax(0, 1fr));</code>
     </pre>
   </mat-card-content>
 </mat-card>

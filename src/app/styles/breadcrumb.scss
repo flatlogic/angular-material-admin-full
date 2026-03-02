@@ -1,28 +1,28 @@
-@import "colors";
+@use "src/app/styles/variables" as *;
 
 $breadcrumb-title-color: $grey;
 $breadcrumb-active-title-color: $blue;
 
 @mixin breadcrumb {
-  .breadcrumb-list.mat-list-base {
-    & .mat-list-item {
+  .breadcrumb-list {
+    .breadcrumb-list-item {
       color: $breadcrumb-title-color;
+    }
 
-      &.active {
-        color: $breadcrumb-active-title-color;
-      }
+    .breadcrumb-list-item.active {
+      color: $breadcrumb-active-title-color;
     }
   }
 }
 
 @mixin breadcrumb-dark {
-  .breadcrumb-list.mat-list-base {
-    & .mat-list-item {
+  .breadcrumb-list {
+    .breadcrumb-list-item {
       color: $white;
+    }
 
-      &.active {
-        color: $breadcrumb-active-title-color;
-      }
+    .breadcrumb-list-item.active {
+      color: $breadcrumb-active-title-color;
     }
   }
 }

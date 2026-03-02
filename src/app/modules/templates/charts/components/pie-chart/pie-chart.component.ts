@@ -1,43 +1,49 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {
-  ApexAxisChartSeries,
-  ApexChart,
-  ApexDataLabels, ApexFill, ApexGrid,
-  ApexLegend, ApexMarkers,
-  ApexNonAxisChartSeries, ApexResponsive,
-  ApexStroke,
-  ApexTooltip,
-  ApexXAxis
-} from 'ng-apexcharts';
+import { EChartsOption } from 'echarts';
 
 import { PieChartData } from '../../models';
 import { colors } from '../../../../../consts';
-
-type ChartOptions = {
-  series: ApexAxisChartSeries | ApexNonAxisChartSeries;
-  chart: ApexChart;
-  xaxis: ApexXAxis;
-  stroke: ApexStroke;
-  tooltip: ApexTooltip;
-  dataLabels: ApexDataLabels;
-  legend: ApexLegend;
-  colors: string[];
-  markers: ApexMarkers;
-  grid: ApexGrid;
-  labels: string[];
-  responsive: ApexResponsive[];
-  fill: ApexFill;
-};
+import { ChartOptions } from '../../models/chart-options';
 
 @Component({
-  selector: 'app-pie-chart',
-  templateUrl: './pie-chart.component.html',
-  styleUrls: ['./pie-chart.component.scss']
+    selector: 'app-pie-chart',
+    templateUrl: './pie-chart.component.html',
+    styleUrls: ['./pie-chart.component.scss'],
+    standalone: false
 })
 export class PieChartComponent implements OnInit {
   @Input() pieChartData: PieChartData;
   public apexPieChartOptions: Partial<ChartOptions>;
   public colors: typeof colors = colors;
+
+  public get echartsOptions(): EChartsOption {
+    const options = this.apexPieChartOptions;
+    const labels = Array.isArray(options?.labels) ? options.labels : [];
+    const values = Array.isArray(options?.series)
+      ? options.series.filter((item): item is number => typeof item === 'number')
+      : [];
+    const data = values.map((value: number, index: number) => ({
+      value,
+      name: labels[index] ?? `Item ${index + 1}`
+    }));
+
+    return {
+      color: options?.colors ?? [colors.BLUE, colors.YELLOW, colors.PINK, colors.GREEN, colors.VIOLET],
+      tooltip: { trigger: 'item' },
+      legend: {
+        show: true,
+        bottom: 0
+      },
+      series: [
+        {
+          type: 'pie',
+          radius: ['52%', '72%'],
+          data,
+          label: { show: false }
+        }
+      ]
+    } as EChartsOption;
+  }
 
   public ngOnInit(): void {
     this.initChart();

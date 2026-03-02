@@ -1,12 +1,7 @@
-<apx-chart
-  [series]="apexImageBarChartOptions.series"
-  [chart]="apexImageBarChartOptions.chart"
-  [dataLabels]="apexImageBarChartOptions.dataLabels"
-  [stroke]="apexImageBarChartOptions.stroke"
-  [colors]="apexImageBarChartOptions.colors"
-  [grid]="apexImageBarChartOptions.grid"
-  [plotOptions]="apexImageBarChartOptions.plotOptions"
-  [yaxis]="apexImageBarChartOptions.yaxis"
-  [fill]="apexImageBarChartOptions.fill"
-  [labels]="apexImageBarChartOptions.labels"
-></apx-chart>
+<div
+  echarts
+  *ngIf="apexImageBarChartOptions?.chart"
+  [options]="echartsOptions"
+  [style.height]="apexImageBarChartOptions?.chart?.height | chartSize:'350px'"
+  [style.width]="apexImageBarChartOptions?.chart?.width | chartSize:'100%'"
+></div>

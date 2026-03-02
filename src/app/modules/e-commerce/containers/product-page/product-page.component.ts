@@ -1,22 +1,30 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, DestroyRef, OnInit, inject} from '@angular/core';
 import {routes} from '../../../../consts';
 import {FormControl, FormGroup} from '@angular/forms';
-import {ProductService, ProductsService} from '../../services';
+import {ProductService} from '../../services';
 import {Observable} from 'rxjs';
 import {ProductCard} from '../../models';
 import {ProductDetails} from '../../models/product-details';
 import {ActivatedRoute} from '@angular/router';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
+type ProductSelectionControls = {
+  size: FormControl<string>;
+  value: FormControl<string>;
+};
 
 @Component({
-  selector: 'app-product-page',
-  templateUrl: './product-page.component.html',
-  styleUrls: ['./product-page.component.scss']
+    selector: 'app-product-page',
+    templateUrl: './product-page.component.html',
+    styleUrls: ['./product-page.component.scss'],
+    standalone: false
 })
 export class ProductPageComponent implements OnInit {
   public routes: typeof routes = routes;
-  public form: FormGroup;
+  public form!: FormGroup<ProductSelectionControls>;
   public products$: Observable<ProductCard[]>
-  public product$: Observable<ProductDetails>
+  public product$!: Observable<ProductDetails>;
+  private readonly destroyRef = inject(DestroyRef);
 
   constructor(
     private service: ProductService,
@@ -26,26 +34,25 @@ export class ProductPageComponent implements OnInit {
   }
 
   public ngOnInit() {
-    this.form = new FormGroup({
-      size: new FormControl('2'),
-      value: new FormControl('2'),
+    this.form = new FormGroup<ProductSelectionControls>({
+      size: new FormControl('2', { nonNullable: true }),
+      value: new FormControl('2', { nonNullable: true }),
     });
 
-    this.route.paramMap.subscribe((params: any) => {
-      if (params.params.id) {
-        this.product$ = this.service.getProduct(params.params.id);
-      } else {
-        this.product$ = this.service.getProduct('1');
-      }
-    });
+    this.route.paramMap
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((params) => {
+        const productId = params.get('id') ?? '1';
+        this.product$ = this.service.getProduct(productId);
+      });
   }
 
-  get size() {
-    return this.form.get('size') as FormControl;
+  get size(): FormControl<string> {
+    return this.form.controls.size;
   }
 
-  get value() {
-    return this.form.get('value') as FormControl;
+  get value(): FormControl<string> {
+    return this.form.controls.value;
   }
 
 }

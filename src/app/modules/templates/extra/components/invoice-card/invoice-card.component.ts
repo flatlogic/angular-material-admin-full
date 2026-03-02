@@ -4,9 +4,10 @@ import {Item, Order} from '../../models';
 import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
-  selector: 'app-invoice-card',
-  templateUrl: './invoice-card.component.html',
-  styleUrls: ['./invoice-card.component.scss']
+    selector: 'app-invoice-card',
+    templateUrl: './invoice-card.component.html',
+    styleUrls: ['./invoice-card.component.scss'],
+    standalone: false
 })
 export class InvoiceCardComponent implements OnInit {
   @Input() public order: Order;

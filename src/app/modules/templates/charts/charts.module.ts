@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule} from '@angular/material/card';
-import { NgApexchartsModule } from 'ng-apexcharts';
 import { MatGridListModule } from '@angular/material/grid-list';
 
 import { ChartsRoutingModule } from './charts-routing.module';
@@ -13,7 +12,6 @@ import {
   BarChartsPageComponent,
   PieChartsPageComponent
 } from './containers';
-import { SharedModule } from '../../../shared/shared.module';
 import { ChartsService } from './services';
 import {
   DashedLineChartComponent,
@@ -33,6 +31,9 @@ import {
   MonochomePieChartComponent,
   DynamicUpdatingChartComponent
 } from './components';
+import { BreadcrumbComponent } from '../../../shared/ui-elements';
+import { ChartSizePipe } from '../../../shared/pipes/chart-size.pipe';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 @NgModule({
   declarations: [
@@ -60,11 +61,14 @@ import {
   imports: [
     CommonModule,
     ChartsRoutingModule,
-    SharedModule,
+    BreadcrumbComponent,
+    ChartSizePipe,
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts')
+    }),
     MatToolbarModule,
     MatCardModule,
     MatButtonModule,
-    NgApexchartsModule,
     MatGridListModule
   ],
   providers: [

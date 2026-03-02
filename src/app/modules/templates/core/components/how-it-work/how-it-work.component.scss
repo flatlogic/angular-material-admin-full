@@ -1,6 +1,5 @@
-@import "../../../../../styles/colors";
-@import "../../../../../styles/font";
-@import "../../../../../styles/variables";
+@use "../../../../../styles/font" as *;
+@use "../../../../../styles/variables" as *;
 
 @mixin grid-item {
   width: 100%;
@@ -33,10 +32,22 @@
   }
 }
 
+.grid-demo {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 24px;
+
+  @media (max-width: $small) {
+    grid-template-columns: 1fr;
+  }
+}
+
 .code-wrapper {
   background-color: $blue-white;
-  height: 145px;
-  overflow-x: scroll;
+  height: auto;
+  min-height: 145px;
+  overflow-x: auto;
   overflow-y: hidden;
   padding: 16px 16px 0 16px;
 }
@@ -51,4 +62,8 @@
 
 .pink {
   color: $pink;
+}
+
+.grey {
+  color: $grey;
 }

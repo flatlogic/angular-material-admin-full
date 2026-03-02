@@ -8,9 +8,10 @@ class DialogData {
 }
 
 @Component({
-  selector: 'app-day-info',
-  templateUrl: './day-info.component.html',
-  styleUrls: ['./day-info.component.scss']
+    selector: 'app-day-info',
+    templateUrl: './day-info.component.html',
+    styleUrls: ['./day-info.component.scss'],
+    standalone: false
 })
 export class DayInfoComponent {
 

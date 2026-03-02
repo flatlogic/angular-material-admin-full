@@ -5,9 +5,10 @@ import {Nutrition} from '../../models/nutrition';
 import {routes} from '../../../../../consts';
 
 @Component({
-  selector: 'app-tables-dynamic-page',
-  templateUrl: './tables-dynamic-page.component.html',
-  styleUrls: ['./tables-dynamic-page.component.scss']
+    selector: 'app-tables-dynamic-page',
+    templateUrl: './tables-dynamic-page.component.html',
+    styleUrls: ['./tables-dynamic-page.component.scss'],
+    standalone: false
 })
 export class TablesDynamicPageComponent {
   public nutritionTableData$: Observable<Nutrition[]>

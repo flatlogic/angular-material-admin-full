@@ -1,6 +1,5 @@
-@import 'src/app/styles/font';
-@import 'src/app/styles/colors';
-@import 'src/app/styles/variables';
+@use 'src/app/styles/font' as *;
+@use 'src/app/styles/variables' as *;
 
 .content-wrapper {
   margin-top: 36px;
@@ -73,6 +72,7 @@
   margin: 0 0 0 16px !important;
 }
 
+/* TODO(mdc-migration): The following rule targets internal classes of card that may no longer apply for the MDC version. */
 mat-card-content.content {
   display: flex;
   justify-content: start;

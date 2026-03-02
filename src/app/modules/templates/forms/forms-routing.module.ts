@@ -5,7 +5,8 @@ import {FormElementsPageComponent, FormValidationPageComponent} from './componen
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'elements'
+    redirectTo: 'elements',
+    pathMatch: 'full'
   },
   {
     path: 'elements',

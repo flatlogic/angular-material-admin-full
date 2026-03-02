@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-location',
-  templateUrl: './location.component.html',
-  styleUrls: ['./location.component.scss']
+    selector: 'app-location',
+    templateUrl: './location.component.html',
+    styleUrls: ['./location.component.scss'],
+    standalone: false
 })
 export class LocationComponent {
 

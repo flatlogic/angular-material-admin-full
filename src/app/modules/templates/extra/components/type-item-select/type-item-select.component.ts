@@ -8,9 +8,10 @@ enum SelectedFields {
 }
 
 @Component({
-  selector: 'app-type-item-select',
-  templateUrl: './type-item-select.component.html',
-  styleUrls: ['./type-item-select.component.scss']
+    selector: 'app-type-item-select',
+    templateUrl: './type-item-select.component.html',
+    styleUrls: ['./type-item-select.component.scss'],
+    standalone: false
 })
 export class TypeItemSelectComponent {
   public selectedFields: typeof SelectedFields = SelectedFields;

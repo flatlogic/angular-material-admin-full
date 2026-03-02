@@ -1,15 +1,17 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, DestroyRef, OnInit, inject} from '@angular/core';
 import {Observable} from 'rxjs';
 
 import {BarChartData, DashedLineChartData, HeatmapChartData, LineChartData, PieChartData, RadarChartData} from '../../models';
 import {ChartsService} from '../../services';
 import {routes} from '../../../../../consts';
 import {SharedService} from '../../../../../shared/services/shared.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
-  selector: 'app-overview-charts-page',
-  templateUrl: './overview-charts-page.component.html',
-  styleUrls: ['./overview-charts-page.component.scss']
+    selector: 'app-overview-charts-page',
+    templateUrl: './overview-charts-page.component.html',
+    styleUrls: ['./overview-charts-page.component.scss'],
+    standalone: false
 })
 export class OverviewChartsPageComponent implements OnInit {
   public lineChartData$: Observable<LineChartData>;
@@ -20,6 +22,7 @@ export class OverviewChartsPageComponent implements OnInit {
   public barChartData$: Observable<BarChartData>;
   public routes: typeof routes = routes;
   public currentTheme = '';
+  private readonly destroyRef = inject(DestroyRef);
 
   constructor(
     private service: ChartsService,
@@ -35,8 +38,10 @@ export class OverviewChartsPageComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.sharedService.currentTheme.subscribe((elem: string) => {
-      this.currentTheme = elem;
-    });
+    this.sharedService.currentTheme
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((elem: string) => {
+        this.currentTheme = elem;
+      });
   }
 }

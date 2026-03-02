@@ -6,52 +6,62 @@ import {Observable} from 'rxjs';
 import {ProductCard} from '../../models';
 import {FormControl, FormGroup } from '@angular/forms';
 
+type ProductsFilterControls = {
+  type: FormControl<string>;
+  brands: FormControl<string>;
+  size: FormControl<string>;
+  color: FormControl<string>;
+  range: FormControl<string>;
+  sort: FormControl<string>;
+};
+
 @Component({
-  selector: 'app-products-page',
-  templateUrl: './products-page.component.html',
-  styleUrls: ['./products-page.component.scss']
+    selector: 'app-products-page',
+    templateUrl: './products-page.component.html',
+    styleUrls: ['./products-page.component.scss'],
+    standalone: false
 })
 export class ProductsPageComponent implements OnInit {
   public routes: typeof routes = routes;
   public products$: Observable<ProductCard[]>
-  public form: FormGroup;
+  public form!: FormGroup<ProductsFilterControls>;
 
   constructor(private service: ProductsService) {
     this.products$ = this.service.getProducts();
   }
 
   public ngOnInit() {
-    this.form = new FormGroup({
-      type: new FormControl('shoes'),
-      brands: new FormControl('all'),
-      size: new FormControl('7'),
-      color: new FormControl('all'),
-      range: new FormControl('all'),
-      sort: new FormControl('favorite'),
+    this.form = new FormGroup<ProductsFilterControls>({
+      type: new FormControl('shoes', { nonNullable: true }),
+      brands: new FormControl('all', { nonNullable: true }),
+      size: new FormControl('7', { nonNullable: true }),
+      color: new FormControl('all', { nonNullable: true }),
+      range: new FormControl('all', { nonNullable: true }),
+      sort: new FormControl('favorite', { nonNullable: true }),
     });
   }
 
-  get type() {
-    return this.form.get('type') as FormControl;
+  get type(): FormControl<string> {
+    return this.form.controls.type;
   }
 
-  get brands() {
-    return this.form.get('brands') as FormControl;
+  get brands(): FormControl<string> {
+    return this.form.controls.brands;
   }
 
-  get size() {
-    return this.form.get('size') as FormControl;
+  get size(): FormControl<string> {
+    return this.form.controls.size;
   }
 
-  get color() {
-    return this.form.get('color') as FormControl;
+  get color(): FormControl<string> {
+    return this.form.controls.color;
   }
 
-  get range() {
-    return this.form.get('range') as FormControl;
+  get range(): FormControl<string> {
+    return this.form.controls.range;
   }
 
-  get sort() {
-    return this.form.get('sort') as FormControl;
+  get sort(): FormControl<string> {
+    return this.form.controls.sort;
   }
 }

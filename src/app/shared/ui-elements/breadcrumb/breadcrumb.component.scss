@@ -1,51 +1,46 @@
-@import 'src/app/styles/colors';
-@import 'src/app/styles/font';
+@use 'src/app/styles/colors' as *;
+@use 'src/app/styles/font' as *;
 
 .breadcrumb-card {
   padding: 0;
 }
 
 .breadcrumb-list {
-  padding: 0;
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2px;
+  padding: 0;
+  margin: 0;
 }
 
 .breadcrumb-list-item {
-  cursor: pointer;
-  width: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
   font-size: $fs-regular;
-  color: $grey;
+  line-height: 1.2;
+  min-height: 24px;
+  text-decoration: none;
   outline: none;
 
   &.active {
-    color: $blue;
-    background: transparent;
-  }
-}
-
-:host ::ng-deep {
-  .breadcrumb-list-item .mat-list-item-content {
-    padding-right: 0;
-  }
-
-  .breadcrumb-list-item + .breadcrumb-list-item {
-    .mat-list-item-content {
-      padding-left: 0;
-    }
+    cursor: default;
+    pointer-events: none;
   }
 }
 
 .text {
-  &:first-letter {
-    text-transform: uppercase;
-  }
+  display: inline-flex;
+  align-items: center;
 }
 
 .icon {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   font-size: $fs-medium;
+  width: $fs-medium;
+  height: $fs-medium;
   padding: 0;
+  margin-top: -1px;
 }

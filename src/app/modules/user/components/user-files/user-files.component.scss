@@ -1,9 +1,10 @@
-@import "../../../../styles/font";
-@import "../../../../styles/colors";
-@import "../../../../styles/variables";
+@use "../../../../styles/font" as *;
+@use "../../../../styles/variables" as *;
 
 .card {
-  padding: 18px;
+  padding: 14px 18px 12px;
+  height: 100%;
+  box-sizing: border-box;
 
   @media (max-width: $small) {
     width: 100%;
@@ -11,14 +12,19 @@
   }
 }
 
+.card.mat-mdc-card-outlined {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
 .folders-wrapper {
   display: flex;
-  margin-top: 56px;
+  margin-top: 18px;
   justify-content: space-between;
   overflow-x: auto;
+  padding-bottom: 8px;
 
   @media (min-width: $small) and (max-width: $xxl) {
-    margin-top: 37px;
+    margin-top: 12px;
   }
 }
 

@@ -1,117 +1,142 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
+
+type ProfileControls = {
+  userName: FormControl<string>;
+  userSecondName: FormControl<string>;
+  userPhone: FormControl<string>;
+  userEmail: FormControl<string>;
+  userCountry: FormControl<string>;
+  userState: FormControl<string>;
+  userCity: FormControl<string>;
+  userStreet: FormControl<string>;
+};
+
+type CompanyControls = {
+  companyName: FormControl<string>;
+  companyId: FormControl<string>;
+  companyEmail: FormControl<string>;
+  companyPhone: FormControl<string>;
+};
+
+type SocialControls = {
+  facebook: FormControl<string>;
+  twitter: FormControl<string>;
+  instagram: FormControl<string>;
+  github: FormControl<string>;
+  codepen: FormControl<string>;
+  nik: FormControl<string>;
+};
 
 @Component({
-  selector: 'app-profile-edit-form',
-  templateUrl: './profile-edit-form.component.html',
-  styleUrls: ['./profile-edit-form.component.scss']
+    selector: 'app-profile-edit-form',
+    templateUrl: './profile-edit-form.component.html',
+    styleUrls: ['./profile-edit-form.component.scss'],
+    standalone: false
 })
 export class ProfileEditFormComponent implements OnInit {
-  public socialForm: FormGroup;
-  public companyForm: FormGroup;
-  public profileForm: FormGroup;
+  public socialForm!: FormGroup<SocialControls>;
+  public companyForm!: FormGroup<CompanyControls>;
+  public profileForm!: FormGroup<ProfileControls>;
 
-  constructor() {
-  }
-
-  public ngOnInit() {
-    this.profileForm = new FormGroup({
-      userName: new FormControl('Jane'),
-      userSecondName: new FormControl('Jonson'),
-      userPhone: new FormControl('1-555-666-7070'),
-      userEmail: new FormControl('Jane@gmail.com'),
-      userCountry: new FormControl('us'),
-      userState: new FormControl('california'),
-      userCity: new FormControl('poloAlto'),
-      userStreet: new FormControl('1258 Riverside Drive Redding')
+  public ngOnInit(): void {
+    this.profileForm = new FormGroup<ProfileControls>({
+      userName: new FormControl('Jane', { nonNullable: true }),
+      userSecondName: new FormControl('Jonson', { nonNullable: true }),
+      userPhone: new FormControl('1-555-666-7070', { nonNullable: true }),
+      userEmail: new FormControl('Jane@gmail.com', { nonNullable: true }),
+      userCountry: new FormControl('us', { nonNullable: true }),
+      userState: new FormControl('california', { nonNullable: true }),
+      userCity: new FormControl('poloAlto', { nonNullable: true }),
+      userStreet: new FormControl('1258 Riverside Drive Redding', { nonNullable: true }),
     });
 
-    this.companyForm = new FormGroup({
-      companyName: new FormControl('Company'),
-      companyId: new FormControl('AD1234567891'),
-      companyEmail: new FormControl('company@gmail.com'),
-      companyPhone: new FormControl('1-353-969-7070')
+    this.companyForm = new FormGroup<CompanyControls>({
+      companyName: new FormControl('Company', { nonNullable: true }),
+      companyId: new FormControl('AD1234567891', { nonNullable: true }),
+      companyEmail: new FormControl('company@gmail.com', { nonNullable: true }),
+      companyPhone: new FormControl('1-353-969-7070', { nonNullable: true }),
     });
 
-    this.socialForm = new FormGroup({
-      facebook: new FormControl('https://www.facebook.com/janejonson'),
-      twitter: new FormControl('https://twitter/janejonson'),
-      instagram: new FormControl('https://www.instagram.com/janejonson'),
-      github: new FormControl('https://github.com/janejonson'),
-      codepen: new FormControl('https://codepen.io/janejonson'),
-      nik: new FormControl('@janejonson')
+    this.socialForm = new FormGroup<SocialControls>({
+      facebook: new FormControl('https://www.facebook.com/janejonson', { nonNullable: true }),
+      twitter: new FormControl('https://twitter/janejonson', { nonNullable: true }),
+      instagram: new FormControl('https://www.instagram.com/janejonson', { nonNullable: true }),
+      github: new FormControl('https://github.com/janejonson', { nonNullable: true }),
+      codepen: new FormControl('https://codepen.io/janejonson', { nonNullable: true }),
+      nik: new FormControl('@janejonson', { nonNullable: true }),
     });
   }
 
-  get userName() {
-    return this.profileForm.get('userName') as FormControl;
+  get userName(): FormControl<string> {
+    return this.profileForm.controls.userName;
   }
 
-  get userSecondName() {
-    return this.profileForm.get('userSecondName') as FormControl;
+  get userSecondName(): FormControl<string> {
+    return this.profileForm.controls.userSecondName;
   }
 
-  get userPhone() {
-    return this.profileForm.get('userPhone') as FormControl;
+  get userPhone(): FormControl<string> {
+    return this.profileForm.controls.userPhone;
   }
 
-  get userEmail() {
-    return this.profileForm.get('userEmail') as FormControl;
+  get userEmail(): FormControl<string> {
+    return this.profileForm.controls.userEmail;
   }
 
-  get userCountry() {
-    return this.profileForm.get('userCountry') as FormControl;
+  get userCountry(): FormControl<string> {
+    return this.profileForm.controls.userCountry;
   }
 
-  get userState() {
-    return this.profileForm.get('userState') as FormControl;
+  get userState(): FormControl<string> {
+    return this.profileForm.controls.userState;
   }
 
-  get userCity() {
-    return this.profileForm.get('userCity') as FormControl;
+  get userCity(): FormControl<string> {
+    return this.profileForm.controls.userCity;
   }
 
-  get userStreet() {
-    return this.profileForm.get('userStreet') as FormControl;
+  get userStreet(): FormControl<string> {
+    return this.profileForm.controls.userStreet;
   }
 
-  get companyName() {
-    return this.companyForm.get('companyName') as FormControl;
+  get companyName(): FormControl<string> {
+    return this.companyForm.controls.companyName;
   }
 
-  get companyId() {
-    return this.companyForm.get('companyId') as FormControl;
+  get companyId(): FormControl<string> {
+    return this.companyForm.controls.companyId;
   }
 
-  get companyEmail() {
-    return this.companyForm.get('companyEmail') as FormControl;
+  get companyEmail(): FormControl<string> {
+    return this.companyForm.controls.companyEmail;
   }
 
-  get companyPhone() {
-    return this.companyForm.get('companyPhone') as FormControl;
+  get companyPhone(): FormControl<string> {
+    return this.companyForm.controls.companyPhone;
   }
 
-  get facebook() {
-    return this.socialForm.get('facebook') as FormControl;
+  get facebook(): FormControl<string> {
+    return this.socialForm.controls.facebook;
   }
 
-  get twitter() {
-    return this.socialForm.get('twitter') as FormControl;
+  get twitter(): FormControl<string> {
+    return this.socialForm.controls.twitter;
   }
 
-  get instagram() {
-    return this.socialForm.get('instagram') as FormControl;
+  get instagram(): FormControl<string> {
+    return this.socialForm.controls.instagram;
   }
 
-  get github() {
-    return this.socialForm.get('github') as FormControl;
+  get github(): FormControl<string> {
+    return this.socialForm.controls.github;
   }
 
-  get codepen() {
-    return this.socialForm.get('codepen') as FormControl;
+  get codepen(): FormControl<string> {
+    return this.socialForm.controls.codepen;
   }
 
-  get nik() {
-    return this.socialForm.get('nik') as FormControl;
+  get nik(): FormControl<string> {
+    return this.socialForm.controls.nik;
   }
 }

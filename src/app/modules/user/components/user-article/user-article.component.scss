@@ -1,6 +1,5 @@
-@import "../../../../styles/colors";
-@import "../../../../styles/font";
-@import "../../../../styles/variables";
+@use "../../../../styles/font" as *;
+@use "../../../../styles/variables" as *;
 
 .card {
   margin-top: 36px;

@@ -1,35 +1,35 @@
 @mixin typography {
-  .mat-h1, .mat-headline, .mat-typography h1{
+  .mat-h1, .mat-headline-5, .mat-typography h1{
     font-weight: 400;
     font-size: 48px;
   }
 
-  .mat-h2, .mat-headline, .mat-typography h2{
+  .mat-h2, .mat-headline-5, .mat-typography h2{
     font-weight: 400;
     font-size: 36px;
   }
 
-  .mat-h3, .mat-headline, .mat-typography h3{
+  .mat-h3, .mat-headline-5, .mat-typography h3{
     font-weight: 400;
     font-size: 26px;
   }
 
-  .mat-h4, .mat-headline, .mat-typography h4{
+  .mat-h4, .mat-headline-5, .mat-typography h4{
     font-weight: 400;
     font-size: 24px;
   }
 
-  .mat-h5, .mat-headline, .mat-typography h5{
+  .mat-h5, .mat-headline-5, .mat-typography h5{
     font-weight: 400;
     font-size: 21px;
   }
 
-  .mat-h6, .mat-headline, .mat-typography h6{
+  .mat-h6, .mat-headline-5, .mat-typography h6{
     font-weight: 400;
     font-size: 18px;
   }
 
-  .mat-body p, .mat-body-1 p, .mat-typography p {
+  .mat-body p, .mat-body-2 p, .mat-typography p {
     margin-bottom: 16px;
     line-height: normal;
   }

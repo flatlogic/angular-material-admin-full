@@ -1,0 +1,122 @@
+@use "src/app/styles/colors" as *;
+
+.shared-carousel {
+  position: relative;
+}
+
+.shared-carousel__swiper {
+  display: block;
+  overflow: hidden;
+  position: relative;
+}
+
+.shared-carousel__swiper .swiper-wrapper {
+  box-sizing: content-box;
+  display: flex;
+  height: 100%;
+  position: relative;
+  transition-property: transform;
+  transition-timing-function: var(--swiper-wrapper-transition-timing-function, initial);
+  width: 100%;
+}
+
+.shared-carousel__swiper .swiper-slide {
+  display: block;
+  flex-shrink: 0;
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+.shared-carousel__swiper.swiper-horizontal {
+  touch-action: pan-y;
+}
+
+.shared-carousel__swiper.swiper-vertical {
+  touch-action: pan-x;
+}
+
+.shared-carousel__swiper .swiper-notification {
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}
+
+.shared-carousel__slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.shared-carousel__nav {
+  position: absolute !important;
+  top: 50% !important;
+  bottom: auto !important;
+  transform: translateY(-50%) !important;
+  z-index: 5 !important;
+  width: 38px;
+  height: 38px;
+  color: $white !important;
+  background-color: rgba(0, 0, 0, 0.55) !important;
+  border: 1px solid rgba($white, 0.35);
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  pointer-events: auto;
+}
+
+.shared-carousel__nav mat-icon {
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+}
+
+.shared-carousel__prev {
+  left: 12px !important;
+  right: auto !important;
+}
+
+.shared-carousel__next {
+  right: 12px !important;
+  left: auto !important;
+}
+
+.shared-carousel__nav:hover {
+  background-color: rgba(0, 0, 0, 0.7) !important;
+}
+
+.shared-carousel__nav.swiper-button-disabled {
+  cursor: auto;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.shared-carousel__pagination {
+  position: absolute;
+  left: 50%;
+  bottom: 12px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 2;
+}
+
+.shared-carousel__pagination .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  opacity: 1;
+  margin: 0 !important;
+  background-color: rgba($white, 0.55);
+  transition: all 180ms ease;
+}
+
+.shared-carousel__pagination .swiper-pagination-bullet-active {
+  width: 18px;
+  background-color: $white;
+}

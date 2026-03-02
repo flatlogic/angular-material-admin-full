@@ -63,5 +63,7 @@
 </div>
 
 <div class="products-wrapper">
-  <app-product-card class="product" *ngFor="let product of (products$ | async)" [product]="product"></app-product-card>
+  @for (product of (products$ | async); track product) {
+    <app-product-card class="product" [product]="product"></app-product-card>
+  }
 </div>

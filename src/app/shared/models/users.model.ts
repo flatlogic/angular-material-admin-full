@@ -1,4 +1,7 @@
-//import {Users} from './users.model';
+export interface UserAvatarItem {
+  publicUrl?: string;
+  [key: string]: unknown;
+}
 
 export class Users {
   id: string;
@@ -11,7 +14,7 @@ export class Users {
 
   email: string;
 
-  role: any;
+  role: string;
 
   disabled: boolean;
 
@@ -21,18 +24,18 @@ export class Users {
 
   emailVerificationToken: string;
 
-  emailVerificationTokenExpiresAt: Date;
+  emailVerificationTokenExpiresAt: Date | null;
 
   passwordResetToken: string;
 
-  passwordResetTokenExpiresAt: Date;
+  passwordResetTokenExpiresAt: Date | null;
 
   provider: string;
 
-  avatar: any[];
+  avatar: UserAvatarItem[];
 
-  createdBy: any; // Users;
-  updatedBy: any; //Users;
+  createdBy: Users | null;
+  updatedBy: Users | null;
 }
 
 export interface UsersList {

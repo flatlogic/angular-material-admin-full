@@ -6,9 +6,10 @@ class DialogData {
 }
 
 @Component({
-  selector: 'app-new-day-event',
-  templateUrl: './new-day-event.component.html',
-  styleUrls: ['./new-day-event.component.scss']
+    selector: 'app-new-day-event',
+    templateUrl: './new-day-event.component.html',
+    styleUrls: ['./new-day-event.component.scss'],
+    standalone: false
 })
 export class NewDayEventComponent {
 

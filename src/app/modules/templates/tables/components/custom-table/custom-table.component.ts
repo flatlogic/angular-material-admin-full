@@ -5,9 +5,10 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
-  selector: 'app-custom-table',
-  templateUrl: './custom-table.component.html',
-  styleUrls: ['./custom-table.component.scss']
+    selector: 'app-custom-table',
+    templateUrl: './custom-table.component.html',
+    styleUrls: ['./custom-table.component.scss'],
+    standalone: false
 })
 export class CustomTableComponent {
   @Input() nutritionTableData: Nutrition[];
@@ -38,10 +39,10 @@ export class CustomTableComponent {
   }
 
   /** The label for the checkbox on the passed row */
-  public checkboxLabel(row?: any): string {
+  public checkboxLabel(row?: Nutrition): string {
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.name}`;
   }
 }

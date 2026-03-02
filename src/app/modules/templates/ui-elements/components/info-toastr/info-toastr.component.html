@@ -5,7 +5,12 @@
     </div>
     <p class="toastr-content__title">New user feedback received</p>
   </div>
-  <div class="toastr-wrapper-icon">
-    <mat-icon class="toastr-icon" (click)="remove()">close</mat-icon>
-  </div>
+  <button
+    type="button"
+    class="toastr-wrapper-icon toastr-close-button"
+    aria-label="Close notification"
+    (click)="remove()"
+  >
+    <mat-icon class="toastr-icon">close</mat-icon>
+  </button>
 </div>

@@ -1,19 +1,21 @@
 @mixin mat-badge() {
-  .mat-badge-medium.mat-badge-after .mat-badge-content {
-    right: -10px;
-  }
-}
-
-@mixin badge-line-text {
-  .mat-badge-medium .mat-badge-content {
-    width: auto;
-    font-size: 12px;
-    font-weight: 400;
-    padding: 4px 8px;
-    border-radius: 35px;
-    height: 16px;
-    line-height: 16px;
-    right: -20px;
-    top: -15px;
+  .badge-card .text .mat-badge-content {
+    width: max-content !important;
+    min-width: 16px !important;
+    max-width: none !important;
+    height: auto !important;
+    min-height: 16px !important;
+    line-height: 16px !important;
+    padding: 4px 8px !important;
+    border-radius: 999px !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    transform: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 }

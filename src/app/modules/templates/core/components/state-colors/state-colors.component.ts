@@ -20,9 +20,10 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 
 @Component({
-  selector: 'app-state-colors',
-  templateUrl: './state-colors.component.html',
-  styleUrls: ['./state-colors.component.scss']
+    selector: 'app-state-colors',
+    templateUrl: './state-colors.component.html',
+    styleUrls: ['./state-colors.component.scss'],
+    standalone: false
 })
 export class StateColorsComponent {
   displayedColumns: string[] = ['state', 'preview', 'usage', 'hex'];

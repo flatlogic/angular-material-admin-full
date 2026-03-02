@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import {MatDialogRef} from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-delete-user-popup',
-  templateUrl: './delete-user-popup.component.html',
-  styleUrls: ['./delete-user-popup.component.scss']
+    selector: 'app-delete-user-popup',
+    templateUrl: './delete-user-popup.component.html',
+    styleUrls: ['./delete-user-popup.component.scss'],
+    standalone: false
 })
 export class DeleteUserPopupComponent {
 

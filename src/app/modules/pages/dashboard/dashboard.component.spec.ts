@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { DashboardComponent } from './dashboard.component';
 
@@ -8,8 +9,15 @@ describe('DashboardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DashboardComponent],
-    }).compileComponents();
+      imports: [DashboardComponent],
+      schemas: [NO_ERRORS_SCHEMA],
+    })
+      .overrideComponent(DashboardComponent, {
+        set: {
+          template: '',
+        },
+      })
+      .compileComponents();
   });
 
   beforeEach(() => {

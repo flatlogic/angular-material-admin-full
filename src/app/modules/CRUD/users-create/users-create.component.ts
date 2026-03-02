@@ -1,74 +1,79 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import {
-  FormBuilder,
   FormControl,
   FormGroup,
-  Validators,
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { routes, AUTO_COMPLETE_LIMIT } from '../../../consts';
-import { DataFormatterService } from '../../../shared/services/data-formatter.service';
-import { AutoCompleteItem } from '../../../shared/models/common';
 import { UsersService } from '../../../shared/services/users.service';
+import { take } from 'rxjs';
+
+type AvatarItem = {
+  id?: string;
+  publicUrl?: string;
+  [key: string]: unknown;
+};
+
+type UsersCreateFormControls = {
+  firstName: FormControl<string>;
+  lastName: FormControl<string>;
+  phoneNumber: FormControl<string>;
+  email: FormControl<string>;
+  role: FormControl<string>;
+  disabled: FormControl<boolean>;
+  avatar: FormControl<AvatarItem[]>;
+};
 
 @Component({
-  selector: 'app-users-create',
-  templateUrl: './users-create.component.html',
-  styleUrls: ['./users-create.component.scss'],
+    selector: 'app-users-create',
+    templateUrl: './users-create.component.html',
+    styleUrls: ['./users-create.component.scss'],
+    standalone: false
 })
 export class UsersCreateComponent implements OnInit {
   loading = false;
   public routes: typeof routes = routes;
-  form: FormGroup;
+  public form: FormGroup<UsersCreateFormControls>;
   AUTO_COMPLETE_LIMIT = AUTO_COMPLETE_LIMIT;
-
-  imgFile: string;
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute,
-    private formBuilder: FormBuilder,
     private toastr: ToastrService,
-    private dataFormatterService: DataFormatterService,
-
     private usersService: UsersService,
   ) {
-    this.form = this.formBuilder.group({
-      firstName: [''],
-
-      lastName: [''],
-
-      phoneNumber: [''],
-
-      email: [''],
-
-      role: [false],
-
-      disabled: [false],
-
-      avatar: [[]],
+    this.form = new FormGroup<UsersCreateFormControls>({
+      firstName: new FormControl('', { nonNullable: true }),
+      lastName: new FormControl('', { nonNullable: true }),
+      phoneNumber: new FormControl('', { nonNullable: true }),
+      email: new FormControl('', { nonNullable: true }),
+      role: new FormControl('user', { nonNullable: true }),
+      disabled: new FormControl(false, { nonNullable: true }),
+      avatar: new FormControl<AvatarItem[]>([], { nonNullable: true }),
     });
   }
 
   ngOnInit(): void {}
 
-  avatarAdd(val) {
-    this.form.value.avatar.push(val);
+  public avatarAdd(val: AvatarItem): void {
+    const currentAvatar = this.form.controls.avatar.value;
+    this.form.controls.avatar.setValue([...currentAvatar, val]);
   }
-  avatarDel(id) {
-    this.form.value.avatar = this.form.value.avatar.filter(
+
+  public avatarDel(id: string): void {
+    const nextAvatar = this.form.controls.avatar.value.filter(
       (img) => img.id !== id,
     );
+    this.form.controls.avatar.setValue(nextAvatar);
   }
 
   onCreate(): void {
-    this.usersService.create(this.form.value).subscribe({
-      next: (res) => {
+    this.usersService.create(this.form.getRawValue()).pipe(take(1)).subscribe({
+      next: () => {
         this.toastr.success('Users created successfully');
         this.router.navigate([this.routes.Users]);
       },
-      error: (err) => {
+      error: () => {
         this.toastr.error('Something was wrong. Try again');
       },
     });

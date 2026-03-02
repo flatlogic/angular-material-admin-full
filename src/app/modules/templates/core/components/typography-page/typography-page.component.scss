@@ -1,6 +1,5 @@
-@import '../../../../../styles/colors';
-@import '../../../../../styles/variables';
-@import '../../../../../styles/font';
+@use '../../../../../styles/variables' as *;
+@use '../../../../../styles/font' as *;
 
 .typography-content {
 

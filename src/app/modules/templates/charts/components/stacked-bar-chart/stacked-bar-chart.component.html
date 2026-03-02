@@ -1,9 +1,7 @@
-<apx-chart
-  [series]="apexStackedBarChartOptions.series"
-  [chart]="apexStackedBarChartOptions.chart"
-  [dataLabels]="apexStackedBarChartOptions.dataLabels"
-  [plotOptions]="apexStackedBarChartOptions.plotOptions"
-  [xaxis]="apexStackedBarChartOptions.xaxis"
-  [colors]="apexStackedBarChartOptions.colors"
-  [legend]="apexStackedBarChartOptions.legend"
-></apx-chart>
+<div
+  echarts
+  *ngIf="apexStackedBarChartOptions?.chart"
+  [options]="echartsOptions"
+  [style.height]="apexStackedBarChartOptions?.chart?.height | chartSize:'350px'"
+  [style.width]="apexStackedBarChartOptions?.chart?.width | chartSize:'100%'"
+></div>

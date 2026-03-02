@@ -1,61 +1,87 @@
-import {AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
+import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
+import { EChartsOption } from 'echarts';
 import {LineChartData} from '../../models';
 import {ChartOptions} from '../../models/chart-options';
 
 import {colors} from '../../../../../consts';
 
 @Component({
-  selector: 'app-line-data-labels-chart',
-  templateUrl: './line-data-labels-chart.component.html',
-  styleUrls: ['./line-data-labels-chart.component.scss']
+    selector: 'app-line-data-labels-chart',
+    templateUrl: './line-data-labels-chart.component.html',
+    styleUrls: ['./line-data-labels-chart.component.scss'],
+    standalone: false
 })
-export class LineDataLabelsChartComponent implements OnInit, OnChanges, AfterViewInit {
-  @Input() lineDataLabelsChartData: LineChartData;
-  @Input() currentTheme: string;
-  @ViewChild('chart') chart: ElementRef;
-
-  // @ts-ignore
-  public chartObj: ApexCharts;
-  public apexLineDataLabelsChartOptions: Partial<ChartOptions>;
+export class LineDataLabelsChartComponent implements OnChanges {
+  private static readonly DEFAULT_COLORS = [colors.BLUE, colors.GREEN];
+  @Input() lineDataLabelsChartData: LineChartData | null = null;
+  @Input() currentTheme: string = '';
+  public apexLineDataLabelsChartOptions: Partial<ChartOptions> | null = null;
   public colors: typeof colors = colors;
 
-  public ngOnInit(): void {
-    this.initChart();
+  public get echartsOptions(): EChartsOption {
+    const options = this.apexLineDataLabelsChartOptions;
+    if (!options) {
+      return {};
+    }
+
+    const xaxis = options.xaxis as { categories?: Array<string | number> } | undefined;
+    const categories = xaxis?.categories ?? [];
+    const stroke = options.stroke as { curve?: string } | undefined;
+    const markers = options.markers as { size?: number } | undefined;
+    const dataLabels = options.dataLabels as { enabled?: boolean } | undefined;
+    const sourceSeries = (
+      Array.isArray(options.series)
+        ? options.series.filter((item) => typeof item === 'object' && item !== null)
+        : []
+    ) as Array<{ name?: string; data?: number[] }>;
+    const series = sourceSeries.map((item) => ({
+      type: 'line',
+      name: item.name ?? '',
+      data: item.data ?? [],
+      smooth: stroke?.curve === 'smooth',
+      showSymbol: true,
+      symbolSize: markers?.size ?? 4,
+      label: { show: Boolean(dataLabels?.enabled) }
+    }));
+
+    return {
+      color: options.colors ?? LineDataLabelsChartComponent.DEFAULT_COLORS,
+      tooltip: { trigger: 'axis' },
+      legend: { show: false },
+      grid: {
+        top: 16,
+        left: 12,
+        right: 12,
+        bottom: 16,
+        containLabel: true
+      },
+      xAxis: {
+        type: 'category',
+        data: categories
+      },
+      yAxis: {
+        type: 'value',
+        splitLine: {
+          lineStyle: { color: colors.LIGHT_BLUE }
+        }
+      },
+      series
+    } as EChartsOption;
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
-    if (changes.currentTheme.currentValue && this.chartObj) {
-      this.chartObj.updateOptions({
-        grid: {
-          row: {
-            colors: [
-              this.currentTheme === 'blue'
-                ? colors.BLUE
-                : this.currentTheme === 'green'
-                ? colors.GREEN
-                : colors.PINK,
-              "transparent"
-            ],
-            opacity: 0.2
-          }
-        }
-      })
+    if (changes['lineDataLabelsChartData'] || changes['currentTheme']) {
+      if (!this.hasChartData()) {
+        this.apexLineDataLabelsChartOptions = null;
+        return;
+      }
+      this.apexLineDataLabelsChartOptions = this.buildChartOptions();
     }
   }
 
-  public ngAfterViewInit() {
-    // @ts-ignore
-    this.chartObj = new ApexCharts(
-      this.chart.nativeElement,
-      this.apexLineDataLabelsChartOptions
-    )
-
-    this.chartObj.render();
-  }
-
-  public initChart(): void {
-    this.apexLineDataLabelsChartOptions = {
-      series: this.lineDataLabelsChartData.series,
+  private buildChartOptions(): Partial<ChartOptions> {
+    return {
+      series: this.lineDataLabelsChartData?.series ?? [],
       chart: {
         height: 350,
         type: "line",
@@ -85,11 +111,7 @@ export class LineDataLabelsChartComponent implements OnInit, OnChanges, AfterVie
         borderColor: colors.LIGHT_BLUE,
         row: {
           colors: [
-            this.currentTheme === 'blue'
-              ? colors.BLUE
-              : this.currentTheme === 'green'
-              ? colors.GREEN
-              : colors.PINK,
+            this.resolvePrimaryColor(),
             "transparent"
           ],
           opacity: 0.2
@@ -99,11 +121,25 @@ export class LineDataLabelsChartComponent implements OnInit, OnChanges, AfterVie
         size: 1
       },
       xaxis: {
-        categories: this.lineDataLabelsChartData.categories
+        categories: this.lineDataLabelsChartData?.categories ?? []
       },
       legend: {
         show: false
       }
     };
+  }
+
+  private resolvePrimaryColor(): string {
+    if (this.currentTheme === 'blue') {
+      return colors.BLUE;
+    }
+    if (this.currentTheme === 'green') {
+      return colors.GREEN;
+    }
+    return colors.PINK;
+  }
+
+  private hasChartData(): boolean {
+    return !!this.lineDataLabelsChartData?.series?.length && !!this.lineDataLabelsChartData?.categories?.length;
   }
 }

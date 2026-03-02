@@ -1,18 +1,24 @@
-@import "../../../../styles/colors";
-@import "../../../../styles/font";
-@import "../../../../styles/variables";
+@use "../../../../styles/font" as *;
+@use "../../../../styles/variables" as *;
 
 .user-card {
-  padding: 27px 24px;
+  padding: 20px 24px 16px;
+  height: 100%;
+  box-sizing: border-box;
 
   @media (max-width: $small) {
-    padding: 22px 20px;
+    padding: 18px 20px 14px;
   }
+}
+
+.user-card.mat-mdc-card-outlined {
+  border: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 .user-card-content {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 0;
 }
 
 .user-avatar {
@@ -30,7 +36,7 @@
 .avatar-wrapper {
   width: 185px;
   height: 185px;
-  border: 3px dotted $pink;
+  border: 3px dotted $blue;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -64,16 +70,28 @@
 }
 
 .avatar-badge-wrapper {
-  margin-top: 22px;
+  margin-top: 14px;
 }
 
 .avatar-badge {
-  width: 44px;
-  height: 21px;
-  font-weight: $fw-bold;
-  font-size: 12px;
-  line-height: 16px;
-  min-height: 21px;
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: auto;
+  height: auto;
+  min-width: 16px;
+  border-radius: 4px;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  font-size: 0.75rem;
+  line-height: 1;
+  letter-spacing: 0.8px;
+  color: $white;
+  background-color: $pink;
+  padding: 6px 10px;
 }
 
 .user-info-wrapper {
@@ -113,8 +131,8 @@
 }
 
 .user-skills-wrapper {
-  margin-top: 27px;
-  width: 183px;
+  margin-top: 18px;
+  width: 230px;
 
   @media (min-width: 1280px) and (max-width: $xxl) {
     margin-top: 20px;
@@ -123,40 +141,56 @@
 }
 
 .user-skill {
-  width: auto;
-  height: 19px;
-  border-radius: 2px;
-  min-height: 19px;
-  font-weight: $fw-bold;
-  font-size: $fs-xs;
-  line-height: 14px;
-  padding: 12px;
-  letter-spacing: 0.6px;
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-size: 0.75rem;
+  line-height: 1;
+  font-weight: 600;
+  min-width: 16px;
+  height: auto;
+  position: static;
+  transform: none;
+  border-radius: 4px;
+  padding: 6px 10px;
+  letter-spacing: normal;
 }
 
-.mat-chip.mat-standard-chip.mat-chip-selected.mat-primary.blue {
+.user-skill.blue {
   background-color: $blue-20;
   color: $blue;
 }
 
-.mat-chip.mat-standard-chip.mat-chip-selected.mat-primary.pink {
-  background-color: $pink-20;
-  color: $pink;
-}
-
-.mat-chip.mat-standard-chip.mat-chip-selected.mat-primary.yellow {
+.user-skill.yellow {
   background-color: $yellow-20;
   color: $yellow;
 }
 
-.mat-chip.mat-standard-chip.mat-chip-selected.mat-primary.green {
+.user-skill.pink {
+  background-color: $pink-20;
+  color: $pink;
+}
+
+.user-skill.green {
   background-color: $green-20;
   color: $green;
 }
 
+.user-skills-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
 .icons-wrapper {
   display: flex;
-  margin-top: 42px;
+  margin-top: 24px;
 
   @media (min-width: 1280px) and (max-width: $xxl) {
     margin-top: 18px;

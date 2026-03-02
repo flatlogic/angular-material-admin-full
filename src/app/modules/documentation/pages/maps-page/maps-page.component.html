@@ -9,7 +9,7 @@
     <mat-card-content>
       <p>Run the following command first:</p>
 
-      <code class="code">npm install @agm/core</code>
+      <code class="code">npm install @angular/google-maps</code>
 
       <p>Example:</p>
 
@@ -18,14 +18,14 @@
         <br>
         {{'<'}}!-- the component as the initial center of the map: --{{'>'}}
         <br>
-        {{'<'}}agm-map [latitude]="lat" [longitude]="lng"{{'>'}}
+        {{'<'}}google-map [center]="center" [zoom]="zoom"{{'>'}}
         <br>
-          {{'<'}}agm-marker [latitude]="lat" [longitude]="lng"{{'>'}}{{'<'}}/agm-marker{{'>'}}
+          {{'<'}}map-marker [position]="center" [options]="{{'{'}} draggable: true {{'}'}}"{{'>'}}{{'<'}}/map-marker{{'>'}}
         <br>
-        {{'<'}}/agm-map{{'>'}}
+        {{'<'}}/google-map{{'>'}}
       </code>
 
-      <a class="link" href="https://angular-maps.com/">More</a>
+      <a class="link" href="https://material.angular.io/components/google-maps/overview">More</a>
     </mat-card-content>
   </mat-card>
 

@@ -10,12 +10,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { SharedModule } from '../../../shared/shared.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { TablesDynamicPageComponent } from './containers';
 import { NutritionTableComponent } from './components';
 import { MatChipsModule } from '@angular/material/chips';
 import { CustomTableComponent } from './components/custom-table/custom-table.component';
+import { BreadcrumbComponent, SettingsMenuComponent } from '../../../shared/ui-elements';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,8 @@ import { CustomTableComponent } from './components/custom-table/custom-table.com
         MatButtonModule,
         MatCheckboxModule,
         MatPaginatorModule,
-        SharedModule,
+        BreadcrumbComponent,
+        SettingsMenuComponent,
         MatToolbarModule,
         MatChipsModule
     ]

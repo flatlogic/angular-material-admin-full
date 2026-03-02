@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ExtraRoutingModule } from './extra-routing.module';
-import {SharedModule} from '../../../shared/shared.module';
 import {FullCalendarModule} from '@fullcalendar/angular';
 import {MatCardModule} from '@angular/material/card';
 import { DayInfoComponent } from './components/day-info/day-info.component';
@@ -26,38 +25,33 @@ import { InvoiceCardComponent } from './components/invoice-card/invoice-card.com
 import {InvoiceService} from './services/invoice.service';
 import {MatTableModule} from '@angular/material/table';
 import { TimeLineCardComponent } from './components/time-line-card/time-line-card.component';
-import {AgmCoreModule} from '@agm/core';
-import {googleMapKey} from '../maps/consts';
 import {MatInputModule} from '@angular/material/input';
 import {MatChipsModule} from '@angular/material/chips';
+import { BreadcrumbComponent } from '../../../shared/ui-elements';
 
 
 
 @NgModule({
-  declarations: [
-    CalendarPageComponent,
-    InvoicePageComponent,
-    GalleryPageComponent,
-    TimeLinePageComponent,
-    DayInfoComponent,
-    NewDayEventComponent,
-    GalleryItemComponent,
-    SearchResultPageComponent,
-    SearchResultItemComponent,
-    TimePeriodSelectComponent,
-    TypeItemSelectComponent,
-    ResultFilteringComponent,
-    InvoiceCardComponent,
-    TimeLineCardComponent
-  ],
-  entryComponents: [
-    DayInfoComponent,
-    NewDayEventComponent
-  ],
+    declarations: [
+        CalendarPageComponent,
+        InvoicePageComponent,
+        GalleryPageComponent,
+        TimeLinePageComponent,
+        DayInfoComponent,
+        NewDayEventComponent,
+        GalleryItemComponent,
+        SearchResultPageComponent,
+        SearchResultItemComponent,
+        TimePeriodSelectComponent,
+        TypeItemSelectComponent,
+        ResultFilteringComponent,
+        InvoiceCardComponent,
+        TimeLineCardComponent
+    ],
     imports: [
         CommonModule,
         ExtraRoutingModule,
-        SharedModule,
+        BreadcrumbComponent,
         FullCalendarModule,
         MatCardModule,
         MatDialogModule,
@@ -68,18 +62,14 @@ import {MatChipsModule} from '@angular/material/chips';
         MatButtonToggleModule,
         MatListModule,
         MatTableModule,
-        AgmCoreModule,
-        AgmCoreModule.forRoot({
-            apiKey: googleMapKey
-        }),
         MatInputModule,
         MatChipsModule,
     ],
-  providers: [
-    GalleryService,
-    SearchResultService,
-    InvoiceService,
-    TimeLineService
-  ]
+    providers: [
+        GalleryService,
+        SearchResultService,
+        InvoiceService,
+        TimeLineService
+    ]
 })
 export class ExtraModule { }

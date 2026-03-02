@@ -1,5 +1,5 @@
-@import "../../../../../styles/colors";
-@import "../../../../../styles/font";
+@use "../../../../../styles/font" as *;
+@use "../../../../../styles/variables" as *;
 
 @mixin grid-item {
   width: 100%;
@@ -21,10 +21,37 @@
   background-color: $pink;
 }
 
+.third-grid-item {
+  @include grid-item;
+  background-color: $yellow;
+}
+
+.equal-grid {
+  display: grid;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.equal-grid_two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.equal-grid_three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: $small) {
+  .equal-grid_two,
+  .equal-grid_three {
+    grid-template-columns: 1fr;
+  }
+}
+
 .code-wrapper {
   background-color: $blue-white;
-  height: 145px;
-  overflow-x: scroll;
+  height: auto;
+  min-height: 145px;
+  overflow-x: auto;
   overflow-y: hidden;
   padding: 16px 16px 0 16px;
 }
@@ -41,3 +68,6 @@
   color: $pink;
 }
 
+.grey {
+  color: $grey;
+}

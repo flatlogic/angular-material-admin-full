@@ -1,4 +1,4 @@
-@import './src/app/styles/font';
+@use './src/app/styles/font' as *;
 
 .page-wrapper {
   padding: 24px;

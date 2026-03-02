@@ -1,10 +1,21 @@
 import { Component } from '@angular/core';
 import {MatDialogRef} from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-chat-popup',
-  templateUrl: './chat-popup.component.html',
-  styleUrls: ['./chat-popup.component.scss']
+    selector: 'app-chat-popup',
+    templateUrl: './chat-popup.component.html',
+    styleUrls: ['./chat-popup.component.scss'],
+    standalone: true,
+    imports: [
+      FormsModule,
+      MatButtonModule,
+      MatDialogModule,
+      MatIconModule,
+    ]
 })
 export class ChatPopupComponent {
   message: string;
@@ -35,10 +46,14 @@ export class ChatPopupComponent {
   }
 
   send(): void {
+    if (!this.message?.trim()) {
+      return;
+    }
+
     const chat =     {
       imgUrl: './assets/header/avatar.png',
       userName: 'Robbert Cotton',
-      message: this.message
+      message: this.message.trim()
     };
     this.chatList.push(chat);
     this.message = '';

@@ -2,9 +2,10 @@ import {Component} from '@angular/core';
 import {routes} from '../../../../consts';
 
 @Component({
-  selector: 'app-add-page',
-  templateUrl: './add-page.component.html',
-  styleUrls: ['./add-page.component.scss'],
+    selector: 'app-add-page',
+    templateUrl: './add-page.component.html',
+    styleUrls: ['./add-page.component.scss'],
+    standalone: false
 })
 export class AddPageComponent {
   public routes: typeof routes = routes;

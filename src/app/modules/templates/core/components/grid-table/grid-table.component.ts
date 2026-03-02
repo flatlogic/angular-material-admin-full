@@ -1,18 +1,70 @@
 import { Component } from '@angular/core';
 
-const ELEMENT_DATA: any[] = [
-  {value: 'Max container width', xs: 'None (auto)', s: '540px', m: '720px', l: '960px', xl: '1140px'},
-  {value: 'Component property', xs: '<Grid item xs>', s: '<Grid item sm>', m: '<Grid item md>', l: '<Grid item lg>', xl: '<Grid item xl>'},
-  {value: '# of columns', xs: '12', s: '12', m: '12', l: '12', xl: '12'},
-  {value: 'Spacing', xs: '<Grid container spacing={2}>', s: '<Grid container spacing={2}>', m: '<Grid container spacing={2}>', l: '<Grid container spacing={2}>', xl: '<Grid container spacing={2}>'},
-  {value: 'Nestable', xs: 'Yes', s: 'Yes', m: 'Yes', l: 'Yes', xl: 'Yes'},
-  {value: 'Column ordering', xs: 'Yes', s: 'Yes', m: 'Yes', l: 'Yes', xl: 'Yes'}
+interface GridTableRow {
+  value: string;
+  xs: string;
+  s: string;
+  m: string;
+  l: string;
+  xl: string;
+}
+
+const ELEMENT_DATA: GridTableRow[] = [
+  {
+    value: 'Viewport width',
+    xs: '<576px',
+    s: '>=576px',
+    m: '>=768px',
+    l: '>=992px',
+    xl: '>=1200px',
+  },
+  {
+    value: 'Recommended card columns',
+    xs: '1',
+    s: '1-2',
+    m: '2',
+    l: '3',
+    xl: '3-4',
+  },
+  {
+    value: 'Recommended gap',
+    xs: '16px',
+    s: '16px',
+    m: '24px',
+    l: '24px',
+    xl: '24px',
+  },
+  {
+    value: 'Primary layout tool',
+    xs: 'CSS Grid / Flex',
+    s: 'CSS Grid / Flex',
+    m: 'CSS Grid / Flex',
+    l: 'CSS Grid / Flex',
+    xl: 'CSS Grid / Flex',
+  },
+  {
+    value: 'Use mat-grid-list',
+    xs: 'Tile blocks only',
+    s: 'Tile blocks only',
+    m: 'Tile blocks only',
+    l: 'Tile blocks only',
+    xl: 'Tile blocks only',
+  },
+  {
+    value: 'Typical screen density',
+    xs: 'Stacked content',
+    s: 'Comfort',
+    m: 'Comfort',
+    l: 'Compact',
+    xl: 'Compact',
+  },
 ];
 
 @Component({
-  selector: 'app-grid-table',
-  templateUrl: './grid-table.component.html',
-  styleUrls: ['./grid-table.component.scss']
+    selector: 'app-grid-table',
+    templateUrl: './grid-table.component.html',
+    styleUrls: ['./grid-table.component.scss'],
+    standalone: false
 })
 export class GridTableComponent {
   displayedColumns: string[] = ['value', 'xs', 's', 'm', 'l', 'xl'];

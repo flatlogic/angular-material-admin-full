@@ -1,7 +1,7 @@
 <app-breadcrumb [path]="routes.BADGE"></app-breadcrumb>
 
 <div class="content-wrapper">
-  <mat-card class="badge-card">
+  <mat-card appearance="outlined" class="badge-card">
     <mat-card-title>
       <p>Badge Example</p>
     </mat-card-title>
@@ -10,22 +10,22 @@
     </mat-card-subtitle>
 
     <mat-card-content>
-      <h1 class="text h1" matBadge="Primary" matBadgePosition="above after" matBadgeOverlap="false" matBadgeColor="primary">Example heading</h1>
-      <h2 class="text" matBadge="Accent" matBadgePosition="after" matBadgeOverlap="false" matBadgeColor="accent">Example heading</h2>
-      <h3 class="text" matBadge="Warn" matBadgeOverlap="false" matBadgeColor="warn">Example heading</h3>
-      <h4 class="text" matBadge="Info" matBadgeOverlap="false" matBadgeColor="info">Example heading</h4>
-      <h5 class="text" matBadge="Success" matBadgeOverlap="false" matBadgeColor="success">Example heading</h5>
-      <h6 class="text" matBadge="Primary light" matBadgeOverlap="false" matBadgeColor="primary-light">Example heading</h6>
+      <h1 class="text h1" matBadge="Primary" matBadgeSize="medium" matBadgePosition="above after" matBadgeOverlap="false" matBadgeColor="primary">Example heading</h1>
+      <h2 class="text" matBadge="Accent" matBadgeSize="medium" matBadgePosition="after" matBadgeOverlap="false" matBadgeColor="accent">Example heading</h2>
+      <h3 class="text" matBadge="Warn" matBadgeSize="medium" matBadgeOverlap="false" matBadgeColor="warn">Example heading</h3>
+      <h4 class="text" matBadge="Info" matBadgeSize="medium" matBadgeOverlap="false" matBadgeColor="info">Example heading</h4>
+      <h5 class="text" matBadge="Success" matBadgeSize="medium" matBadgeOverlap="false" matBadgeColor="success">Example heading</h5>
+      <h6 class="text" matBadge="Primary light" matBadgeSize="medium" matBadgeOverlap="false" matBadgeColor="primary-light">Example heading</h6>
 
       <mat-card-subtitle class="second-subtitle">
         <p>Badges can be used as part of links or buttons to provide a counter.</p>
       </mat-card-subtitle>
 
-      <button mat-raised-button matBadge="1" matBadgeOverlap="false" matBadgeColor="success">Example heading</button>
+      <button mat-raised-button matBadge="1" matBadgeSize="medium" matBadgeOverlap="false" matBadgeColor="success">Example heading</button>
     </mat-card-content>
   </mat-card>
 
-  <mat-card class="icon-badge-card">
+  <mat-card appearance="outlined" class="icon-badge-card">
     <mat-card-title>
       <p>Icon Badges</p>
     </mat-card-title>
@@ -35,16 +35,16 @@
 
     <mat-card-content>
       <div class="icon-badge-wrapper">
-        <mat-icon matBadge="4" matBadgeColor="primary" class="icon-badge">email</mat-icon>
-        <mat-icon matBadge="10" matBadgeColor="warn" class="icon-badge">email</mat-icon>
-        <mat-icon matBadge="4" matBadgeColor="accent" class="icon-badge">email</mat-icon>
+        <mat-icon matBadge="4" matBadgeSize="small" matBadgeColor="primary" class="icon-badge">email</mat-icon>
+        <mat-icon matBadge="10" matBadgeSize="small" matBadgeColor="warn" class="icon-badge">email</mat-icon>
+        <mat-icon matBadge="4" matBadgeSize="small" matBadgeColor="accent" class="icon-badge">email</mat-icon>
       </div>
 
       <div class="tabs-badge-wrapper">
         <mat-tab-group mat-stretch-tabs>
           <mat-tab>
             <ng-template mat-tab-label>
-              <p matBadge="4" matBadgeColor="warn" class="tab-title">Item One</p>
+              <p matBadge="4" matBadgeSize="small" matBadgeColor="warn" class="tab-title">Item One</p>
             </ng-template>
             <div class="empty-block"></div>
           </mat-tab>
@@ -64,16 +64,16 @@
       </mat-card-subtitle>
 
       <div class="icon-badge-wrapper">
-        <mat-icon class="icon-badge" matBadge="4" matBadgeColor="success">shopping_cart</mat-icon>
-        <mat-icon class="icon-badge" matBadge="10" matBadgeColor="accent" matBadgePosition="below after">shopping_cart</mat-icon>
-        <mat-icon class="icon-badge" matBadge="4" matBadgeColor="warn" matBadgePosition="before">shopping_cart</mat-icon>
+        <mat-icon class="icon-badge" matBadge="4" matBadgeSize="small" matBadgeColor="success">shopping_cart</mat-icon>
+        <mat-icon class="icon-badge" matBadge="10" matBadgeSize="small" matBadgeColor="accent" matBadgePosition="below after">shopping_cart</mat-icon>
+        <mat-icon class="icon-badge" matBadge="4" matBadgeSize="small" matBadgeColor="warn" matBadgePosition="before">shopping_cart</mat-icon>
       </div>
 
     </mat-card-content>
   </mat-card>
 </div>
 
-<mat-card class="chips-card">
+<mat-card appearance="outlined" class="chips-card">
   <mat-card-title>
     <p>Chips</p>
   </mat-card-title>
@@ -82,13 +82,12 @@
   </mat-card-subtitle>
 
   <mat-card-content>
-    <mat-chip-list aria-label="Fish selection">
-      <mat-chip color="primary" selected>Primary</mat-chip>
-      <mat-chip color="warn" selected>Warning</mat-chip>
-      <mat-chip color="accent" selected>Accent</mat-chip>
-      <mat-chip color="info" selected>Info</mat-chip>
-      <mat-chip color="success" selected>Success</mat-chip>
-    </mat-chip-list>
+    <mat-chip-listbox aria-label="Fish selection">
+      <mat-chip-option color="primary" selected>Primary</mat-chip-option>
+      <mat-chip-option color="warn" selected>Warning</mat-chip-option>
+      <mat-chip-option color="accent" selected>Accent</mat-chip-option>
+      <mat-chip-option color="info" class="mat-info" selected>Info</mat-chip-option>
+      <mat-chip-option color="success" class="mat-success" selected>Success</mat-chip-option>
+    </mat-chip-listbox>
   </mat-card-content>
 </mat-card>
-

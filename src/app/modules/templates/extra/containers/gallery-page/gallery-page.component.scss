@@ -1,27 +1,26 @@
-@import "src/app/styles/variables";
+@use "src/app/styles/variables" as *;
 
 .gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-top: -8px;
-}
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
 
-.gallery-item {
-  width: 23%;
-  height: auto;
-  margin-right: 24px;
+  @media (max-width: $extra-large) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 
-  &:nth-child(4n) {
-    margin-right: 0;
+  @media (max-width: $large) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   @media (max-width: $small) {
-    width: 100%;
-    margin-right: 0;
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
+}
 
-  @media (min-width: $small) and (max-width: $medium) {
-    width: 22%;
-  }
+.gallery-item {
+  display: block;
+  width: 100%;
 }

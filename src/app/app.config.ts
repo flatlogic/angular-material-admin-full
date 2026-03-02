@@ -1,15 +1,27 @@
-import { Injectable } from '@angular/core';
+import { InjectionToken } from '@angular/core';
 import { environment } from '../environments/environment';
 
-const hostApi = process.env.NODE_ENV === 'development' ? 'http://localhost' : 'https://sing-generator-node.herokuapp.com';
-const portApi = process.env.NODE_ENV === 'development' ? '8080' : '';
-const baseURLApi = `${hostApi}${portApi ? `:${portApi}` : ``}`;
+export interface AppRuntimeConfig {
+  version: string;
+  remote: string;
+  isBackend: boolean;
+  hostApi: string;
+  portApi: string;
+  baseURLApi: string;
+  auth: {
+    email: string;
+    password: string;
+  };
+}
 
-@Injectable({
-  providedIn: 'root'
-})
-export class AppConfig {
-  config = {
+const buildRuntimeConfig = (): AppRuntimeConfig => {
+  const hostApi = environment.production
+    ? 'https://sing-generator-node.herokuapp.com'
+    : 'http://localhost';
+  const portApi = environment.production ? '' : '8080';
+  const baseURLApi = `${hostApi}${portApi ? `:${portApi}` : ``}`;
+
+  return {
     version: '1.2.0',
     remote: 'https://sing-generator-node.herokuapp.com',
     isBackend: environment.backend,
@@ -18,14 +30,15 @@ export class AppConfig {
     baseURLApi,
     auth: {
       email: 'admin@flatlogic.com',
-      password: 'password'
+      password: 'password',
     },
   };
+};
 
-  constructor() {
-  }
-
-  getConfig(): Object {
-    return this.config;
-  }
-}
+export const APP_RUNTIME_CONFIG = new InjectionToken<AppRuntimeConfig>(
+  'APP_RUNTIME_CONFIG',
+  {
+    providedIn: 'root',
+    factory: buildRuntimeConfig,
+  },
+);

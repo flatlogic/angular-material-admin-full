@@ -1,9 +1,9 @@
-@import "src/app/styles/mat-badge";
-@import "src/app/styles/variables";
+@use "src/app/styles/variables" as *;
 
 .content-wrapper {
   margin-top: 36px;
   display: flex;
+  align-items: flex-start;
 
   @media (max-width: $small) {
     flex-wrap: wrap;
@@ -13,6 +13,7 @@
 .badge-card {
   width: 50%;
   margin-right: 18px;
+  min-width: 0;
 
   .subtitle {
     margin-bottom: 22px;
@@ -24,11 +25,6 @@
   }
 }
 
-.mat-badge-medium.mat-badge-above .mat-badge-content {
-  margin-right: -21px;
-  top: -20px;
-}
-
 .second-subtitle {
   padding-top: 24px;
 }
@@ -36,6 +32,7 @@
 .icon-badge-card {
   width: 50%;
   margin-left: 18px;
+  min-width: 0;
 
   @media (max-width: $small) {
     width: 100%;
@@ -57,6 +54,19 @@
 
 .tabs-badge-wrapper {
   margin: 16px 0;
+
+  // MDC tab wrappers clip absolutely positioned badge content by default.
+  // Keep overflow visible only for this demo block.
+  ::ng-deep .mat-mdc-tab-header,
+  ::ng-deep .mat-mdc-tab-label-container,
+  ::ng-deep .mat-mdc-tab-list,
+  ::ng-deep .mat-mdc-tab-labels,
+  ::ng-deep .mat-mdc-tab,
+  ::ng-deep .mdc-tab,
+  ::ng-deep .mdc-tab__content,
+  ::ng-deep .mdc-tab__text-label {
+    overflow: visible !important;
+  }
 }
 
 .tab-title {
@@ -64,12 +74,13 @@
   width: 100%;
 
   & span.mat-badge-content {
-    margin-right: -10px !important;
-    top: -12px !important;
+    margin-right: -8px !important;
+    top: -10px !important;
     padding: 0;
-    width: 22px;
-    height: 22px;
-    line-height: 22px;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    font-size: 10px;
   }
 }
 
@@ -83,6 +94,17 @@
   margin: 24px 0;
 }
 
+// Counter badge on the demo button should stay compact.
+.badge-card button.mat-badge .mat-badge-content {
+  min-width: 14px !important;
+  min-height: 14px !important;
+  width: 14px !important;
+  height: 14px !important;
+  line-height: 14px !important;
+  font-size: 10px !important;
+  padding: 0 !important;
+}
+
 .h1 {
   @media (max-width: $normal) {
     display: none;
@@ -92,5 +114,3 @@
 .chips-card {
   margin-top: 36px;
 }
-
-@include badge-line-text;

@@ -2,7 +2,7 @@
 
 <div class="content-wrapper">
   <div class="content-block">
-    <mat-card>
+    <mat-card appearance="outlined">
       <mat-card-title>
         <p>Live Demo</p>
       </mat-card-title>
@@ -18,15 +18,15 @@
       </mat-card-content>
     </mat-card>
 
-    <mat-card>
+    <mat-card appearance="outlined">
       <mat-card-title>
         <p>Optional Sizes</p>
       </mat-card-title>
 
       <mat-card-content>
         <p>
-          To appoint modal's width size, equal maxWidth attribute to one of values:
-          xs, sm, md, lg, xl
+          This demo uses fixed dialog widths to show different sizes:
+          512px, 700px, and 992px.
         </p>
 
         <button mat-flat-button color="primary" (click)="openLargeDialog()">large modal</button>
@@ -34,7 +34,7 @@
       </mat-card-content>
     </mat-card>
 
-    <mat-card>
+    <mat-card appearance="outlined">
       <mat-card-title>
         <p>Form dialogs</p>
       </mat-card-title>
@@ -52,7 +52,7 @@
   </div>
 
   <div class="content-block">
-    <mat-card>
+    <mat-card appearance="outlined">
       <mat-card-title>
         <p>Using Grid</p>
       </mat-card-title>
@@ -91,13 +91,13 @@
 <code class="code grey">{{'<'}}div{{'>'}}</code>
   <code class="code blue">{{'<'}}mat-grid-list cols="3" rowHeight="52" gutterSize="24"{{'>'}}</code>
     <code class="code pink">{{'<'}}mat-grid-tile [colspan]="1" [rowspan]="1"{{'>'}}</code>
-      <code class="code grey">{{'<'}}div>{{'<'}}span>1{{'<'}}/span>{{'<'}}/div{{'>'}}</code>
+      <code class="code grey">{{'<'}}div{{'>'}}{{'<'}}span{{'>'}}1{{'<'}}/span{{'>'}}{{'<'}}/div{{'>'}}</code>
     <code class="code pink">{{'<'}}/mat-grid-tile{{'>'}}</code>
     <code class="code pink">{{'<'}}mat-grid-tile [colspan]="1" [rowspan]="1"{{'>'}}</code>
       <code class="code grey">{{'<'}}div{{'>'}}{{'<'}}span{{'>'}}2{{'<'}}/span{{'>'}}{{'<'}}/div{{'>'}}</code>
     <code class="code pink">{{'<'}}/mat-grid-tile{{'>'}}</code>
     <code class="code pink">{{'<'}}mat-grid-tile [colspan]="1" [rowspan]="1"{{'>'}}</code>
-      <code class="code grey">{{'<'}}div{{'>'}}{{'<'}}span{{'>'}}3{{'<'}}/span>{{'<'}}/div{{'>'}}</code>
+      <code class="code grey">{{'<'}}div{{'>'}}{{'<'}}span{{'>'}}3{{'<'}}/span{{'>'}}{{'<'}}/div{{'>'}}</code>
     <code class="code pink">{{'<'}}/mat-grid-tile{{'>'}}</code>
   <code class="code blue">{{'<'}}/mat-grid-list{{'>'}}</code>
 <code class="code grey">{{'<'}}/div{{'>'}}</code>
@@ -106,4 +106,3 @@
     </mat-card>
   </div>
 </div>
-

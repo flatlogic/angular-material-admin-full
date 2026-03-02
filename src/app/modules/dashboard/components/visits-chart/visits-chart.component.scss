@@ -1,15 +1,13 @@
-@import "../../../../styles/colors";
-@import "../../../../styles/font";
-@import "../../../../styles/variables";
+@use "../../../../styles/font" as *;
+@use "../../../../styles/variables" as *;
 
 .visits-chart {
   display: flex;
-  height: 192px;
+  height: 252px;
   flex-direction: column;
-  justify-content: space-between;
 
   @media (min-width: 1280px) and (max-width: $xxl) {
-    height: 220px;
+    height: 280px;
   }
 
   &__header {
@@ -17,6 +15,8 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
+    margin: 0;
+    padding: 0;
   }
 
   &__title {
@@ -33,12 +33,15 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 75%;
+    flex: 1 1 auto;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
 
     &-info {
       align-items: center;
       display: flex;
-      height: 96px;
+      min-height: 96px;
       justify-content: space-between;
 
       &-title {

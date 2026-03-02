@@ -6,7 +6,8 @@ import { TablesBasicPageComponent, TablesDynamicPageComponent } from './containe
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'basic'
+    redirectTo: 'basic',
+    pathMatch: 'full'
   },
   {
     path: 'basic',

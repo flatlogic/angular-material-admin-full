@@ -6,9 +6,10 @@ import { MatPaginator } from '@angular/material/paginator';
 import { Employee } from '../../models/employee';
 
 @Component({
-  selector: 'app-employee-table',
-  templateUrl: './employee-table.component.html',
-  styleUrls: ['./employee-table.component.scss']
+    selector: 'app-employee-table',
+    templateUrl: './employee-table.component.html',
+    styleUrls: ['./employee-table.component.scss'],
+    standalone: false
 })
 export class EmployeeTableComponent implements OnInit {
   @Input() employeeTableData: Employee[];
@@ -41,11 +42,11 @@ export class EmployeeTableComponent implements OnInit {
   }
 
   /** The label for the checkbox on the passed row */
-  public checkboxLabel(row?: any): string {
+  public checkboxLabel(row?: Employee): string {
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.name}`;
   }
 
   public applyFilter(event: Event): void {

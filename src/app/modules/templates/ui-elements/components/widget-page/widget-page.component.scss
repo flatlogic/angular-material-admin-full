@@ -1,23 +1,27 @@
-@import "src/app/styles/colors";
+@use "src/app/styles/variables" as *;
 
 .content-wrapper {
   margin-top: 36px;
   display: flex;
+  gap: 36px;
+
+  @media (max-width: $medium) {
+    flex-wrap: wrap;
+  }
 }
 
 .card {
   box-shadow: 0 3px 11px 0 $shadow-white, 0 3px 3px -2px $shadow-grey, 0 1px 8px 0 $shadow-dark-grey;
   width: 100%;
+  min-width: 0;
+  flex: 1 1 calc(50% - 18px);
   height: fit-content;
   box-sizing: border-box;
-
-  + .card {
-    margin-left: 48px;
-  }
 }
 
 .inner-card {
   box-shadow: 0 3px 11px 0 $shadow-white, 0 3px 3px -2px $shadow-grey, 0 1px 8px 0 $shadow-dark-grey;
+  margin-bottom: 24px;
 }
 
 .code-wrapper {

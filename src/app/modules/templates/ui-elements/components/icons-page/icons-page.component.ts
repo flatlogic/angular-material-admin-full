@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import {routes} from '../../../../../consts';
 
 @Component({
-  selector: 'app-icons-page',
-  templateUrl: './icons-page.component.html',
-  styleUrls: ['./icons-page.component.scss']
+    selector: 'app-icons-page',
+    templateUrl: './icons-page.component.html',
+    styleUrls: ['./icons-page.component.scss'],
+    standalone: false
 })
 export class IconsPageComponent {
   public routes: typeof routes = routes;

@@ -3,12 +3,13 @@ import {routes} from '../../../../../consts';
 import {MatDialog} from '@angular/material/dialog';
 import {GridComponent, LocationComponent, LongContentComponent, SubscribedComponent} from '../../popups';
 import {FormComponent} from '../../popups/form/form.component';
-import {take} from 'rxjs/operators';
+import {take} from 'rxjs';
 
 @Component({
-  selector: 'app-modal-page',
-  templateUrl: './modal-page.component.html',
-  styleUrls: ['./modal-page.component.scss']
+    selector: 'app-modal-page',
+    templateUrl: './modal-page.component.html',
+    styleUrls: ['./modal-page.component.scss'],
+    standalone: false
 })
 export class ModalPageComponent {
   public routes: typeof routes = routes;
@@ -48,11 +49,13 @@ export class ModalPageComponent {
     });
 
     dialogRef.afterClosed().pipe(take(1)).subscribe(result => {
-      if (result.length !== 0) {
+      const email = (result ?? '').toString().trim();
+
+      if (email.length !== 0) {
         this.dialog.open(SubscribedComponent, {
           width: '700px',
-          data: {email: result}
-        })
+          data: {email}
+        });
       }
     });
   }

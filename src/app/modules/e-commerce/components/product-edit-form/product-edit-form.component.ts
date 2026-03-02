@@ -1,35 +1,51 @@
-import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {routes} from '../../../../consts';
 import {ProductDetails} from '../../models/product-details';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
+type ProductEditFormControls = {
+  image: FormControl<string>;
+  title: FormControl<string>;
+  subtitle: FormControl<string>;
+  price: FormControl<string>;
+  discount: FormControl<string>;
+  description1: FormControl<string>;
+  description2: FormControl<string>;
+  code: FormControl<string>;
+  hashtag: FormControl<string>;
+  technology: FormControl<string | string[]>;
+  rating: FormControl<string>;
+  status: FormControl<string>;
+};
+
 @Component({
-  selector: 'app-product-edit-form',
-  templateUrl: './product-edit-form.component.html',
-  styleUrls: ['./product-edit-form.component.scss'],
+    selector: 'app-product-edit-form',
+    templateUrl: './product-edit-form.component.html',
+    styleUrls: ['./product-edit-form.component.scss'],
+    standalone: false
 })
 export class ProductEditFormComponent implements OnInit {
   @Input() product: ProductDetails;
   @Output() editProduct: EventEmitter<ProductDetails> = new EventEmitter<ProductDetails>();
   public router: typeof routes = routes;
-  public form: FormGroup;
+  public form: FormGroup<ProductEditFormControls>;
 
   selected = 'option';
 
   constructor() {
-    this.form = new FormGroup({
-      image: new FormControl('', Validators['required']),
-      title: new FormControl('', Validators['required']),
-      subtitle: new FormControl('', Validators['required']),
-      price: new FormControl('', Validators['required']),
-      discount: new FormControl('', Validators['required']),
-      description1: new FormControl('', Validators['required']),
-      description2: new FormControl('', Validators['required']),
-      code: new FormControl('', Validators['required']),
-      hashtag: new FormControl('', Validators['required']),
-      technology: new FormControl('', Validators['required']),
-      rating: new FormControl('', Validators['required']),
-      status: new FormControl('', Validators['required']),
+    this.form = new FormGroup<ProductEditFormControls>({
+      image: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+      title: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+      subtitle: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+      price: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+      discount: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+      description1: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+      description2: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+      code: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+      hashtag: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+      technology: new FormControl<string | string[]>('', { nonNullable: true, validators: [Validators.required] }),
+      rating: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+      status: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
     });
   }
 
@@ -51,20 +67,25 @@ export class ProductEditFormComponent implements OnInit {
   }
 
   public save(): void {
+    const values = this.form.getRawValue();
     this.editProduct.emit({
       id: this.id,
-      image: this.image.value,
-      title: this.title.value,
-      subtitle: this.subtitle.value,
-      price: this.price.value,
-      discount: this.discount.value,
-      description1: this.description1.value,
-      description2: this.description2.value,
-      code: this.code.value,
-      hashtag: this.hashtag.value,
-      technology: this.technology.value,
-      rating: this.rating.value,
-      status: this.status.value,
+      image: values.image,
+      title: values.title,
+      subtitle: values.subtitle,
+      price: values.price,
+      discount: values.discount,
+      description1: values.description1,
+      description2: values.description2,
+      code: values.code,
+      hashtag: values.hashtag,
+      technology: Array.isArray(values.technology)
+        ? values.technology
+        : values.technology
+        ? [values.technology]
+        : [],
+      rating: values.rating,
+      status: values.status,
     })
   }
 
@@ -72,51 +93,51 @@ export class ProductEditFormComponent implements OnInit {
     return this.product && this.product.id ? this.product.id : '77';
   }
 
-  get image() {
-    return this.form.get('image') as FormControl;
+  get image(): FormControl<string> {
+    return this.form.controls.image;
   }
 
-  get title() {
-    return this.form.get('title') as FormControl;
+  get title(): FormControl<string> {
+    return this.form.controls.title;
   }
 
-  get subtitle() {
-    return this.form.get('subtitle') as FormControl;
+  get subtitle(): FormControl<string> {
+    return this.form.controls.subtitle;
   }
 
-  get price() {
-    return this.form.get('price') as FormControl;
+  get price(): FormControl<string> {
+    return this.form.controls.price;
   }
 
-  get discount() {
-    return this.form.get('discount') as FormControl;
+  get discount(): FormControl<string> {
+    return this.form.controls.discount;
   }
 
-  get description1() {
-    return this.form.get('description1') as FormControl;
+  get description1(): FormControl<string> {
+    return this.form.controls.description1;
   }
 
-  get description2() {
-    return this.form.get('description2') as FormControl;
+  get description2(): FormControl<string> {
+    return this.form.controls.description2;
   }
 
-  get code() {
-    return this.form.get('code') as FormControl;
+  get code(): FormControl<string> {
+    return this.form.controls.code;
   }
 
-  get hashtag() {
-    return this.form.get('hashtag') as FormControl;
+  get hashtag(): FormControl<string> {
+    return this.form.controls.hashtag;
   }
 
-  get technology() {
-    return this.form.get('technology') as FormControl;
+  get technology(): FormControl<string | string[]> {
+    return this.form.controls.technology;
   }
 
-  get rating() {
-    return this.form.get('rating') as FormControl;
+  get rating(): FormControl<string> {
+    return this.form.controls.rating;
   }
 
-  get status() {
-    return this.form.get('status') as FormControl;
+  get status(): FormControl<string> {
+    return this.form.controls.status;
   }
 }

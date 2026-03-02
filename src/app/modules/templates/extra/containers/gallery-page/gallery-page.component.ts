@@ -6,9 +6,10 @@ import { GalleryItem } from '../../models';
 import { GalleryService } from '../../services';
 
 @Component({
-  selector: 'app-gallery-page',
-  templateUrl: './gallery-page.component.html',
-  styleUrls: ['./gallery-page.component.scss']
+    selector: 'app-gallery-page',
+    templateUrl: './gallery-page.component.html',
+    styleUrls: ['./gallery-page.component.scss'],
+    standalone: false
 })
 export class GalleryPageComponent {
   public routes: typeof routes = routes;

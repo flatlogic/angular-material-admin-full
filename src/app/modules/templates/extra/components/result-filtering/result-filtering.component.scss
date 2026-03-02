@@ -1,6 +1,13 @@
-@import 'src/app/styles/colors';
-@import 'src/app/styles/font';
+@use 'src/app/styles/font' as *;
+@use 'src/app/styles/variables' as *;
 
+.filter-card {
+  padding: 18px 16px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(247, 249, 255, 0.95));
+  border: 1px solid rgba(94, 139, 255, 0.12);
+  box-shadow: 0 8px 22px rgba(24, 40, 72, 0.08);
+}
 
 .title {
   font-weight: $fw-lighter;
@@ -14,11 +21,23 @@
 }
 
 .subtitle {
+  margin: 8px 0 10px;
   color: $dark-grey;
+  font-size: $fs-small;
+  line-height: 1.5;
+}
+
+.list {
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .list-wrapper {
   cursor: pointer;
+  border-radius: 10px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  transition: background-color 140ms ease;
 
   &:hover {
     background-color: $white-blue;
@@ -35,16 +54,19 @@
 .list-title {
   color: $dark-grey;
   margin: 0;
+  font-size: $fs-small;
+  font-weight: $fw-normal;
 }
 
 .list-badge {
-  width: 22px;
-  min-height: 22px;
-  min-width: 22px;
+  width: 24px;
+  min-height: 24px;
+  min-width: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 12px;
+  font-weight: $fw-bold;
   padding: 0;
   margin: 0;
 }

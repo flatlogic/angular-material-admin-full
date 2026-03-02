@@ -1,22 +1,25 @@
-import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, DestroyRef, OnChanges, OnInit, SimpleChanges, inject} from '@angular/core';
+import { EChartsOption } from 'echarts';
 import {ChartOptions} from '../../../templates/charts/models/chart-options';
 
 import {colors} from '../../../../consts';
-import {CalendarDateFormatter} from 'angular-calendar';
+import {CalendarDateFormatter, CalendarEvent, CalendarEventAction} from 'angular-calendar';
 import {CustomDateFormatter} from '../../service';
 import {routes} from '../../../../consts';
 import {SharedService} from '../../../../shared/services/shared.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
-  selector: 'app-profile-page',
-  templateUrl: './profile-page.component.html',
-  styleUrls: ['./profile-page.component.scss'],
-  providers: [
-    {
-      provide: CalendarDateFormatter,
-      useClass: CustomDateFormatter,
-    },
-  ],
+    selector: 'app-profile-page',
+    templateUrl: './profile-page.component.html',
+    styleUrls: ['./profile-page.component.scss'],
+    providers: [
+        {
+            provide: CalendarDateFormatter,
+            useClass: CustomDateFormatter,
+        },
+    ],
+    standalone: false
 })
 export class ProfilePageComponent implements OnInit, OnChanges {
   public apexPieChartOptions: Partial<ChartOptions>;
@@ -29,11 +32,26 @@ export class ProfilePageComponent implements OnInit, OnChanges {
   public m = this.currentDate.getMonth();
   public y = this.currentDate.getFullYear();
   public NOW: Date = new Date();
-  public calendarEvents: any[] = [
+  private readonly openFlatlogicAction: CalendarEventAction = {
+    label: 'action',
+    onClick: () => {
+      if (Boolean(document)) {
+        const a: HTMLAnchorElement = document.createElement('a');
+        a.href = 'http://www.flatlogic.com';
+        a.target = '_blank';
+        a.click();
+        a.remove();
+      }
+    }
+  };
+
+  public calendarEvents: CalendarEvent[] = [
     {
       id: 1,
+      title: '',
       color: {
         primary: colors.BLUE,
+        secondary: colors.BLUE,
       },
       start: new Date(this.NOW.getFullYear(), this.NOW.getMonth(), 2),
       draggable: false,
@@ -41,8 +59,10 @@ export class ProfilePageComponent implements OnInit, OnChanges {
     },
     {
       id: 2,
+      title: '',
       color: {
         primary: colors.YELLOW,
+        secondary: colors.YELLOW,
       },
       start: new Date(this.NOW.getFullYear(), this.NOW.getMonth(), 5),
       draggable: false,
@@ -50,8 +70,10 @@ export class ProfilePageComponent implements OnInit, OnChanges {
     },
     {
       id: 3,
+      title: '',
       color: {
         primary: colors.GREEN,
+        secondary: colors.GREEN,
       },
       start: new Date(this.NOW.getFullYear(), this.NOW.getMonth(), 18),
       draggable: false,
@@ -59,29 +81,60 @@ export class ProfilePageComponent implements OnInit, OnChanges {
     },
     {
       id: 4,
+      title: '',
       color: {
         primary: colors.PINK,
+        secondary: colors.PINK,
       },
       start: new Date(this.NOW.getFullYear(), this.NOW.getMonth(), 28),
       draggable: false,
       allDay: true,
-      actions: [{
-        label: 'action',
-        onClick: () => {
-          if (Boolean(document)) {
-            const a: HTMLAnchorElement = document.createElement('a');
-            a.href = 'http://www.flatlogic.com';
-            a.target = '_blank';
-            a.click();
-            a.remove();
-          }
-        }
-      }]
+      actions: [this.openFlatlogicAction]
     }
   ];
   public isDarkMode = false;
+  private readonly destroyRef = inject(DestroyRef);
 
   constructor(private service: SharedService) {
+  }
+
+  public get echartsOptions(): EChartsOption {
+    const options = this.chart;
+    const seriesList = Array.isArray(options?.series) ? options.series : [];
+    const firstSeries = seriesList[0] as { name?: string; data?: number[] } | undefined;
+    return {
+      color: options?.colors ?? [colors.PINK],
+      tooltip: { trigger: 'axis' },
+      legend: { show: false },
+      grid: {
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0
+      },
+      xAxis: {
+        type: 'category',
+        data: Array.isArray(options?.labels) ? options.labels : [],
+        axisLabel: { show: false },
+        axisTick: { show: false },
+        axisLine: { show: false }
+      },
+      yAxis: {
+        type: 'value',
+        show: false
+      },
+      series: [
+        {
+          type: 'line',
+          name: firstSeries?.name ?? '',
+          data: firstSeries?.data ?? [],
+          smooth: true,
+          showSymbol: false,
+          lineStyle: { width: 2 },
+          areaStyle: { opacity: 0.3 }
+        }
+      ]
+    } as EChartsOption;
   }
 
   public ngOnInit(): void {
@@ -89,9 +142,11 @@ export class ProfilePageComponent implements OnInit, OnChanges {
 
     this.chart = this.initChart2([91200, 95900, 92300, 96200, 93100, 95500, 94750], colors.PINK);
 
-    this.service.currentMode.subscribe((mode: string) => {
-      this.isDarkMode = mode === 'dark';
-    });
+    this.service.currentMode
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((mode: string) => {
+        this.isDarkMode = mode === 'dark';
+      });
   }
 
   public initChart2(data: number[], color: string): Partial<ChartOptions> {
@@ -194,8 +249,9 @@ export class ProfilePageComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.currentMode && changes.currentMode.currentValue) {
-      this.isDarkMode = changes.currentMode.currentValue;
+    const currentModeChange = changes['currentMode'];
+    if (currentModeChange && currentModeChange.currentValue) {
+      this.isDarkMode = currentModeChange.currentValue;
     }
   }
 

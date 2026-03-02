@@ -6,9 +6,10 @@ import { Customer, Employee } from '../../models';
 import {routes} from '../../../../../consts';
 
 @Component({
-  selector: 'app-tables-basic-page',
-  templateUrl: './tables-basic-page.component.html',
-  styleUrls: ['./tables-basic-page.component.scss']
+    selector: 'app-tables-basic-page',
+    templateUrl: './tables-basic-page.component.html',
+    styleUrls: ['./tables-basic-page.component.scss'],
+    standalone: false
 })
 export class TablesBasicPageComponent {
   public employeeTableData$: Observable<Employee[]>

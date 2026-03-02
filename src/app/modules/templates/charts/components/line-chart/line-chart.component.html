@@ -1,10 +1,7 @@
-<apx-chart
-  [series]="apexLineChartOptions.series"
-  [chart]="apexLineChartOptions.chart"
-  [xaxis]="apexLineChartOptions.xaxis"
-  [stroke]="apexLineChartOptions.stroke"
-  [tooltip]="apexLineChartOptions.tooltip"
-  [dataLabels]="apexLineChartOptions.dataLabels"
-  [legend]="apexLineChartOptions.legend"
-  [colors]="apexLineChartOptions.colors"
-></apx-chart>
+<div
+  echarts
+  *ngIf="apexLineChartOptions?.chart"
+  [options]="echartsOptions"
+  [style.height]="apexLineChartOptions?.chart?.height | chartSize:'350px'"
+  [style.width]="apexLineChartOptions?.chart?.width | chartSize:'100%'"
+></div>

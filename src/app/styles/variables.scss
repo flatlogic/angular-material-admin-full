@@ -1,4 +1,5 @@
-@import "colors";
+@forward "colors";
+@use "colors" as *;
 
 //== Viewports
 

@@ -1,34 +1,15 @@
 <app-breadcrumb [path]="routes.CAROUSEL"></app-breadcrumb>
 
 <div class="small-carousels-wrapper">
-  <mat-card  class="small-carousel-card">
-    <owl-carousel-o [options]="customOptions">
-      <ng-container *ngFor="let slide of digCarouselSlides">
-        <ng-template carouselSlide [id]="slide.id">
-          <img [src]="slide.src" [alt]="slide.alt" [title]="slide.text">
-        </ng-template>
-      </ng-container>
-    </owl-carousel-o>
+  <mat-card appearance="outlined" class="small-carousel-card">
+    <app-carousel [slides]="digCarouselSlides" aspectRatio="16 / 10"></app-carousel>
   </mat-card>
 
-  <mat-card class="small-carousel-card">
-    <owl-carousel-o [options]="customOptions">
-      <ng-container *ngFor="let slide of digCarouselSlides">
-        <ng-template carouselSlide [id]="slide.id">
-          <img [src]="slide.src" [alt]="slide.alt" [title]="slide.text">
-        </ng-template>
-      </ng-container>
-    </owl-carousel-o>
+  <mat-card appearance="outlined" class="small-carousel-card">
+    <app-carousel [slides]="digCarouselSlides" aspectRatio="16 / 10"></app-carousel>
   </mat-card>
 </div>
 
-<mat-card class="big-carousel-card">
-  <owl-carousel-o [options]="customOptions">
-    <ng-container *ngFor="let slide of firstSmallCarousel">
-      <ng-template carouselSlide [id]="slide.id">
-        <img [src]="slide.src" [alt]="slide.alt" [title]="slide.text">
-      </ng-template>
-    </ng-container>
-  </owl-carousel-o>
+<mat-card appearance="outlined" class="big-carousel-card">
+  <app-carousel [slides]="firstSmallCarousel" aspectRatio="16 / 7"></app-carousel>
 </mat-card>
-

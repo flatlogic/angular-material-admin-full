@@ -1,3 +1,8 @@
+@use "src/app/styles/variables" as *;
+
+$dark-primary-text: rgba(black, 0.87);
+$light-primary-text: white;
+
 $ama-yellow: (
   50: $yellow,
   100: #ECECEC,

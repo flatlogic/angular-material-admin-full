@@ -1,20 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, DestroyRef, OnInit, inject } from '@angular/core';
 import {Observable} from 'rxjs';
 import {BarChartData} from '../../models';
 import {ChartsService} from '../../services';
 import {routes} from '../../../../../consts';
 import {SharedService} from '../../../../../shared/services/shared.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
-  selector: 'app-bar-charts-page',
-  templateUrl: './bar-charts-page.component.html',
-  styleUrls: ['./bar-charts-page.component.scss']
+    selector: 'app-bar-charts-page',
+    templateUrl: './bar-charts-page.component.html',
+    styleUrls: ['./bar-charts-page.component.scss'],
+    standalone: false
 })
-export class BarChartsPageComponent {
+export class BarChartsPageComponent implements OnInit {
   public barChartData$: Observable<BarChartData>
   public groupedBarChartData$: Observable<BarChartData>
   public routes: typeof routes = routes;
   public currentTheme: string = '';
+  private readonly destroyRef = inject(DestroyRef);
 
   constructor(
     private service: ChartsService,
@@ -25,8 +28,10 @@ export class BarChartsPageComponent {
   }
 
   public ngOnInit(): void {
-    this.sharedService.currentTheme.subscribe((theme: string) => {
-      this.currentTheme = theme;
-    });
+    this.sharedService.currentTheme
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((theme: string) => {
+        this.currentTheme = theme;
+      });
   }
 }

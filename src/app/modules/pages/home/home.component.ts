@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DestroyRef, OnInit, inject } from '@angular/core';
 import { routes } from '../../../consts';
 import { AuthService } from '../../../shared/services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.scss'],
+    standalone: false
 })
 export class HomeComponent implements OnInit {
   public routes: typeof routes = routes;
+  private readonly destroyRef = inject(DestroyRef);
 
   constructor(
     private authService: AuthService,
@@ -20,11 +23,13 @@ export class HomeComponent implements OnInit {
       this.authService.receiveLogin();
     }
 
-    this.route.queryParams.subscribe((params) => {
-      if (params.token) {
-        this.authService.receiveToken(params.token);
-      }
-    });
+    this.route.queryParams
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((params: { token?: string }) => {
+        if (params.token) {
+          this.authService.receiveToken(params.token);
+        }
+      });
   }
 
   ngOnInit(): void {}

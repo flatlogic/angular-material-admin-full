@@ -1,29 +1,20 @@
-import {
-  ApexAxisChartSeries,
-  ApexChart,
-  ApexDataLabels, ApexFill, ApexGrid,
-  ApexLegend, ApexMarkers,
-  ApexNonAxisChartSeries, ApexPlotOptions, ApexResponsive,
-  ApexStroke, ApexTheme,
-  ApexTooltip,
-  ApexXAxis, ApexYAxis
-} from 'ng-apexcharts';
+type ChartCompatObject = Record<string, unknown>;
 
 export type ChartOptions = {
-  series: ApexAxisChartSeries | ApexNonAxisChartSeries;
-  chart: ApexChart;
-  xaxis: ApexXAxis;
-  yaxis: ApexYAxis;
-  stroke: ApexStroke;
-  tooltip: ApexTooltip;
-  theme: ApexTheme;
-  dataLabels: ApexDataLabels;
-  plotOptions: ApexPlotOptions;
-  legend: ApexLegend;
-  colors: string[];
-  markers: ApexMarkers;
-  grid: ApexGrid;
-  labels: string[];
-  responsive: ApexResponsive[];
-  fill: ApexFill;
+  series: unknown[] | number[];
+  chart: ChartCompatObject;
+  xaxis: ChartCompatObject;
+  yaxis: ChartCompatObject | ChartCompatObject[];
+  stroke: ChartCompatObject;
+  tooltip: ChartCompatObject;
+  theme: ChartCompatObject;
+  dataLabels: ChartCompatObject;
+  plotOptions: ChartCompatObject;
+  legend: ChartCompatObject;
+  colors: string[] | string;
+  markers: ChartCompatObject;
+  grid: ChartCompatObject;
+  labels: Array<string | number>;
+  responsive: ChartCompatObject[];
+  fill: ChartCompatObject;
 };

@@ -1,22 +1,68 @@
-@import "palettes";
-@import "mat-card";
-@import "mat-paginator";
-@import "mat-table";
-@import "breadcrumb";
-@import "mat-select";
-@import "mat-tab";
-@import "mat-toolbar";
-@import "mat-button";
-@import "mat-badge";
-@import "mat-button-toggle";
-@import "mat-expansion-panel";
-@import "mat-spinner";
-@import "mat-tooltip";
-@import "calendar";
-@import "full-calendar";
+@use "sass:map";
+@use "@angular/material" as mat;
+@use "src/app/styles/variables" as *;
+@use "palettes" as *;
+@use "header" as *;
+@use "mat-card" as *;
+@use "mat-paginator" as *;
+@use "mat-table" as *;
+@use "breadcrumb" as *;
+@use "mat-select" as *;
+@use "mat-tab" as *;
+@use "mat-toolbar" as *;
+@use "mat-button" as *;
+@use "mat-badge" as *;
+@use "mat-button-toggle" as *;
+@use "mat-expansion-panel" as *;
+@use "mat-spinner" as *;
+@use "mat-tooltip" as *;
+@use "mat-form-field" as *;
+@use "calendar" as *;
+@use "full-calendar" as *;
+@use "sidebar" as *;
+@use "footer" as *;
+@use "settings" as *;
+@use "scrollbar" as *;
+
+@function mat-palette(
+  $base-palette,
+  $default: 500,
+  $lighter: 100,
+  $darker: 700,
+  $text: $default
+) {
+  @return mat.m2-define-palette($base-palette, $default, $lighter, $darker, $text);
+}
+
+@function mat-light-theme($primary, $accent: null, $warn: null) {
+  @if $warn == null {
+    $warn: mat.m2-define-palette(mat.$m2-red-palette);
+  }
+
+  $theme: mat.m2-define-light-theme(
+    (
+      color: (
+        primary: $primary,
+        accent: $accent,
+        warn: $warn
+      )
+    )
+  );
+  $color-config: mat.m2-get-color-config($theme);
+
+  @if $color-config != null {
+    @return map.merge($theme, $color-config);
+  }
+
+  @return $theme;
+}
+
+@mixin angular-material-theme($theme) {
+  @include mat.all-component-themes($theme);
+}
 
 @function ama-light-theme($primary, $accent, $warn, $success, $info, $primary-light) {
-  @return map-merge(
+  @return map.merge(
     mat-light-theme($primary, $accent, $warn),
     (success: $success, info: $info, primary-light: $primary-light)
   );
@@ -44,8 +90,6 @@ $blue-theme: ama-light-theme(
 
 @mixin blueTheme() {
   .blueTheme {
-    @include angular-material-theme($blue-theme);
-
     @include header();
     @include mat-card();
     @include mat-paginator();
@@ -186,20 +230,20 @@ $green-theme: ama-light-theme(
     @include mat-tab-label-dark;
     @include mat-button-dark;
     @include calendar-dark;
-
+    /*TODO(mdc-migration): The following rule targets internal classes of checkbox that may no longer apply for the MDC version.*/
     .mat-checkbox-frame {
       border-color: $white;
     }
-
+    /*TODO(mdc-migration): The following rule targets internal classes of radio that may no longer apply for the MDC version.*/
     .mat-radio-outer-circle {
       border-color: $white;
     }
-
-    .mat-radio-button.mat-radio-disabled .mat-radio-outer-circle {
+    /*TODO(mdc-migration): The following rule targets internal classes of radio that may no longer apply for the MDC version.*/
+    .mat-mdc-radio-button.mat-radio-disabled .mat-radio-outer-circle {
       border-color: $white-50;
     }
-
-    .mat-radio-button.mat-radio-disabled .mat-radio-label-content {
+    /*TODO(mdc-migration): The following rule targets internal classes of radio that may no longer apply for the MDC version.*/
+    .mat-mdc-radio-button.mat-radio-disabled .mat-radio-label-content {
       color: $white-50;
     }
 

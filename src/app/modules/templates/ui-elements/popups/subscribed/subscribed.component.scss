@@ -1,5 +1,5 @@
-@import "./src/app/styles/font";
-@import "./src/app/styles/colors";
+@use "./src/app/styles/font" as *;
+@use "./src/app/styles/colors" as *;
 
 .title {
   font-size: $fs-regular;

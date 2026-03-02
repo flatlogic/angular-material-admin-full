@@ -1,18 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
+import { EChartsOption } from 'echarts';
 import {LineChartData} from '../../models';
 import {ChartOptions} from '../../models/chart-options';
 
 import { colors } from '../../../../../consts';
-import {
-  ApexAxisChartSeries,
-  ApexChart,
-  ApexDataLabels,
-  ApexFill,
-  ApexMarkers,
-  ApexYAxis,
-  ApexXAxis,
-  ApexTooltip
-} from "ng-apexcharts";
 
 export const dataSeries = [
   [
@@ -1465,24 +1456,78 @@ export const dataSeries = [
 
 
 @Component({
-  selector: 'app-zoomable-timeseries-chart',
-  templateUrl: './zoomable-timeseries-chart.component.html',
-  styleUrls: ['./zoomable-timeseries-chart.component.scss']
+    selector: 'app-zoomable-timeseries-chart',
+    templateUrl: './zoomable-timeseries-chart.component.html',
+    styleUrls: ['./zoomable-timeseries-chart.component.scss'],
+    standalone: false
 })
 export class ZoomableTimeseriesChartComponent implements OnInit {
   @Input() zoomableTimeseriesChartData: LineChartData;
   public apexZoomableTimeseriesChartOptions: Partial<ChartOptions>;
   public colors: typeof colors = colors;
 
-  public series: ApexAxisChartSeries;
-  public chart: ApexChart;
-  public dataLabels: ApexDataLabels;
-  public markers: ApexMarkers;
-  public fill: ApexFill;
-  public yaxis: ApexYAxis;
-  public xaxis: ApexXAxis;
-  public tooltip: ApexTooltip;
+  public series: unknown[];
+  public chart: Record<string, unknown>;
+  public dataLabels: Record<string, unknown>;
+  public markers: Record<string, unknown>;
+  public fill: Record<string, unknown>;
+  public yaxis: Record<string, unknown>;
+  public xaxis: Record<string, unknown>;
+  public tooltip: Record<string, unknown>;
   public color: string[];
+
+  public get echartsOptions(): EChartsOption {
+    const firstSeries = Array.isArray(this.series)
+      ? this.series.find(
+          (item): item is { name?: string; data?: unknown[] } =>
+            typeof item === 'object' && item !== null,
+        )
+      : undefined;
+    const rawData: [number, number][] = Array.isArray(firstSeries?.data)
+      ? firstSeries.data.filter(
+          (point): point is [number, number] =>
+            Array.isArray(point) &&
+            point.length === 2 &&
+            typeof point[0] === 'number' &&
+            typeof point[1] === 'number',
+        )
+      : [];
+    return {
+      color: this.color ?? [colors.GREEN],
+      tooltip: {
+        trigger: 'axis',
+        valueFormatter: (value: number) => (value / 1000000).toFixed(0)
+      },
+      grid: {
+        top: 16,
+        left: 12,
+        right: 12,
+        bottom: 16,
+        containLabel: true
+      },
+      xAxis: {
+        type: 'time'
+      },
+      yAxis: {
+        type: 'value',
+        axisLabel: {
+          formatter: (value: number) => (value / 1000000).toFixed(0)
+        }
+      },
+      series: [
+        {
+          type: 'line',
+          name: firstSeries?.name ?? 'Series',
+          data: rawData,
+          smooth: true,
+          showSymbol: false,
+          areaStyle: {
+            opacity: 0.35
+          }
+        }
+      ]
+    } as EChartsOption;
+  }
 
 
 
@@ -1491,12 +1536,9 @@ export class ZoomableTimeseriesChartComponent implements OnInit {
   }
 
   public initChart(): void {
-    let ts2 = 1484418600000;
-    let dates = [];
-    for (let i = 0; i < 120; i++) {
-      ts2 = ts2 + 86400000;
-      dates.push([ts2, dataSeries[1][i].value]);
-    }
+    const dates: [number, number][] = (dataSeries[1] ?? [])
+      .map((item): [number, number] => [new Date(item.date).getTime(), item.value])
+      .filter((pair): pair is [number, number] => Number.isFinite(pair[0]) && Number.isFinite(pair[1]));
 
     this.series = [
       {

@@ -6,7 +6,8 @@ import { VectorMapPageComponent } from './components';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'google'
+    redirectTo: 'google',
+    pathMatch: 'full'
   },
   {
     path: 'google',

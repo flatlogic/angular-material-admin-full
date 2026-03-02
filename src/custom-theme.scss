@@ -1,30 +1,113 @@
-@import '~@angular/material/theming';
-@import '~@fullcalendar/core/main.css';
-@import '~@fullcalendar/daygrid/main.css';
-@import '~@fullcalendar/timegrid/main.css';
-@import "../node_modules/angular-calendar/css/angular-calendar.css";
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:color';
+@use '@angular/material' as mat;
+@use '@angular/cdk' as cdk;
+@use "src/app/styles/variables" as *;
+@use "src/app/styles/palettes" as *;
+@use "src/app/styles/font" as *;
+@use "src/app/styles/header" as *;
+@use "src/app/styles/sidebar" as *;
+@use "src/app/styles/settings" as *;
+@use "src/app/styles/footer" as *;
+@use "src/app/styles/themes" as *;
+@use "src/app/styles/scrollbar" as *;
+@use "src/app/styles/calendar" as *;
+@use "src/app/styles/mat-tab" as *;
+@use "src/app/styles/mat-card" as *;
+@use "src/app/styles/mat-form-field" as *;
+@use "src/app/styles/mat-carousel" as *;
+@use "src/app/styles/typography" as *;
+@use "src/app/styles/notification" as *;
+@use "src/app/styles/full-calendar" as *;
 
-@import "../node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css";
-@import "../node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css";
+// Compatibility layer for legacy theme API used across old styles.
+$dark-primary-text: rgba(black, 0.87);
+$light-primary-text: white;
 
-@import "src/app/styles/colors";
-@import "src/app/styles/variables";
-@import "src/app/styles/font";
-@import "src/app/styles/header";
-@import "src/app/styles/sidebar";
-@import "src/app/styles/settings";
-@import "src/app/styles/footer";
-@import "src/app/styles/themes";
-@import "src/app/styles/scrollbar";
-@import "src/app/styles/calendar";
-@import "src/app/styles/mat-tab";
-@import "src/app/styles/mat-card";
-@import "src/app/styles/mat-form-field";
-@import "src/app/styles/mat-carousel";
-@import "src/app/styles/typography";
-@import "src/app/styles/notification";
-@import "src/app/styles/full-calendar";
+@function mat-palette(
+  $base-palette,
+  $default: 500,
+  $lighter: 100,
+  $darker: 700,
+  $text: $default
+) {
+  @return mat.m2-define-palette($base-palette, $default, $lighter, $darker, $text);
+}
 
+@function mat-light-theme($primary, $accent: null, $warn: null) {
+  @if $warn == null {
+    $warn: mat.m2-define-palette(mat.$m2-red-palette);
+  }
+
+  $theme: mat.m2-define-light-theme(
+    (
+      color: (
+        primary: $primary,
+        accent: $accent,
+        warn: $warn,
+      ),
+    )
+  );
+  $color-config: mat.m2-get-color-config($theme);
+
+  @if $color-config != null {
+    @return map.merge($theme, $color-config);
+  }
+
+  @return $theme;
+}
+
+@function mat-color($palette, $hue: default, $opacity: null) {
+  $color: null;
+
+  @if meta.type-of($palette) == map {
+    @if map.has-key($palette, $hue) {
+      $color: map.get($palette, $hue);
+    } @else if $hue == default-contrast and map.has-key($palette, contrast) {
+      $contrast-palette: map.get($palette, contrast);
+
+      @if meta.type-of($contrast-palette) == map and map.has-key($contrast-palette, default) {
+        $color: map.get($contrast-palette, default);
+      }
+    }
+  }
+
+  @if $color == null {
+    $color: mat.m2-get-color-from-palette($palette, $hue);
+  }
+
+  @if $opacity != null and meta.type-of($color) == color {
+    @return rgba($color, $opacity);
+  }
+
+  @return $color;
+}
+
+@mixin mat-core() {
+  @include mat.elevation-classes();
+  @include mat.app-background();
+}
+
+@mixin angular-material-theme($theme) {
+  @include mat.all-component-themes($theme);
+}
+
+@mixin mat-elevation($z-value, $color: null, $opacity: null) {
+  @if $color == null {
+    @include mat.elevation($z-value);
+  } @else if $opacity == null {
+    @include mat.elevation($z-value, $color);
+  } @else {
+    @include mat.elevation($z-value, $color, $opacity);
+  }
+}
+
+@mixin cdk-high-contrast($target: active, $encapsulation: off) {
+  @include cdk.high-contrast($target, $encapsulation) {
+    @content;
+  }
+}
 @include mat-core();
 
 $ama-primary: mat-palette($ama-blue);
@@ -42,7 +125,7 @@ $ama-info: mat-palette($ama-violet);
   $info,
   $primary-light
 ) {
-  @return map-merge(
+  @return map.merge(
     mat-light-theme($primary, $accent, $warn),
     (
       success: $success,
@@ -81,14 +164,14 @@ $ama-badge-theme: ama-light-theme(
 );
 
 @mixin mat-badge-theme($theme) {
-  $accent: map-get($theme, accent);
-  $warn: map-get($theme, warn);
-  $primary: map-get($theme, primary);
-  $primary-light: map-get($theme, primary-light);
-  $success: map-get($theme, success);
-  $info: map-get($theme, info);
-  $background: map-get($theme, background);
-  $foreground: map-get($theme, foreground);
+  $accent: map.get($theme, accent);
+  $warn: map.get($theme, warn);
+  $primary: map.get($theme, primary);
+  $primary-light: map.get($theme, primary-light);
+  $success: map.get($theme, success);
+  $info: map.get($theme, info);
+  $background: map.get($theme, background);
+  $foreground: map.get($theme, foreground);
 
   .mat-badge-content {
     color: mat-color($primary, default-contrast);
@@ -156,10 +239,10 @@ $ama-badge-theme: ama-light-theme(
       // the value to determine the percentage of the background to put into foreground when
       // mixing the colors together.
       @if (
-        type-of($badge-color) == color and type-of($app-background) == color
+        meta.type-of($badge-color) == color and meta.type-of($app-background) == color
       ) {
-        $badge-opacity: opacity($badge-color);
-        background: mix(
+        $badge-opacity: color.opacity($badge-color);
+        background: color.mix(
           $app-background,
           rgba($badge-color, 1),
           (1 - $badge-opacity) * 100%
@@ -178,7 +261,7 @@ $ama-badge-theme: ama-light-theme(
     display: inline-block;
     border-radius: 50%;
     transition: transform 200ms ease-in-out;
-    transform: scale(0.6);
+    transform: none;
     overflow: hidden;
     font-weight: 400;
     white-space: nowrap;
@@ -225,10 +308,11 @@ $ama-radio-button-theme: ama-light-theme(
 );
 
 @mixin _mat-radio-color($palette) {
+  /*TODO(mdc-migration): The following rule targets internal classes of radio that may no longer apply for the MDC version.*/
   &.mat-radio-checked .mat-radio-outer-circle {
     border-color: mat-color($palette);
   }
-
+  /*TODO(mdc-migration): The following rule targets internal classes of radio that may no longer apply for the MDC version.*/
   .mat-radio-inner-circle,
   .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple),
   &.mat-radio-checked .mat-radio-persistent-ripple,
@@ -238,19 +322,19 @@ $ama-radio-button-theme: ama-light-theme(
 }
 
 @mixin mat-radio-theme($theme) {
-  $primary: map-get($theme, primary);
-  $accent: map-get($theme, accent);
-  $warn: map-get($theme, warn);
-  $success: map-get($theme, success);
-  $info: map-get($theme, info);
-  $background: map-get($theme, background);
-  $foreground: map-get($theme, foreground);
-
+  $primary: map.get($theme, primary);
+  $accent: map.get($theme, accent);
+  $warn: map.get($theme, warn);
+  $success: map.get($theme, success);
+  $info: map.get($theme, info);
+  $background: map.get($theme, background);
+  $foreground: map.get($theme, foreground);
+  /*TODO(mdc-migration): The following rule targets internal classes of radio that may no longer apply for the MDC version.*/
   .mat-radio-outer-circle {
     border-color: mat-color($foreground, secondary-text);
   }
 
-  .mat-radio-button {
+  .mat-mdc-radio-button {
     &.mat-primary {
       @include _mat-radio-color($primary);
     }
@@ -266,17 +350,20 @@ $ama-radio-button-theme: ama-light-theme(
     // This needs extra specificity, because the classes above are combined
     // (e.g. `.mat-radio-button.mat-accent`) which increases their specificity a lot.
     // TODO: consider making the selectors into descendants (`.mat-primary .mat-radio-button`).
+    /*TODO(mdc-migration): The following rule targets internal classes of radio that may no longer apply for the MDC version.*/
+    /*TODO(mdc-migration): The following rule targets internal classes of radio that may no longer apply for the MDC version.*/
     &.mat-radio-disabled {
+      /*TODO(mdc-migration): The following rule targets internal classes of radio that may no longer apply for the MDC version.*/
       &.mat-radio-checked .mat-radio-outer-circle,
       .mat-radio-outer-circle {
         border-color: mat-color($foreground, disabled);
       }
-
+      /*TODO(mdc-migration): The following rule targets internal classes of radio that may no longer apply for the MDC version.*/
       .mat-radio-ripple .mat-ripple-element,
       .mat-radio-inner-circle {
         background-color: mat-color($foreground, disabled);
       }
-
+      /*TODO(mdc-migration): The following rule targets internal classes of radio that may no longer apply for the MDC version.*/
       .mat-radio-label-content {
         color: mat-color($foreground, disabled);
       }
@@ -285,7 +372,7 @@ $ama-radio-button-theme: ama-light-theme(
     // Switch this to a solid color since we're using `opacity`
     // to control how opaque the ripple should be.
     .mat-ripple-element {
-      background-color: map_get($foreground, base);
+      background-color: map.get($foreground, base);
     }
   }
 }
@@ -299,23 +386,24 @@ $ama-radio-button-theme: ama-light-theme(
 @mixin custom-mat-chips-color($foreground, $background) {
   background-color: $background;
   color: $foreground;
-
+  /*TODO(mdc-migration): The following rule targets internal classes of chips that may no longer apply for the MDC version.*/
   .mat-chip-remove {
     color: $foreground;
     opacity: 0.4;
   }
 }
 
-@mixin _mat-theme-elevation($zValue, $theme, $opacity: $mat-elevation-opacity) {
-  $foreground: map-get($theme, foreground);
-  $elevation-color: map-get($foreground, elevation);
-  $elevation-color-or-default: if(
-    $elevation-color == null,
-    $mat-elevation-color,
-    $elevation-color
-  );
+@mixin _mat-theme-elevation($zValue, $theme, $opacity: null) {
+  $foreground: map.get($theme, foreground);
+  $elevation-color: map.get($foreground, elevation);
 
-  @include mat-elevation($zValue, $elevation-color-or-default, $opacity);
+  @if $elevation-color == null {
+    @include mat-elevation($zValue);
+  } @else if $opacity == null {
+    @include mat-elevation($zValue, $elevation-color);
+  } @else {
+    @include mat-elevation($zValue, $elevation-color, $opacity);
+  }
 }
 
 @mixin mat-chips-theme-color($palette) {
@@ -339,44 +427,46 @@ $ama-chip-theme: ama-light-theme(
 );
 
 @mixin mat-chips-theme($theme) {
-  $is-dark-theme: map-get($theme, is-dark);
-  $primary: map-get($theme, primary);
-  $accent: map-get($theme, accent);
-  $warn: map-get($theme, warn);
-  $success: map-get($theme, success);
-  $info: map-get($theme, info);
-  $background: map-get($theme, background);
-  $foreground: map-get($theme, foreground);
+  $is-dark-theme: map.get($theme, is-dark);
+  $primary: map.get($theme, primary);
+  $accent: map.get($theme, accent);
+  $warn: map.get($theme, warn);
+  $success: map.get($theme, success);
+  $info: map.get($theme, info);
+  $background: map.get($theme, background);
+  $foreground: map.get($theme, foreground);
 
   $unselected-background: mat-color($background, unselected-chip);
   $unselected-foreground: mat-color($foreground, text);
 
-  .mat-chip.mat-standard-chip {
+  .mat-mdc-chip.mat-mdc-standard-chip {
     @include custom-mat-chips-color(
       $unselected-foreground,
       $unselected-background
     );
-
+    /*TODO(mdc-migration): The following rule targets internal classes of chips that may no longer apply for the MDC version.*/
+    /*TODO(mdc-migration): The following rule targets internal classes of chips that may no longer apply for the MDC version.*/
     &:not(.mat-chip-disabled) {
       &:active {
         @include _mat-theme-elevation(3, $theme);
       }
-
+      /*TODO(mdc-migration): The following rule targets internal classes of chips that may no longer apply for the MDC version.*/
       .mat-chip-remove:hover {
         opacity: 0.54;
       }
     }
-
+    /*TODO(mdc-migration): The following rule targets internal classes of chips that may no longer apply for the MDC version.*/
     &.mat-chip-disabled {
       opacity: 0.4;
     }
 
     &::after {
-      background: map_get($foreground, base);
+      background: map.get($foreground, base);
     }
   }
-
-  .mat-chip.mat-standard-chip.mat-chip-selected {
+  /*TODO(mdc-migration): The following rule targets internal classes of chips that may no longer apply for the MDC version.*/
+  .mat-mdc-chip.mat-mdc-standard-chip.mat-mdc-chip-selected,
+  .mat-mdc-chip.mat-mdc-standard-chip.mat-chip-selected {
     &.mat-primary {
       @include mat-chips-theme-color($primary);
     }
@@ -415,26 +505,11 @@ $ama-button-theme: ama-light-theme(
 );
 
 @mixin _mat-button-theme-property($theme, $property, $hue) {
-  $primary: map-get($theme, primary);
-  $accent: map-get($theme, accent);
-  $warn: map-get($theme, warn);
-  $success: map-get($theme, success);
-  $info: map-get($theme, info);
-  $background: map-get($theme, background);
-  $foreground: map-get($theme, foreground);
+  $success: map.get($theme, success);
+  $info: map.get($theme, info);
+  $background: map.get($theme, background);
+  $foreground: map.get($theme, foreground);
 
-  &.mat-primary {
-    #{$property}: mat-color($primary, $hue);
-    border-color: mat-color($primary, $hue) !important;
-  }
-  &.mat-accent {
-    #{$property}: mat-color($accent, $hue);
-    border-color: mat-color($accent, $hue) !important;
-  }
-  &.mat-warn {
-    #{$property}: mat-color($warn, $hue);
-    border-color: mat-color($warn, $hue) !important;
-  }
   &.mat-success {
     #{$property}: mat-color($success, $hue);
     border-color: mat-color($success, $hue) !important;
@@ -444,19 +519,153 @@ $ama-button-theme: ama-light-theme(
     border-color: mat-color($info, $hue) !important;
   }
 
-  &.mat-primary,
-  &.mat-accent,
-  &.mat-warn,
   &.mat-success,
-  &[disabled] {
+  &.mat-info {
     &[disabled] {
-      $palette: if($property == 'color', $foreground, $background);
+      $palette: $background;
+
+      @if $property == "color" {
+        $palette: $foreground;
+      }
+
       #{$property}: mat-color($palette, disabled-button);
     }
   }
 }
 
-@include mat-button-theme($ama-button-theme);
+@mixin _mat-button-theme-extra-colors($theme) {
+  .mat-mdc-button,
+  .mat-mdc-icon-button,
+  .mat-mdc-outlined-button {
+    @include _mat-button-theme-property($theme, color, default);
+  }
+
+  .mat-mdc-unelevated-button,
+  .mat-mdc-raised-button,
+  .mat-mdc-fab,
+  .mat-mdc-mini-fab {
+    @include _mat-button-theme-property($theme, background-color, default);
+
+    &.mat-success {
+      color: mat-color(map.get($theme, success), default-contrast);
+    }
+
+    &.mat-info {
+      color: mat-color(map.get($theme, info), default-contrast);
+    }
+  }
+}
+
+@mixin _mat-button-theme-extra-color-variables($theme) {
+  $success: map.get($theme, success);
+  $info: map.get($theme, info);
+
+  .mat-mdc-button {
+    &.mat-success {
+      --mat-button-text-label-text-color: #{mat-color($success)};
+      --mat-button-text-state-layer-color: #{mat-color($success)};
+    }
+
+    &.mat-info {
+      --mat-button-text-label-text-color: #{mat-color($info)};
+      --mat-button-text-state-layer-color: #{mat-color($info)};
+    }
+  }
+
+  .mat-mdc-outlined-button {
+    &.mat-success {
+      --mat-button-outlined-label-text-color: #{mat-color($success)};
+      --mat-button-outlined-outline-color: #{mat-color($success)};
+      --mat-button-outlined-state-layer-color: #{mat-color($success)};
+    }
+
+    &.mat-info {
+      --mat-button-outlined-label-text-color: #{mat-color($info)};
+      --mat-button-outlined-outline-color: #{mat-color($info)};
+      --mat-button-outlined-state-layer-color: #{mat-color($info)};
+    }
+  }
+
+  .mat-mdc-unelevated-button {
+    &.mat-success {
+      --mat-button-filled-container-color: #{mat-color($success)};
+      --mat-button-filled-label-text-color: #{mat-color(
+          $success,
+          default-contrast
+        )};
+      --mat-button-filled-state-layer-color: #{mat-color(
+          $success,
+          default-contrast
+        )};
+    }
+
+    &.mat-info {
+      --mat-button-filled-container-color: #{mat-color($info)};
+      --mat-button-filled-label-text-color: #{mat-color($info, default-contrast)};
+      --mat-button-filled-state-layer-color: #{mat-color($info, default-contrast)};
+    }
+  }
+
+  .mat-mdc-raised-button {
+    &.mat-success {
+      --mat-button-protected-container-color: #{mat-color($success)};
+      --mat-button-protected-label-text-color: #{mat-color(
+          $success,
+          default-contrast
+        )};
+      --mat-button-protected-state-layer-color: #{mat-color(
+          $success,
+          default-contrast
+        )};
+    }
+
+    &.mat-info {
+      --mat-button-protected-container-color: #{mat-color($info)};
+      --mat-button-protected-label-text-color: #{mat-color(
+          $info,
+          default-contrast
+        )};
+      --mat-button-protected-state-layer-color: #{mat-color(
+          $info,
+          default-contrast
+        )};
+    }
+  }
+
+  .mat-mdc-fab {
+    &.mat-success {
+      --mat-fab-container-color: #{mat-color($success)};
+      --mat-fab-foreground-color: #{mat-color($success, default-contrast)};
+      --mat-fab-state-layer-color: #{mat-color($success, default-contrast)};
+    }
+
+    &.mat-info {
+      --mat-fab-container-color: #{mat-color($info)};
+      --mat-fab-foreground-color: #{mat-color($info, default-contrast)};
+      --mat-fab-state-layer-color: #{mat-color($info, default-contrast)};
+    }
+  }
+
+  .mat-mdc-mini-fab {
+    &.mat-success {
+      --mat-fab-small-container-color: #{mat-color($success)};
+      --mat-fab-small-foreground-color: #{mat-color($success, default-contrast)};
+      --mat-fab-small-state-layer-color: #{mat-color(
+          $success,
+          default-contrast
+        )};
+    }
+
+    &.mat-info {
+      --mat-fab-small-container-color: #{mat-color($info)};
+      --mat-fab-small-foreground-color: #{mat-color($info, default-contrast)};
+      --mat-fab-small-state-layer-color: #{mat-color($info, default-contrast)};
+    }
+  }
+}
+
+@include _mat-button-theme-extra-colors($ama-button-theme);
+@include _mat-button-theme-extra-color-variables($ama-button-theme);
 
 html,
 body {
@@ -480,20 +689,63 @@ body {
 @include mat-tab-label;
 @include mat-card;
 
-.mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple),
+.mat-select-panel .mat-mdc-option.mat-selected:not(.mat-mdc-option-multiple),
 .mat-option:hover:not(.mat-option-disabled) {
   background-color: $blue-white;
 }
 
-.mat-select-panel {
-  & .mat-option {
+.mat-mdc-select-panel {
+  & .mat-mdc-option {
     font-size: 16px !important;
   }
 }
 
-.mat-menu-panel.settings-theme-menu {
+.mat-mdc-menu-panel.settings-theme-menu {
   margin-right: 64px;
   margin-top: -55px;
+}
+
+.mat-mdc-menu-panel.notification-menu {
+  --mat-menu-item-label-text-color: #{$grey};
+
+  .notification-menu__button {
+    color: $grey;
+  }
+
+  .notification-menu__icon_yellow {
+    color: $yellow;
+  }
+
+  .notification-menu__icon_green {
+    color: $green;
+  }
+
+  .notification-menu__icon_pink {
+    color: $pink;
+  }
+
+  .notification-menu__icon_blue {
+    color: $blue;
+  }
+}
+
+.mat-mdc-menu-panel.add-section-menu-panel {
+  background-color: $light-blue;
+  overflow: hidden;
+
+  .mat-mdc-menu-content {
+    background-color: $light-blue;
+    padding: 0;
+  }
+}
+
+.chat-dialog-panel .mat-mdc-dialog-container {
+  padding: 0;
+}
+
+.chat-dialog-panel .mat-mdc-dialog-surface {
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 .ng-select .ng-select-container {

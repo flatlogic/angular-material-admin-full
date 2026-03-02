@@ -5,16 +5,17 @@ import {MatPaginator} from '@angular/material/paginator';
 import {Observable} from 'rxjs';
 import {MatTableDataSource} from '@angular/material/table';
 import {SelectionModel} from '@angular/cdk/collections';
-import {take} from 'rxjs/operators';
+import {take} from 'rxjs';
 import {UserDetails} from '../../models';
 import {UserService} from '../../service';
 import {MatDialog} from '@angular/material/dialog';
 import {DeleteUserPopupComponent} from '../../popups/delete-user-popup/delete-user-popup.component';
 
 @Component({
-  selector: 'app-list-page',
-  templateUrl: './list-page.component.html',
-  styleUrls: ['./list-page.component.scss']
+    selector: 'app-list-page',
+    templateUrl: './list-page.component.html',
+    styleUrls: ['./list-page.component.scss'],
+    standalone: false
 })
 export class ListPageComponent implements OnInit {
   @ViewChild(MatSort, {static: true}) sort: MatSort;
@@ -68,7 +69,7 @@ export class ListPageComponent implements OnInit {
   }
 
   public deleteUser(): void {
-    const dialogRef = this.dialog.open(DeleteUserPopupComponent, {
+    this.dialog.open(DeleteUserPopupComponent, {
       width: '396px'
     });
   }

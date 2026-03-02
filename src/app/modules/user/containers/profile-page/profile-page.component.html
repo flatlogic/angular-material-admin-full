@@ -20,7 +20,7 @@
 
       <div class="right-bottom-right-content-wrapper">
         <div class="calendar-wrapper">
-          <mat-card>
+          <mat-card appearance="outlined">
             <div class="calendar-navigation">
               <div class="calendar-array-wrapper" mwlCalendarPreviousView view="month" [(viewDate)]="viewDate">
                 <mat-icon class="calendar-array">keyboard_arrow_left</mat-icon>
@@ -40,7 +40,7 @@
         </div>
 
         <div class="views-wrapper">
-          <mat-card>
+          <mat-card appearance="outlined">
             <mat-card-title class="views-title-wrapper">
               <p class="views-title">Views</p>
               <mat-icon class="views-title-icon">more_vert</mat-icon>
@@ -48,35 +48,29 @@
 
             <mat-card-content class="views-content">
               <div class="views-info-wrapper">
-                <p class="views-value">7.156</p>
-                <img src="./assets/user/profile/trending-up.svg" class="trending-up-icon">
+                <div class="views-stats-row">
+                  <p class="views-value">7.156</p>
+                  <img src="./assets/user/profile/trending-up.svg" class="trending-up-icon">
+                </div>
                 <p class="views-percent">7.2%</p>
 
                 <button mat-stroked-button color="primary" class="views-button">See More</button>
               </div>
 
               <div class="views-chart-wrapper">
-                <apx-chart
-                  [series]="chart.series"
-                  [chart]="chart.chart"
-                  [xaxis]="chart.xaxis"
-                  [stroke]="chart.stroke"
-                  [dataLabels]="chart.dataLabels"
-                  [yaxis]="chart.yaxis"
-                  [labels]="chart.labels"
-                  [legend]="chart.legend"
-                  [grid]="chart.grid"
-                  [tooltip]="chart.tooltip"
-                  [colors]="chart.colors"
-                  [fill]="chart.fill"
-                ></apx-chart>
+                <div
+                  echarts
+                  [options]="echartsOptions"
+                  [style.height]="chart?.chart?.height | chartSize:'100px'"
+                  [style.width]="chart?.chart?.width | chartSize:'100%'"
+                ></div>
               </div>
             </mat-card-content>
           </mat-card>
         </div>
 
         <div class="update-wrapper">
-          <mat-card class="update-card">
+          <mat-card appearance="outlined" class="update-card">
             <div class="update-title-wrapper">
               <img src="./assets/user/profile/update-icon.svg">
               <p class="update-title">Updates</p>

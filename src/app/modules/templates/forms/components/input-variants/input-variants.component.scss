@@ -1,4 +1,4 @@
-@import "src/app/styles/variables";
+@use "src/app/styles/variables" as *;
 
 .checkbox-wrapper {
   margin: 24px 0;
@@ -19,7 +19,7 @@
   margin: 0 0 0 8px;
 }
 
-.mat-radio-button + .mat-radio-button {
+.mat-mdc-radio-button + .mat-radio-button {
   margin-left: 16px;
 }
 

@@ -1,66 +1,140 @@
-@import "src/app/styles/font";
-@import "src/app/styles/colors";
+@use "src/app/styles/font" as *;
+@use "src/app/styles/colors" as *;
 
-.chat-title-wrapper {
+:host {
+  display: block;
+}
+
+.chat-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 14px;
+}
+
+.chat-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 10px;
 }
 
 .chat-title {
-  font-size: $fs-regular;
+  font-size: $fs-xl;
   font-weight: $fw-normal;
   color: $dark-grey;
   margin: 0;
 }
 
-.close-icon {
-  padding: 0;
+.close-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 0;
   margin: 0;
-  color: $dark-grey;
-  width: 14px;
-  height: 14px;
-  font-size: $fs-small;
+  padding: 0;
+  border-radius: 50%;
+  background-color: $blue-white;
   cursor: pointer;
+  transition: background-color .2s linear;
+
+  &:hover {
+    background-color: $blue-15;
+  }
+
+  .mat-icon {
+    margin: 0;
+    color: $grey;
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    line-height: 20px;
+  }
+}
+
+.chat-content {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-height: 280px;
+  overflow: auto;
+  margin: 0;
+  padding-right: 4px;
 }
 
 .message-wrapper {
   display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  min-width: 0;
+}
+
+.message-content {
+  background-color: $blue-white;
+  border-radius: 12px;
+  padding: 10px 12px;
+  min-width: 0;
+  flex: 1 1 auto;
 }
 
 .user-icon {
   width: 36px;
   height: 36px;
-  margin-right: 16px;
+  flex: 0 0 36px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .user-name {
   font-size: $fs-normal;
   font-weight: $fw-normal;
   color: $dark-grey;
-  margin: 0;
+  margin: 0 0 2px;
 }
 
 .user-message {
   font-size: $fs-normal;
   font-weight: $fw-lighter;
-  color: $dark-grey;
+  color: $grey;
+  margin: 0;
+  line-height: 22px;
 }
 
-.comment-wrapper {
+.composer {
   display: flex;
-  margin-bottom: -17px;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  min-width: 0;
 }
 
-.comment-input {
+.composer-input {
   width: 100%;
-  margin-top: -4px;
+  min-width: 0;
+  height: 48px;
+  border: 1px solid $gray-80;
+  border-radius: 10px;
+  box-sizing: border-box;
+  padding: 0 16px;
+  font-size: $fs-regular;
+  color: $dark-grey;
+  outline: none;
+  transition: border-color .2s linear, box-shadow .2s linear;
+
+  &::placeholder {
+    color: $grey;
+  }
+
+  &:focus {
+    border-color: $blue;
+    box-shadow: 0 0 0 2px $blue-15;
+  }
 }
 
 .send-button {
-  height: fit-content;
-  margin-left: 8px;
+  height: 48px;
+  min-width: 84px;
+  margin: 0;
+  border-radius: 10px;
 }
-
-

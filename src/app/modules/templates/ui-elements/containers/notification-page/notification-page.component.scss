@@ -1,6 +1,5 @@
-@import "../../../../../styles/variables";
-@import "../../../../../styles/colors";
-@import "../../../../../styles/font";
+@use "../../../../../styles/variables" as *;
+@use "../../../../../styles/font" as *;
 
 .page-content {
   margin-top: 24px;
@@ -120,25 +119,38 @@
   }
 }
 
-.mat-card-content>:last-child.position-buttons-wrapper {
+.mat-mdc-card-content>:last-child.position-buttons-wrapper {
   margin-top: 33px;
 }
 
 .position-button {
   display:block;
-  color:white;
+  color: $white !important;
   margin-bottom: 8px;
+  border: 0;
 
   &_blue {
-    background-color: $blue;
+    background-color: $blue !important;
+    --mat-button-protected-container-color: #{$blue};
+    --mdc-protected-button-container-color: #{$blue};
+    --mat-button-protected-label-text-color: #{$white};
+    --mdc-protected-button-label-text-color: #{$white};
   }
 
   &_pink {
-    background-color: $pink;
+    background-color: $pink !important;
+    --mat-button-protected-container-color: #{$pink};
+    --mdc-protected-button-container-color: #{$pink};
+    --mat-button-protected-label-text-color: #{$white};
+    --mdc-protected-button-label-text-color: #{$white};
   }
 
   &_green {
-    background-color: $green;
+    background-color: $green !important;
+    --mat-button-protected-container-color: #{$green};
+    --mdc-protected-button-container-color: #{$green};
+    --mat-button-protected-label-text-color: #{$white};
+    --mdc-protected-button-label-text-color: #{$white};
   }
 }
 

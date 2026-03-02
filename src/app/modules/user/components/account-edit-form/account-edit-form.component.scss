@@ -1,5 +1,4 @@
-@import 'src/app/styles/colors';
-@import 'src/app/styles/variables';
+@use 'src/app/styles/variables' as *;
 
 .edit-form-wrapper {
   margin: 0 auto;

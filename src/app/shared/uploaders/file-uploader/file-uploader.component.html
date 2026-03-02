@@ -4,8 +4,12 @@
     <input (change)="uploadFile($event)" type="file" #fileInput name="..." />
   </button>
 </div>
-<div class="mt-2" *ngIf="files.length > 0">
-  <a *ngFor="let file of files" href="{{ file.publicUrl }}" download>
-    {{ file.name }} <i class="la la-times" (click)="deleteFile(file.id)"></i>
-  </a>
-</div>
+@if (files.length > 0) {
+  <div class="mt-2">
+    @for (file of files; track file) {
+      <a href="{{ file.publicUrl }}" download>
+        {{ file.name }} <i class="la la-times" (click)="deleteFile(file.id)"></i>
+      </a>
+    }
+  </div>
+}

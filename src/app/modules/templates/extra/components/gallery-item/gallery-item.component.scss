@@ -1,56 +1,95 @@
-@import "src/app/styles/colors";
-@import "src/app/styles/variables";
+@use "src/app/styles/variables" as *;
 
 .card {
   width: 100%;
-  height: auto;
+  height: 100%;
   overflow: hidden;
-  padding: 0;
-  margin-top: 36px;
+  padding: 0 !important;
+  margin: 0;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(24, 40, 72, 0.18);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 36px rgba(24, 40, 72, 0.24);
+  }
 }
 
-.img-wrapper {
-  margin: 0;
-  height: auto;
+.media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
 }
 
 .img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.01);
+  transition: transform 220ms ease;
+}
+
+.card:hover .img {
+  transform: scale(1.06);
+}
+
+.media-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    rgba(16, 24, 40, 0.55) 0%,
+    rgba(16, 24, 40, 0.18) 32%,
+    rgba(16, 24, 40, 0) 62%
+  );
 }
 
 .icons-block {
-  width: 100%;
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
   margin: 0;
-  padding: 8px;
+  padding: 0;
   display: flex;
   align-items: center;
-  box-sizing: border-box;
 }
 
 .icon-wrapper {
-  width: 48px;
-  height: 48px;
-  background-color: transparent;
-  box-shadow: none;
+  --mat-fab-small-container-color: rgba(255, 255, 255, 0.18);
+  --mat-fab-small-foreground-color: #ffffff;
+  --mat-fab-small-state-layer-color: rgba(255, 255, 255, 0.22);
+  width: 38px;
+  height: 38px;
+  min-height: 38px;
+  backdrop-filter: blur(3px);
+  box-shadow: none !important;
+  transition: transform 160ms ease;
 
   &:hover {
-    background-color: $header-button-background-color-hover;
+    transform: translateY(-1px);
   }
 }
 
 .icon-wrapper + .icon-wrapper {
-  margin-left: 8px;
+  margin-left: 10px;
 }
 
 .icon {
-  color: rgba(110, 110, 110, 0.6);
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
 }
 
 .icon-liked {
-  color: $pink;
+  color: #ff4f8f;
 }
 
 .icon-commented {
-  color: $blue;
+  color: #5e8bff;
 }

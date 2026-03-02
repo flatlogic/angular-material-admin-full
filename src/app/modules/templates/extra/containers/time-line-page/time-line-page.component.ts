@@ -6,9 +6,10 @@ import { TimeLineItem } from '../../models';
 import { TimeLineService } from '../../services';
 
 @Component({
-  selector: 'app-time-line-page',
-  templateUrl: './time-line-page.component.html',
-  styleUrls: ['./time-line-page.component.scss']
+    selector: 'app-time-line-page',
+    templateUrl: './time-line-page.component.html',
+    styleUrls: ['./time-line-page.component.scss'],
+    standalone: false
 })
 export class TimeLinePageComponent {
   public routes: typeof routes = routes;

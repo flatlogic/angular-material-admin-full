@@ -1,16 +1,22 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { EChartsOption } from 'echarts';
+import { MatCardModule } from '@angular/material/card';
 
 import { RevenueChartData } from '../../models';
 import {colors} from '../../../../consts';
+import { SettingsMenuComponent } from '../../../../shared/ui-elements';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 @Component({
-  selector: 'app-revenue-chart',
-  templateUrl: './revenue-chart.component.html',
-  styleUrls: ['./revenue-chart.component.scss']
+    selector: 'app-revenue-chart',
+    templateUrl: './revenue-chart.component.html',
+    styleUrls: ['./revenue-chart.component.scss'],
+    standalone: true,
+    imports: [MatCardModule, SettingsMenuComponent, NgxEchartsModule]
 })
 export class RevenueChartComponent implements OnInit {
   @Input() revenueCharData: RevenueChartData;
-  public revenueChart: any;
+  public revenueChart: EChartsOption = {};
   public colors: typeof colors = colors;
 
   public ngOnInit(): void {
@@ -34,11 +40,8 @@ export class RevenueChartComponent implements OnInit {
           show: false
         },
         labelLine: {
-          normal: {
-            show: false
-          }
+          show: false
         },
-        hoverAnimation: false,
         avoidLabelOverlap: false,
         data: [
           {

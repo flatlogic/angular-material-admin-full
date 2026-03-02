@@ -1,5 +1,5 @@
-@import '../../../../styles/variables';
-@import '../../../../styles/font';
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/font' as *;
 
 .card {
   padding: 0;
@@ -44,8 +44,7 @@
 }
 
 .title-text {
-  margin-right: 24px;
-  margin-bottom: 0;
+  margin: 0 24px 0 0;
 }
 
 .dashboard-mat-tab {
@@ -109,4 +108,3 @@
     margin-bottom: 24px;
   }
 }
-

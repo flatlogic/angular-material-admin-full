@@ -1,12 +1,12 @@
-@import "colors";
+@use "src/app/styles/variables" as *;
 
 @mixin mat-form-field {
   .add-section-menu {
-
+    /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version. */
     & .mat-form-field-label {
       color: $white;
     }
-
+    /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version. */
     & .mat-form-field-underline {
       background-color: $white;
     }
@@ -14,18 +14,18 @@
 }
 
 @mixin mat-form-field-dark-theme {
-  & .mat-hint, .mat-form-field-appearance-legacy .mat-hint {
+  & .mat-mdc-form-field-hint, .mat-form-field-appearance-legacy .mat-hint {
     color: $white-70;
   }
-
+  /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version. */
   & .mat-form-field-appearance-legacy .mat-form-field-underline, .mat-form-field-appearance-legacy.mat-form-field-disabled .mat-form-field-underline {
     background-color: $white-70;
   }
-
+  /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version. */
   & .mat-form-field-appearance-fill .mat-form-field-underline::before {
     background-color: $white-70;
   }
-
+  /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version. */
   & .mat-form-field-appearance-legacy .mat-form-field-label {
     color: $white;
   }

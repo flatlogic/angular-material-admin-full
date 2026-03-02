@@ -1,48 +1,30 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
-import {
-  HttpErrorResponse,
-  HttpEvent,
-  HttpHandler,
-  HttpInterceptor,
-  HttpRequest,
-} from '@angular/common/http';
+import { inject } from '@angular/core';
+import { tap } from 'rxjs';
+import { HttpErrorResponse, HttpInterceptorFn } from '@angular/common/http';
 import { AuthService } from './auth.service';
-import { AppConfig } from '../../app.config';
+import { APP_RUNTIME_CONFIG } from '../../app.config';
+import { AUTH_TOKEN_STORAGE_KEY } from '../../consts';
 
-@Injectable()
-export class HttpInterceptorService implements HttpInterceptor {
-  config;
+export const httpInterceptor: HttpInterceptorFn = (req, next) => {
+  const authService = inject(AuthService);
+  const config = inject(APP_RUNTIME_CONFIG);
 
-  constructor(appConfig: AppConfig, private authService: AuthService) {
-    this.config = appConfig.getConfig();
+  req = req.clone({ url: config.baseURLApi + req.url });
+
+  const token = localStorage.getItem(AUTH_TOKEN_STORAGE_KEY);
+  if (token) {
+    req = req.clone({
+      headers: req.headers.set('Authorization', `Bearer ${token}`),
+    });
   }
 
-  intercept(
-    req: HttpRequest<any>,
-    next: HttpHandler,
-  ): Observable<HttpEvent<any>> {
-    req = req.clone({ url: this.config.baseURLApi + req.url });
-
-    const token: string = localStorage.getItem('token');
-    if (token) {
-      req = req.clone({
-        headers: req.headers.set('Authorization', 'Bearer ' + token),
-      });
-    }
-
-    return next.handle(req).pipe(
-      tap(
-        (event) => {},
-        (err) => {
-          if (err instanceof HttpErrorResponse) {
-            if (err.status == 401) {
-              this.authService.logoutUser();
-            }
-          }
-        },
-      ),
-    );
-  }
-}
+  return next(req).pipe(
+    tap({
+      error: (err) => {
+        if (err instanceof HttpErrorResponse && err.status === 401) {
+          authService.logoutUser();
+        }
+      },
+    }),
+  );
+};

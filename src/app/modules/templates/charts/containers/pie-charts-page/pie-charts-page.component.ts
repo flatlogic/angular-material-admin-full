@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {Observable} from 'rxjs';
 import { PieChartData} from '../../models';
 import {ChartsService} from '../../services';
 import {routes} from '../../../../../consts';
 
 @Component({
-  selector: 'app-pie-charts-page',
-  templateUrl: './pie-charts-page.component.html',
-  styleUrls: ['./pie-charts-page.component.scss']
+    selector: 'app-pie-charts-page',
+    templateUrl: './pie-charts-page.component.html',
+    styleUrls: ['./pie-charts-page.component.scss'],
+    standalone: false
 })
 export class PieChartsPageComponent {
   public pieChartData$: Observable<PieChartData>;

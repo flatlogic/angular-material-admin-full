@@ -1,15 +1,13 @@
-@import '../../../../styles/colors';
-@import '../../../../styles/variables';
-@import '../../../../styles/font';
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/font' as *;
 
 .performance-chart {
   display: flex;
   flex-direction: column;
-  height: 192px;
-  justify-content: space-between;
+  height: 252px;
 
   @media (min-width: 1280px) and (max-width: $xxl) {
-    height: 220px;
+    height: 280px;
   }
 
   &__header {
@@ -17,6 +15,8 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
+    margin: 0;
+    padding: 0;
 
     &-title {
       font-size: $fs-regular;
@@ -31,9 +31,12 @@
 
   &__content {
     display: flex;
-    height: 70%;
+    flex: 1 1 auto;
+    min-height: 0;
     flex-direction: column;
     justify-content: space-between;
+    margin: 0;
+    padding: 0;
 
     &-header {
       display: flex;
@@ -52,6 +55,7 @@
         &-text {
           margin-left: 8px;
           color: $grey;
+          font-size: $fs-small;
         }
       }
     }
@@ -60,7 +64,7 @@
   &__progress-title {
     margin: 20px 0 5px 0;
     font-weight: 400;
-    font-size: $fs-medium;
+    font-size: $fs-normal;
     color: $grey;
   }
 

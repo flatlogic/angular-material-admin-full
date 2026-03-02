@@ -9,9 +9,10 @@ enum SelectedFields {
 }
 
 @Component({
-  selector: 'app-time-period-select',
-  templateUrl: './time-period-select.component.html',
-  styleUrls: ['./time-period-select.component.scss']
+    selector: 'app-time-period-select',
+    templateUrl: './time-period-select.component.html',
+    styleUrls: ['./time-period-select.component.scss'],
+    standalone: false
 })
 export class TimePeriodSelectComponent {
   public selectedFields: typeof SelectedFields = SelectedFields;

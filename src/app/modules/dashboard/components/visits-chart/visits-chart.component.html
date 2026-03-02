@@ -12,7 +12,13 @@
         <p>Tickets</p>
       </div>
 
-      <div #chart></div>
+      <div
+        echarts
+        class="visits-chart__content-info-chart"
+        [options]="echartsOptions"
+        [style.height]="chartOptions?.chart?.height | chartSize:'130px'"
+        [style.width]="chartOptions?.chart?.width | chartSize:'130px'"
+      ></div>
     </div>
 
     <div class="visits-chart__content-stats">

@@ -11,10 +11,11 @@ import {
   TimeLinePageComponent
 } from './containers';
 
-const routes: Routes = [
+export const EXTRA_ROUTES: Routes = [
   {
     path: '',
-    redirectTo: 'calendar'
+    redirectTo: 'calendar',
+    pathMatch: 'full'
   },
   {
     path: 'calendar',
@@ -33,22 +34,37 @@ const routes: Routes = [
     component: NotFoundComponent
   },
   {
+    path: 'errorpage',
+    redirectTo: 'error',
+    pathMatch: 'full'
+  },
+  {
     path: 'gallery',
     component: GalleryPageComponent
   },
   {
-    path: 'search result',
+    path: 'search-result',
     component: SearchResultPageComponent
   },
   {
-    path: 'time line',
+    path: 'search result',
+    redirectTo: 'search-result',
+    pathMatch: 'full'
+  },
+  {
+    path: 'time-line',
     component: TimeLinePageComponent
+  },
+  {
+    path: 'time line',
+    redirectTo: 'time-line',
+    pathMatch: 'full'
   }
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forChild(routes)
+    RouterModule.forChild(EXTRA_ROUTES)
   ],
   exports: [RouterModule]
 })

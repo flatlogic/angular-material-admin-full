@@ -7,7 +7,6 @@ import {
 } from '@danielmoncada/angular-datetime-picker';
 import { CrudRoutingModule } from './crud-routing.module';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { SharedModule } from '../../shared/shared.module';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
@@ -21,6 +20,11 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatDialogModule } from '@angular/material/dialog';
+import { BreadcrumbComponent } from '../../shared/ui-elements';
+import { ImageUploaderComponent } from '../../shared/uploaders/image-uploader/image-uploader.component';
+import { FilterComponent } from '../../shared/filter/filter.component';
+import { DeletePopupComponent } from '../../shared/popups/delete-popup/delete-popup.component';
 
 import { UsersCreateComponent } from './users-create/users-create.component';
 import { UsersEditComponent } from './users-edit/users-edit.component';
@@ -33,13 +37,15 @@ import { UsersListComponent } from './users-list/users-list.component';
     ReactiveFormsModule,
     CrudRoutingModule,
     NgSelectModule,
-    SharedModule,
+    BreadcrumbComponent,
+    ImageUploaderComponent,
+    FilterComponent,
+    DeletePopupComponent,
     MatCardModule,
     MatIconModule,
     MatChipsModule,
     MatFormFieldModule,
     MatSelectModule,
-    ReactiveFormsModule,
     MatButtonModule,
     MatInputModule,
     MatTableModule,
@@ -48,6 +54,7 @@ import { UsersListComponent } from './users-list/users-list.component';
     MatSortModule,
     MatPaginatorModule,
     MatRadioModule,
+    MatDialogModule,
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
   ],

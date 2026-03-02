@@ -4,9 +4,34 @@ import { FlatTreeControl } from '@angular/cdk/tree';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { MatDialog } from '@angular/material/dialog';
 import { ChatPopupComponent } from '../popups/chat-popup/chat-popup.component';
+import { CommonModule } from '@angular/common';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTreeModule } from '@angular/material/tree';
+import { RouterModule } from '@angular/router';
 
 
-const TREE_DATA: any = [
+interface SidebarNode {
+  name: string;
+  route?: string;
+  active?: string;
+  children?: SidebarNode[];
+}
+
+interface SidebarFlatNode {
+  expandable: boolean;
+  name: string;
+  level: number;
+  route?: string;
+  active?: string;
+}
+
+const TREE_DATA: SidebarNode[] = [
   {
     name: 'E-commerce',
     children: [
@@ -25,7 +50,7 @@ const TREE_DATA: any = [
   }
 ];
 
-const TemplateNode: any = [
+const TEMPLATE_NODE: SidebarNode[] = [
   {
     name: 'Core',
     children: [
@@ -115,24 +140,30 @@ const TemplateNode: any = [
 
 
 /** Flat node with expandable and level information */
-interface ExampleFlatNode {
-  expandable: boolean;
-  name: string;
-  level: number;
-}
-
-
 @Component({
-  selector: 'app-sidebar',
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+    selector: 'app-sidebar',
+    templateUrl: './sidebar.component.html',
+    styleUrls: ['./sidebar.component.scss'],
+    standalone: true,
+    imports: [
+      CommonModule,
+      MatBadgeModule,
+      MatButtonModule,
+      MatFormFieldModule,
+      MatIconModule,
+      MatInputModule,
+      MatListModule,
+      MatMenuModule,
+      MatTreeModule,
+      RouterModule,
+    ]
 })
 export class SidebarComponent {
   public routes: typeof routes = routes;
   public isOpenUiElements = false;
 
 
-  private _transformer = (node: any, level: number) => {
+  private _transformer = (node: SidebarNode, level: number): SidebarFlatNode => {
     return {
       expandable: !!node.children && node.children.length > 0,
       name: node.name,
@@ -140,36 +171,38 @@ export class SidebarComponent {
       route: node.route,
       active: node.active
     };
-  }
+  };
 
-  treeControl = new FlatTreeControl<ExampleFlatNode>(
+  treeControl = new FlatTreeControl<SidebarFlatNode>(
     node => node.level, node => node.expandable);
 
-  treeFlattener = new MatTreeFlattener(
+  treeFlattener = new MatTreeFlattener<SidebarNode, SidebarFlatNode>(
     this._transformer, node => node.level, node => node.expandable, node => node.children);
 
-  dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
-  templateDataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
+  dataSource = new MatTreeFlatDataSource<SidebarNode, SidebarFlatNode>(this.treeControl, this.treeFlattener);
+  templateDataSource = new MatTreeFlatDataSource<SidebarNode, SidebarFlatNode>(this.treeControl, this.treeFlattener);
 
 
   constructor(public dialog: MatDialog) {
     this.dataSource.data = TREE_DATA;
-    this.templateDataSource.data = TemplateNode;
+    this.templateDataSource.data = TEMPLATE_NODE;
   }
 
-  hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
+  hasChild = (_: number, node: SidebarFlatNode): boolean => node.expandable;
 
-  public openUiElements() {
+  public openUiElements(): void {
     this.isOpenUiElements = !this.isOpenUiElements;
   }
 
   public openChat(): void {
     this.dialog.open(ChatPopupComponent, {
-      width: '436px'
+      width: '436px',
+      maxWidth: 'calc(100vw - 32px)',
+      panelClass: 'chat-dialog-panel',
     });
   }
 
-  public stopPropagation(event){
+  public stopPropagation(event: Event): void {
     event.stopPropagation();
   }
 }

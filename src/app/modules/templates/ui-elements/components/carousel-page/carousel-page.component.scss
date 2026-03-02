@@ -1,5 +1,4 @@
-@import "src/app/styles/colors";
-@import "src/app/styles/variables";
+@use "src/app/styles/variables" as *;
 
 .small-carousels-wrapper {
   display: flex;
@@ -23,9 +22,3 @@
   padding: 0;
   overflow: hidden;
 }
-
-.big-carousel-text {
-  color: $white;
-  padding: 24px;
-}
-

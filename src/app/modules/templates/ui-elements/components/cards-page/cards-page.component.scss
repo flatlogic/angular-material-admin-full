@@ -1,6 +1,5 @@
-@import './src/app/styles/colors';
-@import './src/app/styles/font';
-@import './src/app/styles/variables';
+@use './src/app/styles/font' as *;
+@use './src/app/styles/variables' as *;
 
 .first-card {
   margin: 24px 0;
@@ -194,7 +193,7 @@ div + mat-card {
 .fourth-card {
   box-shadow: 0 3px 11px 0 $shadow-white, 0 3px 3px -2px $shadow-grey, 0 1px 8px 0 $shadow-dark-grey;
   padding: 0;
-
+  /* TODO(mdc-migration): The following rule targets internal classes of card that may no longer apply for the MDC version. */
   mat-card-title {
     margin: 0;
   }
@@ -265,7 +264,7 @@ div + mat-card {
   padding: 0;
   height: fit-content;
   overflow: hidden;
-
+  /* TODO(mdc-migration): The following rule targets internal classes of card that may no longer apply for the MDC version. */
   mat-card-title {
     margin: 0;
   }
@@ -277,7 +276,7 @@ div + mat-card {
   .img {
     width: 100%;
   }
-
+  /* TODO(mdc-migration): The following rule targets internal classes of card that may no longer apply for the MDC version. */
   mat-card-content {
     margin: 0;
   }

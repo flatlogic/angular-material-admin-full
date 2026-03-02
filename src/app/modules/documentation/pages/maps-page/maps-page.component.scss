@@ -1,4 +1,4 @@
-@import 'src/app/styles/colors';
+@use 'src/app/styles/colors' as *;
 
 .maps-page {
   padding: 24px;

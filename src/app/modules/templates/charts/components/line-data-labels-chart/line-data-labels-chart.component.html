@@ -1,2 +1,7 @@
-<div #chart></div>
-
+<div
+  echarts
+  *ngIf="apexLineDataLabelsChartOptions?.chart"
+  [options]="echartsOptions"
+  [style.height]="apexLineDataLabelsChartOptions?.chart?.height | chartSize:'350px'"
+  [style.width]="apexLineDataLabelsChartOptions?.chart?.width | chartSize:'100%'"
+></div>

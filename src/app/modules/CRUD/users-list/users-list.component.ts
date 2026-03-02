@@ -10,11 +10,14 @@ import { DeletePopupComponent } from '../../../shared/popups/delete-popup/delete
 import { Users } from '../../../shared/models/users.model';
 import { MatPaginator } from '@angular/material/paginator';
 import { FilterConfig, FilterItems } from '../../../shared/models/common';
+import { environment } from '../../../../environments/environment';
+import { take } from 'rxjs';
 
 @Component({
-  selector: 'app-users-list',
-  templateUrl: './users-list.component.html',
-  styleUrls: ['./users-list.component.scss'],
+    selector: 'app-users-list',
+    templateUrl: './users-list.component.html',
+    styleUrls: ['./users-list.component.scss'],
+    standalone: false
 })
 export class UsersListComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -22,7 +25,6 @@ export class UsersListComponent implements OnInit {
   users: Users[];
   loading = false;
   selectedId: string;
-  deleteConfirmSubscription;
   public routes: typeof routes = routes;
   public displayedColumns: string[] = [
     'firstName',
@@ -63,10 +65,14 @@ export class UsersListComponent implements OnInit {
   }
 
   submitHandler(request: string): void {
-    this.usersService.getFilteredData(request).subscribe((res) => {
-      this.users = res.rows;
-      this.dataSource = new MatTableDataSource(res.rows);
-      this.dataSource.paginator = this.paginator;
+    this.usersService.getFilteredData(request).pipe(take(1)).subscribe({
+      next: (res) => {
+        this.setUsersData(res.rows);
+      },
+      error: () => {
+        this.toastr.error('Failed to load users');
+        this.setUsersData([]);
+      },
     });
   }
 
@@ -92,20 +98,20 @@ export class UsersListComponent implements OnInit {
       width: '512px',
     });
 
-    this.deleteConfirmSubscription =
-      dialogRef.componentInstance.deleteConfirmed.subscribe((result) => {
+    dialogRef.componentInstance.deleteConfirmed
+      .pipe(take(1))
+      .subscribe(() => {
         this.onDelete(this.selectedId);
       });
   }
 
   onDelete(id: string): void {
-    this.usersService.delete(id).subscribe({
-      next: (res) => {
-        this.deleteConfirmSubscription.unsubscribe();
+    this.usersService.delete(id).pipe(take(1)).subscribe({
+      next: () => {
         this.toastr.success('Users deleted successfully');
         this.getUsers();
       },
-      error: (err) => {
+      error: () => {
         this.toastr.error('Something was wrong. Try again');
       },
     });
@@ -120,15 +126,25 @@ export class UsersListComponent implements OnInit {
   }
 
   private getUsers(): void {
-    this.usersService.getAll().subscribe((res) => {
-      this.users = res.rows;
-      this.dataSource = new MatTableDataSource(res.rows);
-      this.dataSource.paginator = this.paginator;
+    this.usersService.getAll().pipe(take(1)).subscribe({
+      next: (res) => {
+        this.setUsersData(res.rows);
+      },
+      error: () => {
+        this.toastr.error('Failed to load users');
+        this.setUsersData([]);
+      },
     });
   }
 
+  private setUsersData(rows: Users[]): void {
+    this.users = rows;
+    this.dataSource = new MatTableDataSource(rows);
+    this.dataSource.paginator = this.paginator;
+  }
+
   redirectToSwagger() {
-    return process.env.NODE_ENV === 'production'
+    return environment.production
       ? window.location.origin + '/api-docs/#/Users'
       : 'http://localhost:8080/api-docs/#/Users';
   }

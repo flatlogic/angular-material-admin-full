@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {MatDialogRef} from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-grid',
-  templateUrl: './grid.component.html',
-  styleUrls: ['./grid.component.scss']
+    selector: 'app-grid',
+    templateUrl: './grid.component.html',
+    styleUrls: ['./grid.component.scss'],
+    standalone: false
 })
 export class GridComponent {
 

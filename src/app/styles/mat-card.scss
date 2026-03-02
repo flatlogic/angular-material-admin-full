@@ -1,4 +1,5 @@
-@import "colors";
+@use "src/app/styles/variables" as *;
+@use "src/app/styles/font" as *;
 
 $card-font-color: $dark-grey;
 $card-title-font-color: $grey;
@@ -10,7 +11,7 @@ $card-shadow: 0 3px 11px 0 $shadow-white, 0 3px 3px -2px $shadow-grey, 0 1px 8px
 $card-background-dark-theme: #23232D;
 
 @mixin mat-card() {
-  .mat-card {
+  .mat-mdc-card {
     color: $card-font-color;
     margin: 0;
     box-shadow: $card-shadow;
@@ -20,7 +21,7 @@ $card-background-dark-theme: #23232D;
       box-shadow: $card-shadow;
     }
 
-    .mat-card-title {
+    .mat-mdc-card-title {
       &>p {
         font-size: $card-title-font-size;
         font-weight: $card-title-font-weight;
@@ -31,7 +32,7 @@ $card-background-dark-theme: #23232D;
 }
 
 @mixin mat-card-dark() {
-  .mat-card {
+  .mat-mdc-card {
     color: $white;
     background-color: $card-background-dark-theme;
 
@@ -43,25 +44,25 @@ $card-background-dark-theme: #23232D;
       box-shadow: none;
     }
 
-    .mat-card-title {
+    .mat-mdc-card-title {
       & p {
         color: $white;
       }
     }
 
-    .mat-card-subtitle {
+    .mat-mdc-card-subtitle {
       & p {
         color: #D6D6D6;
       }
     }
 
-    .mat-card-content {
+    .mat-mdc-card-content {
       & p {
         color: #D6D6D6;
       }
     }
 
-    .mat-card-footer {
+    .mat-mdc-card-footer {
       & p {
         color: #D6D6D6;
       }

@@ -1,7 +1,5 @@
-@import 'src/app/styles/font';
-@import 'src/app/styles/colors';
-@import 'src/app/styles/variables';
-@import 'src/app/styles/variables';
+@use 'src/app/styles/font' as *;
+@use 'src/app/styles/variables' as *;
 
 .card {
   margin-top: 24px;
@@ -41,11 +39,13 @@ textarea {
   font-size: $fs-regular;
 }
 
+/* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version. */
 .mat-form-field-wrapper {
   margin: 0;
   padding: 0;
 }
 
+/* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version. */
 .mat-form-field-appearance-outline .mat-form-field-infix {
   padding: 20px 0 16px 0;
   border: none;
@@ -66,7 +66,7 @@ textarea {
   height: auto;
 }
 
-button.mat-flat-button + button.mat-flat-button {
+button.mat-mdc-unelevated-button + button.mat-flat-button {
   margin-left: 8px;
 }
 
@@ -90,13 +90,14 @@ button.mat-flat-button + button.mat-flat-button {
   margin: 0 !important;
 }
 
-.mat-checkbox,
+/* TODO(mdc-migration): The following rule targets internal classes of checkbox that may no longer apply for the MDC version. */
+.mat-mdc-checkbox,
 .mat-checkbox-inner-container,
 .mat-checkbox-inner-container-no-side-margin {
   margin-left: 10px !important;
 }
 
-.mat-radio-button {
+.mat-mdc-radio-button {
   margin-left: 16px;
 }
 

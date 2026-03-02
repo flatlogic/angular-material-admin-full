@@ -1,63 +1,100 @@
-@import 'src/app/styles/colors';
-@import 'src/app/styles/variables';
+@use 'src/app/styles/variables' as *;
+@use 'src/app/styles/font' as *;
 
 .tool-box {
-  margin-top: 36px;
+  margin-top: 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(247, 249, 255, 0.95));
+  border: 1px solid rgba(94, 139, 255, 0.12);
+  box-shadow: 0 8px 22px rgba(24, 40, 72, 0.08);
 
   @media (max-width: $small) {
     flex-wrap: wrap;
+    gap: 12px;
   }
 }
 
 .time-selects-wrapper {
   display: flex;
+  align-items: center;
+  gap: 8px;
 
   @media (max-width: $small) {
-    margin-bottom: 16px;
+    width: 100%;
+    flex-wrap: wrap;
   }
 }
 
-app-type-item-select + app-time-period-select {
-  margin-left: 8px;
+app-type-item-select,
+app-time-period-select {
+  display: block;
+  min-width: 150px;
 }
 
+/* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version. */
 .mat-button-toggle-group {
-  height: 36px;
+  height: 38px;
   display: flex;
   align-items: center;
-  border-color: $blue;
+  border-color: rgba(94, 139, 255, 0.5);
+  border-radius: 10px;
+  overflow: hidden;
 }
 
+.view-mode-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.view-mode-title {
+  color: $grey;
+  font-size: $fs-small;
+  font-weight: $fw-normal;
+}
+
+/* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version. */
 .mat-button-toggle {
   background-color: transparent;
-  color: $blue;
-  padding: 0 7px;
+  color: $dark-grey;
+  padding: 0 8px;
 }
 
+/* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version. */
 .mat-button-toggle-checked {
   background-color: $blue;
   color: $white;
 }
 
 .result-title {
-  margin: 8px 0 0 0;
-  color: $dark-grey;
+  margin: 14px 0 0;
+  color: $grey;
+  font-size: $fs-small;
+  letter-spacing: 0.2px;
 }
 
 .result-wrapper {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  align-items: start;
   width: 100%;
+  gap: 24px;
 
-  @media (max-width: $small) {
-    flex-wrap: wrap-reverse;
+  @media (max-width: $medium) {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 }
 
 .result-items-wrapper {
-  width: 70%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 
   @media (max-width: $small) {
     width: 100%;
@@ -65,11 +102,24 @@ app-type-item-select + app-time-period-select {
 }
 
 .result-filtering-wrapper {
-  width: 30%;
-  margin: 24px 0 0 24px;
+  width: 100%;
+  margin-top: 20px;
+  position: sticky;
+  top: 84px;
+
+  @media (max-width: $large) {
+    width: 280px;
+    flex-basis: 280px;
+  }
+
+  @media (max-width: $medium) {
+    position: static;
+    width: 100%;
+    margin-top: 0;
+  }
 
   @media (max-width: $small) {
     width: 100%;
-    margin: 36px 0 0 0;
+    margin: 0;
   }
 }

@@ -1,7 +1,6 @@
-<div style="overflow-y: scroll; max-height: 80vh;">
+<h2 mat-dialog-title class="title">Subscribe</h2>
 
-  <h3 class="title">Subscribe</h3>
-
+<mat-dialog-content class="long-content-scroll">
   <p class="text">Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam.
     Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque
     nisl consectetur et. Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
@@ -114,11 +113,9 @@
     purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
     consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
   </p>
+</mat-dialog-content>
 
-  <div class="button-wrapper">
-    <button class="button" mat-stroked-button color="primary" (click)="close()" tabindex="-1">DISAGREE</button>
-    <button class="button" mat-raised-button color="primary" (click)="close()" tabindex="-1">AGREE</button>
-  </div>
-
-</div>
-
+<mat-dialog-actions align="end">
+  <button class="button" mat-stroked-button color="primary" (click)="close()">DISAGREE</button>
+  <button class="button" mat-raised-button color="primary" (click)="close()">AGREE</button>
+</mat-dialog-actions>

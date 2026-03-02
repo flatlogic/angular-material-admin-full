@@ -1,32 +1,50 @@
-import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { EChartsOption } from 'echarts';
 
 import {colors} from '../../../../../consts';
 import {ChartOptions} from '../../models/chart-options';
 
 @Component({
-  selector: 'app-update-pie-chart',
-  templateUrl: './update-pie-chart.component.html',
-  styleUrls: ['./update-pie-chart.component.scss']
+    selector: 'app-update-pie-chart',
+    templateUrl: './update-pie-chart.component.html',
+    styleUrls: ['./update-pie-chart.component.scss'],
+    standalone: false
 })
-export class UpdatePieChartComponent implements OnInit, AfterViewInit {
-  @ViewChild('chart') chart: ElementRef;
-  // @ts-ignore
-  public chartObj: ApexCharts;
-  public chartOptions: Partial<ChartOptions>;
+export class UpdatePieChartComponent implements OnInit {
+  public chartOptions: Partial<ChartOptions> = {};
   public colors: typeof colors = colors;
 
-  ngOnInit(): void {
-    this.initChart();
+  public get echartsOptions(): EChartsOption {
+    const options = this.chartOptions;
+    const values: number[] = this.getNumericSeries();
+    const labels = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+    const data = values.map((value: number, index: number) => ({
+      value,
+      name: labels[index] ?? `Item ${index + 1}`
+    }));
+
+    return {
+      color: options?.colors ?? [colors.BLUE, colors.PINK, colors.YELLOW, colors.GREEN],
+      tooltip: { trigger: 'item' },
+      legend: {
+        show: true,
+        orient: 'vertical',
+        right: 0,
+        top: 'middle'
+      },
+      series: [
+        {
+          type: 'pie',
+          radius: ['50%', '72%'],
+          data,
+          label: { show: false }
+        }
+      ]
+    } as EChartsOption;
   }
 
-  public ngAfterViewInit() {
-    // @ts-ignore
-    this.chartObj = new ApexCharts(
-      this.chart.nativeElement,
-      this.chartOptions
-    )
-
-    this.chartObj.render();
+  public ngOnInit(): void {
+    this.initChart();
   }
 
   public initChart(): void {
@@ -49,28 +67,44 @@ export class UpdatePieChartComponent implements OnInit, AfterViewInit {
   }
 
   public appendData(): void {
-    let newSeries = this.chartOptions.series;
-    // @ts-ignore
-    newSeries.push(Math.floor(Math.random() * (100 - 1 + 1)) + 1);
-
-    this.chartObj.updateSeries(newSeries);
+    const series = this.getNumericSeries();
+    series.push(Math.floor(Math.random() * 100) + 1);
+    this.chartOptions = {
+      ...this.chartOptions,
+      series
+    };
   }
 
   public removeData(): void {
-    let newSeries = this.chartOptions.series;
-    newSeries.pop();
-
-    this.chartObj.updateSeries(newSeries);
+    const series = this.getNumericSeries();
+    series.pop();
+    this.chartOptions = {
+      ...this.chartOptions,
+      series
+    };
   }
 
   public randomize(): void {
-    let newSeries = this.chartOptions.series;
-
-    // @ts-ignore
-    this.chartObj.updateSeries(newSeries.map(() => Math.floor(Math.random() * (100 - 1 + 1)) + 1));
+    const current = this.getNumericSeries();
+    this.chartOptions = {
+      ...this.chartOptions,
+      series: current.map(() => Math.floor(Math.random() * 100) + 1)
+    };
   }
 
   public reset(): void {
-    this.chartObj.updateSeries([44, 55, 13, 33]);
+    this.chartOptions = {
+      ...this.chartOptions,
+      series: [44, 55, 13, 33]
+    };
+  }
+
+  private getNumericSeries(): number[] {
+    if (!Array.isArray(this.chartOptions.series)) {
+      return [];
+    }
+
+    const series = this.chartOptions.series as unknown[];
+    return series.filter((item): item is number => typeof item === 'number');
   }
 }

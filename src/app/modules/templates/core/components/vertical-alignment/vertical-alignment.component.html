@@ -1,10 +1,13 @@
 <div class="wrapper">
-  <mat-card class="card">
+  <mat-card appearance="outlined" class="card">
     <mat-card-title>
-      <p>Vertical Alignment</p>
+      <p>Vertical alignment</p>
     </mat-card-title>
     <mat-card-subtitle>
-      <p>Use flexbox alignment utilities to vertically and horizontally align columns.</p>
+      <p>
+        Combine <code>mat-grid-list</code> with alignment properties on child blocks to control
+        vertical position inside each tile.
+      </p>
     </mat-card-subtitle>
 
     <mat-card-content>
@@ -28,26 +31,29 @@
 
       <pre class="code-wrapper">
 <code class="code blue">{{'<'}}mat-grid-list cols="3" rowHeight="130" gutterSize="24"{{'>'}}</code>
-  <code class="code pink">{{'<'}}mat-grid-tile [colspan]="1" [rowspan]="1"{{'>'}}</code>
+  <code class="code pink">{{'<'}}mat-grid-tile{{'>'}}</code>
     <code class="code grey">{{'<'}}div style="align-self: flex-start"{{'>'}}Start{{'<'}}/div{{'>'}}</code>
   <code class="code pink">{{'<'}}/mat-grid-tile{{'>'}}</code>
-  <code class="code pink">{{'<'}}mat-grid-tile [colspan]="1" [rowspan]="1"{{'>'}}</code>
+  <code class="code pink">{{'<'}}mat-grid-tile{{'>'}}</code>
     <code class="code grey">{{'<'}}div style="align-self: center"{{'>'}}Center{{'<'}}/div{{'>'}}</code>
   <code class="code pink">{{'<'}}/mat-grid-tile{{'>'}}</code>
-  <code class="code pink">{{'<'}}mat-grid-tile [colspan]="1" [rowspan]="1"{{'>'}}</code>
+  <code class="code pink">{{'<'}}mat-grid-tile{{'>'}}</code>
     <code class="code grey">{{'<'}}div style="align-self: flex-end"{{'>'}}End{{'<'}}/div{{'>'}}</code>
   <code class="code pink">{{'<'}}/mat-grid-tile{{'>'}}</code>
 <code class="code blue">{{'<'}}/mat-grid-list{{'>'}}</code>
-    </pre>
+      </pre>
     </mat-card-content>
   </mat-card>
 
-  <mat-card class="card">
+  <mat-card appearance="outlined" class="card">
     <mat-card-title>
-      <p>Vertical Alignment</p>
+      <p>Horizontal distribution</p>
     </mat-card-title>
     <mat-card-subtitle>
-      <p>Use flexbox alignment utilities to vertically and horizontally align columns.</p>
+      <p>
+        To align the whole block horizontally, wrap the grid in a flex container and set
+        <code>justify-content</code> on the wrapper.
+      </p>
     </mat-card-subtitle>
 
     <mat-card-content>
@@ -104,40 +110,11 @@
       <pre class="code-wrapper">
 <code class="code grey">{{'<'}}div style="display: flex; justify-content: flex-end"{{'>'}}</code>
   <code class="code blue">{{'<'}}mat-grid-list cols="2" rowHeight="52" gutterSize="24"{{'>'}}</code>
-    <code class="code pink">{{'<'}}mat-grid-tile [colspan]="1" [rowspan]="1"{{'>'}}</code>
-      <code class="code grey">{{'<'}}div{{'>'}}{{'<'}}span{{'>'}}1{{'<'}}/span{{'>'}}{{'<'}}/div{{'>'}}</code>
-    <code class="code pink">{{'<'}}/mat-grid-tile{{'>'}}</code>
-    <code class="code pink">{{'<'}}mat-grid-tile [colspan]="1" [rowspan]="1"{{'>'}}</code>
-      <code class="code grey">{{'<'}}div{{'>'}}{{'<'}}span{{'>'}}2{{'<'}}/span{{'>'}}{{'<'}}/div{{'>'}}</code>
-    <code class="code pink">{{'<'}}/mat-grid-tile{{'>'}}</code>
+    <code class="code pink">{{'<'}}mat-grid-tile{{'>'}}{{'<'}}div{{'>'}}1{{'<'}}/div{{'>'}}{{'<'}}/mat-grid-tile{{'>'}}</code>
+    <code class="code pink">{{'<'}}mat-grid-tile{{'>'}}{{'<'}}div{{'>'}}2{{'<'}}/div{{'>'}}{{'<'}}/mat-grid-tile{{'>'}}</code>
   <code class="code blue">{{'<'}}/mat-grid-list{{'>'}}</code>
 <code class="code grey">{{'<'}}/div{{'>'}}</code>
-
-<code class="code grey">{{'<'}}div{{'>'}}</code>
-  <code class="code blue">{{'<'}}mat-grid-list cols="2" rowHeight="52" gutterSize="24"{{'>'}}</code>
-    <code class="code pink">{{'<'}}mat-grid-tile [colspan]="1" [rowspan]="1"{{'>'}}</code>
-      <code class="code grey">{{'<'}}div{{'>'}}{{'<'}}span{{'>'}}1{{'<'}}/span{{'>'}}{{'<'}}/div{{'>'}}</code>
-    <code class="code pink">{{'<'}}/mat-grid-tile{{'>'}}</code>
-    <code class="code pink">{{'<'}}mat-grid-tile [colspan]="1" [rowspan]="1"{{'>'}}</code>
-      <code class="code grey">{{'<'}}div{{'>'}}{{'<'}}span{{'>'}}2{{'<'}}/span{{'>'}}{{'<'}}/div{{'>'}}</code>
-    <code class="code pink">{{'<'}}/mat-grid-tile{{'>'}}</code>
-  <code class="code blue">{{'<'}}/mat-grid-list{{'>'}}</code>
-<code class="code grey">{{'<'}}/div{{'>'}}</code>
-
-<code class="code grey">{{'<'}}div{{'>'}}</code>
-  <code class="code blue">{{'<'}}mat-grid-list cols="3" rowHeight="52" gutterSize="24"{{'>'}}</code>
-    <code class="code pink">{{'<'}}mat-grid-tile [colspan]="1" [rowspan]="1"{{'>'}}</code>
-      <code class="code grey">{{'<'}}div>{{'<'}}span>1{{'<'}}/span>{{'<'}}/div{{'>'}}</code>
-    <code class="code pink">{{'<'}}/mat-grid-tile{{'>'}}</code>
-    <code class="code pink">{{'<'}}mat-grid-tile [colspan]="1" [rowspan]="1"{{'>'}}</code>
-      <code class="code grey">{{'<'}}div{{'>'}}{{'<'}}span{{'>'}}2{{'<'}}/span{{'>'}}{{'<'}}/div{{'>'}}</code>
-    <code class="code pink">{{'<'}}/mat-grid-tile{{'>'}}</code>
-    <code class="code pink">{{'<'}}mat-grid-tile [colspan]="1" [rowspan]="1"{{'>'}}</code>
-      <code class="code grey">{{'<'}}div{{'>'}}{{'<'}}span{{'>'}}3{{'<'}}/span>{{'<'}}/div{{'>'}}</code>
-    <code class="code pink">{{'<'}}/mat-grid-tile{{'>'}}</code>
-  <code class="code blue">{{'<'}}/mat-grid-list{{'>'}}</code>
-<code class="code grey">{{'<'}}/div{{'>'}}</code>
-    </pre>
+      </pre>
     </mat-card-content>
   </mat-card>
 </div>

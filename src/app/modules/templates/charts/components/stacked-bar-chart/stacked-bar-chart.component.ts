@@ -1,25 +1,73 @@
-import {Component, Input} from '@angular/core';
-import {BarChartData} from '../../models';
+import {Component} from '@angular/core';
+import { EChartsOption } from 'echarts';
 import {ChartOptions} from '../../models/chart-options';
 
 import {colors} from '../../../../../consts';
 
 @Component({
-  selector: 'app-stacked-bar-chart',
-  templateUrl: './stacked-bar-chart.component.html',
-  styleUrls: ['./stacked-bar-chart.component.scss']
+    selector: 'app-stacked-bar-chart',
+    templateUrl: './stacked-bar-chart.component.html',
+    styleUrls: ['./stacked-bar-chart.component.scss'],
+    standalone: false
 })
 export class StackedBarChartComponent {
-  @Input() stackedBarChartData: BarChartData;
-  public apexStackedBarChartOptions: Partial<ChartOptions>;
+  private static readonly DEFAULT_COLORS = [
+    colors.GREEN,
+    colors.BLUE,
+    colors.PINK,
+    colors.VIOLET,
+    colors.YELLOW,
+  ];
+  public apexStackedBarChartOptions: Partial<ChartOptions> = this.buildChartOptions();
   public colors: typeof colors = colors;
 
-  public ngOnInit(): void {
-    this.initChart();
+  public get echartsOptions(): EChartsOption {
+    const options = this.apexStackedBarChartOptions;
+    const xaxis = options?.xaxis as { categories?: Array<string | number> } | undefined;
+    const categories = xaxis?.categories ?? [];
+    const sourceSeries = (
+      Array.isArray(options?.series)
+        ? options.series.filter((item) => typeof item === 'object' && item !== null)
+        : []
+    ) as Array<{ name?: string; data?: number[] }>;
+    const series = sourceSeries.map((item) => ({
+      type: 'bar',
+      name: item.name ?? '',
+      stack: 'total',
+      data: item.data ?? [],
+      barMaxWidth: 24
+    }));
+
+    return {
+      color: options?.colors ?? StackedBarChartComponent.DEFAULT_COLORS,
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: { type: 'shadow' }
+      },
+      legend: { show: false },
+      grid: {
+        top: 12,
+        left: 8,
+        right: 8,
+        bottom: 8,
+        containLabel: true
+      },
+      xAxis: {
+        type: 'value',
+        axisLabel: {
+          formatter: (value: number) => `${value}K`
+        }
+      },
+      yAxis: {
+        type: 'category',
+        data: categories
+      },
+      series
+    } as EChartsOption;
   }
 
-  public initChart(): void {
-    this.apexStackedBarChartOptions = {
+  private buildChartOptions(): Partial<ChartOptions> {
+    return {
       series: [{
         name: 'Marine Sprite',
         data: [44, 55, 41, 37, 22, 43, 21]

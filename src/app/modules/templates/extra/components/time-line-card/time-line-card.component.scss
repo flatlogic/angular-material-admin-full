@@ -1,6 +1,5 @@
-@import './src/app/styles/colors';
-@import './src/app/styles/font';
-@import './src/app/styles/variables';
+@use './src/app/styles/font' as *;
+@use './src/app/styles/variables' as *;
 
 .card {
   width: 100%;
@@ -121,9 +120,11 @@
   margin-left: 8px;
 }
 
-.agm-map {
+.osm-map {
   width: 100%;
-  height: 100%;
+  height: 200px;
+  border: 0;
+  display: block;
 }
 
 .icons-block {

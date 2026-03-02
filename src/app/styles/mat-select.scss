@@ -1,12 +1,19 @@
-@import 'colors';
-@import 'font';
+@use "src/app/styles/variables" as *;
+@use "src/app/styles/font" as *;
 
 @mixin mat-select {
+  .mat-mdc-select {
+    .mat-mdc-select-arrow-wrapper {
+      margin-left: 8px;
+    }
+  }
+
+  /* TODO(mdc-migration): The following rule targets internal classes of select that may no longer apply for the MDC version. */
   & .mat-select-value {
     max-width: max-content;
     overflow: unset;
   }
-
+  /* TODO(mdc-migration): The following rule targets internal classes of select that may no longer apply for the MDC version. */
   & .mat-select-value-text {
     font-size: $fs-normal;
     font-weight: $fw-lighter;
@@ -15,22 +22,24 @@
 }
 
 @mixin mat-select-dark {
+  /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version. */
   .mat-form-field-appearance-outline .mat-form-field-outline {
     color: $white;
 
   }
-
+  /* TODO(mdc-migration): The following rule targets internal classes of select that may no longer apply for the MDC version. */
   .mat-select-arrow {
     color: #D6D6D6;
   }
-
+  /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version. */
   .mat-form-field-label {
     color: $white;
   }
-
+  /* TODO(mdc-migration): The following rule targets internal classes of select that may no longer apply for the MDC version. */
+  /* TODO(mdc-migration): The following rule targets internal classes of select that may no longer apply for the MDC version. */
   .mat-select-trigger {
     width: 100%;
-
+    /* TODO(mdc-migration): The following rule targets internal classes of select that may no longer apply for the MDC version. */
     & .mat-select-value-text {
       color: $white;
     }

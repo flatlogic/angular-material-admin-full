@@ -1,10 +1,10 @@
-@import 'src/app/styles/font';
-@import 'src/app/styles/colors';
+@use 'src/app/styles/font' as *;
+@use 'src/app/styles/colors' as *;
 
 .date-menu {
   border: none;
   width: auto;
-  padding: 8px 0 8px 4px;
+  padding: 8px 4px 8px 4px;
 }
 
 .date-option {

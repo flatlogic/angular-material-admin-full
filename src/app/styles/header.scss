@@ -1,3 +1,5 @@
+@use "src/app/styles/variables" as *;
+
 //== Header
 
 $header-height: 64px;
@@ -13,7 +15,7 @@ $header-title-color-dark-theme: #889AFF;
 
 @mixin header() {
   .header {
-    .mat-mini-fab {
+    .mat-mdc-mini-fab {
       background-color: $header-button-background-color;
       box-shadow: $header-button-box-shadow;
 
@@ -32,7 +34,7 @@ $header-title-color-dark-theme: #889AFF;
   .mat-toolbar.mat-primary.header {
     background-color: $header-background-dark-theme;
 
-    .mat-mini-fab {
+    .mat-mdc-mini-fab {
       background-color: $header-button-background-color;
       box-shadow: $header-button-box-shadow;
 

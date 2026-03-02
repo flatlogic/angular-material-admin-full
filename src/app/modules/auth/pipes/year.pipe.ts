@@ -1,11 +1,18 @@
-import { Pipe, PipeTransform } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'year',
+    name: 'year',
+    standalone: true
 })
-export class YearPipe extends DatePipe implements PipeTransform {
-  transform(date: Date): any {
-    return super.transform(date, 'y');
+export class YearPipe implements PipeTransform {
+  private readonly datePipe = new DatePipe('en-US');
+
+  transform(value: Date | string | number | null | undefined): string | null {
+    if (value === null || value === undefined) {
+      return null;
+    }
+
+    return this.datePipe.transform(value, 'y');
   }
 }

@@ -5,9 +5,10 @@ import {MatPaginator} from '@angular/material/paginator';
 import {Nutrition} from '../../models/nutrition';
 
 @Component({
-  selector: 'app-nutrition-table',
-  templateUrl: './nutrition-table.component.html',
-  styleUrls: ['./nutrition-table.component.scss']
+    selector: 'app-nutrition-table',
+    templateUrl: './nutrition-table.component.html',
+    styleUrls: ['./nutrition-table.component.scss'],
+    standalone: false
 })
 export class NutritionTableComponent implements OnInit {
   @Input() nutritionTableData: Nutrition[];
@@ -38,10 +39,10 @@ export class NutritionTableComponent implements OnInit {
   }
 
   /** The label for the checkbox on the passed row */
-  public checkboxLabel(row?: any): string {
+  public checkboxLabel(row?: Nutrition): string {
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.name}`;
   }
 }

@@ -1,4 +1,4 @@
-@import "src/app/styles/colors";
+@use "src/app/styles/colors" as *;
 
 .card {
   box-shadow: 0 3px 11px 0 $shadow-white, 0 3px 3px -2px $shadow-grey, 0 1px 8px 0 $shadow-dark-grey;
@@ -12,12 +12,13 @@
 }
 
 .card-content {
-  height: inherit;
-  padding: 24px 0;
+  height: 100%;
+  padding: 0 !important;
   box-sizing: border-box;
 }
 
 .map {
   width: 100%;
   height: 100%;
+  display: block;
 }

@@ -1,9 +1,8 @@
 import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import dayGridPlugin, {DayGridView} from '@fullcalendar/daygrid';
-import {PluginDef} from '@fullcalendar/core/plugin-system';
+import dayGridPlugin from '@fullcalendar/daygrid';
 import {colors, routes} from '../../../../../consts';
-import {Calendar, EventApi, View} from '@fullcalendar/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {Calendar, CalendarOptions, DateSelectArg, EventApi, EventClickArg} from '@fullcalendar/core';
+import {FormControl, FormGroup} from '@angular/forms';
 import {MatDialog} from '@angular/material/dialog';
 import {DayInfoComponent} from '../../components/day-info/day-info.component';
 import {NewDayEventComponent} from '../../components/new-day-event/new-day-event.component';
@@ -13,7 +12,7 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 
 
 import interactionPlugin, { Draggable } from '@fullcalendar/interaction';
-import {take} from 'rxjs/operators';
+import {take} from 'rxjs';
 
 enum CalendarViewsTypes {
   month = 'dayGridMonth',
@@ -21,10 +20,20 @@ enum CalendarViewsTypes {
   days = 'timeGridDay'
 }
 
+type CalendarEventFormControls = {
+  title: FormControl<string | null>;
+  start: FormControl<Date | null>;
+  end: FormControl<Date | null>;
+  allDay: FormControl<boolean>;
+  backgroundColor: FormControl<string | null>;
+  textColor: FormControl<string | null>;
+};
+
 @Component({
-  selector: 'app-calendar-page',
-  templateUrl: './calendar-page.component.html',
-  styleUrls: ['./calendar-page.component.scss']
+    selector: 'app-calendar-page',
+    templateUrl: './calendar-page.component.html',
+    styleUrls: ['./calendar-page.component.scss'],
+    standalone: false
 })
 export class CalendarPageComponent implements OnInit, AfterViewInit {
   @ViewChild('calendar', { static: false }) public calendarComponent: FullCalendarComponent;
@@ -37,9 +46,9 @@ export class CalendarPageComponent implements OnInit, AfterViewInit {
   private draggable: Draggable;
   public routes: typeof routes = routes;
   public colors: typeof colors = colors;
-  public calendarPlugins: PluginDef[] = [dayGridPlugin, timeGridPlugin, interactionPlugin];
+  public calendarOptions: CalendarOptions = {};
   public currentEvent: EventApi;
-  public eventForm: FormGroup;
+  public eventForm!: FormGroup<CalendarEventFormControls>;
   public currentDate: Date = new Date();
   public d = this.currentDate.getDate();
   public m = this.currentDate.getMonth();
@@ -118,17 +127,30 @@ export class CalendarPageComponent implements OnInit, AfterViewInit {
     }];
 
   constructor(
-    private fb: FormBuilder,
     public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
-    this.eventForm = this.fb.group({
-      title: [null],
-      start: [null],
-      end: [null],
-      allDay: [true]
+    this.eventForm = new FormGroup<CalendarEventFormControls>({
+      title: new FormControl<string | null>(null),
+      start: new FormControl<Date | null>(null),
+      end: new FormControl<Date | null>(null),
+      allDay: new FormControl<boolean>(true, { nonNullable: true }),
+      backgroundColor: new FormControl<string | null>(null),
+      textColor: new FormControl<string | null>(null),
     });
+
+    this.calendarOptions = {
+      initialView: this.calendarViewTypes.month,
+      plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
+      droppable: true,
+      selectable: true,
+      editable: true,
+      headerToolbar: false,
+      drop: this.onDrop.bind(this),
+      select: this.onSelect.bind(this),
+      eventClick: this.onEventClick.bind(this),
+    };
   }
 
   public ngAfterViewInit(): void {
@@ -145,27 +167,13 @@ export class CalendarPageComponent implements OnInit, AfterViewInit {
   }
 
 
-  public onDrop({ draggedEl }: {
-    date: Date;
-    dateStr: string;
-    allDay: boolean;
-    draggedEl: HTMLElement;
-    jsEvent: MouseEvent;
-    view: View;
-  }): void {
-    draggedEl.parentNode.removeChild(draggedEl);
+  public onDrop({ draggedEl }: { draggedEl: HTMLElement }): void {
+    if (draggedEl.parentNode) {
+      draggedEl.parentNode.removeChild(draggedEl);
+    }
   }
 
-  public onSelect({ start, end, allDay }: {
-    start: Date;
-    end: Date;
-    startStr: string;
-    endStr: string;
-    allDay: boolean;
-    resource?: any;
-    jsEvent: MouseEvent;
-    view: View;
-  }): void {
+  public onSelect({ start, end, allDay }: DateSelectArg): void {
     this.eventForm.patchValue({
       start,
       end,
@@ -174,12 +182,7 @@ export class CalendarPageComponent implements OnInit, AfterViewInit {
     this.openNewEventDialog();
   }
 
-  public onEventClick({ event }: {
-    el: HTMLElement;
-    event: EventApi;
-    jsEvent: MouseEvent;
-    view: DayGridView;
-  }): void {
+  public onEventClick({ event }: EventClickArg): void {
     this.currentEvent = event;
     this.openDayInfoDialog(event);
   }
@@ -189,8 +192,8 @@ export class CalendarPageComponent implements OnInit, AfterViewInit {
       width: '300px',
       data: {
         start: event.start,
-        title: event._def.title,
-        description: event._def.extendedProps.description
+        title: event.title,
+        description: event.extendedProps['description']
       }
     });
   }
@@ -206,7 +209,7 @@ export class CalendarPageComponent implements OnInit, AfterViewInit {
       )
       .subscribe((result: string) => {
         const title: string = result;
-        const { start, end, allDay, backgroundColor, textColor } = this.eventForm.value;
+        const { start, end, allDay, backgroundColor, textColor } = this.eventForm.getRawValue();
 
         if (result && result.length !== 0) {
           this.calendarApi.addEvent({

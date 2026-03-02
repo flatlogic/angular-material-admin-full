@@ -6,25 +6,19 @@
   </mat-card-title>
 
   <mat-card-content class="server-chart__content">
-    <div class="server-chart__content-item" *ngFor="let chart of charts; let i = index">
-      <div class="server-chart__content-item-text-wrapper">
-        <p class="server-chart__content-item-text">{{serverDataTitles[i]}}</p>
+    @for (chart of charts; track chart; let i = $index) {
+      <div class="server-chart__content-item">
+        <div class="server-chart__content-item-text-wrapper">
+          <p class="server-chart__content-item-text">{{serverDataTitles[i]}}</p>
+        </div>
+        <div
+          echarts
+          class="server-chart__content-item-chart"
+          [options]="chart"
+          [style.height]="'52px'"
+          [style.width]="'100%'"
+        ></div>
       </div>
-      <apx-chart
-        style="width: 30%;"
-        [series]="chart.series"
-        [chart]="chart.chart"
-        [xaxis]="chart.xaxis"
-        [stroke]="chart.stroke"
-        [dataLabels]="chart.dataLabels"
-        [yaxis]="chart.yaxis"
-        [labels]="chart.labels"
-        [legend]="chart.legend"
-        [grid]="chart.grid"
-        [tooltip]="chart.tooltip"
-        [colors]="chart.colors"
-        [fill]="chart.fill"
-      ></apx-chart>
-    </div>
+    }
   </mat-card-content>
 </mat-card>

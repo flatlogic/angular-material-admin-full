@@ -1,12 +1,13 @@
-@import "../../../../styles/colors";
-@import "../../../../styles/font";
-@import "../../../../styles/variables";
+@use "../../../../styles/font" as *;
+@use "../../../../styles/variables" as *;
 
 .revenue-chart {
-  height: 192px;
+  display: flex;
+  flex-direction: column;
+  height: 252px;
 
   @media (min-width: 1280px) and (max-width: $xxl) {
-    height: 220px;
+    height: 280px;
   }
 
   &__header {
@@ -14,6 +15,8 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
+    margin: 0;
+    padding: 0;
 
     &-title {
       font-size: $fs-regular;
@@ -29,6 +32,10 @@
   &__content {
     display: flex;
     align-items: center;
+    flex: 1 1 auto;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
 
     &-chart {
       height: 140px;

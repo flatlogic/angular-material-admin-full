@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class FileUploaderService {
   constructor(private httpClient: HttpClient) {}
 
-  upload(data, url): Observable<any> {
-    return this.httpClient.post(url, data, { responseType: 'text' });
+  upload(data: FormData, url: string): Observable<string> {
+    return this.httpClient.post<string>(url, data, { responseType: 'text' as 'json' });
   }
 }

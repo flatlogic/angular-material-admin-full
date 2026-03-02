@@ -1,0 +1,54 @@
+{
+  "root": true,
+  "ignorePatterns": ["build/**/*", "node_modules/**/*"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": ["tsconfig.json"],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates"
+      ],
+      "rules": {
+        "@angular-eslint/directive-selector": "off",
+        "@angular-eslint/component-selector": "off",
+        "@angular-eslint/no-empty-lifecycle-method": "off",
+        "@angular-eslint/prefer-inject": "off",
+        "@angular-eslint/prefer-standalone": "off",
+        "@angular-eslint/use-lifecycle-interface": "off",
+        "@typescript-eslint/ban-types": "off",
+        "@typescript-eslint/ban-ts-comment": "off",
+        "@typescript-eslint/no-empty-function": "off",
+        "@typescript-eslint/no-extra-semi": "off",
+        "@typescript-eslint/no-unused-expressions": "off",
+        "@typescript-eslint/no-wrapper-object-types": "off",
+        "@typescript-eslint/no-inferrable-types": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "no-extra-boolean-cast": "off",
+        "no-extra-semi": "off",
+        "prefer-const": "off",
+        "prefer-spread": "off",
+        "@typescript-eslint/no-unused-vars": [
+          "warn",
+          {
+            "argsIgnorePattern": "^_",
+            "varsIgnorePattern": "^_"
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "rules": {
+        "@angular-eslint/template/prefer-control-flow": "off"
+      }
+    }
+  ]
+}

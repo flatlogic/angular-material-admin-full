@@ -1,43 +1,21 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {
-  ApexAxisChartSeries,
-  ApexChart,
-  ApexXAxis,
-  ApexDataLabels,
-  ApexStroke,
-  ApexYAxis,
-  ApexTitleSubtitle,
-  ApexLegend, ApexGrid, ApexFill
-} from 'ng-apexcharts';
-
+import { EChartsOption } from 'echarts';
 import { ServerChartData } from '../../models';
 import {colors} from '../../../../consts';
-
-type ChartOptions = {
-  series: ApexAxisChartSeries;
-  chart: ApexChart;
-  xaxis: ApexXAxis;
-  stroke: ApexStroke;
-  dataLabels: ApexDataLabels;
-  yaxis: ApexYAxis;
-  title: ApexTitleSubtitle;
-  labels: string[];
-  legend: ApexLegend;
-  subtitle: ApexTitleSubtitle;
-  grid: ApexGrid;
-  tooltip: any;
-  colors: string[];
-  fill: ApexFill;
-};
+import { MatCardModule } from '@angular/material/card';
+import { SettingsMenuComponent } from '../../../../shared/ui-elements';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 @Component({
-  selector: 'app-server-chart',
-  templateUrl: './server-chart.component.html',
-  styleUrls: ['./server-chart.component.scss']
+    selector: 'app-server-chart',
+    templateUrl: './server-chart.component.html',
+    styleUrls: ['./server-chart.component.scss'],
+    standalone: true,
+    imports: [MatCardModule, SettingsMenuComponent, NgxEchartsModule]
 })
 export class ServerChartComponent implements OnInit {
   @Input() serverChartData: ServerChartData;
-  public charts: Partial<ChartOptions>[];
+  public charts: EChartsOption[] = [];
   public serverDataTitles: string[];
   public colors: typeof colors = colors;
 
@@ -55,68 +33,39 @@ export class ServerChartComponent implements OnInit {
     ]
   }
 
-  public initChart(data: number[], color: string): Partial<ChartOptions> {
-    return  {
-      chart: {
-        type: 'area',
-        height: 80,
-        zoom: {
-          enabled: false
-        },
-        toolbar: {
-          show: false
-        }
+  public initChart(data: number[], color: string): EChartsOption {
+    return {
+      color: [color],
+      tooltip: { show: false },
+      grid: {
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0
+      },
+      xAxis: {
+        type: 'category',
+        data: this.serverChartData.dates,
+        axisLabel: { show: false },
+        axisTick: { show: false },
+        axisLine: { show: false }
+      },
+      yAxis: {
+        type: 'value',
+        show: false,
+        max: 50000
       },
       series: [
         {
+          type: 'line',
           name: 'STOCK ABC',
-          data: data
+          data,
+          smooth: true,
+          showSymbol: false,
+          lineStyle: { width: 2 },
+          areaStyle: { opacity: 0.3 }
         }
-      ],
-      colors: [color],
-      fill: {
-        type: 'solid',
-        opacity: 0.3
-      },
-      dataLabels: {
-        enabled: false
-      },
-      stroke: {
-        curve: 'smooth',
-        width: 2
-      },
-      labels: this.serverChartData.dates,
-      xaxis: {
-        type: 'datetime',
-        labels: {
-          show: false
-        },
-        axisBorder: {
-          show: false
-        },
-        axisTicks: {
-          show: false
-        }
-      },
-      yaxis: {
-        max: 50000,
-        show: false
-      },
-      legend: {
-        show: false
-      },
-      grid: {
-        show: false,
-        padding: {
-          bottom: 0,
-          left: 0,
-          right: 0,
-          top: 0
-        }
-      },
-      tooltip: {
-        enabled: false
-      }
-    };
+      ]
+    } as EChartsOption;
   }
 }

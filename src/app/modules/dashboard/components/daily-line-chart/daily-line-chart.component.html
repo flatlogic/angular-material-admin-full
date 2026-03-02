@@ -30,6 +30,12 @@
   </mat-card-title>
 
   <mat-card-content class="chart__content">
-    <div #chart class="chart__content-item"></div>
+    <div
+      echarts
+      class="chart__content-item"
+      [options]="echartsOptions"
+      [style.height]="chartOptions?.chart?.height | chartSize:'350px'"
+      [style.width]="chartOptions?.chart?.width | chartSize:'100%'"
+    ></div>
   </mat-card-content>
 </mat-card>

@@ -1,6 +1,6 @@
-<apx-chart
-  [series]="apexPieChartOptions.series"
-  [chart]="apexPieChartOptions.chart"
-  [legend]="apexPieChartOptions.legend"
-  [colors]="apexPieChartOptions.colors"
-></apx-chart>
+<div
+  echarts
+  [options]="echartsOptions"
+  [style.height]="apexPieChartOptions?.chart?.height | chartSize:'350px'"
+  [style.width]="apexPieChartOptions?.chart?.width | chartSize:'100%'"
+></div>

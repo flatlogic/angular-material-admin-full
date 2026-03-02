@@ -1,40 +1,36 @@
-<mat-card>
+<mat-card appearance="outlined">
   <mat-card-title>
     <p>How it works</p>
   </mat-card-title>
   <mat-card-subtitle>
     <p>
-      Material UI’s grid system uses a series of containers, rows, and columns to layout and align content.
-      It’s built with flexbox and is fully responsive. Below is an example and an in-depth look at how the
-      grid comes together.
+      In Angular Material 21, responsive page layout is usually built with CSS Grid or Flexbox, while
+      <code>mat-grid-list</code> is best for tile-based blocks with fixed row height.
+      The example below shows a simple responsive grid with equal columns.
     </p>
   </mat-card-subtitle>
 
   <mat-card-content>
-    <mat-grid-list cols="3" rowHeight="52" gutterSize="24">
-      <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <div class="first-grid-item">
-          <span class="grid-item-text">One of three</span>
-        </div>
-      </mat-grid-tile>
-      <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <div class="second-grid-item">
-          <span class="grid-item-text">One of three</span>
-        </div>
-      </mat-grid-tile>
-      <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <div class="third-grid-item">
-          <span class="grid-item-text">One of three</span>
-        </div>
-      </mat-grid-tile>
-    </mat-grid-list>
+    <div class="grid-demo">
+      <div class="first-grid-item">
+        <span class="grid-item-text">One of three</span>
+      </div>
+      <div class="second-grid-item">
+        <span class="grid-item-text">One of three</span>
+      </div>
+      <div class="third-grid-item">
+        <span class="grid-item-text">One of three</span>
+      </div>
+    </div>
 
     <pre class="code-wrapper">
-<code class="code blue">{{'<'}}mat-grid-list cols="3" rowHeight="52" gutterSize="24"{{'>'}}</code>
-  <code class="code pink">{{'<'}}mat-grid-tile [colspan]="1" [rowspan]="1"{{'>'}}One of three{{'<'}}/mat-grid-tile{{'>'}}</code>
-  <code class="code pink">{{'<'}}mat-grid-tile [colspan]="1" [rowspan]="1"{{'>'}}One of three{{'<'}}/mat-grid-tile{{'>'}}</code>
-  <code class="code pink">{{'<'}}mat-grid-tile [colspan]="1" [rowspan]="1"{{'>'}}One of three{{'<'}}/mat-grid-tile{{'>'}}</code>
-<code class="code blue">{{'<'}}/mat-grid-list{{'>'}}</code>
+<code class="code blue">{{'<'}}div class="layout-grid"{{'>'}}</code>
+  <code class="code pink">{{'<'}}div class="layout-grid__item"{{'>'}}One of three{{'<'}}/div{{'>'}}</code>
+  <code class="code pink">{{'<'}}div class="layout-grid__item"{{'>'}}One of three{{'<'}}/div{{'>'}}</code>
+  <code class="code pink">{{'<'}}div class="layout-grid__item"{{'>'}}One of three{{'<'}}/div{{'>'}}</code>
+<code class="code blue">{{'<'}}/div{{'>'}}</code>
+<code class="code grey">layout-grid: display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;</code>
+<code class="code grey">On mobile (&lt;576px): grid-template-columns: 1fr;</code>
     </pre>
   </mat-card-content>
 </mat-card>

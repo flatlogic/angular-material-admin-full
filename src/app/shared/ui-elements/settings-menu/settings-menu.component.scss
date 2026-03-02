@@ -1,13 +1,15 @@
-@import "src/app/styles/colors";
-@import "src/app/styles/variables";
+@use "src/app/styles/variables" as *;
 
 .settings-button {
-  box-shadow: none;
-  background-color: transparent;
+  --mat-fab-small-container-color: transparent;
+  --mat-fab-small-state-layer-color: transparent;
+  --mat-fab-small-ripple-color: transparent;
+  box-shadow: none !important;
+  background-color: transparent !important;
   color: $settings-button-color;
 
   &:hover {
-    background-color: $blue;
+    background-color: rgba($blue, 0.12) !important;
     color: $settings-button-color-hover;
   }
 

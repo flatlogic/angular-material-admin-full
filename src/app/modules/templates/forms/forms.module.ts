@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormElementsPageComponent } from './components/form-elements-page/form-elements-page.component';
 import { FormValidationPageComponent } from './components/form-validation-page/form-validation-page.component';
 import {FormsRoutingModule} from './forms-routing.module';
-import {SharedModule} from '../../../shared/shared.module';
 import { HorizontalFormComponent } from './components/horizontal-form/horizontal-form.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -19,6 +18,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { TextariasComponent } from './components/textarias/textarias.component';
 import { SimpleValidationComponent } from './components/simple-validation/simple-validation.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import { BreadcrumbComponent } from '../../../shared/ui-elements';
 
 
 
@@ -36,7 +36,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     imports: [
         CommonModule,
         FormsRoutingModule,
-        SharedModule,
+        BreadcrumbComponent,
         MatCardModule,
         MatFormFieldModule,
         MatInputModule,

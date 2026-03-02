@@ -1,51 +1,93 @@
-import { Component, Input, OnInit } from '@angular/core';
-import {
-  ApexAxisChartSeries,
-  ApexChart,
-  ApexDataLabels, ApexFill, ApexGrid,
-  ApexLegend, ApexMarkers,
-  ApexNonAxisChartSeries, ApexResponsive,
-  ApexStroke,
-  ApexTooltip,
-  ApexXAxis
-} from 'ng-apexcharts';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { EChartsOption } from 'echarts';
 
 import { DashedLineChartData } from '../../models';
 import {colors} from '../../../../../consts';
-
-type ChartOptions = {
-  series: ApexAxisChartSeries | ApexNonAxisChartSeries;
-  chart: ApexChart;
-  xaxis: ApexXAxis;
-  stroke: ApexStroke;
-  tooltip: ApexTooltip;
-  dataLabels: ApexDataLabels;
-  legend: ApexLegend;
-  colors: string[];
-  markers: ApexMarkers;
-  grid: ApexGrid;
-  labels: string[];
-  responsive: ApexResponsive[];
-  fill: ApexFill;
-};
+import { ChartOptions } from '../../models/chart-options';
 
 @Component({
-  selector: 'app-dashed-line-chart',
-  templateUrl: './dashed-line-chart.component.html',
-  styleUrls: ['./dashed-line-chart.component.scss']
+    selector: 'app-dashed-line-chart',
+    templateUrl: './dashed-line-chart.component.html',
+    styleUrls: ['./dashed-line-chart.component.scss'],
+    standalone: false
 })
-export class DashedLineChartComponent implements OnInit {
-  @Input() dashedLineChartData: DashedLineChartData;
-  public apexDashedLineChartOptions: Partial<ChartOptions>;
+export class DashedLineChartComponent implements OnChanges {
+  private static readonly DEFAULT_COLORS = [colors.BLUE, colors.YELLOW, colors.PINK];
+  @Input() dashedLineChartData: DashedLineChartData | null = null;
+  public apexDashedLineChartOptions: Partial<ChartOptions> | null = null;
   public colors: typeof colors = colors;
 
-  public ngOnInit(): void {
-    this.initChart();
+  public get echartsOptions(): EChartsOption {
+    const options = this.apexDashedLineChartOptions;
+    if (!options) {
+      return {};
+    }
+
+    const xaxis = options.xaxis as { categories?: Array<string | number> } | undefined;
+    const categories = xaxis?.categories ?? [];
+    const stroke = options.stroke as {
+      dashArray?: number[];
+      curve?: string;
+      width?: number;
+    } | undefined;
+    const dashArray = Array.isArray(stroke?.dashArray) ? stroke.dashArray : [];
+    const sourceSeries = (
+      Array.isArray(options.series)
+        ? options.series.filter((item) => typeof item === 'object' && item !== null)
+        : []
+    ) as Array<{ name?: string; data?: number[] }>;
+    const series = sourceSeries.map((item, index: number) => ({
+      type: 'line',
+      name: item.name ?? '',
+      data: item.data ?? [],
+      smooth: stroke?.curve === 'smooth',
+      showSymbol: false,
+      lineStyle: {
+        width: stroke?.width ?? 2,
+        type: dashArray[index] ? 'dashed' : 'solid'
+      }
+    }));
+
+    return {
+      color: options.colors ?? DashedLineChartComponent.DEFAULT_COLORS,
+      tooltip: { trigger: 'axis' },
+      legend: { show: false },
+      grid: {
+        top: 16,
+        left: 12,
+        right: 12,
+        bottom: 24,
+        containLabel: true
+      },
+      xAxis: {
+        type: 'category',
+        data: categories
+      },
+      yAxis: {
+        type: 'value',
+        splitLine: {
+          lineStyle: {
+            color: colors.LIGHT_BLUE
+          }
+        }
+      },
+      series
+    } as EChartsOption;
   }
 
-  public initChart(): void {
-    this.apexDashedLineChartOptions = {
-      series: this.dashedLineChartData.series,
+  public ngOnChanges(changes: SimpleChanges): void {
+    if (changes['dashedLineChartData']) {
+      if (!this.hasChartData()) {
+        this.apexDashedLineChartOptions = null;
+        return;
+      }
+      this.apexDashedLineChartOptions = this.buildChartOptions();
+    }
+  }
+
+  private buildChartOptions(): Partial<ChartOptions> {
+    return {
+      series: this.dashedLineChartData?.series ?? [],
       chart: {
         height: 350,
         type: 'line',
@@ -76,7 +118,7 @@ export class DashedLineChartComponent implements OnInit {
           trim: false,
           rotate: -45
         },
-        categories: this.dashedLineChartData.categories,
+        categories: this.dashedLineChartData?.categories ?? [],
       },
       tooltip: {
         y: [
@@ -107,5 +149,9 @@ export class DashedLineChartComponent implements OnInit {
         borderColor: colors.LIGHT_BLUE
       }
     };
+  }
+
+  private hasChartData(): boolean {
+    return !!this.dashedLineChartData?.series?.length && !!this.dashedLineChartData?.categories?.length;
   }
 }

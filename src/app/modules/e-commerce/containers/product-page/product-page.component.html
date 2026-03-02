@@ -1,6 +1,6 @@
 <app-breadcrumb [path]="routes.PRODUCT"></app-breadcrumb>
 
-<mat-card class="product-info-wrapper">
+<mat-card appearance="outlined" class="product-info-wrapper">
   <img class="product-image" [src]="(product$ | async).imageLarge" alt="product-image">
 
   <div class="info-wrapper">
@@ -71,7 +71,7 @@
   </div>
 </mat-card>
 
-<mat-card class="product-text-info-wrapper">
+<mat-card appearance="outlined" class="product-text-info-wrapper">
   <mat-card-title>
     <p>Product Info</p>
   </mat-card-title>
@@ -95,7 +95,9 @@
       <div>
         <p class="text-info-title">TECHNOLOGY</p>
         <ul>
-          <li *ngFor="let technology of (product$ | async).technology">{{technology}}</li>
+          @for (technology of (product$ | async).technology; track technology) {
+            <li>{{technology}}</li>
+          }
         </ul>
       </div>
     </div>
@@ -137,5 +139,7 @@
 <h3 class="similar-products-title">You may also like</h3>
 
 <div class="similar-products-wrapper">
-  <app-product-card class="similar-product" *ngFor="let product of (products$ | async)" [product]="product"></app-product-card>
+  @for (product of (products$ | async); track product) {
+    <app-product-card class="similar-product" [product]="product"></app-product-card>
+  }
 </div>

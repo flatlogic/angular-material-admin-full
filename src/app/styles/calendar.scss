@@ -1,3 +1,6 @@
+@use "src/app/styles/variables" as *;
+@use "src/app/styles/font" as *;
+
 @mixin calendar {
   .cal-month-view {
     background: transparent;

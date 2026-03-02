@@ -1,38 +1,16 @@
-import {AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
-import {
-  ApexAxisChartSeries,
-  ApexChart,
-  ApexFill,
-  ApexYAxis,
-  ApexTooltip,
-  ApexMarkers,
-  ApexXAxis,
-  ApexStroke,
-  ApexLegend,
-  ApexGrid,
-  ApexPlotOptions
-} from 'ng-apexcharts';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { EChartsOption } from 'echarts';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
 
 import { DailyLineChartData, TimeData } from '../../models';
 import { colors } from '../../../../consts';
 import { customTooltip } from '../../consts';
-import * as ApexCharts from 'apexcharts';
-
-type ChartOptions = {
-  series: ApexAxisChartSeries;
-  chart: ApexChart;
-  xaxis: ApexXAxis;
-  yaxis: ApexYAxis | ApexYAxis[];
-  labels: string[];
-  stroke: ApexStroke;
-  markers: ApexMarkers;
-  plotOptions: ApexPlotOptions;
-  fill: ApexFill;
-  tooltip: ApexTooltip;
-  legend: ApexLegend;
-  colors: string[];
-  grid: ApexGrid;
-};
+import { ChartOptions } from '../../../templates/charts/models/chart-options';
+import { ChartSizePipe } from '../../../../shared/pipes/chart-size.pipe';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 enum matSelectedFields {
   daily = 'Daily',
@@ -40,49 +18,99 @@ enum matSelectedFields {
   monthly = 'Monthly'
 }
 
+type LineSeriesItem = {
+  type?: string;
+  name?: string;
+  data?: unknown[];
+};
+
 @Component({
-  selector: 'app-daily-line-chart',
-  templateUrl: './daily-line-chart.component.html',
-  styleUrls: ['./daily-line-chart.component.scss']
+    selector: 'app-daily-line-chart',
+    templateUrl: './daily-line-chart.component.html',
+    styleUrls: ['./daily-line-chart.component.scss'],
+    standalone: true,
+    imports: [
+      CommonModule,
+      FormsModule,
+      MatCardModule,
+      MatSelectModule,
+      ChartSizePipe,
+      NgxEchartsModule,
+    ]
 })
-export class DailyLineChartComponent implements OnInit, OnChanges, AfterViewInit {
+export class DailyLineChartComponent implements OnInit, OnChanges {
   @Input() dailyLineChartData: DailyLineChartData;
   @Input() currentTheme: string;
   @Input() currentMode: string;
-  @ViewChild('chart') chart: ElementRef;
-
-  // @ts-ignore
-  public chartObj: ApexCharts;
-  public chartOptions: Partial<ChartOptions>;
+  public chartOptions: Partial<ChartOptions> = {};
   public matSelectFields: typeof matSelectedFields = matSelectedFields;
   public selectedMatSelectValue = matSelectedFields.monthly;
   public colors: typeof colors = colors;
+
+  public get echartsOptions(): EChartsOption {
+    const options = this.chartOptions;
+    const labels = Array.isArray(options?.labels) ? options.labels : [];
+    const strokeWidth = this.getNumberArray((options?.stroke as { width?: unknown } | undefined)?.width);
+    const strokeCurve = this.getStringArray((options?.stroke as { curve?: unknown } | undefined)?.curve);
+    const markerSizes = this.getNumberArray((options?.markers as { size?: unknown } | undefined)?.size);
+    const sourceSeries = this.getSeriesArray(options?.series);
+    const isStacked = (options?.chart as { stacked?: boolean } | undefined)?.['stacked'] ?? false;
+
+    const series = sourceSeries.map((item: LineSeriesItem, index: number) => {
+      const isArea = item.type === 'area';
+      return {
+        type: 'line',
+        name: item.name ?? '',
+        data: item.data ?? [],
+        smooth: (strokeCurve[index] ?? strokeCurve[0]) === 'smooth',
+        showSymbol: (markerSizes[index] ?? markerSizes[0] ?? 0) > 0,
+        symbolSize: markerSizes[index] ?? markerSizes[0] ?? 0,
+        lineStyle: { width: strokeWidth[index] ?? strokeWidth[0] ?? 2 },
+        areaStyle: isArea ? { opacity: 0.35 } : undefined,
+        stack: isStacked ? 'total' : undefined
+      };
+    });
+
+    return {
+      color: options?.colors ?? [colors.PINK, colors.LIGHT_BLUE, colors.YELLOW],
+      tooltip: { trigger: 'axis' },
+      legend: { show: false },
+      grid: {
+        top: 8,
+        left: 12,
+        right: 12,
+        bottom: 16,
+        containLabel: true
+      },
+      xAxis: {
+        type: 'category',
+        data: labels,
+        boundaryGap: false
+      },
+      yAxis: {
+        type: 'value',
+        splitLine: { show: false }
+      },
+      series
+    } as EChartsOption;
+  }
 
   public ngOnInit(): void {
     this.initChart(this.dailyLineChartData.monthlyData, this.dailyLineChartData.labels);
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
-    if (changes.currentTheme && changes.currentTheme.currentValue && this.chartObj) {
+    if (changes['currentTheme']?.currentValue && this.chartOptions?.series) {
       this.updateChartOptions();
     }
-    if (changes.currentMode && changes.currentMode.currentValue && this.chartObj) {
+    if (changes['currentMode']?.currentValue && this.chartOptions?.series) {
       this.updateChartOptions();
     }
-  }
-
-  public ngAfterViewInit() {
-    this.chartObj = new ApexCharts(
-      this.chart.nativeElement,
-      this.chartOptions
-    );
-
-    this.chartObj.render();
-    this.updateChartOptions();
   }
 
   private updateChartOptions(): void {
-    this.chartObj.updateOptions({
+    this.chartOptions = {
+      ...this.chartOptions,
       colors: [
         this.currentTheme === 'blue'
           ? colors.BLUE
@@ -94,7 +122,7 @@ export class DailyLineChartComponent implements OnInit, OnChanges, AfterViewInit
           : colors.LIGHT_BLUE,
         colors.YELLOW
       ]
-    });
+    };
   }
 
   public initChart(data: TimeData, labels: string[]): void {
@@ -191,9 +219,7 @@ export class DailyLineChartComponent implements OnInit, OnChanges, AfterViewInit
         },
       },
       tooltip: {
-        custom: ({series, seriesIndex, dataPointIndex, w}) => {
-          return customTooltip;
-        }
+        custom: () => customTooltip
       }
     };
   };
@@ -266,7 +292,29 @@ export class DailyLineChartComponent implements OnInit, OnChanges, AfterViewInit
           ]
         };
     }
+  }
 
-    this.chartObj.updateSeries(this.chartOptions.series);
+  private getNumberArray(value: unknown): number[] {
+    if (!Array.isArray(value)) {
+      return [];
+    }
+    return value.filter((item): item is number => typeof item === 'number');
+  }
+
+  private getStringArray(value: unknown): string[] {
+    if (!Array.isArray(value)) {
+      return [];
+    }
+    return value.filter((item): item is string => typeof item === 'string');
+  }
+
+  private getSeriesArray(value: unknown): LineSeriesItem[] {
+    if (!Array.isArray(value)) {
+      return [];
+    }
+    return value.filter(
+      (item): item is LineSeriesItem =>
+        typeof item === 'object' && item !== null,
+    );
   }
 }

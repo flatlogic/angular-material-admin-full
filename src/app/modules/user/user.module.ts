@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgApexchartsModule } from 'ng-apexcharts';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { MatButtonModule } from '@angular/material/button';
@@ -20,7 +19,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatStepperModule } from '@angular/material/stepper';
 
 import { UserRoutingModule } from './user-routing.module';
-import { SharedModule } from '../../shared/shared.module';
 import { DeleteUserPopupComponent } from './popups';
 
 import {
@@ -45,6 +43,9 @@ import {
 } from './components';
 import {MatMenuModule} from '@angular/material/menu';
 import {CalendarModule} from 'angular-calendar';
+import { BreadcrumbComponent, DateMenuComponent } from '../../shared/ui-elements';
+import { ChartSizePipe } from '../../shared/pipes/chart-size.pipe';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,12 @@ import {CalendarModule} from 'angular-calendar';
   imports: [
     CommonModule,
     UserRoutingModule,
-    SharedModule,
+    BreadcrumbComponent,
+    DateMenuComponent,
+    ChartSizePipe,
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts')
+    }),
     MatButtonModule,
     MatFormFieldModule,
     MatIconModule,
@@ -85,7 +91,6 @@ import {CalendarModule} from 'angular-calendar';
     MatDialogModule,
     MatStepperModule,
     ReactiveFormsModule,
-    NgApexchartsModule,
     MatMenuModule,
     CalendarModule
   ]

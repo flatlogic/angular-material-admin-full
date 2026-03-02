@@ -5,21 +5,21 @@
     <h3 class="title">Draggable Events</h3>
     <p class="subtitle">Just drap and drop events from there directly into the calendar.</p>
 
-    <mat-card class="external-event" data-event-class="bg-success">
+    <mat-card appearance="outlined" class="external-event" data-event-class="bg-success">
       <mat-card-content class="external-event-content">
         <div class="circle green"></div>
         <p>Make a tea</p>
       </mat-card-content>
     </mat-card>
 
-    <mat-card class='external-event' data-event-class="bg-warn">
+    <mat-card appearance="outlined" class='external-event' data-event-class="bg-warn">
       <mat-card-content class="external-event-content">
         <div class="circle yellow"></div>
         <p>Open windows</p>
       </mat-card-content>
     </mat-card>
 
-    <mat-card class='external-event' data-event-class="bg-primary">
+    <mat-card appearance="outlined" class='external-event' data-event-class="bg-primary">
       <mat-card-content class="external-event-content">
         <div class="circle violet"></div>
         <p>Some stuff</p>
@@ -27,7 +27,7 @@
     </mat-card>
   </div>
 
-  <mat-card class="calendar-wrapper">
+  <mat-card appearance="outlined" class="calendar-wrapper">
     <div class="tools-panel-wrapper">
       <div class="tools-panel">
         <button (click)="prev()" color="default" class="tool-circle-button" mat-mini-fab><mat-icon class="icon">keyboard_arrow_left</mat-icon></button>
@@ -43,18 +43,9 @@
       </div>
     </div>
     <full-calendar
-      defaultView="dayGridMonth"
       #calendar
-      [plugins]="calendarPlugins"
+      [options]="calendarOptions"
       [events]="events"
-      (drop)="onDrop($event)"
-      [droppable]="true"
-      (select)="onSelect($event)"
-      [selectable]="true"
-      [editable]="true"
-      (eventClick)="onEventClick($event)"
-      [header]="null"
     ></full-calendar>
   </mat-card>
 </div>
-

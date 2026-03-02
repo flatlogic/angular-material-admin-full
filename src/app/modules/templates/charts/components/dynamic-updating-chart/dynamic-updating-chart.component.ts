@@ -1,4 +1,5 @@
-import {AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { EChartsOption } from 'echarts';
 import {LineChartData} from '../../models';
 import {ChartOptions} from '../../models/chart-options';
 
@@ -6,50 +7,87 @@ import {colors} from '../../../../../consts';
 
 
 @Component({
-  selector: 'app-dynamic-updating-chart',
-  templateUrl: './dynamic-updating-chart.component.html',
-  styleUrls: ['./dynamic-updating-chart.component.scss']
+    selector: 'app-dynamic-updating-chart',
+    templateUrl: './dynamic-updating-chart.component.html',
+    styleUrls: ['./dynamic-updating-chart.component.scss'],
+    standalone: false
 })
-export class DynamicUpdatingChartComponent implements OnInit, OnChanges, AfterViewInit {
+export class DynamicUpdatingChartComponent implements OnInit, OnChanges, OnDestroy {
+  private static readonly DEFAULT_COLORS = [colors.PINK];
   @Input() dynamicUpdatingChartData: LineChartData;
   @Input() currentTheme: string;
 
-  public apexDynamicUpdatingChartOptions: Partial<ChartOptions>;
+  public apexDynamicUpdatingChartOptions: Partial<ChartOptions> = {};
   public colors: typeof colors = colors;
-  public interval: any;
+  public interval?: ReturnType<typeof setInterval>;
 
-  @ViewChild('chart') chart: ElementRef;
-  // @ts-ignore
-  public chartObj: ApexCharts;
+  public get echartsOptions(): EChartsOption {
+    const options = this.apexDynamicUpdatingChartOptions;
+    const xaxis = options?.xaxis as { categories?: Array<string | number> } | undefined;
+    const categories = xaxis?.categories ?? [];
+    const stroke = options?.stroke as { curve?: string } | undefined;
+    const sourceSeries = (
+      Array.isArray(options?.series)
+        ? options.series.filter((item) => typeof item === 'object' && item !== null)
+        : []
+    ) as Array<{ name?: string; data?: number[] }>;
+    const series = sourceSeries.map((item) => ({
+      type: 'line',
+      name: item.name ?? '',
+      data: item.data ?? [],
+      smooth: stroke?.curve === 'smooth',
+      showSymbol: false,
+      areaStyle: { opacity: 0.3 }
+    }));
+
+    return {
+      color: options?.colors ?? DynamicUpdatingChartComponent.DEFAULT_COLORS,
+      tooltip: { trigger: 'axis' },
+      legend: { show: false },
+      grid: {
+        top: 16,
+        left: 12,
+        right: 12,
+        bottom: 16,
+        containLabel: true
+      },
+      xAxis: {
+        type: 'category',
+        data: categories,
+        boundaryGap: false
+      },
+      yAxis: {
+        type: 'value'
+      },
+      series
+    } as EChartsOption;
+  }
 
   public ngOnInit(): void {
     this.initChart();
+    this.interval = setInterval(() => this.updateChart(), 3000);
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
-    if (changes.currentTheme && changes.currentTheme.currentValue && this.chartObj) {
-      this.chartObj.updateOptions({
+    const currentThemeChange = changes['currentTheme'];
+    if (currentThemeChange?.currentValue && this.apexDynamicUpdatingChartOptions) {
+      this.apexDynamicUpdatingChartOptions = {
+        ...this.apexDynamicUpdatingChartOptions,
         colors: [
-          changes.currentTheme.currentValue === 'blue'
+          currentThemeChange.currentValue === 'blue'
             ? colors.BLUE
             : this.currentTheme === 'green'
             ? colors.GREEN
             : colors.PINK
         ],
-      })
+      };
     }
   }
 
-  public ngAfterViewInit() {
-    // @ts-ignore
-    this.chartObj = new ApexCharts(
-      this.chart.nativeElement,
-      this.apexDynamicUpdatingChartOptions
-    )
-
-    this.chartObj.render();
-
-    this.interval = setInterval(() => this.updateChart(), 3000);
+  public ngOnDestroy(): void {
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
   }
 
   public updateChart(): void {
@@ -69,9 +107,7 @@ export class DynamicUpdatingChartComponent implements OnInit, OnChanges, AfterVi
           ]
         }
       ]
-    }
-
-    this.chartObj.updateSeries(this.apexDynamicUpdatingChartOptions.series);
+    };
   }
 
   public initChart(): void {

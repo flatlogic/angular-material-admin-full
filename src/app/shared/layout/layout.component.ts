@@ -7,11 +7,28 @@ import {
 import { MediaMatcher } from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material/sidenav';
 import { SharedService } from '../services/shared.service';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { RouterModule } from '@angular/router';
+import { HeaderComponent } from '../header/containers/header/header.component';
+import { SidebarComponent } from '../sidebar/sidebar.component';
+import { FooterComponent } from '../footer/footer.component';
+import { SettingsMenuAppComponent } from '../settings-menu/settings-menu.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-layout',
-  templateUrl: './layout.component.html',
-  styleUrls: ['./layout.component.scss'],
+    selector: 'app-layout',
+    templateUrl: './layout.component.html',
+    styleUrls: ['./layout.component.scss'],
+    standalone: true,
+    imports: [
+      CommonModule,
+      MatSidenavModule,
+      RouterModule,
+      HeaderComponent,
+      SidebarComponent,
+      FooterComponent,
+      SettingsMenuAppComponent,
+    ]
 })
 export class LayoutComponent implements OnDestroy {
   @ViewChild('sidenav') sidenav: MatSidenav;

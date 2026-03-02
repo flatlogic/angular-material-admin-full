@@ -1,10 +1,23 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { routes } from '../../consts/routes';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @Component({
-  selector: 'app-settings-menu-app',
-  templateUrl: './settings-menu.component.html',
-  styleUrls: ['./settings-menu.component.scss'],
+    selector: 'app-settings-menu-app',
+    templateUrl: './settings-menu.component.html',
+    styleUrls: ['./settings-menu.component.scss'],
+    standalone: true,
+    imports: [
+      MatButtonModule,
+      MatIconModule,
+      MatMenuModule,
+      MatRadioModule,
+      MatSlideToggleModule,
+    ]
 })
 export class SettingsMenuAppComponent {
   public routes: typeof routes = routes;

@@ -19,7 +19,8 @@ import { TablesDynamicPageComponent } from '../tables/containers';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'icons'
+    redirectTo: 'icons',
+    pathMatch: 'full'
   },
   {
     path: 'icons',

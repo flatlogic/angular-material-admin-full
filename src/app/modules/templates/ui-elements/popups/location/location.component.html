@@ -1,11 +1,13 @@
-<h3 class="title">Use Google's location service?</h3>
+<h2 mat-dialog-title class="title">Use Google's location service?</h2>
 
-<p class="text">
-  Let Google help apps determine location. This means sending anonymous location data to Google, even when no
-  apps are running.
-</p>
+<mat-dialog-content>
+  <p class="text">
+    Let Google help apps determine location. This means sending anonymous location data to Google, even when no
+    apps are running.
+  </p>
+</mat-dialog-content>
 
-<div class="button-wrapper">
-  <button class="button" mat-stroked-button color="primary" (click)="close()" tabindex="-1">DISAGREE</button>
-  <button class="button" mat-raised-button color="primary" (click)="close()" tabindex="-1">AGREE</button>
-</div>
+<mat-dialog-actions align="end">
+  <button class="button" mat-stroked-button color="primary" (click)="close()">DISAGREE</button>
+  <button class="button" mat-raised-button color="primary" (click)="close()">AGREE</button>
+</mat-dialog-actions>

@@ -1,57 +1,90 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
 import {
-  FormBuilder,
   FormControl,
   FormGroup,
-  Validators,
+  ReactiveFormsModule,
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonModule } from '@angular/material/button';
 import { AuthService } from '../../../shared/services/auth.service';
 import { UsersService } from '../../../shared/services/users.service';
-import { DataFormatterService } from '../../../shared/services/data-formatter.service';
 import { routes } from '../../../consts';
+import { BreadcrumbComponent } from '../../../shared/ui-elements';
+import { ImageUploaderComponent } from '../../../shared/uploaders/image-uploader/image-uploader.component';
+import { take } from 'rxjs';
+
+type AvatarItem = {
+  id?: string;
+  publicUrl?: string;
+  [key: string]: unknown;
+};
+
+type ProfileFormControls = {
+  id: FormControl<string>;
+  firstName: FormControl<string>;
+  lastName: FormControl<string>;
+  phoneNumber: FormControl<string>;
+  email: FormControl<string>;
+  role: FormControl<string>;
+  disabled: FormControl<boolean>;
+  avatar: FormControl<AvatarItem[]>;
+};
+
+type ProfileFormValue = {
+  id: string;
+  firstName: string;
+  lastName: string;
+  phoneNumber: string;
+  email: string;
+  role: string;
+  disabled: boolean;
+  avatar: AvatarItem[];
+};
 
 @Component({
-  selector: '[profile]',
-  templateUrl: './profile.component.html',
-  encapsulation: ViewEncapsulation.None,
-  styleUrls: ['./profile.component.scss'],
+    selector: '[profile]',
+    templateUrl: './profile.component.html',
+    encapsulation: ViewEncapsulation.None,
+    styleUrls: ['./profile.component.scss'],
+    standalone: true,
+    imports: [
+      ReactiveFormsModule,
+      MatCardModule,
+      MatInputModule,
+      MatFormFieldModule,
+      MatRadioModule,
+      MatCheckboxModule,
+      MatButtonModule,
+      BreadcrumbComponent,
+      ImageUploaderComponent,
+    ]
 })
 export class ProfileComponent {
   public routes: typeof routes = routes;
-  currentUser;
   loading = false;
-  form: FormGroup;
-
-  imgFile: string;
+  public form: FormGroup<ProfileFormControls>;
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute,
-    private formBuilder: FormBuilder,
     private toastr: ToastrService,
-    private dataFormatterService: DataFormatterService,
-
     private authService: AuthService,
     private usersService: UsersService,
   ) {
-    this.form = this.formBuilder.group({
-      id: [''],
-
-      firstName: [''],
-
-      lastName: [''],
-
-      phoneNumber: [''],
-
-      email: [{ value: '', disabled: true }],
-
-      role: [false],
-
-      disabled: [false],
-
-      avatar: [[]],
+    this.form = new FormGroup<ProfileFormControls>({
+      id: new FormControl('', { nonNullable: true }),
+      firstName: new FormControl('', { nonNullable: true }),
+      lastName: new FormControl('', { nonNullable: true }),
+      phoneNumber: new FormControl('', { nonNullable: true }),
+      email: new FormControl({ value: '', disabled: true }, { nonNullable: true }),
+      role: new FormControl('user', { nonNullable: true }),
+      disabled: new FormControl(false, { nonNullable: true }),
+      avatar: new FormControl<AvatarItem[]>([], { nonNullable: true }),
     });
   }
 
@@ -59,26 +92,26 @@ export class ProfileComponent {
     this.getCurrentUser();
   }
 
-  avatarAdd(val) {
-    this.form.value.avatar.push(val);
+  public avatarAdd(val: AvatarItem): void {
+    const currentAvatar = this.form.controls.avatar.value;
+    this.form.controls.avatar.setValue([...currentAvatar, val]);
   }
-  avatarDel(id) {
-    this.form.value.avatar = this.form.value.avatar.filter(
+
+  public avatarDel(id: string): void {
+    const nextAvatar = this.form.controls.avatar.value.filter(
       (img) => img.id !== id,
     );
+    this.form.controls.avatar.setValue(nextAvatar);
   }
 
   onSave(): void {
-    const currentUser = this.form.value;
-    if (this.form.controls.email) {
-      currentUser.email = this.form.controls.email.value;
-    }
-    this.usersService.update(currentUser, currentUser.id).subscribe({
-      next: (res) => {
+    const currentUser: ProfileFormValue = this.form.getRawValue();
+    this.usersService.update(currentUser, currentUser.id).pipe(take(1)).subscribe({
+      next: () => {
         this.toastr.success('Profile updated successfully');
         this.router.navigate([this.routes.DASHBOARD]);
       },
-      error: (err) => {
+      error: () => {
         this.toastr.error('Something was wrong. Try again');
       },
     });
@@ -89,8 +122,18 @@ export class ProfileComponent {
   }
 
   private getCurrentUser(): void {
-    this.authService.getCurrentUserInfo().subscribe((res) => {
-      this.form.patchValue(res);
+    this.authService.getCurrentUserInfo().pipe(take(1)).subscribe((res: Partial<ProfileFormValue> | null) => {
+      const avatar = Array.isArray(res?.avatar) ? res.avatar : [];
+      this.form.patchValue({
+        id: res?.id ?? '',
+        firstName: res?.firstName ?? '',
+        lastName: res?.lastName ?? '',
+        phoneNumber: res?.phoneNumber ?? '',
+        email: res?.email ?? '',
+        role: res?.role ?? 'user',
+        disabled: Boolean(res?.disabled),
+      });
+      this.form.controls.avatar.setValue(avatar);
     });
   }
 }

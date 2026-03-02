@@ -15,10 +15,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 
-import { CarouselModule } from 'ngx-owl-carousel-o';
-
-import { SharedModule } from '../../../shared/shared.module';
-
 import { UiElementsRoutingModule } from './ui-elements-routing.module';
 
 import { NotificationPageComponent } from './containers';
@@ -47,15 +43,15 @@ import {
 } from './popups';
 
 
-import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ProgressPageComponent } from './components';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { BreadcrumbComponent, CarouselComponent } from '../../../shared/ui-elements';
+import { SearchComponent } from '../../../shared/header/components/search/search.component';
 
-
-import { PopoverModule } from 'ngx-smart-popover';
 
 @NgModule({
   declarations: [
@@ -80,11 +76,12 @@ import { PopoverModule } from 'ngx-smart-popover';
     WidgetPageComponent
   ],
     imports: [
-      CarouselModule,
       CommonModule,
       UiElementsRoutingModule,
       MatToolbarModule,
-      SharedModule,
+      BreadcrumbComponent,
+      CarouselComponent,
+      SearchComponent,
       MatButtonModule,
       MatCardModule,
       MatTabsModule,
@@ -100,8 +97,7 @@ import { PopoverModule } from 'ngx-smart-popover';
       MatExpansionModule,
       MatProgressSpinnerModule,
       MatProgressBarModule,
-      MatMenuModule,
-      PopoverModule
+      MatMenuModule
     ]
 })
 export class UiElementsModule { }

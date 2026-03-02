@@ -12,7 +12,8 @@ import {
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'management'
+    redirectTo: 'management',
+    pathMatch: 'full'
   },
   {
     path: 'management',

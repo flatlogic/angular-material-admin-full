@@ -1,0 +1,35 @@
+<div class="shared-carousel">
+  <div #swiperContainer class="swiper shared-carousel__swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide shared-carousel__slide" *ngFor="let slide of slides; trackBy: trackBySlide">
+        <img
+          [src]="slide.src"
+          [alt]="slide.alt"
+          [title]="slide.text || slide.alt"
+          [style.aspect-ratio]="aspectRatio"
+        >
+      </div>
+    </div>
+
+    <button
+      *ngIf="showNavigation && slides.length > 1"
+      mat-icon-button
+      class="shared-carousel__nav shared-carousel__prev"
+      type="button"
+      aria-label="Previous slide"
+    >
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+    <button
+      *ngIf="showNavigation && slides.length > 1"
+      mat-icon-button
+      class="shared-carousel__nav shared-carousel__next"
+      type="button"
+      aria-label="Next slide"
+    >
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+
+    <div *ngIf="showPagination && slides.length > 1" class="shared-carousel__pagination"></div>
+  </div>
+</div>

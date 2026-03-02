@@ -1,33 +1,42 @@
 <div class="not-found-page">
-  <div class="not-found-page__content">
-    <div class="not-found-page__title">
+  <div class="not-found-page__container">
+    <div class="not-found-page__brand">
       <img
-        class="not-found-page__title-img"
+        class="not-found-page__brand-logo"
         src="./assets/auth/logo.svg"
         alt="logo"
       />
-      <h3 class="not-found-page__title-text">Material Admin</h3>
+      <h3 class="not-found-page__brand-title">Material Admin</h3>
     </div>
 
-    <mat-card class="not-found-page__card">
-      <mat-card-content class="not-found-page__content">
-        <h1 class="not-found-page__card-title">404</h1>
+    <mat-card appearance="outlined" class="not-found-page__card">
+      <mat-card-content class="not-found-page__card-content">
+        <p class="not-found-page__status">404</p>
+        <h1 class="not-found-page__title">Page Not Found</h1>
 
-        <p class="not-found-page__card-sub-title">
-          Oops. Looks like the page you're looking for no longer exists
+        <p class="not-found-page__subtitle">
+          Oops. Looks like this page no longer exists.
         </p>
-        <p class="not-found-page__card-sub-title-second">
-          But we're here to bring you back to safety
+        <p class="not-found-page__subtitle">
+          Use one of the links below to continue.
         </p>
 
-        <div class="button-wrapper">
+        <div class="not-found-page__actions">
           <button
-            class="not-found-page__card-button"
+            class="not-found-page__action-button"
             mat-raised-button
             color="primary"
             [routerLink]="routes.DASHBOARD"
           >
-            Back to Home
+            Back To Dashboard
+          </button>
+          <button
+            class="not-found-page__action-button"
+            mat-stroked-button
+            color="primary"
+            [routerLink]="routes.CALENDAR"
+          >
+            Open Calendar
           </button>
         </div>
       </mat-card-content>

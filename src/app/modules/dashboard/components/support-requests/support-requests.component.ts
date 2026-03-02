@@ -1,14 +1,33 @@
 import {Component, Input, ViewChild} from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { SupportRequestData } from '../../models/support-request-data';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
+import { MatCardModule } from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonModule } from '@angular/material/button';
+import { SettingsMenuComponent } from '../../../../shared/ui-elements';
+import { ShortNamePipe } from '../../../../shared/header/pipes';
 
 @Component({
-  selector: 'app-support-requests',
-  templateUrl: './support-requests.component.html',
-  styleUrls: ['./support-requests.component.scss']
+    selector: 'app-support-requests',
+    templateUrl: './support-requests.component.html',
+    styleUrls: ['./support-requests.component.scss'],
+    standalone: true,
+    imports: [
+      CommonModule,
+      MatCardModule,
+      MatTableModule,
+      MatSortModule,
+      MatCheckboxModule,
+      MatButtonModule,
+      SettingsMenuComponent,
+      ShortNamePipe,
+    ]
 })
 export class SupportRequestsComponent {
   @Input() supportRequestData: SupportRequestData[];
@@ -49,10 +68,10 @@ export class SupportRequestsComponent {
   }
 
   /** The label for the checkbox on the passed row */
-  public checkboxLabel(row?: any): string {
+  public checkboxLabel(row?: SupportRequestData): string {
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id}`;
   }
 }

@@ -16,13 +16,14 @@ enum ToastPositionTypes {
 }
 
 @Component({
-  selector: 'app-notification-page',
-  templateUrl: './notification-page.component.html',
-  styleUrls: ['./notification-page.component.scss']
+    selector: 'app-notification-page',
+    templateUrl: './notification-page.component.html',
+    styleUrls: ['./notification-page.component.scss'],
+    standalone: false
 })
 export class NotificationPageComponent {
   public toastrPositionTypes: typeof ToastPositionTypes = ToastPositionTypes;
-  public toastrPosition: string = this.toastrPositionTypes.topRight;
+  public toastrPosition: ToastPositionTypes = this.toastrPositionTypes.topRight;
   public timeOut = 3000;
   public toastrLink: string = 'https://github.com/scttcper/ngx-toastr';
   public routes: typeof routes = routes;
@@ -30,7 +31,7 @@ export class NotificationPageComponent {
   constructor(private toastrService: ToastrService) {
   }
 
-  public setToastrPosition(position: string): void {
+  public setToastrPosition(position: ToastPositionTypes): void {
     this.toastrPosition = position;
   }
 

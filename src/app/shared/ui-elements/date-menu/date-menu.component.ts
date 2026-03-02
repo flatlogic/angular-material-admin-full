@@ -1,4 +1,6 @@
 import {Component, EventEmitter, Output} from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
 
 enum matSelectedFields {
   daily = 'Daily',
@@ -7,9 +9,11 @@ enum matSelectedFields {
 }
 
 @Component({
-  selector: 'app-date-menu',
-  templateUrl: './date-menu.component.html',
-  styleUrls: ['./date-menu.component.scss']
+    selector: 'app-date-menu',
+    templateUrl: './date-menu.component.html',
+    styleUrls: ['./date-menu.component.scss'],
+    standalone: true,
+    imports: [FormsModule, MatSelectModule]
 })
 export class DateMenuComponent {
   @Output() changeDateType = new EventEmitter<string>();

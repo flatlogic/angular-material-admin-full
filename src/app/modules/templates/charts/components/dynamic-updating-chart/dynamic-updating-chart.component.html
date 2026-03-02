@@ -1,1 +1,6 @@
-<div #chart></div>
+<div
+  echarts
+  [options]="echartsOptions"
+  [style.height]="apexDynamicUpdatingChartOptions?.chart?.height | chartSize:'350px'"
+  [style.width]="apexDynamicUpdatingChartOptions?.chart?.width | chartSize:'100%'"
+></div>

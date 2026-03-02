@@ -1,18 +1,21 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, DestroyRef, OnInit, inject} from '@angular/core';
 import {routes} from '../../../../consts';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {ProductService} from '../../services';
 import {ProductDetails} from '../../models/product-details';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
-  selector: 'app-product-edit-page',
-  templateUrl: './product-edit-page.component.html',
-  styleUrls: ['./product-edit-page.component.scss']
+    selector: 'app-product-edit-page',
+    templateUrl: './product-edit-page.component.html',
+    styleUrls: ['./product-edit-page.component.scss'],
+    standalone: false
 })
 export class ProductEditPageComponent implements OnInit {
   public routes: typeof routes = routes;
-  public product$: Observable<any>;
+  public product$?: Observable<ProductDetails>;
+  private readonly destroyRef = inject(DestroyRef);
 
   constructor(
     private route: ActivatedRoute,
@@ -20,12 +23,15 @@ export class ProductEditPageComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit() {
-    this.route.paramMap.subscribe((params: any) => {
-      if (params.params.id) {
-        this.product$ = this.service.getProduct(params.params.id);
-      }
-    })
+  ngOnInit(): void {
+    this.route.paramMap
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((params: ParamMap) => {
+        const id = params.get('id');
+        if (id) {
+          this.product$ = this.service.getProduct(id);
+        }
+      });
   }
 
   public saveEditProduct(product: ProductDetails) {

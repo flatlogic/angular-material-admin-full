@@ -17,7 +17,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { ProductsService } from './services';
 import { ECommerceRoutingModule } from './e-commerce-routing.module';
-import { SharedModule } from '../../shared/shared.module';
 import { ProductEditFormComponent, ProductCardComponent } from './components';
 import {
   ManagementPageComponent,
@@ -26,6 +25,7 @@ import {
   ProductEditPageComponent,
   ProductCreatePageComponent
 } from './containers';
+import { BreadcrumbComponent } from '../../shared/ui-elements';
 
 @NgModule({
   declarations: [
@@ -40,7 +40,7 @@ import {
   imports: [
     CommonModule,
     ECommerceRoutingModule,
-    SharedModule,
+    BreadcrumbComponent,
     MatCardModule,
     MatIconModule,
     MatChipsModule,

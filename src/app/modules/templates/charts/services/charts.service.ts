@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Observable, of, timer} from 'rxjs';
+import {Observable, of} from 'rxjs';
 
 import {
   DashedLineChartData,
@@ -8,7 +8,7 @@ import {
   PieChartData, RadarChartData
 } from '../models';
 import {BarChartData} from '../models/bar-chart-data';
-import {delay} from 'rxjs/operators';
+import {delay} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

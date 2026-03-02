@@ -1,6 +1,5 @@
-@import 'src/app/styles/colors';
-@import 'src/app/styles/font';
-@import 'src/app/styles/variables';
+@use 'src/app/styles/font' as *;
+@use 'src/app/styles/variables' as *;
 
 .email-button {
   margin-left: 16px;

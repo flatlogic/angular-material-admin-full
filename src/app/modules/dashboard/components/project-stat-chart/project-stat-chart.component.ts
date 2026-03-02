@@ -1,34 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {
-  ApexAxisChartSeries,
-  ApexChart,
-  ApexFill,
-  ApexYAxis,
-  ApexTooltip,
-  ApexMarkers,
-  ApexXAxis,
-  ApexStroke,
-  ApexLegend,
-  ApexGrid,
-  ApexPlotOptions,
-  ApexDataLabels
-} from 'ng-apexcharts';
+import { EChartsOption } from 'echarts';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
 import { ProjectStatData, ProjectTimeData } from '../../models';
 import { colors } from '../../../../consts';
-
-type ChartOptions = {
-  series: ApexAxisChartSeries;
-  chart: ApexChart;
-  dataLabels: ApexDataLabels;
-  plotOptions: ApexPlotOptions;
-  yaxis: ApexYAxis;
-  xaxis: ApexXAxis;
-  fill: ApexFill;
-  tooltip: ApexTooltip;
-  stroke: ApexStroke;
-  legend: ApexLegend;
-  grid: ApexGrid;
-};
+import { ChartOptions } from '../../../templates/charts/models/chart-options';
+import { DateMenuComponent } from '../../../../shared/ui-elements';
+import { ChartSizePipe } from '../../../../shared/pipes/chart-size.pipe';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 enum ProjectsType {
   lightBlue = 'lightBlue',
@@ -37,9 +16,17 @@ enum ProjectsType {
 }
 
 @Component({
-  selector: 'app-project-stat-chart',
-  templateUrl: './project-stat-chart.component.html',
-  styleUrls: ['./project-stat-chart.component.scss']
+    selector: 'app-project-stat-chart',
+    templateUrl: './project-stat-chart.component.html',
+    styleUrls: ['./project-stat-chart.component.scss'],
+    standalone: true,
+    imports: [
+      MatCardModule,
+      MatIconModule,
+      DateMenuComponent,
+      ChartSizePipe,
+      NgxEchartsModule,
+    ]
 })
 export class ProjectStatChartComponent implements OnInit {
   @Input() projectsStatsData: ProjectStatData;
@@ -49,6 +36,18 @@ export class ProjectStatChartComponent implements OnInit {
   public chartOptions: Partial<ChartOptions>;
   public projectsType: typeof ProjectsType = ProjectsType;
   public colors: typeof colors = colors;
+
+  public get lightBlueEchartsOptions(): EChartsOption {
+    return this.buildEchartsOptions(this.selectedStatsLightBlueData?.series, colors.BLUE);
+  }
+
+  public get singAppEchartsOptions(): EChartsOption {
+    return this.buildEchartsOptions(this.selectedStatsSingAppData?.series, colors.YELLOW);
+  }
+
+  public get rnsEchartsOptions(): EChartsOption {
+    return this.buildEchartsOptions(this.selectedStatsRNSData?.series, colors.PINK);
+  }
 
   public ngOnInit(): void {
     this.selectedStatsLightBlueData = this.projectsStatsData.lightBlue.daily;
@@ -161,5 +160,44 @@ export class ProjectStatChartComponent implements OnInit {
         }
       break;
     }
+  }
+
+  private buildEchartsOptions(series: ProjectTimeData['series'] | undefined, color: string): EChartsOption {
+    const xaxis = this.chartOptions?.xaxis as { categories?: Array<string | number> } | undefined;
+    const categories = xaxis?.categories ?? [];
+    const rawSeries = (series ?? []) as Array<{ name: string; data: number[] }>;
+    const mappedSeries = rawSeries.map((item) => ({
+      type: 'bar',
+      name: item.name ?? '',
+      data: item.data ?? [],
+      barMaxWidth: 18
+    }));
+
+    return {
+      color: [color],
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: { type: 'shadow' }
+      },
+      grid: {
+        top: 8,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        containLabel: false
+      },
+      xAxis: {
+        type: 'category',
+        data: categories,
+        axisLabel: { show: false },
+        axisTick: { show: false },
+        axisLine: { show: false }
+      },
+      yAxis: {
+        type: 'value',
+        show: false
+      },
+      series: mappedSeries
+    } as EChartsOption;
   }
 }

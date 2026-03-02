@@ -1,3 +1,6 @@
+@use "src/app/styles/variables" as *;
+@use "src/app/styles/font" as *;
+
 @mixin full-calendar {
   td.fc-day.fc-today {
     background-color: $blue;

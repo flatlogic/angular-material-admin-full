@@ -1,53 +1,82 @@
 import { Injectable } from '@angular/core';
 
+type LabelSource = {
+  id?: string | number;
+  name?: string;
+  title?: string;
+  email?: string;
+  publicUrl?: string;
+  [key: string]: unknown;
+};
+
 @Injectable({
   providedIn: 'root',
 })
 export class DataFormatterService {
-  constructor() {}
-
-  generateLabel(val, item, className) {
+  public generateLabel(
+    val: unknown,
+    item: LabelSource,
+    className: string,
+  ): unknown {
     const elm = this.getFirstElementOfArray(val);
     if (elm) {
       return elm;
     }
-    return className + '-' + item.id;
+    return `${className}-${item.id ?? ''}`;
   }
 
-  getFirstElementOfArray(val: any) {
-    return Array.isArray(val)
-      ? this.getElementOfObject(val[0])
-      : this.getElementOfObject(val);
+  public getFirstElementOfArray(val: unknown): unknown {
+    if (Array.isArray(val)) {
+      return this.getElementOfObject(val[0]);
+    }
+    return this.getElementOfObject(val);
   }
 
-  getElementOfObject(val: any) {
+  public getElementOfObject(val: unknown): unknown {
     if (val !== null && typeof val === 'object') {
-      return val.name ? val.name : val.title ? val.title : val.email;
+      const source = val as LabelSource;
+      if (source.name) {
+        return source.name;
+      }
+      if (source.title) {
+        return source.title;
+      }
+      return source.email;
     }
     return val;
   }
 
-  filesFormatter(arr) {
-    if (!arr || !arr.length) return [];
+  public filesFormatter(
+    arr: LabelSource[] | null | undefined,
+  ): Array<{ name: string; publicUrl: string }> {
+    if (!arr || !arr.length) {
+      return [];
+    }
     return arr.map((item) => ({
-      name: item.name,
+      name: item.name || '',
       publicUrl: item.publicUrl || '',
     }));
   }
 
-  imageFormatter(arr) {
-    if (!arr || !arr.length) return [];
+  public imageFormatter(
+    arr: LabelSource[] | null | undefined,
+  ): Array<{ publicUrl: string }> {
+    if (!arr || !arr.length) {
+      return [];
+    }
     return arr.map((item) => ({
       publicUrl: item.publicUrl || '',
     }));
   }
 
-  oneImageFormatter(arr) {
-    if (!arr || !arr.length) return '';
+  public oneImageFormatter(arr: LabelSource[] | null | undefined): string {
+    if (!arr || !arr.length) {
+      return '';
+    }
     return arr[0].publicUrl || '';
   }
 
-  booleanFormatter(val) {
-    return val ? 'Yes' : 'No';
+  public booleanFormatter(val: unknown): string {
+    return Boolean(val) ? 'Yes' : 'No';
   }
 }

@@ -1,29 +1,59 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../../../shared/services/auth.service';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+
+type SignFormValue = {
+  email: string;
+  password: string;
+  confirmPassword: string;
+};
 
 @Component({
-  selector: 'app-sign-form',
-  templateUrl: './sign-form.component.html',
-  styleUrls: ['./sign-form.component.scss'],
+    selector: 'app-sign-form',
+    templateUrl: './sign-form.component.html',
+    styleUrls: ['./sign-form.component.scss'],
+    standalone: true,
+    imports: [
+      ReactiveFormsModule,
+      MatInputModule,
+      MatFormFieldModule,
+      MatButtonModule,
+      MatIconModule,
+    ]
 })
 export class SignFormComponent implements OnInit {
-  @Output() sendSignForm = new EventEmitter<void>();
-  public form: FormGroup;
+  @Output() sendSignForm = new EventEmitter<SignFormValue>();
+  public form!: FormGroup<{
+    email: FormControl<string>;
+    password: FormControl<string>;
+    confirmPassword: FormControl<string>;
+  }>;
 
   constructor(public authService: AuthService) {}
 
   public ngOnInit(): void {
     this.form = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required]),
-      confirmPassword: new FormControl('', [Validators.required]),
+      email: new FormControl('', {
+        nonNullable: true,
+        validators: [Validators.required, Validators.email],
+      }),
+      password: new FormControl('', {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
+      confirmPassword: new FormControl('', {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
     });
   }
 
-  public register() {
-    const email = this.form.value.email;
-    const password = this.form.value.password;
+  public register(): void {
+    const { email } = this.form.getRawValue();
 
     if (!email) {
       this.authService.registerError('Email is required!');
@@ -33,13 +63,14 @@ export class SignFormComponent implements OnInit {
     if (!this.isPasswordValid()) {
       this.checkPassword();
     } else {
-      this.sendSignForm.emit(this.form.value);
+      this.sendSignForm.emit(this.form.getRawValue());
     }
   }
 
-  checkPassword() {
+  public checkPassword(): void {
+    const { password } = this.form.getRawValue();
     if (!this.isPasswordValid()) {
-      if (!this.form.value.password) {
+      if (!password) {
         this.authService.registerError('Password field is empty');
       } else {
         this.authService.registerError('Passwords are not equal');
@@ -50,9 +81,8 @@ export class SignFormComponent implements OnInit {
     }
   }
 
-  isPasswordValid() {
-    const password = this.form.value.password;
-    const confirmPassword = this.form.value.confirmPassword;
+  public isPasswordValid(): boolean {
+    const { password, confirmPassword } = this.form.getRawValue();
     return password && password === confirmPassword;
   }
 }

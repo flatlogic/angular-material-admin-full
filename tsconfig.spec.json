@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/spec",
+    "module": "es2020",
+    "moduleResolution": "bundler",
+    "types": ["jest", "node"],
+    "esModuleInterop": true
+  },
+  "files": ["setup-jest.ts"],
+  "include": ["src/**/*.spec.ts", "src/**/*.d.ts"]
+}

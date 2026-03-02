@@ -15,10 +15,10 @@ import {
 } from './components';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import { SharedModule } from '../../../shared/shared.module';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTableModule } from '@angular/material/table';
 import { GridTableComponent } from './components';
+import { BreadcrumbComponent } from '../../../shared/ui-elements';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,7 @@ import { GridTableComponent } from './components';
     CoreRoutingModule,
     MatCardModule,
     MatButtonModule,
-    SharedModule,
+    BreadcrumbComponent,
     MatGridListModule,
     MatTableModule
   ]

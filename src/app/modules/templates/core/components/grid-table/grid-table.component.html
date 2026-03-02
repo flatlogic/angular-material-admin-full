@@ -1,14 +1,12 @@
-<mat-card class="card">
+<mat-card appearance="outlined" class="card">
   <mat-card-title>
     <p>Grid options</p>
   </mat-card-title>
 
   <mat-card-subtitle>
     <p>
-      While Material UI grid uses ems or rems for defining most sizes, pxs are used for grid breakpoints
-      and container widths. This is because the viewport width is in pixels and does not change with the
-      font size. See how aspects of the Material UI grid system work across multiple devices with a handy
-      table.
+      Grid recommendations below are aligned with the breakpoint tokens used in this template.
+      The table is intended for practical responsive layout decisions in Angular Material pages.
     </p>
   </mat-card-subtitle>
 
@@ -25,7 +23,7 @@
       <ng-container matColumnDef="xs">
         <mat-header-cell *matHeaderCellDef class="table-header">
           <p class="table-header-title">Extra small</p>
-          <p class="table-header-subtitle"><576px</p>
+          <p class="table-header-subtitle">&lt;576px</p>
         </mat-header-cell>
         <mat-cell *matCellDef="let element" class="table-body"> {{element.xs}} </mat-cell>
       </ng-container>

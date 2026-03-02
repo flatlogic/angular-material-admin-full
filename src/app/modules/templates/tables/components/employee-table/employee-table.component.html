@@ -1,15 +1,19 @@
-<mat-card class="employee-table-wrapper">
+<mat-card appearance="outlined" class="employee-table-wrapper">
   <mat-card-title class="employee-table-wrapper__header">
-    <p *ngIf="!isShowFilterInput" class="employee-table-wrapper__title">Employee List</p>
-    <div *ngIf="isShowFilterInput" class="employee-table-wrapper__search">
-      <div class="employee-table-wrapper__icon-wrapper">
-        <mat-icon class="employee-table-wrapper__icon">search</mat-icon>
+    @if (!isShowFilterInput) {
+      <p class="employee-table-wrapper__title">Employee List</p>
+    }
+    @if (isShowFilterInput) {
+      <div class="employee-table-wrapper__search">
+        <div class="employee-table-wrapper__icon-wrapper">
+          <mat-icon class="employee-table-wrapper__icon">search</mat-icon>
+        </div>
+        <input matInput class="employee-table-wrapper__search-input" (keyup)="applyFilter($event)">
+        <button class="employee-table-wrapper__button" mat-mini-fab color="default" (click)="showFilterInput()">
+          <mat-icon class="employee-table-wrapper__icon">close</mat-icon>
+        </button>
       </div>
-      <input matInput class="employee-table-wrapper__search-input" (keyup)="applyFilter($event)">
-      <button class="employee-table-wrapper__button" mat-mini-fab color="default" (click)="showFilterInput()">
-        <mat-icon class="employee-table-wrapper__icon">close</mat-icon>
-      </button>
-    </div>
+    }
     <button class="employee-table-wrapper__button" mat-mini-fab color="default" (click)="showFilterInput()">
       <mat-icon class="employee-table-wrapper__icon">search</mat-icon>
     </button>
@@ -65,7 +69,7 @@
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"
-          (click)="selection.toggle(row)">
+        (click)="selection.toggle(row)">
       </tr>
     </table>
   </mat-card-content>

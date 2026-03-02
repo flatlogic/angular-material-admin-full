@@ -1,24 +1,17 @@
-@import "src/app/styles/variables";
+@use "src/app/styles/variables" as *;
 
 .usage {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 36px;
   width: 100%;
   margin-top: 36px;
 
   @media(max-width: $normal) {
-    flex-wrap: wrap;
+    grid-template-columns: 1fr;
   }
 }
 
 .usage-block {
-  width: 100%;
-}
-
-.usage-block + .usage-block {
-  margin-left: 36px;
-
-  @media(max-width: $normal) {
-    margin-left: 0;
-    margin-top: 36px;
-  }
+  min-width: 0;
 }

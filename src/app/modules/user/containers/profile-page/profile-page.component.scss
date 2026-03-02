@@ -1,6 +1,5 @@
-@import "../../../../styles/colors";
-@import "../../../../styles/font";
-@import "../../../../styles/variables";
+@use "../../../../styles/font" as *;
+@use "../../../../styles/variables" as *;
 
 .main-content-wrapper {
   display: flex;
@@ -23,6 +22,18 @@
   }
 }
 
+app-user-info,
+app-user-files {
+  display: block;
+  height: 310px;
+  min-height: 310px;
+
+  @media (max-width: $medium) {
+    height: auto;
+    min-height: 0;
+  }
+}
+
 .right-content-wrapper {
   width: 60%;
   padding-left: 18px;
@@ -41,6 +52,7 @@
 
 .bottom-right-content-wrapper {
   display: flex;
+  gap: 36px;
   height: fit-content;
   margin-top: 36px;
 
@@ -51,42 +63,53 @@
 }
 
 .user-tasks {
-  width: 60%;
-  margin-right: 18px;
+  width: auto;
+  flex: 0 0 calc(60% - 18px);
+  min-width: 0;
 
   @media (max-width: $medium) {
     width: 100%;
-    margin-right: 0;
+    flex: 1 1 auto;
   }
 }
 
 .right-bottom-right-content-wrapper {
-  width: 40%;
-  margin-left: 18px;
+  width: auto;
+  flex: 0 0 calc(40% - 18px);
+  min-width: 0;
   height: fit-content;
 
   @media (max-width: $medium) {
     width: 100%;
-    margin-left: 0;
-    margin-top: 36px;
+    flex: 1 1 auto;
+    margin-top: 0;
   }
 }
 
 .inner-content-wrapper {
   display: flex;
+  gap: 36px;
   width: 100%;
   margin-top: 36px;
 
   @media (max-width: $small) {
     flex-wrap: wrap;
+    gap: 0;
+  }
+
+  @media (min-width: $medium) and (max-width: $normal) {
+    gap: 16px;
   }
 }
 
 .user-media, .user-projects {
-  width: 50%;
+  width: auto;
+  flex: 1 1 calc(50% - 18px);
+  min-width: 0;
 
   @media (max-width: $medium) {
     width: 100%;
+    flex: 1 1 100%;
     height: fit-content;
   }
 
@@ -96,27 +119,11 @@
 }
 
 .user-media {
-  margin-right: 18px;
-
-  @media (max-width: $medium) {
-    margin-right: 0;
-  }
-
-  @media (min-width: $medium) and (max-width: $normal) {
-    margin-right: 8px;
-  }
+  margin-right: 0;
 }
 
 .user-projects {
-  margin-left: 18px;
-
-  @media (max-width: $medium) {
-    margin-left: 0;
-  }
-
-  @media (min-width: $medium) and (max-width: $normal) {
-    margin-left: 8px;
-  }
+  margin-left: 0;
 }
 
 .calendar-wrapper {
@@ -155,6 +162,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: 0;
+  padding: 0;
 }
 
 .views-title {
@@ -172,46 +181,61 @@
 
 .views-content {
   display: flex;
-  height: 100px;
-  align-items: center;
+  min-height: 100px;
+  align-items: flex-start;
   justify-content: space-between;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
 }
 
 .views-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
 
+.views-stats-row {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 4px;
 }
 
 .views-value {
   font-family: Fira Sans, sans-serif;
   font-weight: $fw-normal;
-  font-size: $fs-large;
-  line-height: 34px;
+  font-size: $fs-xxl;
+  line-height: 42px;
   color: $dark-grey;
-  margin: 0 8px 0 0;
-  display: inline;
+  margin: 0 6px 0 0;
 }
 
 .trending-up-icon {
-  padding-bottom: 4px;
+  margin-right: 0;
+  padding-bottom: 7px;
 }
 
 .views-percent {
   font-family: Fira Sans, sans-serif;
   font-weight: $fw-normal;
-  font-size: $fs-xs;
-  line-height: 9px;
+  font-size: $fs-normal;
+  line-height: 20px;
   color: $green;
+  margin: 0;
 }
 
 .views-button {
   font-size: 12px;
   border-color: $blue;
   box-shadow: none;
+  margin-top: 12px;
 }
 
 .views-chart-wrapper {
-  margin-left: 23px;
-  margin-top: 40px;
+  display: flex;
+  justify-content: flex-end;
+  margin-left: 0;
+  margin-top: 4px;
 }
 
 .update-wrapper {

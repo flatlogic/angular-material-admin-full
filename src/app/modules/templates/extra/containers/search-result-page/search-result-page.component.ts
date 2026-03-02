@@ -5,9 +5,10 @@ import {SearchResult} from '../../models';
 import {SearchResultService} from '../../services';
 
 @Component({
-  selector: 'app-search-result-page',
-  templateUrl: './search-result-page.component.html',
-  styleUrls: ['./search-result-page.component.scss']
+    selector: 'app-search-result-page',
+    templateUrl: './search-result-page.component.html',
+    styleUrls: ['./search-result-page.component.scss'],
+    standalone: false
 })
 export class SearchResultPageComponent {
   public routes: typeof routes = routes;

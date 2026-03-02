@@ -1,1 +1,7 @@
-<div #chart></div>
+<div
+  echarts
+  *ngIf="apexBasicLineChartOptions?.chart"
+  [options]="echartsOptions"
+  [style.height]="apexBasicLineChartOptions?.chart?.height | chartSize:'350px'"
+  [style.width]="apexBasicLineChartOptions?.chart?.width | chartSize:'100%'"
+></div>

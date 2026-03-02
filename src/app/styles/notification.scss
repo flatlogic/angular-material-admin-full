@@ -1,3 +1,5 @@
+@use "src/app/styles/variables" as *;
+
 @mixin notification {
   .toast-top-center {
     top: 76px;

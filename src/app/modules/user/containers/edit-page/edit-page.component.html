@@ -1,13 +1,13 @@
 <app-breadcrumb [path]="routes.Users_EDIT"></app-breadcrumb>
 
-<mat-card class="edit-nav-card">
+<mat-card appearance="outlined" class="edit-nav-card">
   <mat-card-content>
     <mat-tab-group
       mat-align-tabs="center"
       class="nav-items-group"
       [selectedIndex]="selectedTab.value"
       (selectedIndexChange)="selectedTab.setValue($event)"
-    >
+      >
       <mat-tab>
         <ng-template mat-tab-label>
           <div class="nav-item-wrapper">
@@ -55,14 +55,22 @@
   </mat-card-content>
 </mat-card>
 
-<mat-card class="form-card">
+<mat-card appearance="outlined" class="form-card">
   <mat-card-content>
-    <app-account-edit-form *ngIf="selectedTab.value === 0"></app-account-edit-form>
+    @if (selectedTab.value === 0) {
+      <app-account-edit-form></app-account-edit-form>
+    }
 
-    <app-profile-edit-form *ngIf="selectedTab.value === 1"></app-profile-edit-form>
+    @if (selectedTab.value === 1) {
+      <app-profile-edit-form></app-profile-edit-form>
+    }
 
-    <app-password-edit-form *ngIf="selectedTab.value === 2"></app-password-edit-form>
+    @if (selectedTab.value === 2) {
+      <app-password-edit-form></app-password-edit-form>
+    }
 
-    <app-settings-edit-form *ngIf="selectedTab.value === 3"></app-settings-edit-form>
+    @if (selectedTab.value === 3) {
+      <app-settings-edit-form></app-settings-edit-form>
+    }
   </mat-card-content>
 </mat-card>

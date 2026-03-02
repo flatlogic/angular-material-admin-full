@@ -7,9 +7,10 @@ import { Order } from '../../models';
 import { InvoiceService } from '../../services/invoice.service';
 
 @Component({
-  selector: 'app-invoice-page',
-  templateUrl: './invoice-page.component.html',
-  styleUrls: ['./invoice-page.component.scss']
+    selector: 'app-invoice-page',
+    templateUrl: './invoice-page.component.html',
+    styleUrls: ['./invoice-page.component.scss'],
+    standalone: false
 })
 export class InvoicePageComponent {
   public routes: typeof routes = routes;

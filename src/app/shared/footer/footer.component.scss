@@ -1,5 +1,4 @@
-@import 'src/app/styles/colors';
-@import 'src/app/styles/variables';
+@use 'src/app/styles/variables' as *;
 
 .footer {
   height: $footer-height;

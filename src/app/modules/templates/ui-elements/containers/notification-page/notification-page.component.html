@@ -1,7 +1,7 @@
 <app-breadcrumb [path]="routes.NOTIFICATION"></app-breadcrumb>
 
 <div class="page-content">
-  <mat-card class="page-content__first-item-wrapper">
+  <mat-card appearance="outlined" class="page-content__first-item-wrapper">
     <div class="page-content__first-item-element">
       <mat-card-title>
         <p>Layout Options</p>
@@ -13,16 +13,22 @@
         <div class="select-position">
           <div class="select-position__items-wrapper">
             <button
+              type="button"
+              aria-label="Set toast position to top left"
               class="select-position__item-top"
               [ngClass]="{active: toastrPosition === toastrPositionTypes.topLeft}"
               (click)="setToastrPosition(toastrPositionTypes.topLeft)"
             ></button>
             <button
+              type="button"
+              aria-label="Set toast position to top center"
               class="select-position__center-top-item"
               [ngClass]="{active: toastrPosition === toastrPositionTypes.topCenter}"
               (click)="setToastrPosition(toastrPositionTypes.topCenter)"
             ></button>
             <button
+              type="button"
+              aria-label="Set toast position to top right"
               class="select-position__item-top"
               [ngClass]="{active: toastrPosition === toastrPositionTypes.topRight}"
               (click)="setToastrPosition(toastrPositionTypes.topRight)"
@@ -31,16 +37,22 @@
           <p class="select-position__title">Click any position</p>
           <div class="select-position__items-wrapper">
             <button
+              type="button"
+              aria-label="Set toast position to bottom left"
               class="select-position__item-bottom"
               [ngClass]="{active: toastrPosition === toastrPositionTypes.bottomLeft}"
               (click)="setToastrPosition(toastrPositionTypes.bottomLeft)"
             ></button>
             <button
+              type="button"
+              aria-label="Set toast position to bottom center"
               class="select-position__center-bottom-item"
               [ngClass]="{active: toastrPosition === toastrPositionTypes.bottomCenter}"
               (click)="setToastrPosition(toastrPositionTypes.bottomCenter)"
             ></button>
             <button
+              type="button"
+              aria-label="Set toast position to bottom right"
               class="select-position__item-bottom"
               [ngClass]="{active: toastrPosition === toastrPositionTypes.bottomRight}"
               (click)="setToastrPosition(toastrPositionTypes.bottomRight)"
@@ -54,7 +66,7 @@
         <p>Notifications Types</p>
       </mat-card-title>
       <mat-card-subtitle>
-        <p>Different types of notifications for lost of use cases. Custom classes are also supported.</p>
+        <p>Different types of notifications for lots of use cases. Custom classes are also supported.</p>
       </mat-card-subtitle>
       <mat-card-content>
         <div class="position-buttons-wrapper">
@@ -87,13 +99,13 @@
         <pre class="code-wrapper">
 <code class="code">import {{'{'}} ToastrService {{'}'}} from 'ngx-toastr';</code>
 
-<code class="code">@Component({{'{'}}...{{'}'}})</code>
+<code class="code">&#64;Component({{'{'}}...{{'}'}})</code>
 <code class="code">export class YourComponent {{'{'}}</code>
   <code class="code pink">constructor(private toastr: ToastrService) {{'{'}}{{'}'}}</code>
 
   <code class="code blue">public showSuccess() {{'{'}}</code>
-    <code class="code green">this.toastr.success(</code>
-      <code>'Hello world!', 'Toastr fun!'</code>
+    <code class="code green">this.toastr.show(</code>
+      <code>null, null, {{'{'}} toastComponent: SuccessToastComponent {{'}'}}</code>
     <code class="code green">);</code>
   <code class="code blue">{{'}'}}</code>
 <code>{{'}'}}</code>
@@ -104,7 +116,7 @@
   </mat-card>
 
   <div class="page-content__items-wrapper">
-    <mat-card class="page-content__item">
+    <mat-card appearance="outlined" class="page-content__item">
       <mat-card-title>
         <p>Notification Types Examples</p>
       </mat-card-title>
@@ -148,7 +160,7 @@
       </mat-card-content>
     </mat-card>
 
-    <mat-card class="page-content__item">
+    <mat-card appearance="outlined" class="page-content__item">
       <mat-card-title>
         <p>Notification Types Examples</p>
       </mat-card-title>
@@ -175,7 +187,7 @@
           <div class="notification__icon-wrapper notification__icon-wrapper_solid-yellow">
             <mat-icon>email</mat-icon>
           </div>
-          <p class="notification__title">The new message from user @nahawaii</p>
+          <p class="notification__title">The new message from user &#64;nahawaii</p>
         </div>
         <div class="notification notification_transparent-blue">
           <div class="notification__icon-wrapper notification__icon-wrapper_solid-blue">
@@ -192,7 +204,7 @@
       </mat-card-content>
     </mat-card>
 
-    <mat-card class="page-content__item">
+    <mat-card appearance="outlined" class="page-content__item">
       <mat-card-title>
         <p>Notification Types Examples</p>
       </mat-card-title>
@@ -219,7 +231,7 @@
           <div class="notification__icon-wrapper-circle notification__icon-wrapper-circle_transparent-yellow">
             <mat-icon>email</mat-icon>
           </div>
-          <p class="notification__title">The new message from user @nahawaii</p>
+          <p class="notification__title">The new message from user &#64;nahawaii</p>
         </div>
         <div class="notification">
           <div class="notification__icon-wrapper-circle notification__icon-wrapper-circle_transparent-blue">
@@ -237,4 +249,3 @@
     </mat-card>
   </div>
 </div>
-
