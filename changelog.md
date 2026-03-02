@@ -1,5 +1,46 @@
 # Changelog
 
+## [2.0.0] - 02/03/2026
+### Updated
+- Migrated the project to a modern Angular architecture and refreshed routing/config setup.
+- Upgraded core framework dependencies and synchronized the platform stack.
+- Upgraded UI and charting ecosystem packages and aligned dependent libraries.
+- Upgraded calendar ecosystem packages and resolved related peer dependency issues.
+- Stabilized the documentation module for Angular 21 compatibility (module wiring, styles, shared imports).
+- Applied a broad set of UI fixes across key pages and widgets.
+- Modernized testing/tooling setup with Jest (unit) and Playwright (e2e) including CI workflow.
+- Added dependency security audit scripts and a security exception register for internal tracking.
+- Validated changes with successful `build`, `test`, and `e2e` runs.
+
+### Current stack versions
+- Node: `22.x`
+- npm: `>=10`
+- TypeScript: `5.9.3`
+- Angular framework (`@angular/*`): `^21.2.0`
+- Angular CLI: `^21.2.0`
+- Angular build system (`@angular-devkit/build-angular`): `^21.2.0`
+- Angular Material/CDK: `^21.2.0`
+- Angular Google Maps: `^21.2.0`
+- Angular ESLint: `21.2.0`
+- ESLint: `^9.39.3`
+- `@types/node`: `^25.3.3`
+- Font Awesome: `^7.2.0`
+- `@ng-select/ng-select`: `^21.5.2`
+- ECharts: `^6.0.0`
+- `ngx-echarts`: `^21.0.0`
+- `angular-calendar`: `^0.32.0`
+- `angular-draggable-droppable`: `^9.0.1`
+- `angular-resizable-element`: `^8.0.1`
+- `date-fns`: `^4.1.0`
+- `moment`: `^2.30.1`
+- `zone.js`: `^0.16.1`
+- `rxjs`: `7.8.2`
+- `swiper`: `^12.1.2`
+- `ngx-toastr`: `^20.0.5`
+- `leaflet`: `^1.9.4`
+- Jest: `^30.2.0`
+- Playwright: `^1.58.2`
+
 ## [1.2.1] - 25/11/2024
 ### Updated
 - Updated packages;
