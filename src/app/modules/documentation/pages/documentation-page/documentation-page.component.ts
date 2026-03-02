@@ -5,7 +5,22 @@ import {FlatTreeControl} from '@angular/cdk/tree';
 import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
 import {MatSidenav} from '@angular/material/sidenav';
 
-const TREE_DATA: any = [
+interface DocumentationNode {
+  name: string;
+  route?: string;
+  active?: string;
+  children?: DocumentationNode[];
+}
+
+interface DocumentationFlatNode {
+  expandable: boolean;
+  name: string;
+  level: number;
+  route?: string;
+  active?: string;
+}
+
+const TREE_DATA: DocumentationNode[] = [
   {
     name: 'Getting Started',
     children: [
@@ -27,37 +42,37 @@ const TREE_DATA: any = [
 ];
 
 @Component({
-  selector: 'app-documentation-page',
+    standalone: false,
   templateUrl: './documentation-page.component.html',
   styleUrls: ['./documentation-page.component.scss']
 })
 export class DocumentationPageComponent implements OnDestroy {
-  @ViewChild('sidenav') sidenav: MatSidenav;
+  @ViewChild('sidenav') sidenav!: MatSidenav;
   public isShowSidebar: boolean;
   public mobileQuery: MediaQueryList;
   public routes: typeof routes = routes;
   private mobileQueryListener: () => void;
 
 
-  private _transformer = (node: any, level: number) => {
+  private _transformer = (node: DocumentationNode, level: number): DocumentationFlatNode => {
     return {
       expandable: !!node.children && node.children.length > 0,
       name: node.name,
-      level: level,
+      level,
       route: node.route,
       active: node.active
-    };
-  }
+    } as DocumentationFlatNode;
+  };
 
-  treeControl = new FlatTreeControl<any>(
+  treeControl = new FlatTreeControl<DocumentationFlatNode>(
     node => node.level, node => node.expandable);
 
-  treeFlattener = new MatTreeFlattener(
+  treeFlattener = new MatTreeFlattener<DocumentationNode, DocumentationFlatNode>(
     this._transformer, node => node.level, node => node.expandable, node => node.children);
 
-  dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
+  dataSource = new MatTreeFlatDataSource<DocumentationNode, DocumentationFlatNode>(this.treeControl, this.treeFlattener);
 
-  hasChild = (_: number, node: any) => node.expandable;
+  hasChild = (_: number, node: DocumentationFlatNode): boolean => node.expandable;
 
   constructor(
     private changeDetectorRef: ChangeDetectorRef,

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {routes} from '../../../../consts';
 
 @Component({
-  selector: 'app-overview-page',
+    standalone: false,
   templateUrl: './overview-page.component.html',
   styleUrls: ['./overview-page.component.scss']
 })

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {routes} from '../../../../consts';
 
 @Component({
-  selector: 'app-charts-page',
+    standalone: false,
   templateUrl: './charts-page.component.html',
   styleUrls: ['./charts-page.component.scss']
 })

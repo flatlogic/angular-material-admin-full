@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {routes} from '../../../../consts';
 
 @Component({
-  selector: 'app-libs-page',
+    standalone: false,
   templateUrl: './libs-page.component.html',
   styleUrls: ['./libs-page.component.scss']
 })

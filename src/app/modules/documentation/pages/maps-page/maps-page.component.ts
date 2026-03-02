@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {routes} from '../../../../consts';
 
 @Component({
-  selector: 'app-maps-page',
+    standalone: false,
   templateUrl: './maps-page.component.html',
   styleUrls: ['./maps-page.component.scss']
 })

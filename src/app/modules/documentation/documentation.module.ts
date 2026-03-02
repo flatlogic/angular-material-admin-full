@@ -9,7 +9,6 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatTreeModule} from '@angular/material/tree';
 import { LibsPageComponent } from './pages/libs-page/libs-page.component';
-import {SharedModule} from '../../shared/shared.module';
 import {MatCardModule} from '@angular/material/card';
 import { OverviewPageComponent } from './pages/overview-page/overview-page.component';
 import { LicencesPageComponent } from './pages/licences-page/licences-page.component';
@@ -20,6 +19,8 @@ import { FormsPageComponent } from './pages/forms-page/forms-page.component';
 import { UiPageComponent } from './pages/ui-page/ui-page.component';
 import { MapsPageComponent } from './pages/maps-page/maps-page.component';
 import { TablesPageComponent } from './pages/tables-page/tables-page.component';
+import { BreadcrumbComponent } from '../../shared/ui-elements';
+import { FooterComponent } from '../../shared/footer/footer.component';
 
 
 
@@ -34,8 +35,9 @@ import { TablesPageComponent } from './pages/tables-page/tables-page.component';
     MatSidenavModule,
     MatListModule,
     MatTreeModule,
-    SharedModule,
-    MatCardModule
+    MatCardModule,
+    BreadcrumbComponent,
+    FooterComponent
   ]
 })
 export class DocumentationModule { }

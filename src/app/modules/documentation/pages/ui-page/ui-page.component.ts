@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {routes} from '../../../../consts';
 
 @Component({
-  selector: 'app-ui-page',
+    standalone: false,
   templateUrl: './ui-page.component.html',
   styleUrls: ['./ui-page.component.scss']
 })

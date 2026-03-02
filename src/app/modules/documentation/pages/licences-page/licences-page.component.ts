@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {routes} from '../../../../consts';
 
 @Component({
-  selector: 'app-licences-page',
+    standalone: false,
   templateUrl: './licences-page.component.html',
   styleUrls: ['./licences-page.component.scss']
 })

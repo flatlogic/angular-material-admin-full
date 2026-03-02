@@ -1,7 +1,6 @@
-@import "src/app/styles/colors";
-@import "src/app/styles/font";
-@import "src/app/styles/variables";
-@import "src/app/styles/sidebar";
+@use "src/app/styles/font" as *;
+@use "src/app/styles/variables" as *;
+@use "src/app/styles/sidebar" as sidebar;
 
 .header {
   display: flex;
@@ -94,7 +93,7 @@ a {
   cursor: pointer;
 
   &:hover {
-    background-color: $sidebar-background-color-hover;
+    background-color: sidebar.$sidebar-background-color-hover;
   }
 }
 
@@ -109,7 +108,7 @@ a {
   justify-content: space-between;
 
   &:hover {
-    background-color: $sidebar-background-color-hover;
+    background-color: sidebar.$sidebar-background-color-hover;
   }
 
   &>.documentation-sidebar-icon {
@@ -127,7 +126,7 @@ a {
   box-sizing: border-box;
 
   &:hover {
-    background-color: $sidebar-background-color-hover;
+    background-color: sidebar.$sidebar-background-color-hover;
   }
 
   &>.documentation-sidebar-icon {
@@ -169,17 +168,17 @@ a {
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background-color: $sidebar-circle-color;
+  background-color: sidebar.$sidebar-circle-color;
   margin-right: 20px;
 }
 
-.mat-list-base {
-  & .mat-list-item, .mat-menu-trigger {
-    color: $sidebar-title-color;
+.mat-mdc-list-base {
+  & .mat-mdc-list-item, .mat-mdc-menu-trigger {
+    color: sidebar.$sidebar-title-color;
 
     &.active {
-      background-color: $sidebar-background-color-active;
-      color: $sidebar-font-color-active;
+      background-color: sidebar.$sidebar-background-color-active;
+      color: sidebar.$sidebar-font-color-active;
 
       & .mat-icon {
         color: $blue;
@@ -187,21 +186,21 @@ a {
     }
 
     &:hover {
-      background-color: $sidebar-background-color-hover;
+      background-color: sidebar.$sidebar-background-color-hover;
     }
   }
 }
 
 mat-tree-node {
   & p {
-    color: $sidebar-font-color;
+    color: sidebar.$sidebar-font-color;
   }
 
   &.active {
-    background-color: $sidebar-background-color-active;
+    background-color: sidebar.$sidebar-background-color-active;
 
     & p {
-      color: $sidebar-font-color-active;
+      color: sidebar.$sidebar-font-color-active;
     }
 
     & div.circle{
@@ -215,7 +214,7 @@ mat-tree-node {
     }
 
     & p {
-      color: $sidebar-font-color-active;
+      color: sidebar.$sidebar-font-color-active;
     }
   }
 }

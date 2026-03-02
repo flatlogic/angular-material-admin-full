@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { routes } from '../../../../consts';
 
 @Component({
-  selector: 'app-structure-page',
+    standalone: false,
   templateUrl: './structure-page.component.html',
   styleUrls: ['./structure-page.component.scss']
 })

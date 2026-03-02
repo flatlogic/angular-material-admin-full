@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {routes} from '../../../../consts';
 
 @Component({
-  selector: 'app-tables-page',
+    standalone: false,
   templateUrl: './tables-page.component.html',
   styleUrls: ['./tables-page.component.scss']
 })

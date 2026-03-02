@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {routes} from '../../../../consts';
 
 @Component({
-  selector: 'app-forms-page',
+    standalone: false,
   templateUrl: './forms-page.component.html',
   styleUrls: ['./forms-page.component.scss']
 })
