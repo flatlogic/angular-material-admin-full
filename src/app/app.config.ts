@@ -16,14 +16,14 @@ export interface AppRuntimeConfig {
 
 const buildRuntimeConfig = (): AppRuntimeConfig => {
   const hostApi = environment.production
-    ? 'https://sing-generator-node.herokuapp.com'
+    ? 'https://sing-generator-node.flatlogic.com'
     : 'http://localhost';
   const portApi = environment.production ? '' : '8080';
   const baseURLApi = `${hostApi}${portApi ? `:${portApi}` : ``}`;
 
   return {
     version: '1.2.0',
-    remote: 'https://sing-generator-node.herokuapp.com',
+    remote: 'https://sing-generator-node.flatlogic.com',
     isBackend: environment.backend,
     hostApi,
     portApi,
