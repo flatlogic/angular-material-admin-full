@@ -1,118 +1,83 @@
-# 🚀 Angular Material Admin - A Free Angular Material Dashboard!
+# Angular Material Admin Full
 
-[View Demo](https://flatlogic.com/templates/angular-material-admin-full/demo) | [Download](https://github.com/flatlogic/angular-material-admin-full/archive/refs/heads/master.zip) | [More Templates](https://flatlogic.com/templates) | [Discord Community](https://discord.gg/flatlogic-community) | [Support Forum](https://flatlogic.com/forum)
+An Angular 21 dashboard template by Flatlogic. Start with a working admin interface for managing users, browsing products and charting activity. The template includes Angular Material forms and tables, Apache ECharts examples and a calendar.
 
-**Originally a premium product priced at $69+, made available for free in January 2025!** 🎉
+[Live demo](https://demo.flatlogic.com/angular-material-admin-full/) · [Download a release](https://github.com/flatlogic/angular-material-admin-full/releases/latest) · [Changelog](changelog.md) · [MIT license](LICENSE)
 
-Looking for a perfect codebase generator for your Startup? Try [Flatlogic AI Web App Generator](https://flatlogic.com/generator) - our new tool, sort of a template++.
+[![Dashboard with support tickets, server metrics, a revenue breakdown and daily traffic by device](docs/dashboard-preview.webp)](https://demo.flatlogic.com/angular-material-admin-full/)
 
----
+## Run locally
 
-## 🎯 Why Angular Material Admin?
-- **Ex-Premium**: This template was previously paid. Enjoy it for free now. 😉
-- **Material Design**: Built with Angular Material, following Google's design principles.
-- **Join the Community**: [Flatlogic Discord](https://discord.gg/flatlogic-community) is where the action happens.
-- **Free Node.js Backend**: Pair it up with [this backend](https://github.com/flatlogic/nodejs-backend) to go full-stack.
+Use Node.js 22.12 or newer within the 22.x line and npm 10. If you use nvm, run `nvm install` in the repository to select the version from [.nvmrc](.nvmrc).
 
----
+```sh
+git clone https://github.com/flatlogic/angular-material-admin-full.git
+cd angular-material-admin-full
+npm ci --legacy-peer-deps
+npm start
+```
 
-## 🚀 Quick Start
+Open [localhost:3000](http://localhost:3000/) and select **Login** with the prefilled demo account. To try user management, open [the local user list](http://localhost:3000/admin/users), select **New**, create a sample user, then edit their name and refresh. In this mode, user changes stay in your browser.
 
-1. **Clone the repo**  
-   ```bash
-   git clone https://github.com/flatlogic/angular-material-admin-full.git
-   cd angular-material-admin-full
-   ```
-2. **Install dependencies**  
-   ```bash
-   npm ci --legacy-peer-deps
-   ```
-3. **Run the app**  
-   ```bash
-   npm start
-   ```
-   Navigate to http://localhost:3000/.
+## Choose where user data lives
 
-4. **Build for production**  
-   ```bash
-   npm run build
-   ```
+| Command | Sign-in and user management |
+| --- | --- |
+| `npm start` | Uses mock sign-in and a user list stored in the browser. Use this mode to explore the UI locally. |
+| `npm run start:backend` | Runs the UI locally against Flatlogic’s shared demo API. The hosted demo uses the same API. |
 
-   For the hosted demo, run `npm run build -- --base-href /angular-material-admin-full/`. Serve the contents of `build/` at that path and send Angular page routes to its `index.html` so bookmarked pages work after a refresh. The production configuration uses the hosted API for sign-in and user management.
+The shared demo resets to its sample data every hour. With the API connected, creating a user starts an email invitation. Editing a name or role preserves the user's password. User responses omit password hashes and verification or reset tokens. See the [hosted API reference](https://sing-generator-node.flatlogic.com/api-docs/).
 
----
+To point the app at your own compatible backend, set the API host and port in [app.config.ts](src/app/app.config.ts). The [Angular environments](src/environments) select mock or API-backed behavior.
 
-## 🧩 Features
+## Explore the template
 
-- Fully Responsive Layout
-- Angular 21 and Angular Material
-- No jQuery and Bootstrap
-- Modular Architecture
-- Styled Angular Material Components
-- Multiple Dashboards
-- Authentication Pages
-- Interactive charts with Apache ECharts
-- Static & Hover Sidebar
+| Area | What you can try |
+| --- | --- |
+| Dashboard and charts | Explore the dashboard widgets and the line, bar and pie chart examples. |
+| User management | Filter users, create a user, edit profile details and assign roles. |
+| E-commerce | Browse the product grid, inspect a product and open the product editor. |
+| Calendar and page layouts | Browse calendar events, invoices and gallery layouts. |
+| Forms, tables and maps | Try form validation, dynamic tables, Material components and map views. |
 
----
+## Build and test
 
-## 🛠 Built With
-- Angular 21 and Angular Material
-- Angular Material
-- TypeScript
-- Webpack
-- JavaScript (ES6)
+```sh
+npm run lint
+npm run typecheck
+npm test
+npx playwright install chromium
+npm run e2e
+```
 
----
+The Playwright suite starts its own local server. See the [CI workflow](.github/workflows/ci.yml) for the Linux runner setup.
 
-## 📦 Pages
-- Dashboard
-- E-Commerce (Product Management, Product Grid, Product Page)
-- User Management (User List, Add, Edit)
-- Forms (Elements, Validation)
-- Charts (Line, Bar, Pie)
-- Tables (Basic, Dynamic)
-- Maps (Google, Vector)
-- Core (Typography, Colors, Grid)
-- Extra (Calendar, Invoice, Gallery, Search Result, Timeline, Chat)
-- Authentication (Login, Error Pages)
+Run `npm run build` for a site hosted at the domain root. The public demo uses a subdirectory and needs this base path.
 
----
+```sh
+npm run build -- --base-href /angular-material-admin-full/
+```
 
-## 🌍 Available Variants
+Serve the contents of `build/` at that path. Configure the host to serve `index.html` for Angular page routes so a refresh or a bookmarked link opens the right page. The production build uses the hosted API by default.
 
-|               | **Material**                                              | **Transparent**                                         | **Classic**                                          | **Sofia**                                          | **Flatlogic**                                      |
-|---------------|-----------------------------------------------------------|---------------------------------------------------------|-------------------------------------------------------|-----------------------------------------------------|----------------------------------------------------|
-| **React**     | [React Material Admin](https://github.com/flatlogic/react-material-admin-full) | [Light Blue React](https://github.com/flatlogic/light-blue-react) | [Sing App React](https://github.com/flatlogic/sing-app-react) | [Sofia React](https://github.com/flatlogic/sofia-react) | [One React](https://github.com/flatlogic/one-react) |
-| **Angular**   | [Angular Material Admin](https://github.com/flatlogic/angular-material-admin-full) | [Light Blue Angular](https://github.com/flatlogic/light-blue-angular) | [Sing App Angular](https://github.com/flatlogic/sing-app-angular) | - | - |
-| **Vue**       | [Material Vue](https://github.com/flatlogic/material-vue-full) | [Light Blue Vue](https://github.com/flatlogic/light-blue-vue) | [Sing App Vue](https://github.com/flatlogic/sing-app-vue) | - | - |
-| **Bootstrap** | - | [Light Blue HTML5](https://github.com/flatlogic/light-blue-html5) | [Sing App HTML5](https://github.com/flatlogic/sing-app-html5) | - | [One Bootstrap](https://github.com/flatlogic/one-bootstrap-template-full) |
+## More from Flatlogic
 
+<details>
+<summary>Related dashboard templates and example apps</summary>
 
-Additionally, these templates are tailored for specific business needs:
-- [E-Commerce Frontend (React)](https://github.com/flatlogic/ecommerce-frontend) - A complete e-commerce solution.
-- [Bookkeeper UI (React)](https://github.com/flatlogic/bookkeeper-ui) - Accounting dashboard for finance management.
-- [User Management Template (React)](https://github.com/flatlogic/user-management-template) - User authentication and management.
+| Framework | Templates |
+| --- | --- |
+| Angular | [Light Blue](https://github.com/flatlogic/light-blue-angular) · [Sing App](https://github.com/flatlogic/sing-app-angular) |
+| React | [Material Admin](https://github.com/flatlogic/react-material-admin) · [Light Blue](https://github.com/flatlogic/light-blue-react) · [Sing App](https://github.com/flatlogic/sing-app-react) · [Sofia](https://github.com/flatlogic/sofia-react) · [One](https://github.com/flatlogic/one-react) |
+| Vue | [Material Admin](https://github.com/flatlogic/material-vue-full) · [Light Blue](https://github.com/flatlogic/light-blue-vue) · [Sing App](https://github.com/flatlogic/sing-app-vue-dashboard) |
+| Bootstrap | [Light Blue](https://github.com/flatlogic/light-blue-html5) · [Sing App](https://github.com/flatlogic/sing-app-html5) · [One](https://github.com/flatlogic/one-bootstrap-template-full) |
 
----
+Explore the [e-commerce storefront](https://github.com/flatlogic/ecommerce-frontend), [Bookkeeper accounting app](https://github.com/flatlogic/bookkeeper) and [user management template](https://github.com/flatlogic/user-management-template).
 
-## 👨‍💻 How to Contribute
-- **Star this repo ⭐** - show some love.
-- **Report bugs** - but be nice.
-- **Join the [Discord](<insert-discord-invite-link>)** - meet fellow devs.
+</details>
 
----
+Browse the [template catalog](https://flatlogic.com/templates) or start a new app with the [Flatlogic generator](https://flatlogic.com/generator). For help, visit the [support forum](https://flatlogic.com/forum). To report a bug, [open an issue](https://github.com/flatlogic/angular-material-admin-full/issues) with the steps to reproduce it.
 
-## 🔥 About Flatlogic
-[Flatlogic AI Software Engineer](https://flatlogic.com/ai-software-development-agent) builds modern business software so you don't have to. Our AI Software Development Agent helps you generate, deploy, and maintain enterprise applications with minimal effort.
+## License
 
----
-
-## 📜 License
-This template is free to use. Modify it, break it, make it your own. Just don’t try to sell it back to us. 😎
-
----
-
-> **Questions or feedback?**  
-> Join our [Flatlogic Community Discord](https://discord.gg/flatlogic-community) or visit our [support forum](https://flatlogic.com/forum). We might even reply!
-
+Released under the [MIT license](LICENSE).
