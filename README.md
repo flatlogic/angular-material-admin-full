@@ -25,7 +25,7 @@ Looking for a perfect codebase generator for your Startup? Try [Flatlogic AI Web
    ```
 2. **Install dependencies**  
    ```bash
-   npm install
+   npm ci --legacy-peer-deps
    ```
 3. **Run the app**  
    ```bash
@@ -35,27 +35,29 @@ Looking for a perfect codebase generator for your Startup? Try [Flatlogic AI Web
 
 4. **Build for production**  
    ```bash
-   npm build
+   npm run build
    ```
+
+   For the hosted demo, run `npm run build -- --base-href /angular-material-admin-full/`. Serve the contents of `build/` at that path and send Angular page routes to its `index.html` so bookmarked pages work after a refresh. The production configuration uses the hosted API for sign-in and user management.
 
 ---
 
 ## 🧩 Features
 
 - Fully Responsive Layout
-- Angular 13
+- Angular 21 and Angular Material
 - No jQuery and Bootstrap
 - Modular Architecture
 - Styled Angular Material Components
 - Multiple Dashboards
 - Authentication Pages
-- Charts (Apexcharts, Amcharts)
+- Interactive charts with Apache ECharts
 - Static & Hover Sidebar
 
 ---
 
 ## 🛠 Built With
-- Angular 13
+- Angular 21 and Angular Material
 - Angular Material
 - TypeScript
 - Webpack

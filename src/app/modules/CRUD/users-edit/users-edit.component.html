@@ -86,17 +86,21 @@
     >
     </app-image-uploader>
 
-    <div class="input-wrapper">
-      <p class="input-title">Password</p>
-      <mat-form-field class="input-field">
-        <input
-          matInput
-          formControlName="password"
-          placeholder="Password"
-          class="input-text"
-        />
-      </mat-form-field>
-    </div>
+    @if (!isBackend) {
+      <div class="input-wrapper">
+        <p class="input-title">New password</p>
+        <mat-form-field class="input-field">
+          <input
+            matInput
+            type="password"
+            autocomplete="new-password"
+            formControlName="password"
+            placeholder="New password"
+            class="input-text"
+          />
+        </mat-form-field>
+      </div>
+    }
 
     <button (click)="onSave()" mat-flat-button color="success">Save</button>
     <button (click)="onCancel()" mat-flat-button color="default">Cancel</button>

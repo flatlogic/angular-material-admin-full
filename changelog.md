@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.0.1] - 26/11/2026
+
+### Updated
+
+- Updated the Angular framework to 21.2.26, Material, CDK and Google Maps to 21.2.14, and the Angular CLI and build tools to 21.2.31.
+- Updated Apache ECharts to 6.1.0 for the dashboard and chart pages. Removed the unused Moment dependency. The calendar uses date-fns.
+- Refreshed the npm lockfile and closed the previous build-tool security exception.
+
+### Fixed
+
+- Aligned user editing with the hosted API. The form submits supported fields and keeps stored credentials out of ordinary profile edits.
+- Documented the production base path and history fallback for direct links to the hosted demo.
+
 ## [2.0.0] - 02/03/2026
 ### Updated
 - Migrated the project to a modern Angular architecture and refreshed routing/config setup.

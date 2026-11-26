@@ -22,7 +22,7 @@ const buildRuntimeConfig = (): AppRuntimeConfig => {
   const baseURLApi = `${hostApi}${portApi ? `:${portApi}` : ``}`;
 
   return {
-    version: '1.2.0',
+    version: '2.0.1',
     remote: 'https://sing-generator-node.flatlogic.com',
     isBackend: environment.backend,
     hostApi,

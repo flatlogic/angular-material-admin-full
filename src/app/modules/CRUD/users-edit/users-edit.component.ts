@@ -1,5 +1,6 @@
 import { Component, DestroyRef, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { APP_RUNTIME_CONFIG } from '../../../app.config';
 import {
   FormControl,
   FormGroup,
@@ -27,17 +28,6 @@ type UsersEditFormControls = {
   password: FormControl<string>;
 };
 
-type UsersEditFormValue = {
-  firstName: string;
-  lastName: string;
-  phoneNumber: string;
-  email: string;
-  role: string;
-  disabled: boolean;
-  avatar: AvatarItem[];
-  password: string;
-};
-
 @Component({
     selector: 'app-users-edit',
     templateUrl: './users-edit.component.html',
@@ -45,6 +35,7 @@ type UsersEditFormValue = {
     standalone: false
 })
 export class UsersEditComponent implements OnInit {
+  readonly isBackend = inject(APP_RUNTIME_CONFIG).isBackend;
   loading = false;
   public routes: typeof routes = routes;
   public form: FormGroup<UsersEditFormControls>;
@@ -62,11 +53,11 @@ export class UsersEditComponent implements OnInit {
       firstName: new FormControl('', { nonNullable: true }),
       lastName: new FormControl('', { nonNullable: true }),
       phoneNumber: new FormControl('', { nonNullable: true }),
-      email: new FormControl('', { nonNullable: true }),
+      email: new FormControl({ value: '', disabled: this.isBackend }, { nonNullable: true }),
       role: new FormControl('user', { nonNullable: true }),
       disabled: new FormControl(false, { nonNullable: true }),
       avatar: new FormControl<AvatarItem[]>([], { nonNullable: true }),
-      password: new FormControl('', { nonNullable: true }),
+      password: new FormControl({ value: '', disabled: this.isBackend }, { nonNullable: true }),
     });
   }
 
@@ -104,7 +95,10 @@ export class UsersEditComponent implements OnInit {
       return;
     }
 
-    const payload: UsersEditFormValue = this.form.getRawValue();
+    const payload = this.form.value;
+    if (!payload.password) {
+      delete payload.password;
+    }
     this.usersService.update(payload, this.selectedId).pipe(take(1)).subscribe({
       next: () => {
         this.toastr.success('Users updated successfully');
@@ -140,7 +134,7 @@ export class UsersEditComponent implements OnInit {
           email: res.email ?? '',
           role: typeof res.role === 'string' ? res.role : 'user',
           disabled: Boolean(res.disabled),
-          password: res.password ?? '',
+          password: '',
         });
         this.form.controls.avatar.setValue(
           Array.isArray(res.avatar) ? (res.avatar as AvatarItem[]) : [],

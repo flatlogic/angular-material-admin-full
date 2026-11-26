@@ -25,17 +25,17 @@
     "npm": ">=10"
   },
   "dependencies": {
-    "@angular/animations": "^21.2.0",
-    "@angular/cdk": "^21.2.0",
-    "@angular/common": "^21.2.0",
-    "@angular/compiler": "^21.2.0",
-    "@angular/core": "^21.2.0",
-    "@angular/forms": "^21.2.0",
-    "@angular/google-maps": "^21.2.0",
-    "@angular/material": "^21.2.0",
-    "@angular/platform-browser": "^21.2.0",
-    "@angular/platform-browser-dynamic": "^21.2.0",
-    "@angular/router": "^21.2.0",
+    "@angular/animations": "^21.2.26",
+    "@angular/cdk": "^21.2.14",
+    "@angular/common": "^21.2.26",
+    "@angular/compiler": "^21.2.26",
+    "@angular/core": "^21.2.26",
+    "@angular/forms": "^21.2.26",
+    "@angular/google-maps": "^21.2.14",
+    "@angular/material": "^21.2.14",
+    "@angular/platform-browser": "^21.2.26",
+    "@angular/platform-browser-dynamic": "^21.2.26",
+    "@angular/router": "^21.2.26",
     "@danielmoncada/angular-datetime-picker": "^21.0.0",
     "@fortawesome/fontawesome-free": "^7.2.0",
     "@fullcalendar/angular": "^6.1.20",
@@ -48,9 +48,8 @@
     "angular-draggable-droppable": "^9.0.1",
     "angular-resizable-element": "^8.0.1",
     "date-fns": "^4.1.0",
-    "echarts": "^6.0.0",
+    "echarts": "^6.1.0",
     "leaflet": "^1.9.4",
-    "moment": "^2.30.1",
     "ngx-echarts": "^21.0.0",
     "ngx-toastr": "^20.0.5",
     "rxjs": "7.8.2",
@@ -59,15 +58,15 @@
     "zone.js": "^0.16.1"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^21.2.0",
+    "@angular-devkit/build-angular": "^21.2.31",
     "@angular-eslint/builder": "21.2.0",
     "@angular-eslint/eslint-plugin": "21.2.0",
     "@angular-eslint/eslint-plugin-template": "21.2.0",
     "@angular-eslint/schematics": "21.2.0",
     "@angular-eslint/template-parser": "21.2.0",
-    "@angular/cli": "^21.2.0",
-    "@angular/compiler-cli": "^21.2.0",
-    "@angular/language-service": "^21.2.0",
+    "@angular/cli": "^21.2.31",
+    "@angular/compiler-cli": "^21.2.26",
+    "@angular/language-service": "^21.2.26",
     "@playwright/test": "^1.58.2",
     "@types/jest": "^30.0.0",
     "@types/leaflet": "^1.9.21",
@@ -80,5 +79,12 @@
     "jest-preset-angular": "^16.1.1",
     "ts-jest": "^29.4.6",
     "typescript": "5.9.3"
+  },
+  "overrides": {
+    "glob@>=9.0.0 <=14.0.1": "14.0.6",
+    "minimatch@>=7.0.0 <11.0.1": "11.0.9",
+    "sockjs": {
+      "uuid": "11.1.1"
+    }
   }
 }
